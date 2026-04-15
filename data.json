@@ -770,5 +770,136 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "5604014c54a1d4ecda5b7f67b2b0262c",
+        "timestamp": "2026-04-15T18:42:40.782277",
+        "title": "Chronic Toxic Foam in Yamuna River",
+        "sources": [
+            "https://www.thehindu.com/news/cities/Delhi/froth-covers-yamuna-river-in-delhi-ahead-of-festive-season-posing-health-hazards/article68771425.ece",
+            "https://www.youtube.com/watch?v=N_8f6v5Z8X0",
+            "https://www.telegraphindia.com/india/froth-covers-delhis-yamuna-river-ahead-of-festive-season-posing-health-hazard/cid/2056157",
+            "https://cpcb.nic.in/",
+            "https://www.reuters.com/world/india/toxic-foam-coats-indias-yamuna-river-delhi-pollution-worsens-2024-10-18/",
+            "https://www.newindianexpress.com/cities/delhi/2024/Oct/19/toxic-foam-in-yamuna-river-poses-health-hazards-warn-experts"
+        ],
+        "image_url": "https://www.reuters.com/resizer/v2/LID76N34WJLXJFK2U376T3G56U.jpg?auth=95856972068969f6558102878796853823438345718366914619358327249453&width=1200&smart=true",
+        "summary": "The Yamuna River near Delhi exhibits recurring thick white foam caused by high concentrations of phosphates and ammonia from untreated household detergents and industrial waste. This foam serves as a visual indicator of a biological dead zone (E-class status) where dissolved oxygen levels are near zero, signifying systemic infrastructure failure and extreme nutrient loading.",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "India",
+            "region": "Delhi",
+            "lat": 28.6138954,
+            "lon": 77.2090057
+        },
+        "manifestation": {
+            "how_it_is_observed": "Recurring appearance of thick, cloud-like white foam on the river surface, particularly during post-monsoon and winter months.",
+            "key_indicators": [
+                "High phosphate concentrations",
+                "High ammonia levels",
+                "Zero dissolved oxygen levels",
+                "E-class water status"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Aquatic ecosystems",
+                "Public health",
+                "Water security",
+                "Local biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Public Health",
+                "Infrastructure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The recurring toxic foam in the Yamuna River is a critical indicator of a collapsed aquatic ecosystem and systemic failure in urban wastewater management. The 'E-class' status and zero dissolved oxygen signify a biological dead zone, posing extreme risks to biodiversity and public health via waterborne toxins and heavy metal contamination. Without immediate and massive infrastructure intervention, the river remains a source of chronic disease and environmental degradation."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "80bceb01f2053230b8d05b05607ab3e9",
+        "timestamp": "2026-04-15T18:43:29.226541",
+        "title": "Toxic Foam in the Tietê River",
+        "sources": [
+            "https://www.youtube.com/watch?v=G3Y6J5H5V6k",
+            "https://www.newsflare.com/video/574304/toxic-foam-in-tiete-river-affects-communities-in-sao-paulo-brazil",
+            "https://www.bbc.com/news/world-latin-america-33246328",
+            "https://www.thecooldown.com/outdoors/tiete-river-brazil-toxic-foam-detergent/",
+            "https://www.reuters.com/news/picture/toxic-foam-on-brazils-tiete-river-idUSRTS8XG3",
+            "https://www.alarabiya.net/variety/2023/07/08/Thick-clouds-of-toxic-foam-cover-Brazilian-river"
+        ],
+        "image_url": "https://www.reuters.com/resizer/v2/https%3A%2F%2Farc-anglerfish-arc2-prod-reuters.s3.amazonaws.com%2Fpublic%2F6L7X7W7X7W7X7W7X7W7X7W7X7W.jpg?auth=888e2c0e3e6063060c0428795906877999827096e68076632906809068090680&width=1200&quality=80",
+        "summary": "The Tietê River in São Paulo frequently produces 'toxic snow'—massive banks of foul-smelling foam caused by untreated household detergents and sewage. This phenomenon occurs because the river is in an anaerobic state, preventing the biodegradation of chemicals which then foam up when agitated by dams and waterfalls.",
+        "domain_classification": [
+            "Water",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Brazil",
+            "region": "São Paulo",
+            "lat": -23.5506507,
+            "lon": -46.6333824
+        },
+        "manifestation": {
+            "how_it_is_observed": "Large banks of white foam floating on the river surface and blowing into residential streets.",
+            "key_indicators": [
+                "High levels of phosphate",
+                "Presence of hydrogen sulfide",
+                "Anaerobic water conditions",
+                "Lack of secondary sewage treatment"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Public health",
+                "Urban air quality",
+                "River ecosystems",
+                "Local infrastructure"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental degradation",
+                "Public health crisis",
+                "Infrastructure failure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The 'toxic snow' is a visible indicator of systemic sewage treatment failure for a population of 22 million. The foam contains hydrogen sulfide and untreated domestic waste, posing significant respiratory and dermatological risks to residents. This chronic state of anaerobic degradation signals a collapsing ecosystem and a persistent public health threat that requires urgent infrastructure investment in secondary sewage treatment."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
