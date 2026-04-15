@@ -1,10 +1,10 @@
 """
 =======================================================================
-  LATENT SIGNAL RADAR v2.0 — Global Early Warning Engine
+  LATENT SIGNAL RADAR v2.1 — Global Early Warning Engine
   AI Engine : Google Gemini 2.5 Flash
   Mode      : Multi-Schedule Tracker (Data = 1 Day, Resume = 3 Months)
   Feature   : Pre-crisis Detection, Environmental & Societal Systems
-  Domains   : DRR, Ocean, Climate, Water, Biodiversity, Social
+  Added     : Strict Original URL Cleaner, Map-Ready Lat/Lon
 =======================================================================
 """
 
@@ -16,6 +16,7 @@ import hashlib
 import time
 import unicodedata
 from datetime import datetime, timedelta
+from urllib.parse import urlparse, parse_qs
 import requests
 
 # ── Logging Configuration ──
@@ -31,14 +32,14 @@ BASE_DIR         = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE        = os.path.join(BASE_DIR, "data.json")
 RESUME_FILE      = os.path.join(BASE_DIR, "resume.json")
 HISTORY_FILE     = os.path.join(BASE_DIR, "history.json")
-REPORT_MD_FILE   = os.path.join(BASE_DIR, "report.md")
+# ✅ REPORT_MD dihapus sesuai permintaan
 
-# ✅ CHANGED: Disesuaikan agar berjalan setiap 1 hari dengan target 2 item per run
+# ── Konfigurasi Jadwal ──
 DATA_INTERVAL_DAYS   = int(os.environ.get("DATA_INTERVAL_DAYS", 1))
 RESUME_INTERVAL_DAYS = int(os.environ.get("RESUME_INTERVAL_DAYS", 90))
 MAX_ITEMS_PER_RUN    = int(os.environ.get("MAX_ITEMS_PER_RUN", 2))
 
-# ✅ CHANGED: Keywords dirombak total menjadi Latent Signals (Permasalahan Science & Lingkungan)
+# ── Domain Keyword Latent Signals ──
 KEYWORDS =[
     # --- Ocean ---
     "turtle entangled plastic debris local beach",
@@ -102,10 +103,6 @@ def save_json_file(filepath, data):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
-def save_text_file(filepath, text):
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(text)
-
 def extract_json_safe(text):
     try:
         text = text.strip()
@@ -126,11 +123,24 @@ def extract_json_safe(text):
 def normalize_title(title):
     return unicodedata.normalize("NFKC", title).strip().lower()
 
+# ✅ NEW: URL Cleaner untuk memastikan tidak ada link redirect Google
+def clean_url(url):
+    url = str(url).strip()
+    if "google.com/url" in url:
+        parsed = urlparse(url)
+        qs = parse_qs(parsed.query)
+        if 'q' in qs:
+            return qs['q'][0]
+        elif 'url' in qs:
+            return qs['url'][0]
+    return url
+
+# ✅ Lat & Long di-generate di sini untuk visualisasi Peta (Dashboard)
 def get_coordinates(location_name):
     if not location_name or str(location_name).lower() == "unknown":
         return None, None
     url = f"https://nominatim.openstreetmap.org/search?q={location_name}&format=json&limit=1"
-    headers = {"User-Agent": "SignalRadarApp/2.0 (research-bot)"}
+    headers = {"User-Agent": "SignalRadarApp/2.1 (research-bot)"}
     try:
         time.sleep(1.5)
         resp = requests.get(url, headers=headers, timeout=15)
@@ -159,7 +169,7 @@ def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_js
     
     payload = {
         "contents":[{"parts": [{"text": prompt}]}],
-        "systemInstruction": {"parts": [{"text": system_instruction}]},
+        "systemInstruction": {"parts":[{"text": system_instruction}]},
         "generationConfig": {
             "temperature": 0.5,
             "maxOutputTokens": 8192,
@@ -182,7 +192,7 @@ def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_js
         response = requests.post(url, json=payload, headers=headers, timeout=120)
         response.raise_for_status()
         data = response.json()
-        raw_text = data.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+        raw_text = data.get("candidates",[{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
         
         if expect_json:
             return extract_json_safe(raw_text)
@@ -211,13 +221,12 @@ def pass_1_validate(api_key, raw_content):
     sys_prompt = """Determine whether the following content represents a real-world LATENT SIGNAL (environmental or societal early warning, anomaly, or degradation). 
     CRITICAL RULES:
     - Must be a problem, risk, or degradation (NOT a solution).
-    - Must NOT be a confirmed, finalized disaster (e.g., massive earthquake that already happened). Focus on early signs or creeping issues.
+    - Must NOT be a confirmed, finalized disaster. Focus on early signs or creeping issues.
     Return exactly: {"is_signal": true/false, "confidence": 0.0-1.0}"""
     res = call_gemini_with_retry(api_key, raw_content, sys_prompt)
     return res if res else {"is_signal": False, "confidence": 0}
 
 def pass_2_extract(api_key, raw_content):
-    # ✅ CHANGED: Ekstraksi disesuaikan dengan kebutuhan (gambar, link, klasifikasi sains)
     sys_prompt = """Extract structured data about this environmental/societal latent signal.
     IMPORTANT: For 'sources', provide only DIRECT, ORIGINAL links (e.g., website, youtube). 
     If there is any relevant image URL mentioned or inferable from the source, put it in 'image_url'. 
@@ -227,14 +236,12 @@ def pass_2_extract(api_key, raw_content):
     return call_gemini_with_retry(api_key, raw_content, sys_prompt)
 
 def pass_3_risk(api_key, raw_content):
-    # ✅ CHANGED: Mengukur risiko spesifik ke bencana/kerusakan lingkungan
     sys_prompt = """Analyze the latent signal and assess potential disaster/crisis risks if left unaddressed. Return EXACTLY this JSON:
 {"risk_score": <int 1-10>, "risk_type": ["type1"], "severity_level": "low|medium|high", "needs_immediate_intervention": true/false, "explanation": ""}"""
     return call_gemini_with_retry(api_key, raw_content, sys_prompt)
 
 def pass_4_lineage(api_key, raw_content):
-    # ✅ CHANGED: Mengekstrak akar permasalahan (Root Cause) alih-alih lineage ilmu
-    sys_prompt = """Determine the underlying root cause of this latent signal. Options: [anthropogenic, systemic_failure, natural_anomaly, policy_gap, behavioral_neglect]. Return EXACTLY this JSON: {"root_cause": ["cause1"]}"""
+    sys_prompt = """Determine the underlying root cause of this latent signal. Options:[anthropogenic, systemic_failure, natural_anomaly, policy_gap, behavioral_neglect]. Return EXACTLY this JSON: {"root_cause": ["cause1"]}"""
     return call_gemini_with_retry(api_key, raw_content, sys_prompt)
 
 def calculate_advanced_metrics(data):
@@ -249,7 +256,7 @@ def calculate_advanced_metrics(data):
         priority_score = int(((threat_val * 0.4) + (risk_val * 0.4) + (urgency_val * 0.2)) * 10)
         data["priority_score"] = min(100, max(0, priority_score))
 
-        has_critical = any(k in t.lower() for t in data.get("risk_assessment", {}).get("risk_type",[]) for k in ["fatal", "extinction", "catastrophe", "irreversible"])
+        has_critical = any(k in t.lower() for t in data.get("risk_assessment", {}).get("risk_type",[]) for k in["fatal", "extinction", "catastrophe", "irreversible"])
         data["critical_flag"] = bool(risk_val >= 8 and has_critical)
         return data
     except Exception:
@@ -263,7 +270,6 @@ def run_discovery_pipeline(api_key, database, max_items=2):
     keyword = random.choice(KEYWORDS)
     log.info(f"Initiating radar ping with keyword: '{keyword}'")
 
-    # ✅ CHANGED: Prompt persis seperti instruksi Anda (Signal Detection, No Solutions)
     seed_prompt = f"Search the web for 5 distinct, real-world examples of latent signals related to: {keyword}. Provide a detailed paragraph for each, AND include a list of all relevant original source URLs (including YouTube or image links) found. Return a JSON object with an array 'signals' containing these descriptions and their associated URLs."
     
     seed_sys = """You are an advanced global signal detection AI.
@@ -287,7 +293,7 @@ CRITICAL RULES:
 
         if isinstance(item, dict):
             raw_text = item.get("description", str(item))
-            discovered_urls = item.get("urls", [])
+            discovered_urls = item.get("urls",[])
         else:
             raw_text = str(item)
             discovered_urls =[]
@@ -319,14 +325,17 @@ CRITICAL RULES:
             "risk_assessment": risk_data if risk_data else {}
         }
 
-        if "sources" not in final_item: final_item["sources"] = []
-        final_item["sources"] = list(set(final_item.get("sources",[]) + discovered_urls))
+        # ✅ Pastikan array sumber disatukan dan difilter agar hanya berisi Clean Original URLs
+        raw_sources = final_item.get("sources",[]) + discovered_urls
+        clean_sources = list(set([clean_url(u) for u in raw_sources if u]))
+        final_item["sources"] = clean_sources
 
-        # ✅ Tetap menjaga sistem Lat/Long (Sumber data utuh)
+        # ✅ Lat/Lon untuk MAP Dashboard
         country = final_item.get("location", {}).get("country", "")
         region = final_item.get("location", {}).get("region", "")
         lat, lon = get_coordinates(f"{region}, {country}".strip(", "))
-        final_item["location"]["lat"], final_item["location"]["lon"] = lat, lon
+        final_item["location"]["lat"] = lat
+        final_item["location"]["lon"] = lon
 
         final_item = calculate_advanced_metrics(final_item)
         database.append(final_item)
@@ -344,7 +353,6 @@ def generate_intelligence_report(api_key, database):
     quarter = get_current_quarter()
     db_string = json.dumps(database, ensure_ascii=False)
 
-    # ✅ CHANGED: Prompt untuk menganalisis Signal/Ancaman
     sys_prompt = """
 You are an elite AI Intelligence Analyst generating a global report on Latent Environmental & Societal Signals.
 You will be given a JSON array containing structured signal records.
@@ -358,7 +366,7 @@ OUTPUT FORMAT (STRICT JSON ONLY):
 {
   "report_metadata": { "report_id": "gsi-current", "generated_at": "", "period": "", "total_signals_analyzed": 0 },
   "global_summary": { "total_signals": 0, "high_urgency_percentage": 0, "anthropogenic_percentage": 0 },
-  "domain_insights": [ { "domain": "", "count": 0, "key_pattern": "" } ],
+  "domain_insights":[ { "domain": "", "count": 0, "key_pattern": "" } ],
   "geographic_threats":[ { "region": "", "dominant_issue": "", "threat_level": "low|medium|high" } ],
   "risk_analysis": { "high_risk_cases": 0, "critical_cases": 0, "top_threats": [], "emerging_risks":[] },
   "critical_signals": [ { "title": "", "country": "", "reason_for_urgency": "" } ],
@@ -404,7 +412,7 @@ OUTPUT FORMAT (STRICT JSON ONLY):
             {"level": "Low", "count": low_risk_count}
         ]
         
-        resume_db = load_json_file(RESUME_FILE, [])
+        resume_db = load_json_file(RESUME_FILE,[])
         if not isinstance(resume_db, list): resume_db =[]
 
         for report in resume_db:
@@ -418,38 +426,11 @@ OUTPUT FORMAT (STRICT JSON ONLY):
         
         resume_db.append(new_report)
         save_json_file(RESUME_FILE, resume_db)
-        
-        md_content = convert_report_to_markdown(new_report)
-        save_text_file(REPORT_MD_FILE, md_content)
 
         log.info(f"✅ Resume successfully generated and rotated. ID: gsi-current")
     else:
         log.error("Failed to generate intelligence report.")
 
-def convert_report_to_markdown(report_data):
-    meta = report_data.get("report_metadata", {})
-    global_sum = report_data.get("global_summary", {})
-    risk = report_data.get("risk_analysis", {})
-
-    md = f"""# Global Latent Signal & Threat Report
-**Period:** {meta.get('period', 'N/A')} | **Generated:** {meta.get('generated_at', 'N/A')} | **Signals Detected:** {meta.get('total_signals_analyzed', 0)}
-
----
-## 🌍 Executive Summary
-Out of {global_sum.get('total_signals', 0)} latent signals tracked:
-- **{global_sum.get('high_urgency_percentage', 0)}%** require immediate urgency.
-- **{global_sum.get('anthropogenic_percentage', 0)}%** are driven by anthropogenic (human) behavior.
-
-## ⚠️ Crisis Trajectory (Risk Level)
-- **High-Risk Cases:** {risk.get('high_risk_cases', 0)} | **Critical Red Flags:** {risk.get('critical_cases', 0)}
-- **Top Threats:** {', '.join(risk.get('top_threats',[]))}
-
-## 🚨 Most Critical Signals to Watch\n"""
-    for sig in report_data.get("critical_signals",[]):
-        md += f"- **{sig.get('title', 'Unknown')}** ({sig.get('country', 'Unknown')}) - *{sig.get('reason_for_urgency', '')}*\n"
-
-    md += "\n---\n*Report auto-generated by Latent Signal Radar AI Framework v2.0.*\n"
-    return md
 
 # =====================================================================
 # MAIN SCHEDULER & EXECUTION CONTROLLER
