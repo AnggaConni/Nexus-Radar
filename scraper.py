@@ -83,7 +83,55 @@ KEYWORDS =[
     "illegal sand mining escalating local river",
     "overfishing signs juvenile fish local market",
     "slash and burn farming early haze sign",
-    "abandoned industrial waste local site"
+    "abandoned industrial waste local site",
+
+    # --- Ocean (Tambahan) ---
+    "unusual jellyfish bloom coastal waters",
+    "thinning oyster shells local acidification sign",
+    "seagrass meadow dieback unexplained",
+    "invasive lionfish spotted new local reef",
+    "coastal salt marsh degrading suddenly",
+    "ocean temperature anomaly local fish catch drop",
+
+    # --- DRR / Disaster Risk Reduction (Tambahan) ---
+    "sulfur smell gas emission local volcano warning",
+    "frequent micro-tremors felt by village",
+    "glacial lake ice dam cracking early sign",
+    "small sinkhole forming residential road",
+    "rockfall frequency increasing steep mountain slope",
+    "unusual silence of birds insects before storm",
+
+    # --- Climate (Tambahan) ---
+    "tree line shifting higher local mountain observation",
+    "bears waking early hibernation anomaly",
+    "prolonged dry spell in traditionally humid rainforest",
+    "glacier retreating rapidly indigenous observation",
+    "traditional local weather predicting failing",
+    "unusual wind pattern shift disrupting local sailing",
+
+    # --- Water (Tambahan) ---
+    "cyanobacteria blue green algae local reservoir",
+    "ancient artesian spring stopped flowing village",
+    "strange odor in community well water",
+    "micro seepage earthen dam wall warning",
+    "saltwater pushing further inland local estuary",
+    "sudden drop in local groundwater pressure",
+
+    # --- Biodiversity (Tambahan) ---
+    "apex predator missing from local forest ecosystem",
+    "sudden rodent overpopulation destroying local crops",
+    "unexplained wildlife disease outbreak local deer",
+    "specific butterfly pollinator missing this season",
+    "strange fungal infection killing native trees",
+    "fish spawning grounds shifting location unexpectedly",
+
+    # --- Social/Behavioral (Tambahan) ---
+    "unregulated industrial groundwater pumping rural area",
+    "new unauthorized logging road visible satellite",
+    "critical wildlife corridor blocked by new settlement",
+    "panic buying of water local market rumor",
+    "local fishing fleet ignoring seasonal quotas",
+    "rapid deforestation for informal mining camp",
 ]
 
 # =====================================================================
