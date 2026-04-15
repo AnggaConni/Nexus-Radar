@@ -1,0 +1,119 @@
+[
+    {
+        "report_metadata": {
+            "report_id": "gsi-current",
+            "generated_at": "2026-04-15T18:18:16.433197",
+            "period": "Q2 2026",
+            "total_signals_analyzed": 2
+        },
+        "global_summary": {
+            "total_signals": 2,
+            "high_urgency_percentage": 100.0,
+            "anthropogenic_percentage": 100.0
+        },
+        "domain_insights": [
+            {
+                "domain": "Ocean",
+                "count": 2,
+                "key_pattern": "Thermal refugia across both depth (mesophotic) and latitude (temperate zones) are collapsing simultaneously."
+            },
+            {
+                "domain": "Climate",
+                "count": 2,
+                "key_pattern": "Marine heatwaves are penetrating the thermocline and outpacing species migration speeds."
+            },
+            {
+                "domain": "Biodiversity",
+                "count": 2,
+                "key_pattern": "Loss of 'seed' populations in deep water and high-latitude zones threatens global reef recovery mechanisms."
+            }
+        ],
+        "geographic_threats": [
+            {
+                "region": "Red Sea and Chagos Archipelago",
+                "dominant_issue": "Deep-water (mesophotic) thermal stress and bleaching",
+                "threat_level": "high"
+            },
+            {
+                "region": "Tateyama Bay, Japan",
+                "dominant_issue": "Temperate zone mass bleaching at high latitudes (35°N)",
+                "threat_level": "high"
+            }
+        ],
+        "risk_analysis": {
+            "high_risk_cases": 2,
+            "critical_cases": 0,
+            "top_threats": [
+                "Loss of Mesophotic Thermal Refugia",
+                "Collapse of Latitudinal Barriers for Marine Ecosystems"
+            ],
+            "emerging_risks": [
+                "Thermocline penetration by marine heatwaves",
+                "Coral migration lag relative to ocean warming speed"
+            ]
+        },
+        "critical_signals": [
+            {
+                "title": "Mesophotic Coral Ecosystems Losing Thermal Refugia Status",
+                "country": "Egypt",
+                "reason_for_urgency": "Destruction of deep-water seed populations removes the primary natural mechanism for reef recovery."
+            },
+            {
+                "title": "Mass Coral Bleaching in Japanese Temperate Refugia",
+                "country": "Japan",
+                "reason_for_urgency": "Signals that ocean warming is now faster than the natural migration and adaptation capabilities of marine species."
+            }
+        ],
+        "intervention_opportunities": [
+            {
+                "type": "conservation",
+                "target": "Mesophotic Coral Ecosystems",
+                "justification": "Protecting deep-water zones is critical as they are no longer naturally buffered from surface heat."
+            },
+            {
+                "type": "policy",
+                "target": "Global Carbon Emission Standards",
+                "justification": "Anthropogenic warming is the documented root cause for the breach of both depth and latitudinal thermal barriers."
+            }
+        ],
+        "root_cause_insights": {
+            "most_common_cause": "Anthropogenic Climate Change",
+            "observation": "Human-induced warming has reached a threshold where traditional environmental buffers (depth and latitude) are failing."
+        },
+        "recommendations": [
+            "Redefine Marine Protected Areas (MPAs) to include mesophotic zones specifically as high-risk areas.",
+            "Implement high-latitude coral monitoring programs to track the collapse of temperate refugia.",
+            "Develop assisted migration strategies for coral species unable to keep pace with warming."
+        ],
+        "charts": {
+            "signals_by_domain": [
+                {
+                    "domain": "Ocean",
+                    "count": 2
+                },
+                {
+                    "domain": "Climate",
+                    "count": 2
+                },
+                {
+                    "domain": "Biodiversity",
+                    "count": 2
+                }
+            ],
+            "risk_distribution": [
+                {
+                    "level": "High",
+                    "count": 2
+                },
+                {
+                    "level": "Medium",
+                    "count": 0
+                },
+                {
+                    "level": "Low",
+                    "count": 0
+                }
+            ]
+        }
+    }
+]
