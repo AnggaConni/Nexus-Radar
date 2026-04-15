@@ -1027,5 +1027,138 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "865e1a557cc5864a8302f5a4d6c88493",
+        "timestamp": "2026-04-15T18:50:23.281473",
+        "title": "Emergence of Ghost Forests as a Signal of Groundwater Salinization",
+        "sources": [
+            "https://scistarter.org/ghosts-of-the-coast",
+            "https://www.usgs.gov/news/featured-story/ghost-forests-multiply-chesapeake-bay-region-answers-lag-behind",
+            "https://www.vims.edu/research/units/centers/ccrm/research/climate_change/ghost_forests/index.php",
+            "https://www.usgs.gov/news/featured-story/ghost-forests-are-visible-signs-climate-change",
+            "https://gwtoday.gwu.edu/chesapeake-bay-ghost-forests-highlight-wetland-transformation",
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10500856/"
+        ],
+        "image_url": "https://www.usgs.gov/sites/default/files/styles/full_width/public/media/images/GhostForest_ChesapeakeBay.jpg",
+        "summary": "Ghost forests—stands of dead or dying trees like loblolly pines and cedars—are appearing along the US Mid-Atlantic coast as a primary indicator of groundwater salinization. Driven by sea-level rise and land subsidence, the saltwater table rises into tree root zones, creating a 'deadly sogginess' that precedes agricultural crop failure and signals the compromise of freshwater lenses used for irrigation.",
+        "domain_classification": [
+            "Climate",
+            "Water",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United States",
+            "region": "Mid-Atlantic Coast (Maryland and Virginia)",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Visible stands of dead or dying maritime trees in coastal regions where the saltwater table has risen into the root zone.",
+            "key_indicators": [
+                "Tree mortality in loblolly pines and cedars",
+                "Rising saltwater table",
+                "Root zone salinization",
+                "Land subsidence"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Agricultural irrigation sources",
+                "Freshwater aquifers",
+                "Coastal maritime forests",
+                "Arable land productivity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Degradation",
+                "Agricultural Collapse",
+                "Climate Change Adaptation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The emergence of ghost forests is a critical indicator of saltwater intrusion into freshwater aquifers. This process leads to the permanent loss of arable land and the destruction of natural coastal barriers. If left unaddressed, it will result in regional economic collapse for agricultural sectors and increased vulnerability to catastrophic flooding and land loss due to sea-level rise."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "52c3194f0f63f625607090794fa0fac2",
+        "timestamp": "2026-04-15T18:50:41.541619",
+        "title": "Soil Efflorescence and Archaeological Weathering in the Nile Delta",
+        "sources": [
+            "https://www.researchgate.net/publication/385784944_Monitoring_soil_salinization_and_waterlogging_in_the_northeastern_Nile_Delta_linked_to_shallow_saline_groundwater_and_irrigation_water_quality",
+            "https://pubmed.ncbi.nlm.nih.gov/39536836/",
+            "https://www.service.gov.uk/government/publications/soil-salinity-processes-under-drainwater-reuse-in-the-nile-delta-egypt",
+            "https://www.geosociety.org/gsatoday/archive/27/5/article/i1052-5173-27-5-4.htm"
+        ],
+        "image_url": "",
+        "summary": "Increasing groundwater salinity in Egypt's Nile Delta is manifesting through 'soil efflorescence' or salt blooming, where white mineral crusts appear on the surface during fallow seasons. This phenomenon, caused by the capillary rise of shallow saline groundwater, serves as a latent signal for land degradation. Beyond agricultural impacts, it causes accelerated physical and chemical weathering of buried archaeological artifacts and the structural foundations of heritage sites due to salt crystallization.",
+        "domain_classification": [
+            "Water",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Egypt",
+            "region": "Nile Delta",
+            "lat": 31.3705773,
+            "lon": 30.3309052
+        },
+        "manifestation": {
+            "how_it_is_observed": "Appearance of white mineral crusts on the soil surface and the physical deterioration of buried historical structures and artifacts.",
+            "key_indicators": [
+                "Soil efflorescence (salt blooming)",
+                "Capillary rise of shallow groundwater (0.5 to 3 meters depth)",
+                "Accelerated weathering of archaeological artifacts",
+                "Salt crystallization in heritage site foundations"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Agricultural productivity",
+                "Cultural heritage preservation",
+                "Structural integrity of historical sites",
+                "Soil health",
+                "Archaeological artifacts"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Degradation",
+                "Agricultural Failure",
+                "Cultural Heritage Loss",
+                "Infrastructure Damage"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The rising salinity in the Nile Delta represents a systemic threat to both food security and cultural heritage. The 'salt blooming' signal indicates that groundwater levels are dangerously shallow, leading to irreversible soil degradation and the physical destruction of archaeological artifacts and historical foundations through salt crystallization. Without intervention in water management and drainage, the region faces permanent loss of arable land and irreplaceable historical sites."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]

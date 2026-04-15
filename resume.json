@@ -1,7 +1,7 @@
 [
     {
         "report_metadata": {
-            "report_id": "gsi-current",
+            "report_id": "gsi-older",
             "generated_at": "2026-04-15T18:18:16.433197",
             "period": "Q2 2026",
             "total_signals_analyzed": 2
@@ -108,6 +108,161 @@
                 {
                     "level": "Medium",
                     "count": 0
+                },
+                {
+                    "level": "Low",
+                    "count": 0
+                }
+            ]
+        }
+    },
+    {
+        "report_metadata": {
+            "report_id": "gsi-current",
+            "generated_at": "2026-04-15T18:51:02.252672",
+            "period": "Q2 2026",
+            "total_signals_analyzed": 18
+        },
+        "global_summary": {
+            "total_signals": 18,
+            "high_urgency_percentage": 77.78,
+            "anthropogenic_percentage": 83.33
+        },
+        "domain_insights": [
+            {
+                "domain": "Climate",
+                "count": 12,
+                "key_pattern": "Simultaneous failure of thermal refugia across vertical (mesophotic), latitudinal (temperate), and temporal (nocturnal) dimensions."
+            },
+            {
+                "domain": "Biodiversity",
+                "count": 7,
+                "key_pattern": "Trophic mismatch and metabolic desynchronization leading to permanent behavioral shifts in large predators and pollinators."
+            },
+            {
+                "domain": "Water",
+                "count": 5,
+                "key_pattern": "Systemic failure of urban wastewater management resulting in anaerobic dead zones and groundwater salinization."
+            }
+        ],
+        "geographic_threats": [
+            {
+                "region": "East Asia (Japan)",
+                "dominant_issue": "Ecological barrier collapse (temperate coral bleaching and urban bear residency)",
+                "threat_level": "high"
+            },
+            {
+                "region": "North America (USA)",
+                "dominant_issue": "Infrastructure instability from subterranean heat and coastal seafloor deepening",
+                "threat_level": "high"
+            },
+            {
+                "region": "South Asia (India/Bangladesh)",
+                "dominant_issue": "Ecosystem resilience loss in Sundarbans and chronic river toxicity",
+                "threat_level": "high"
+            },
+            {
+                "region": "Middle East (Egypt)",
+                "dominant_issue": "Loss of mesophotic coral refugia and soil salinization in the Nile Delta",
+                "threat_level": "high"
+            }
+        ],
+        "risk_analysis": {
+            "high_risk_cases": 13,
+            "critical_cases": 0,
+            "top_threats": [
+                "Loss of Deep-Water Thermal Refugia",
+                "Seafloor Deepening & Coastal Erosion",
+                "Urban Diurnal Cooling Failure",
+                "Ecosystem Resilience Tipping Points (Critical Slowing Down)",
+                "Groundwater Salinization"
+            ],
+            "emerging_risks": [
+                "Subterranean Urban Heat Islands (SUHI)",
+                "Metabolic Desynchronization in Hibernating Species",
+                "Aboriginal Calendar Plant Decoupling",
+                "Anthropogenic Foraging Transitions"
+            ]
+        },
+        "critical_signals": [
+            {
+                "title": "Mesophotic Coral Ecosystems Losing Thermal Refugia Status",
+                "country": "Egypt",
+                "reason_for_urgency": "Loss of deep-water 'seed' populations removes the primary natural mechanism for reef recovery."
+            },
+            {
+                "title": "Seafloor Deepening from Coral Reef Structural Collapse",
+                "country": "USA",
+                "reason_for_urgency": "Causes rapid coastal retreat (45ft in days) without storm events, bypassing current flood models."
+            },
+            {
+                "title": "Critical Slowing Down in Sundarbans Mangrove Forest",
+                "country": "Bangladesh/India",
+                "reason_for_urgency": "Statistical precursor to irreversible ecosystem collapse, threatening cyclone protection for millions."
+            }
+        ],
+        "intervention_opportunities": [
+            {
+                "type": "policy",
+                "target": "Urban Planning & Building Codes",
+                "justification": "Mitigating Subterranean Urban Heat Islands and urban canyons is critical to prevent nighttime heat mortality."
+            },
+            {
+                "type": "drr_action",
+                "target": "Early Warning Systems",
+                "justification": "Utilizing AOD creep and thermal anomalies to predict regional haze and wildfires before they become visible."
+            },
+            {
+                "type": "conservation",
+                "target": "Deep-Water Marine Protected Areas",
+                "justification": "Protecting mesophotic zones as they are no longer naturally shielded from surface heatwaves."
+            }
+        ],
+        "root_cause_insights": {
+            "most_common_cause": "Anthropogenic Climate Forcing and Systemic Infrastructure Neglect",
+            "observation": "Human-induced warming is now penetrating previously stable buffers, including the ocean thermocline, high-latitude zones, and the subsurface ground beneath cities."
+        },
+        "recommendations": [
+            "Integrate 'Critical Slowing Down' metrics into national biodiversity and DRR monitoring frameworks.",
+            "Redesign coastal flood models to account for seafloor deepening caused by reef structural loss.",
+            "Shift heat-health alerts to prioritize nighttime minimum temperatures over daytime peaks.",
+            "Mandate secondary sewage treatment in mega-cities to reverse anaerobic river states and toxic foam production."
+        ],
+        "charts": {
+            "signals_by_domain": [
+                {
+                    "domain": "Climate",
+                    "count": 12
+                },
+                {
+                    "domain": "Biodiversity",
+                    "count": 7
+                },
+                {
+                    "domain": "Water",
+                    "count": 5
+                },
+                {
+                    "domain": "Social/Behavioral",
+                    "count": 5
+                },
+                {
+                    "domain": "Ocean",
+                    "count": 3
+                },
+                {
+                    "domain": "DRR",
+                    "count": 3
+                }
+            ],
+            "risk_distribution": [
+                {
+                    "level": "High",
+                    "count": 13
+                },
+                {
+                    "level": "Medium",
+                    "count": 5
                 },
                 {
                     "level": "Low",
