@@ -901,5 +901,131 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "0defca8ab391c0f20acb70dd26332acf",
+        "timestamp": "2026-04-15T18:48:16.895712",
+        "title": "Metabolic Desynchronization and Delayed Hibernation in Amur Brown Bears",
+        "sources": [
+            "https://explorersweb.com/sleepy-bears-stagger-around-siberia-as-hibernation-stalls/",
+            "https://t.me/amurohota/1904",
+            "https://www.themoscowtimes.com/2023/11/21/bears-in-far-east-russia-struggle-to-hibernate-amid-abnormally-high-temperatures-a83172",
+            "https://www.livescience.com/animals/mammals/half-asleep-bears-are-wandering-around-siberia-because-its-too-hot-to-hibernate"
+        ],
+        "image_url": "",
+        "summary": "In the Amur region of the Russian Far East, male brown bears are failing to enter hibernation due to record-breaking thermal anomalies. This 'metabolic desynchronization' occurs when internal biological signals for sleep are overridden by high external temperatures, leaving bears in a groggy, 'half-asleep' state. This physiological stress leads to the exhaustion of fat reserves during winter months when food is unavailable, significantly increasing the risk of mortality.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Russia",
+            "region": "Amur region",
+            "lat": 51.3717927,
+            "lon": 139.1485541
+        },
+        "manifestation": {
+            "how_it_is_observed": "Bears observed wandering in a lethargic state during December instead of denning.",
+            "key_indicators": [
+                "Record-breaking thermal anomalies",
+                "Delayed denning behavior",
+                "Metabolic desynchronization",
+                "Groggy or 'half-asleep' physical state"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Brown bear survival rates",
+                "Wildlife energy reserve depletion",
+                "Ecosystem predator-prey dynamics"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Ecological",
+                "Human-Wildlife Conflict"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The failure of brown bears to enter hibernation due to thermal anomalies leads to metabolic exhaustion and increased winter mortality. Furthermore, groggy, starving bears are highly likely to migrate toward human settlements in search of food, significantly increasing the risk of lethal human-wildlife encounters and local ecological destabilization."
+        },
+        "priority_score": 88,
+        "critical_flag": false
+    },
+    {
+        "id": "f2572c1cbe10d41934e2b6f676ca7b6d",
+        "timestamp": "2026-04-15T18:48:38.024363",
+        "title": "Systemic Collapse of Japan's Mountain-to-Town Barrier",
+        "sources": [
+            "https://www.youtube.com/watch?v=FjK8vN3S_Xk",
+            "https://qazinform.com/en/bears-in-japan-delay-hibernation-after-finding-food-in-residential-areas-expert-946f04/",
+            "https://www.yomiuri.co.jp/eko/20240301-OYT1T50058/",
+            "https://www.thecooldown.com/outdoors/japan-bear-sightings-hibernation-food/"
+        ],
+        "image_url": "",
+        "summary": "Japan is experiencing a significant ecological shift where bears are forgoing hibernation in favor of 'anthropogenic foraging' near human settlements. Driven by mast crop failures in high-altitude forests and the availability of unharvested crops in depopulating rural towns, this signal suggests a transition toward permanent urban residency for large predators as they adapt to human-modified landscapes for winter survival.",
+        "domain_classification": [
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Japan",
+            "region": "Rural-urban fringes",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "A massive spike in winter bear sightings (over 10,000 reports) during traditional hibernation periods and increased presence in residential areas.",
+            "key_indicators": [
+                "10,000+ reports in late 2025",
+                "Suppression of hibernation behavior",
+                "Mast crop failures (acorns and beechnuts)",
+                "Foraging on unharvested persimmons in depopulating towns"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Public safety in urban and rural areas",
+                "Wildlife management policies",
+                "Rural community resilience",
+                "Ecological predator-prey dynamics"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Public Safety",
+                "Ecological Instability",
+                "Human-Wildlife Conflict"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The transition of large predators from seasonal foragers to permanent urban residents represents a critical public safety threat. A spike of 10,000 sightings indicates that traditional deterrents and ecological boundaries have failed. Forgoing hibernation suggests a permanent behavioral shift that will lead to increased fatal encounters, property damage, and the further destabilization of already vulnerable depopulating rural communities."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
