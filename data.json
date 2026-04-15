@@ -510,5 +510,132 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "e199c3d6f461de42bf51fe7a99b07874",
+        "timestamp": "2026-04-15T18:34:40.392308",
+        "title": "Underground Climate Change and Subsurface Urban Heat Islands",
+        "sources": [
+            "https://www.youtube.com/watch?v=nE5n_T_iX7M",
+            "https://news.northwestern.edu/stories/2023/07/underground-climate-change-is-deforming-the-ground-beneath-cities/",
+            "https://news.northwestern.edu/stories/2023/07/underground-climate-change-is-deforming-the-ground-beneath-our-feet/",
+            "https://www.nature.com/articles/s43247-023-00807-x"
+        ],
+        "image_url": "https://news.northwestern.edu/assets/Underground-Climate-Change-Graphic-Rotta-Loria-1200.jpg",
+        "summary": "Subsurface warming, known as underground climate change, occurs as heat leaks from urban infrastructure like basements and tunnels into the soil. This causes the ground to expand and contract, leading to structural instability and ground deformation. This trapped heat acts as a thermal battery, preventing cities from cooling down and exacerbating the intensity of surface heatwaves.",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Chicago, Illinois",
+            "lat": 41.8755616,
+            "lon": -87.6244212
+        },
+        "manifestation": {
+            "how_it_is_observed": "Measurement of temperature anomalies in underground parking garages, basements, and subway tunnels compared to undisturbed soil; satellite and sensor-based monitoring of ground deformation.",
+            "key_indicators": [
+                "Subsurface temperature rise",
+                "Ground heave and subsidence",
+                "Structural cracking in building foundations",
+                "Increased energy consumption for cooling"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Urban infrastructure",
+                "Building foundations",
+                "Underground transit systems",
+                "Public health (heat-related mortality)"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Infrastructure Failure",
+                "Climate Change",
+                "Public Health"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Underground climate change creates a dual threat: it causes structural instability in urban foundations through thermal expansion and contraction, and it acts as a persistent heat source that amplifies surface temperatures. This lowers the threshold for lethal heat events and poses a long-term risk to the physical and thermal safety of densely populated urban centers."
+        },
+        "priority_score": 62,
+        "critical_flag": false
+    },
+    {
+        "id": "35437740179689c0a689f35aa9014e51",
+        "timestamp": "2026-04-15T18:35:18.704731",
+        "title": "Urban Diurnal Cooling Failure in High-Density Canyons",
+        "sources": [
+            "https://ecostress.jpl.nasa.gov/visualizations",
+            "https://www.jpl.nasa.gov/news/nasa-built-sensor-finds-cities-hold-more-heat-than-their-surroundings",
+            "https://ecostress.jpl.nasa.gov/",
+            "https://images.nasa.gov/details-PIA23245"
+        ],
+        "image_url": "https://ecostress.jpl.nasa.gov/images/ecostress_logo.png",
+        "summary": "A critical early warning signal for localized heat mortality involving the failure of urban environments to radiate heat back into space at night. High-density neighborhoods with significant sky view factor obstruction trap heat within vertical surfaces, preventing the human body and building materials from recovering from daytime thermal stress, leading to localized 'death zones' during atmospheric stagnation events.",
+        "domain_classification": [
+            "Climate",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Global",
+            "region": "High-density urban areas",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Thermal sensors and satellite missions like NASA's ECOSTRESS detect surface temperatures and radiation patterns in urban canyons.",
+            "key_indicators": [
+                "Widening gap between daytime peaks and nighttime lows",
+                "Failure of diurnal cooling cycles",
+                "High sky view factor obstruction",
+                "Cumulative thermal stress in building materials"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Human health",
+                "Urban residents",
+                "Emergency medical services",
+                "Residential building habitability"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Public Health",
+                "Environmental"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The failure of the diurnal cooling cycle in urban canyons prevents physiological recovery from heat stress. This cumulative thermal load, detected via satellite thermal data, signals an imminent transition to high-mortality events (death zones) during atmospheric stagnation, necessitating immediate urban cooling interventions and emergency response planning."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
