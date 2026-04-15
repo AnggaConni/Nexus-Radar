@@ -382,5 +382,133 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "5c3bfe06cc5bfe9eda882eb30c6acc2b",
+        "timestamp": "2026-04-15T18:29:14.885904",
+        "title": "Subterranean Urban Heat Islands (SUHI)",
+        "sources": [
+            "https://eos.org/articles/underground-heat-could-be-a-problem-or-a-perk-for-chicago-buildings",
+            "https://news.northwestern.edu/stories/2023/07/underground-climate-change-is-deforming-the-ground-beneath-chicago/",
+            "https://www.youtube.com/watch?v=n-Xl_X8kS8M",
+            "https://www.nature.com/articles/s44172-023-00092-1",
+            "https://news.northwestern.edu/stories/2023/07/underground-climate-change-is-deforming-the-ground-chicago/"
+        ],
+        "image_url": "https://news.northwestern.edu/assets/Underground-climate-change-graphic-1200x675.jpg",
+        "summary": "Subterranean Urban Heat Islands (SUHI) are a latent environmental hazard where urban ground temperatures rise due to heat leakage from basements, subways, and parking garages. This 'underground climate change' causes soil to expand and contract, leading to infrastructure deformation and creating a thermal battery effect that amplifies surface heatwaves by preventing nighttime cooling.",
+        "domain_classification": [
+            "Climate"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Chicago Loop",
+            "lat": 35.403789,
+            "lon": -79.0953544
+        },
+        "manifestation": {
+            "how_it_is_observed": "Measurement of subsurface temperature increases and monitoring of structural shifts in building foundations and underground tunnels.",
+            "key_indicators": [
+                "Ground temperature warming rates (0.1 to 2.5°C per decade)",
+                "Soil expansion and contraction cycles",
+                "Nighttime surface temperature anomalies in dense urban areas"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Building foundations",
+                "Subway infrastructure",
+                "Underground utility networks",
+                "Urban heat resilience"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Infrastructure Stability",
+                "Public Health",
+                "Climate Change"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "Subterranean Urban Heat Islands (SUHI) cause chronic ground deformation that threatens the structural integrity of foundations and tunnels. Additionally, the 'thermal battery' effect prevents nocturnal cooling, which significantly amplifies the severity of surface heatwaves, leading to increased heat-related mortality in dense urban environments."
+        },
+        "priority_score": 62,
+        "critical_flag": false
+    },
+    {
+        "id": "f8c3b78cbe9a3d5a379297a25a3a8a7d",
+        "timestamp": "2026-04-15T18:29:33.447889",
+        "title": "Rapid Rise of Nighttime Minimum Temperatures (Tropical Nights)",
+        "sources": [
+            "https://heranow.org/news/new-global-study-dangerous-nighttime-heat-rising-in-83-of-global-cities-analyzed-becoming-more-oppressive-and-more-frequent/",
+            "https://www.climatecentral.org/news/air-conditioner-use-in-cities-trigger-vicious-cycle-17448",
+            "https://www.noaa.gov/news/nighttime-is-warming-faster-than-daytime-across-much-of-united-states",
+            "https://climate.copernicus.eu/",
+            "https://www.zmescience.com/science/news-science/deadly-heatwave-killed-2300-in-europe-and-1500-of-those-were-due-to-climate-change/"
+        ],
+        "image_url": "https://www.epa.gov/sites/default/files/2014-06/uhi_profile_graphic.png",
+        "summary": "Nighttime minimum temperatures are rising significantly faster than daytime highs, particularly in urban environments where concrete and asphalt saturate with heat. This phenomenon, known as 'Tropical Nights' when temperatures exceed 20°C, prevents essential nocturnal cooling for humans and vegetation, leading to increased heat-related mortality risks even without record-breaking daytime peaks.",
+        "domain_classification": [
+            "Climate",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Multiple",
+            "region": "Europe and North America",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Observed through the narrowing of the diurnal temperature range and nighttime minimums rising up to 10 times faster than daytime maximums.",
+            "key_indicators": [
+                "Tropical Night threshold (>20°C/68°F)",
+                "Narrowing diurnal temperature range",
+                "Urban heat saturation in concrete/asphalt",
+                "Biological recovery failure in humans and plants"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Public health (mortality rates)",
+                "Urban vegetation and ecosystems",
+                "Emergency response systems",
+                "Energy demand for cooling"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Public Health",
+                "Climate Change",
+                "Urban Infrastructure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The loss of nocturnal cooling represents a critical physiological tipping point. When nighttime temperatures fail to drop, the human body cannot recover from daytime heat stress, leading to a non-linear increase in heat-related mortality and morbidity. This signal suggests that traditional heat-warning systems based on daytime maximums are becoming obsolete, masking a growing urban survival crisis."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
