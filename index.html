@@ -3,33 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- SEO Meta Tags -->
-  <title>Nexus Radar | Global Early Warning & Latent Signal Engine</title>
-  <meta name="description" content="Nexus Radar is an autonomous AI-powered OSINT platform that detects latent environmental and societal signals before they escalate into global crises." />
-  <meta name="keywords" content="Early warning system, OSINT, latent signals, environmental disaster, climate change tracker, AI radar, disaster risk reduction, ocean literacy" />
-  <meta name="author" content="Nexus Radar" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph / Social Media Meta Tags -->
-  <meta property="og:title" content="Nexus Radar | Global Early Warning Engine" />
-  <meta property="og:description" content="Detecting the whispers before the storm. Nexus Radar uses AI to track latent environmental signals worldwide." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourwebsite.com" />
-  <meta property="og:image" content="https://yourwebsite.com/og-image.jpg" /> <!-- Ganti dengan URL gambar Anda nanti -->
-
-  <!-- Favicon -->
+  <title>Nexus Radar | The Science of Early Warning & Latent Signals</title>
+  <meta name="description" content="Explore the science of Latent Signals. Nexus Radar is an autonomous AI-powered OSINT platform that detects environmental and societal anomalies before they escalate into crises." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%230ea5e9' d='M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM128,152a48,48,0,1,1,48-48A48.05,48.05,0,0,1,128,152Zm64.12,36.54a80,80,0,0,0-128.24,0A87.91,87.91,0,0,1,40,128a88,88,0,1,1,176,0A87.91,87.91,0,0,1,192.12,188.54Z'/%3E%3C/svg%3E" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  
-  <!-- Tailwind CSS & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  
+
   <script>
     tailwind.config = {
       theme: {
@@ -44,12 +27,11 @@
           animation: {
             'float': 'float 6s ease-in-out infinite',
             'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'scan': 'scan 3s linear infinite',
           },
           keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-20px)' },
-            }
+            float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
+            scan: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(400%)' } }
           }
         }
       }
@@ -58,19 +40,60 @@
 
   <style>
     body { background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
-    .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
+    .glass-nav { background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(226,232,240,0.8); }
     .hero-gradient { background: radial-gradient(circle at top right, #f0f9ff 0%, #ffffff 50%, #f8fafc 100%); }
-    .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.1), 0 8px 10px -6px rgba(14, 165, 233, 0.1); }
-    
-    /* Details/Accordion Styling */
-    details > summary { list-style: none; }
+    .bg-grid-pattern { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 30px 30px; }
+    .article-drop-cap::first-letter { font-family: 'Space Grotesk', sans-serif; float: left; font-size: 3.5rem; line-height: 0.8; margin-right: 0.5rem; color: #0ea5e9; font-weight: 800; }
+
+    details > summary { list-style: none; cursor: pointer; }
     details > summary::-webkit-details-marker { display: none; }
     details[open] summary ~ * { animation: sweep .3s ease-in-out; }
-    @keyframes sweep { 0% {opacity: 0; transform: translateY(-10px)} 100% {opacity: 1; transform: translateY(0)} }
-    
-    /* Background Pattern */
-    .bg-grid-pattern { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 30px 30px; }
+    @keyframes sweep { 0% { opacity: 0; transform: translateY(-10px) } 100% { opacity: 1; transform: translateY(0) } }
+
+    /* Domain Cards */
+    .domain-card { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+    .domain-card:hover { transform: translateY(-6px); }
+    .domain-card.active { transform: translateY(-4px); }
+    .domain-panel { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease; opacity: 0; }
+    .domain-panel.open { max-height: 1000px; opacity: 1; }
+    .signal-pill { display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.03em; }
+    .progress-bar { height: 6px; border-radius: 999px; background: #e2e8f0; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 999px; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); width: 0; }
+    .progress-fill.animate { /* triggered via JS */ }
+
+    /* Scanning line on hero card */
+    .scan-line { position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(14,165,233,0.8), transparent); animation: scan 3s linear infinite; pointer-events: none; }
+
+    /* Timeline connector */
+    .timeline-dot { position: relative; }
+    .timeline-dot::after { content: ''; position: absolute; top: 50%; right: -2rem; width: 4rem; height: 2px; background: linear-gradient(90deg, #475569, transparent); transform: translateY(-50%); }
+
+    /* Stats counter */
+    .stat-num { font-variant-numeric: tabular-nums; }
+
+    /* Behavioral domain special card */
+    .behavior-tag { padding: 0.2rem 0.6rem; border-radius: 0.375rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* Section dividers */
+    .wave-divider { width: 100%; overflow: hidden; line-height: 0; }
+    .wave-divider svg { display: block; }
+
+    /* Glow effect on domain icons */
+    .domain-icon-wrap { transition: all 0.3s ease; }
+    .domain-card:hover .domain-icon-wrap { transform: scale(1.1) rotate(-5deg); }
+
+    /* Mobile nav overlay */
+    #mobile-nav { display: none; }
+    #mobile-nav.open { display: flex; }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
   </style>
 </head>
 <body class="antialiased selection:bg-nexus-main selection:text-white">
@@ -79,47 +102,50 @@
   <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
-        <!-- Logo -->
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 bg-nexus-light rounded-xl flex items-center justify-center text-nexus-main">
             <i class="ph-fill ph-target text-2xl"></i>
           </div>
           <span class="font-display font-bold text-xl tracking-tight text-slate-900">Nexus Radar</span>
         </div>
-        
-        <!-- Desktop Links -->
-        <div class="hidden md:flex space-x-8">
-          <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">What is it?</a>
-          <a href="#domains" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">Thematic Domains</a>
-          <a href="#weak-signals" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">Why Weak Signals?</a>
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="#science" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">The Science</a>
+          <a href="#domains" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">Domains</a>
+          <a href="#anatomy" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">Crisis Anatomy</a>
+          <a href="#engine" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">AI Engine</a>
           <a href="#faq" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">FAQ</a>
+          <a href="info.html" class="flex items-center gap-1.5 text-sm font-bold text-nexus-main bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100 hover:bg-blue-100 transition-colors">
+            <i class="ph-bold ph-chart-polar"></i> Interactive Visuals
+          </a>
         </div>
-
-        <!-- CTA Button -->
         <div class="flex items-center gap-4">
           <a href="radar.html" class="hidden md:flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg">
             Launch Radar <i class="ph-bold ph-arrow-right"></i>
           </a>
-          <!-- Mobile Menu Button -->
-          <button class="md:hidden text-slate-600 text-2xl" id="mobile-menu-btn">
-            <i class="ph-bold ph-list"></i>
+          <button class="lg:hidden text-slate-600 text-2xl" id="mobile-menu-btn">
+            <i class="ph-bold ph-list" id="menu-icon"></i>
           </button>
         </div>
       </div>
     </div>
+    <!-- Mobile nav -->
+    <div id="mobile-nav" class="flex-col bg-white border-t border-slate-200 px-6 py-6 gap-5 shadow-xl">
+      <a href="#science" class="text-sm font-semibold text-slate-700 hover:text-nexus-main">The Science</a>
+      <a href="#domains" class="text-sm font-semibold text-slate-700 hover:text-nexus-main">6 Domains</a>
+      <a href="#anatomy" class="text-sm font-semibold text-slate-700 hover:text-nexus-main">Crisis Anatomy</a>
+      <a href="#engine" class="text-sm font-semibold text-slate-700 hover:text-nexus-main">AI Engine</a>
+      <a href="radar.html" class="flex items-center gap-2 bg-nexus-main text-white text-sm font-bold px-5 py-3 rounded-xl w-fit">Launch Radar <i class="ph-bold ph-arrow-right"></i></a>
+    </div>
   </nav>
 
   <!-- ================= HERO SECTION ================= -->
-  <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-gradient overflow-hidden">
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 hero-gradient overflow-hidden border-b border-slate-200">
     <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
-    <!-- Blur Orbs -->
     <div class="absolute top-20 right-0 w-96 h-96 bg-nexus-main rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse-slow"></div>
-    <div class="absolute bottom-0 left-20 w-72 h-72 bg-emerald-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-0 left-20 w-72 h-72 bg-emerald-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse-slow" style="animation-delay:2s"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        
-        <!-- Left: Copy & CTA -->
         <div class="lg:col-span-6 text-center lg:text-left">
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-widest mb-6">
             <span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span> Live OSINT Engine
@@ -129,24 +155,33 @@
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-nexus-main to-indigo-600">before the storm.</span>
           </h1>
           <p class="text-base sm:text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Nexus Radar is an autonomous AI-driven platform that scours the global web to detect <strong>latent environmental and societal signals</strong>. We identify creeping vulnerabilities before they escalate into confirmed disasters.
+            Disasters don't happen overnight. <strong>Nexus Radar</strong> is an educational platform and autonomous AI engine that tracks <em>latent signals</em>—creeping environmental and societal anomalies that act as precursors to global crises—across <strong>6 critical domains</strong>.
           </p>
-          
+
+          <!-- Domain pill bar -->
+          <div class="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
+            <span class="signal-pill bg-orange-50 text-orange-700 border border-orange-200"><i class="ph-fill ph-volcano text-xs"></i> DRR</span>
+            <span class="signal-pill bg-cyan-50 text-cyan-700 border border-cyan-200"><i class="ph-fill ph-waves text-xs"></i> Ocean</span>
+            <span class="signal-pill bg-sky-50 text-sky-700 border border-sky-200"><i class="ph-fill ph-cloud-sun text-xs"></i> Climate</span>
+            <span class="signal-pill bg-blue-50 text-blue-700 border border-blue-200"><i class="ph-fill ph-drop text-xs"></i> Water</span>
+            <span class="signal-pill bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="ph-fill ph-leaf text-xs"></i> Biodiversity</span>
+            <span class="signal-pill bg-violet-50 text-violet-700 border border-violet-200"><i class="ph-fill ph-users text-xs"></i> Social</span>
+          </div>
+
           <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
             <a href="radar.html" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-nexus-main hover:bg-nexus-dark text-white text-base font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-nexus-main/30">
               <i class="ph-bold ph-radar text-xl"></i> Open Dashboard
             </a>
-            <a href="#about" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-base font-bold px-8 py-4 rounded-xl transition-all">
-              Learn How It Works
+            <a href="#domains" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-base font-bold px-8 py-4 rounded-xl transition-all">
+              <i class="ph-bold ph-book-open-text text-xl"></i> Explore the 6 Domains
             </a>
           </div>
-          <p class="mt-4 text-xs text-slate-400 font-medium"><i class="ph-fill ph-check-circle text-emerald-500"></i> No login required. Open-access intelligence.</p>
         </div>
 
-        <!-- Right: Dummy Node Card -->
-        <div class="lg:col-span-6 flex justify-center lg:justify-end relative perspective-1000">
-          <!-- The floating card mimicking the dashboard UI -->
+        <!-- Hero Card -->
+        <div class="lg:col-span-6 justify-center lg:justify-end relative hidden md:flex">
           <div class="w-full max-w-md bg-white rounded-3xl border border-slate-200 shadow-2xl shadow-slate-200/50 overflow-hidden animate-float relative z-10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+            <div class="scan-line"></div>
             <div class="absolute top-0 left-0 bottom-0 w-2 bg-red-500"></div>
             <div class="p-6 pl-8">
               <div class="flex justify-between items-start mb-4">
@@ -163,9 +198,7 @@
                 <i class="ph-bold ph-map-pin text-nexus-main"></i> North Java, Indonesia
               </p>
               <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 mb-4">
-                <p class="text-sm text-slate-600 leading-relaxed line-clamp-3">
-                  Routine tests in a coastal community showed a 300% spike in salinity in deep freshwater wells, signaling a potential irreversible aquifer breach before the community loses its drinking source.
-                </p>
+                <p class="text-sm text-slate-600 leading-relaxed line-clamp-3">Routine tests in a coastal community showed a 300% spike in salinity in deep freshwater wells, signaling a potential irreversible aquifer breach before the community loses its drinking source.</p>
               </div>
               <div class="flex items-center justify-between border-t border-slate-100 pt-4">
                 <div class="flex items-center gap-2">
@@ -179,242 +212,905 @@
               </div>
             </div>
           </div>
-          <!-- Decorative background card -->
           <div class="absolute top-10 right-0 w-full max-w-md bg-white/50 backdrop-blur-sm rounded-3xl border border-white/40 shadow-xl h-full transform -rotate-3 z-0 scale-95 opacity-50"></div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ================= ABOUT SECTION ================= -->
-  <section id="about" class="py-20 bg-white border-b border-slate-100">
+  <!-- ================= STATS BAR ================= -->
+  <section class="bg-slate-900 py-8 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4">What is Nexus Radar?</h2>
-        <p class="text-slate-600 text-lg">It is an automated Open-Source Intelligence (OSINT) pipeline designed to bridge the gap between local environmental observations and global policy intervention.</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="font-display font-black text-3xl text-white stat-num">6</div>
+          <div class="text-xs font-bold uppercase tracking-widest text-slate-500 mt-1">Monitored Domains</div>
+        </div>
+        <div>
+          <div class="font-display font-black text-3xl text-nexus-main stat-num">100+</div>
+          <div class="text-xs font-bold uppercase tracking-widest text-slate-500 mt-1">Latent Signal Types</div>
+        </div>
+        <div>
+          <div class="font-display font-black text-3xl text-white stat-num">24/7</div>
+          <div class="text-xs font-bold uppercase tracking-widest text-slate-500 mt-1">Autonomous Scanning</div>
+        </div>
+        <div>
+          <div class="font-display font-black text-3xl text-emerald-400 stat-num">0–100</div>
+          <div class="text-xs font-bold uppercase tracking-widest text-slate-500 mt-1">Threat Scoring Scale</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE SCIENCE ================= -->
+  <section id="science" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-nexus-main text-sm font-bold uppercase tracking-widest mb-2 block">Ecological Theory</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-6">The Science of Latent Signals</h2>
+      </div>
+      <div class="prose prose-slate max-w-none text-slate-600 text-lg leading-relaxed space-y-6">
+        <p class="article-drop-cap">
+          Traditional disaster management operates on a reactive paradigm. It mobilizes resources, capital, and media attention only after a crisis—like a category 5 hurricane, a massive forest fire, or a pandemic—has already manifested and destroyed infrastructure.
+        </p>
+        <p>However, in complex environmental and societal systems, crises rarely happen in a vacuum. They are subject to the <strong>"Boiling Frog" syndrome</strong>. A systemic collapse is almost always preceded by subtle, creeping anomalies known as <em class="text-nexus-main font-semibold">Latent Signals</em>.</p>
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl my-8">
+          <h4 class="font-display font-bold text-blue-900 text-xl mb-2">What is a Latent Signal?</h4>
+          <p class="text-blue-800 text-base m-0">A latent signal is an early, often overlooked metric or observation that indicates a system is losing its resilience and approaching a <strong>Tipping Point</strong>. It is the "whisper" before the storm.</p>
+        </div>
+        <p>For example, a sudden drop in a rural well's water pressure today is the latent signal for a regional drought and agricultural famine next year. A small, isolated 'test burn' detected by satellites on the edge of a protected forest is the latent signal for a massive, uncontrollable regional haze event next month. By shifting our focus from the disaster itself to the precursor anomalies, we transition from reactive rescue to proactive, data-driven intervention.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6 DOMAINS SECTION ================= -->
+  <section id="domains" class="py-20 bg-slate-50 border-t border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-4 reveal">
+        <span class="text-nexus-main text-sm font-bold uppercase tracking-widest mb-2 block">Classification System</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4">The 6 Monitoring Domains</h2>
+        <p class="text-lg text-slate-600">Nexus Radar classifies every detected signal into one of six thematic domains. Each domain has a unique set of latent signals, tipping points, and escalation pathways. Click any domain to explore.</p>
       </div>
 
+      <!-- Domain Navigation Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10 mt-8 reveal">
+        <button onclick="openDomain('drr')" id="tab-drr" class="domain-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold border transition-all bg-white border-slate-200 text-slate-600 hover:border-orange-300 hover:text-orange-700 hover:bg-orange-50">
+          <i class="ph-fill ph-volcano text-base text-orange-500"></i> DRR
+        </button>
+        <button onclick="openDomain('ocean')" id="tab-ocean" class="domain-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold border transition-all bg-white border-slate-200 text-slate-600 hover:border-cyan-300 hover:text-cyan-700 hover:bg-cyan-50">
+          <i class="ph-fill ph-waves text-base text-cyan-500"></i> Ocean
+        </button>
+        <button onclick="openDomain('climate')" id="tab-climate" class="domain-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold border transition-all bg-white border-slate-200 text-slate-600 hover:border-sky-300 hover:text-sky-700 hover:bg-sky-50">
+          <i class="ph-fill ph-cloud-sun text-base text-sky-500"></i> Climate
+        </button>
+        <button onclick="openDomain('water')" id="tab-water" class="domain-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold border transition-all bg-white border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-700 hover:bg-blue-50">
+          <i class="ph-fill ph-drop text-base text-blue-500"></i> Water
+        </button>
+        <button onclick="openDomain('bio')" id="tab-bio" class="domain-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold border transition-all bg-white border-slate-200 text-slate-600 hover:border-emerald-300 hover:text-emerald-700 hover:bg-emerald-50">
+          <i class="ph-fill ph-leaf text-base text-emerald-500"></i> Biodiversity
+        </button>
+        <button onclick="openDomain('social')" id="tab-social" class="domain-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold border transition-all bg-white border-slate-200 text-slate-600 hover:border-violet-300 hover:text-violet-700 hover:bg-violet-50">
+          <i class="ph-fill ph-users text-base text-violet-500"></i> Social/Behavioral
+        </button>
+      </div>
+
+      <!-- Domain Panel Container -->
+      <div id="domain-panels" class="mb-10">
+
+        <!-- ─── DRR ─── -->
+        <div id="panel-drr" class="domain-panel">
+          <div class="bg-white rounded-3xl border border-orange-200 shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-orange-600 to-red-600 px-8 py-6 flex items-start justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+                    <i class="ph-fill ph-volcano text-3xl text-white"></i>
+                  </div>
+                  <div>
+                    <p class="text-orange-200 text-xs font-bold uppercase tracking-widest">Domain 01</p>
+                    <h3 class="font-display font-bold text-2xl text-white">Disaster Risk Reduction (DRR)</h3>
+                  </div>
+                </div>
+                <p class="text-orange-100 text-sm leading-relaxed max-w-2xl">Detecting environmental changes that may trigger or amplify disasters — from geological stress to infrastructural vulnerabilities — before they become irreversible catastrophes.</p>
+              </div>
+              <span class="shrink-0 text-xs font-bold bg-red-500/40 border border-red-300/50 text-white px-3 py-1.5 rounded-lg uppercase tracking-wider">High Priority</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+              <!-- Col 1: What is it -->
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-info text-orange-500"></i> What Nexus Tracks</h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">DRR signals are precursor anomalies that reveal a physical environment accumulating stress loads beyond its natural tolerance thresholds.</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-orange-400 mt-0.5 shrink-0"></i> Geological micro-fractures and ground deformation</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-orange-400 mt-0.5 shrink-0"></i> Slope instability & erosion acceleration</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-orange-400 mt-0.5 shrink-0"></i> Pre-flood soil saturation indexes</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-orange-400 mt-0.5 shrink-0"></i> Infrastructure stress: dam seepage, bridge cracking</li>
+                </ul>
+              </div>
+              <!-- Col 2: Latent signals -->
+              <div class="p-7 bg-orange-50/40">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-broadcast text-orange-500"></i> Key Latent Signals</h4>
+                <div class="space-y-3">
+                  <div class="bg-white rounded-xl border border-orange-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Soil Crack Width Increase</span>
+                      <span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-1.5 py-0.5 rounded">CRITICAL</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-orange-400 to-red-500" data-width="88"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Precursor to landslide or building collapse</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-orange-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Unusual Well Water Turbidity</span>
+                      <span class="text-[10px] font-bold text-yellow-600 bg-yellow-50 px-1.5 py-0.5 rounded">WARNING</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-yellow-400 to-orange-400" data-width="65"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Indicates subsurface movement disrupting aquifer</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-orange-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Increased Animal Displacement</span>
+                      <span class="text-[10px] font-bold text-yellow-600 bg-yellow-50 px-1.5 py-0.5 rounded">WATCH</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-amber-300 to-yellow-400" data-width="50"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Fauna sensing seismic activity before instruments</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Col 3: Escalation path -->
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-trend-up text-orange-500"></i> Escalation Pathway</h4>
+                <div class="space-y-3">
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W1</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Localized soil stress anomaly</strong> — detected by a farmer or engineer, unreported</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-orange-200 text-orange-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W2</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Structural cracking reported</strong> — local news mentions building damage</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-red-200 text-red-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W3</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Collapse / landslide event</strong> — mass casualties, international media</p>
+                  </div>
+                  <div class="mt-4 bg-orange-50 border border-orange-200 rounded-xl p-3 text-xs text-orange-800"><strong>Nexus detects at W1.</strong> Traditional media activates at W3.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── OCEAN ─── -->
+        <div id="panel-ocean" class="domain-panel">
+          <div class="bg-white rounded-3xl border border-cyan-200 shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-cyan-600 to-blue-700 px-8 py-6 flex items-start justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+                    <i class="ph-fill ph-waves text-3xl text-white"></i>
+                  </div>
+                  <div>
+                    <p class="text-cyan-200 text-xs font-bold uppercase tracking-widest">Domain 02</p>
+                    <h3 class="font-display font-bold text-2xl text-white">Ocean & Marine</h3>
+                  </div>
+                </div>
+                <p class="text-cyan-100 text-sm leading-relaxed max-w-2xl">Detecting marine and coastal degradation signals — from coral bleaching anomalies to fishery stock collapses — that indicate irreversible damage to ocean ecosystems before media attention arrives.</p>
+              </div>
+              <span class="shrink-0 text-xs font-bold bg-cyan-500/40 border border-cyan-300/50 text-white px-3 py-1.5 rounded-lg uppercase tracking-wider">Ecosystem</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-info text-cyan-500"></i> What Nexus Tracks</h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">Ocean signals are physical, chemical, and biological anomalies indicating that marine ecosystems are accumulating lethal stress that disrupts food webs and coastal livelihoods.</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-cyan-400 mt-0.5 shrink-0"></i> Deep-water temperature inversions</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-cyan-400 mt-0.5 shrink-0"></i> Coral bleaching precursor events</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-cyan-400 mt-0.5 shrink-0"></i> Hypoxic dead zone expansion</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-cyan-400 mt-0.5 shrink-0"></i> Invasive algal bloom early growth</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-cyan-400 mt-0.5 shrink-0"></i> Fishery stock anomalies & die-offs</li>
+                </ul>
+              </div>
+              <div class="p-7 bg-cyan-50/40">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-broadcast text-cyan-500"></i> Key Latent Signals</h4>
+                <div class="space-y-3">
+                  <div class="bg-white rounded-xl border border-cyan-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Subsurface Thermal Anomaly</span>
+                      <span class="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">CRITICAL</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-cyan-400 to-blue-500" data-width="85"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Warm water intrusion disrupting reef thermocline</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-cyan-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Seagrass Density Loss</span>
+                      <span class="text-[10px] font-bold text-yellow-600 bg-yellow-50 px-1.5 py-0.5 rounded">WARNING</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-teal-400 to-cyan-400" data-width="72"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Nursery habitat destruction precursor</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-cyan-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">pH Drop in Shallow Reefs</span>
+                      <span class="text-[10px] font-bold text-yellow-600 bg-yellow-50 px-1.5 py-0.5 rounded">WATCH</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-blue-300 to-teal-400" data-width="60"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Ocean acidification corroding coral skeletons</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-trend-up text-cyan-500"></i> Escalation Pathway</h4>
+                <div class="space-y-3">
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W1</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Fishermen notice unusual catch depths</strong> — informal local report</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-cyan-200 text-cyan-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W2</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Visible coral whitening reported</strong> — dive operator posts photos</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-red-200 text-red-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W3</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Reef declared ecologically dead</strong> — fishery closure, economic collapse</p>
+                  </div>
+                  <div class="mt-4 bg-cyan-50 border border-cyan-200 rounded-xl p-3 text-xs text-cyan-800"><strong>Nexus detects at W1.</strong> Traditional media activates at W3.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── CLIMATE ─── -->
+        <div id="panel-climate" class="domain-panel">
+          <div class="bg-white rounded-3xl border border-sky-200 shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-sky-500 to-indigo-600 px-8 py-6 flex items-start justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+                    <i class="ph-fill ph-cloud-sun text-3xl text-white"></i>
+                  </div>
+                  <div>
+                    <p class="text-sky-200 text-xs font-bold uppercase tracking-widest">Domain 03</p>
+                    <h3 class="font-display font-bold text-2xl text-white">Climate Anomalies</h3>
+                  </div>
+                </div>
+                <p class="text-sky-100 text-sm leading-relaxed max-w-2xl">Identifying localized climate disruptions — phenological shifts, micro-heatwaves, and precipitation anomalies — that signal planetary tipping point proximity before they become regional crises.</p>
+              </div>
+              <span class="shrink-0 text-xs font-bold bg-indigo-500/40 border border-indigo-300/50 text-white px-3 py-1.5 rounded-lg uppercase tracking-wider">Systemic</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-info text-sky-500"></i> What Nexus Tracks</h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">Climate signals are deviations from historical baselines in localized micro-climates — often ignored because they don't match national reporting thresholds.</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-sky-400 mt-0.5 shrink-0"></i> Out-of-season flowering / fruiting events</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-sky-400 mt-0.5 shrink-0"></i> Localized precipitation record breaks</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-sky-400 mt-0.5 shrink-0"></i> Abnormal monsoon onset / cessation</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-sky-400 mt-0.5 shrink-0"></i> Urban heat island intensification</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-sky-400 mt-0.5 shrink-0"></i> Permafrost and glacial micro-melt reports</li>
+                </ul>
+              </div>
+              <div class="p-7 bg-sky-50/40">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-broadcast text-sky-500"></i> Key Latent Signals</h4>
+                <div class="space-y-3">
+                  <div class="bg-white rounded-xl border border-sky-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Early Crop Flowering</span>
+                      <span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-1.5 py-0.5 rounded">HIGH RISK</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-sky-400 to-indigo-500" data-width="78"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Phenological shift signals harvest disruption risk</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-sky-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Fog Season Shortening</span>
+                      <span class="text-[10px] font-bold text-yellow-600 bg-yellow-50 px-1.5 py-0.5 rounded">WARNING</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-blue-300 to-sky-400" data-width="63"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Indicates micro-climate drying & biodiversity risk</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-sky-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Localized Sudden Hail Events</span>
+                      <span class="text-[10px] font-bold text-sky-600 bg-sky-50 px-1.5 py-0.5 rounded">WATCH</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-indigo-300 to-blue-400" data-width="45"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Atmospheric instability precursor signal</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-trend-up text-sky-500"></i> Escalation Pathway</h4>
+                <div class="space-y-3">
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W1</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Farmers report odd seasonal timing</strong> — community forum posts</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-sky-200 text-sky-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W2</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Regional crop failure materializes</strong> — government issues warning</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-red-200 text-red-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W3</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Food price crisis & humanitarian response</strong></p>
+                  </div>
+                  <div class="mt-4 bg-sky-50 border border-sky-200 rounded-xl p-3 text-xs text-sky-800"><strong>Nexus detects at W1.</strong> Traditional media activates at W3.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── WATER ─── -->
+        <div id="panel-water" class="domain-panel">
+          <div class="bg-white rounded-3xl border border-blue-200 shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-cyan-700 px-8 py-6 flex items-start justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+                    <i class="ph-fill ph-drop text-3xl text-white"></i>
+                  </div>
+                  <div>
+                    <p class="text-blue-200 text-xs font-bold uppercase tracking-widest">Domain 04</p>
+                    <h3 class="font-display font-bold text-2xl text-white">Water Systems</h3>
+                  </div>
+                </div>
+                <p class="text-blue-100 text-sm leading-relaxed max-w-2xl">Monitoring freshwater integrity, groundwater depletion, and contamination signals — the silent crisis building beneath cities and farmlands that eventually surfaces as public health emergencies.</p>
+              </div>
+              <span class="shrink-0 text-xs font-bold bg-blue-500/40 border border-blue-300/50 text-white px-3 py-1.5 rounded-lg uppercase tracking-wider">Critical</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-info text-blue-500"></i> What Nexus Tracks</h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">Water signals reveal hidden stress on the hydrological systems communities depend on, from wells to river basins, long before supply disruptions are officially acknowledged.</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-blue-400 mt-0.5 shrink-0"></i> Groundwater salinity creep in coastal areas</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-blue-400 mt-0.5 shrink-0"></i> River turbidity & sediment load spikes</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-blue-400 mt-0.5 shrink-0"></i> Sudden well pressure loss reports</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-blue-400 mt-0.5 shrink-0"></i> Micro-contamination events: nitrates, arsenic</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-blue-400 mt-0.5 shrink-0"></i> Wetland shrinkage satellite observations</li>
+                </ul>
+              </div>
+              <div class="p-7 bg-blue-50/40">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-broadcast text-blue-500"></i> Key Latent Signals</h4>
+                <div class="space-y-3">
+                  <div class="bg-white rounded-xl border border-blue-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">300% Salinity Spike in Wells</span>
+                      <span class="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">CRITICAL</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-blue-500 to-cyan-500" data-width="90"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Signals irreversible aquifer breach within months</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-blue-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Peat Canal Water Darkening</span>
+                      <span class="text-[10px] font-bold text-yellow-600 bg-yellow-50 px-1.5 py-0.5 rounded">WARNING</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-teal-400 to-blue-400" data-width="68"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Peatland drying precursor to fire season</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-blue-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">River Flow Rate Decrease</span>
+                      <span class="text-[10px] font-bold text-sky-600 bg-sky-50 px-1.5 py-0.5 rounded">WATCH</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-blue-300 to-cyan-300" data-width="55"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Upstream deforestation & glacier signal</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-trend-up text-blue-500"></i> Escalation Pathway</h4>
+                <div class="space-y-3">
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W1</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Residents notice salty taste in water</strong> — unverified community complaint</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-blue-200 text-blue-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W2</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Municipal water tests confirm contamination</strong> — rationing begins</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-red-200 text-red-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W3</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Public health crisis</strong> — aquifer declared dead, permanent migration</p>
+                  </div>
+                  <div class="mt-4 bg-blue-50 border border-blue-200 rounded-xl p-3 text-xs text-blue-800"><strong>Nexus detects at W1.</strong> Traditional media activates at W3.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── BIODIVERSITY ─── -->
+        <div id="panel-bio" class="domain-panel">
+          <div class="bg-white rounded-3xl border border-emerald-200 shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-700 px-8 py-6 flex items-start justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+                    <i class="ph-fill ph-leaf text-3xl text-white"></i>
+                  </div>
+                  <div>
+                    <p class="text-emerald-200 text-xs font-bold uppercase tracking-widest">Domain 05</p>
+                    <h3 class="font-display font-bold text-2xl text-white">Biodiversity</h3>
+                  </div>
+                </div>
+                <p class="text-emerald-100 text-sm leading-relaxed max-w-2xl">Watching for invasive species spread, pollinator collapse, and food-chain disruptions that signal ecosystem unraveling — the loss of nature's resilience infrastructure before visible extinction events.</p>
+              </div>
+              <span class="shrink-0 text-xs font-bold bg-emerald-500/40 border border-emerald-300/50 text-white px-3 py-1.5 rounded-lg uppercase tracking-wider">Ecological</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-info text-emerald-500"></i> What Nexus Tracks</h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">Biodiversity signals are disruptions in biological relationships — between species, between predator and prey, between plant and pollinator — that form the invisible scaffolding of healthy ecosystems.</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-emerald-400 mt-0.5 shrink-0"></i> Pollinators & insect biomass decline reports</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-emerald-400 mt-0.5 shrink-0"></i> Invasive species boundary expansion</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-emerald-400 mt-0.5 shrink-0"></i> Silent forest syndrome: reduced bioacoustics</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-emerald-400 mt-0.5 shrink-0"></i> Keystone species population anomalies</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-emerald-400 mt-0.5 shrink-0"></i> Mycorrhizal fungal network stress indicators</li>
+                </ul>
+              </div>
+              <div class="p-7 bg-emerald-50/40">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-broadcast text-emerald-500"></i> Key Latent Signals</h4>
+                <div class="space-y-3">
+                  <div class="bg-white rounded-xl border border-emerald-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Bee Colony Collapse Reports</span>
+                      <span class="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">CRITICAL</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-emerald-400 to-teal-500" data-width="83"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Pollination failure threatens 70% of food crops</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-emerald-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Forest "Silence" Reports</span>
+                      <span class="text-[10px] font-bold text-yellow-600 bg-yellow-50 px-1.5 py-0.5 rounded">WARNING</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-green-400 to-emerald-400" data-width="70"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Reduced insect & bird activity = food chain break</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-emerald-100 p-3">
+                    <div class="flex justify-between items-center mb-1.5">
+                      <span class="text-xs font-bold text-slate-700">Invasive Species First Sighting</span>
+                      <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-1.5 py-0.5 rounded">WATCH</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-teal-300 to-green-300" data-width="48"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">New range extension of known invasive species</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-trend-up text-emerald-500"></i> Escalation Pathway</h4>
+                <div class="space-y-3">
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W1</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Local naturalist notices "quiet forest"</strong> — social media or NGO report</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-emerald-200 text-emerald-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W2</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Crop yields drop regionally</strong> — pollination failure confirmed</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-red-200 text-red-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W3</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Ecosystem collapse</strong> — food security emergency declared</p>
+                  </div>
+                  <div class="mt-4 bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-800"><strong>Nexus detects at W1.</strong> Traditional media activates at W3.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SOCIAL/BEHAVIORAL ─── -->
+        <div id="panel-social" class="domain-panel">
+          <div class="bg-white rounded-3xl border border-violet-200 shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-violet-600 to-purple-700 px-8 py-6 flex items-start justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+                    <i class="ph-fill ph-users text-3xl text-white"></i>
+                  </div>
+                  <div>
+                    <p class="text-violet-200 text-xs font-bold uppercase tracking-widest">Domain 06</p>
+                    <h3 class="font-display font-bold text-2xl text-white">Social & Behavioral</h3>
+                  </div>
+                </div>
+                <p class="text-violet-100 text-sm leading-relaxed max-w-2xl">Identifying human behaviors that amplify environmental risks — from land encroachment patterns to unsustainable extraction practices — the human factor that turns a vulnerable system into a confirmed crisis.</p>
+              </div>
+              <span class="shrink-0 text-xs font-bold bg-purple-500/40 border border-purple-300/50 text-white px-3 py-1.5 rounded-lg uppercase tracking-wider">Human Factor</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-info text-violet-500"></i> What Nexus Tracks</h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">Social signals reveal the human behavioral patterns that act as accelerants to environmental crises — activities that weaken natural buffers and push already-stressed ecosystems past their tipping points.</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-violet-400 mt-0.5 shrink-0"></i> Illegal land clearing & slash-burn reports</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-violet-400 mt-0.5 shrink-0"></i> Unregulated sand & gravel extraction</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-violet-400 mt-0.5 shrink-0"></i> Community water over-extraction signals</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-violet-400 mt-0.5 shrink-0"></i> Illegal waste dumping near water sources</li>
+                  <li class="flex items-start gap-2"><i class="ph-bold ph-check-circle text-violet-400 mt-0.5 shrink-0"></i> Rapid informal settlement on floodplains</li>
+                </ul>
+              </div>
+              <div class="p-7 bg-violet-50/40">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-broadcast text-violet-500"></i> Key Behavioral Signals</h4>
+                <div class="space-y-3">
+                  <div class="bg-white rounded-xl border border-violet-100 p-3">
+                    <div class="text-[10px] font-bold text-slate-400 uppercase mb-2">Amplifier Type</div>
+                    <div class="flex flex-wrap gap-1.5 mb-2">
+                      <span class="behavior-tag bg-red-100 text-red-700">Land Encroachment</span>
+                      <span class="behavior-tag bg-orange-100 text-orange-700">Over-extraction</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-violet-400 to-purple-500" data-width="80"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Forest edge burning detected in protected zones</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-violet-100 p-3">
+                    <div class="text-[10px] font-bold text-slate-400 uppercase mb-2">Amplifier Type</div>
+                    <div class="flex flex-wrap gap-1.5 mb-2">
+                      <span class="behavior-tag bg-blue-100 text-blue-700">Contamination</span>
+                      <span class="behavior-tag bg-yellow-100 text-yellow-700">Dumping</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-purple-400 to-violet-400" data-width="65"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Industrial waste reports near watershed tributaries</p>
+                  </div>
+                  <div class="bg-white rounded-xl border border-violet-100 p-3">
+                    <div class="text-[10px] font-bold text-slate-400 uppercase mb-2">Amplifier Type</div>
+                    <div class="flex flex-wrap gap-1.5 mb-2">
+                      <span class="behavior-tag bg-emerald-100 text-emerald-700">Settlement</span>
+                      <span class="behavior-tag bg-slate-100 text-slate-700">Migration</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-gradient-to-r from-fuchsia-300 to-violet-300" data-width="50"></div></div>
+                    <p class="text-[10px] text-slate-400 mt-1">Informal housing expansion on steep erosion-prone land</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-7">
+                <h4 class="font-display font-bold text-slate-900 text-base mb-3 flex items-center gap-2"><i class="ph-bold ph-trend-up text-violet-500"></i> Escalation Pathway</h4>
+                <div class="space-y-3">
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W1</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Isolated illegal burn reports near peatland</strong> — local activist post</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-violet-200 text-violet-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W2</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Ground dries, BMKG air quality drops</strong> — haze advisory issued</p>
+                  </div>
+                  <div class="w-px h-4 bg-slate-200 ml-3"></div>
+                  <div class="flex gap-3 items-start">
+                    <span class="w-6 h-6 rounded-full bg-red-200 text-red-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">W3</span>
+                    <p class="text-xs text-slate-600"><strong class="text-slate-800">Regional haze crisis</strong> — school closures, hospitalisations, geopolitical tensions</p>
+                  </div>
+                  <div class="mt-4 bg-violet-50 border border-violet-200 rounded-xl p-3 text-xs text-violet-800"><strong>Nexus detects at W1.</strong> Traditional media activates at W3.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /domain-panels -->
+
+      <!-- Domain overview grid (always visible) -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-4 reveal">
+        <button onclick="openDomain('drr')" class="domain-overview-btn group bg-white hover:bg-orange-50 border border-slate-200 hover:border-orange-300 rounded-2xl p-5 text-center transition-all hover:shadow-md">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-orange-50 group-hover:bg-orange-100 flex items-center justify-center mb-3 domain-icon-wrap transition-all">
+            <i class="ph-fill ph-volcano text-2xl text-orange-500"></i>
+          </div>
+          <div class="font-display font-bold text-sm text-slate-800 group-hover:text-orange-700">DRR</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">Disaster Risk</div>
+        </button>
+        <button onclick="openDomain('ocean')" class="domain-overview-btn group bg-white hover:bg-cyan-50 border border-slate-200 hover:border-cyan-300 rounded-2xl p-5 text-center transition-all hover:shadow-md">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-cyan-50 group-hover:bg-cyan-100 flex items-center justify-center mb-3 domain-icon-wrap transition-all">
+            <i class="ph-fill ph-waves text-2xl text-cyan-500"></i>
+          </div>
+          <div class="font-display font-bold text-sm text-slate-800 group-hover:text-cyan-700">Ocean</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">Marine & Coastal</div>
+        </button>
+        <button onclick="openDomain('climate')" class="domain-overview-btn group bg-white hover:bg-sky-50 border border-slate-200 hover:border-sky-300 rounded-2xl p-5 text-center transition-all hover:shadow-md">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-sky-50 group-hover:bg-sky-100 flex items-center justify-center mb-3 domain-icon-wrap transition-all">
+            <i class="ph-fill ph-cloud-sun text-2xl text-sky-500"></i>
+          </div>
+          <div class="font-display font-bold text-sm text-slate-800 group-hover:text-sky-700">Climate</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">Anomalies</div>
+        </button>
+        <button onclick="openDomain('water')" class="domain-overview-btn group bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 rounded-2xl p-5 text-center transition-all hover:shadow-md">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center mb-3 domain-icon-wrap transition-all">
+            <i class="ph-fill ph-drop text-2xl text-blue-500"></i>
+          </div>
+          <div class="font-display font-bold text-sm text-slate-800 group-hover:text-blue-700">Water</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">Freshwater Systems</div>
+        </button>
+        <button onclick="openDomain('bio')" class="domain-overview-btn group bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-2xl p-5 text-center transition-all hover:shadow-md">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-50 group-hover:bg-emerald-100 flex items-center justify-center mb-3 domain-icon-wrap transition-all">
+            <i class="ph-fill ph-leaf text-2xl text-emerald-500"></i>
+          </div>
+          <div class="font-display font-bold text-sm text-slate-800 group-hover:text-emerald-700">Biodiversity</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">Ecosystems</div>
+        </button>
+        <button onclick="openDomain('social')" class="domain-overview-btn group bg-white hover:bg-violet-50 border border-slate-200 hover:border-violet-300 rounded-2xl p-5 text-center transition-all hover:shadow-md">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-violet-50 group-hover:bg-violet-100 flex items-center justify-center mb-3 domain-icon-wrap transition-all">
+            <i class="ph-fill ph-users text-2xl text-violet-500"></i>
+          </div>
+          <div class="font-display font-bold text-sm text-slate-800 group-hover:text-violet-700">Social</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">Human Behavior</div>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ANATOMY OF A CRISIS ================= -->
+  <section id="anatomy" class="py-20 bg-slate-900 text-slate-300 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-slate-800 to-transparent pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-nexus-main mix-blend-overlay filter blur-[150px] opacity-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-blue-400 text-sm font-bold uppercase tracking-widest mb-2 block">System Dynamics</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-4">The Anatomy of an Ecological Crisis</h2>
+        <p class="text-lg text-slate-400">Understanding the linear progression from an invisible vulnerability to a confirmed disaster — applicable across all 6 domains.</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Feature 1 -->
-        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 card-hover">
-          <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm">
-            <i class="ph-bold ph-globe-magnifying-glass"></i>
+        <div class="bg-slate-800/50 border border-slate-700 p-8 rounded-3xl relative group hover:bg-slate-800 transition-colors reveal">
+          <div class="absolute -top-5 -left-5 w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-400/50 flex items-center justify-center text-blue-400 font-display font-bold text-xl shadow-lg shadow-blue-500/20 backdrop-blur-md">01</div>
+          <h3 class="font-display font-bold text-2xl text-white mb-2 mt-2">Incubation</h3>
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-4">The Latent Signal Phase</p>
+          <p class="text-sm leading-relaxed mb-6">The system is slowly accumulating stress. The damage is invisible to the general public and traditional media. Only highly specific, localized data points reveal the degradation.</p>
+          <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700">
+            <span class="block text-xs font-bold text-slate-500 uppercase mb-2">Example:</span>
+            <span class="text-sm text-slate-300">Fishermen notice ocean water temperatures are unusually warm at 30 meters deep, despite surface temperatures appearing normal.</span>
           </div>
-          <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Autonomous Scanning</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">The engine runs daily, scraping the web for specific keywords indicating environmental degradation, animal behavioral anomalies, and localized societal shifts.</p>
         </div>
-        <!-- Feature 2 -->
-        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 card-hover">
-          <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm">
-            <i class="ph-bold ph-brain"></i>
+        <div class="bg-slate-800/50 border border-slate-700 p-8 rounded-3xl relative group hover:bg-slate-800 transition-colors reveal" style="transition-delay:0.1s">
+          <div class="absolute -top-5 -left-5 w-12 h-12 rounded-2xl bg-orange-500/20 border border-orange-400/50 flex items-center justify-center text-orange-400 font-display font-bold text-xl shadow-lg shadow-orange-500/20 backdrop-blur-md">02</div>
+          <h3 class="font-display font-bold text-2xl text-white mb-2 mt-2">Acceleration</h3>
+          <p class="text-xs font-bold uppercase tracking-widest text-orange-400 mb-4">The Tipping Point</p>
+          <p class="text-sm leading-relaxed mb-6">Resilience is lost. The environment can no longer self-repair. The system crosses a mathematical threshold of instability, leading to runaway effects.</p>
+          <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700">
+            <span class="block text-xs font-bold text-slate-500 uppercase mb-2">Example:</span>
+            <span class="text-sm text-slate-300">Deep-water "seed" corals undergo mass bleaching. The reef loses its reproductive core, making natural recovery impossible.</span>
           </div>
-          <h3 class="font-display font-bold text-xl text-slate-900 mb-3">5-Layer AI Pipeline</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">Powered by Google Gemini, the AI validates the signal, extracts affected elements, assesses catastrophe risk, and analyzes the root cause (anthropogenic vs natural).</p>
         </div>
-        <!-- Feature 3 -->
-        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 card-hover">
-          <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm">
-            <i class="ph-bold ph-chart-line-up"></i>
+        <div class="bg-slate-800/50 border border-slate-700 p-8 rounded-3xl relative group hover:bg-slate-800 transition-colors reveal" style="transition-delay:0.2s">
+          <div class="absolute -top-5 -left-5 w-12 h-12 rounded-2xl bg-red-500/20 border border-red-400/50 flex items-center justify-center text-red-400 font-display font-bold text-xl shadow-lg shadow-red-500/20 backdrop-blur-md">03</div>
+          <h3 class="font-display font-bold text-2xl text-white mb-2 mt-2">Manifestation</h3>
+          <p class="text-xs font-bold uppercase tracking-widest text-red-400 mb-4">The Confirmed Crisis</p>
+          <p class="text-sm leading-relaxed mb-6">The collapse is now visible, deadly, and economically devastating. Reactive disaster management protocols and global news media finally activate.</p>
+          <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700">
+            <span class="block text-xs font-bold text-slate-500 uppercase mb-2">Example:</span>
+            <span class="text-sm text-slate-300">Total ecological collapse of the reef system. Coastal fisheries crash, and local economies are devastated.</span>
           </div>
-          <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Actionable Synthesis</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">Raw data is compiled into a high-level Intelligence Resume every quarter, providing policymakers with direct geographic hotspots and intervention targets.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= DOMAINS SECTION ================= -->
-  <section id="domains" class="py-20 bg-slate-50 border-b border-slate-200">
+  <!-- ================= CASE STUDIES ================= -->
+  <section class="py-20 bg-slate-50 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-nexus-main text-sm font-bold uppercase tracking-widest mb-2 block">System Coverage</span>
-        <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4">Thematic Observation Domains</h2>
-        <p class="text-slate-600 text-lg">We classify incoming signals across 6 critical scientific and societal vectors to map the holistic health of our planet.</p>
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4">What Happens When We Ignore the Whispers?</h2>
+        <p class="text-lg text-slate-600">Historical precedents show that ignoring Phase 1 (Latent Signals) guarantees Phase 3 (Crisis).</p>
       </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Ocean -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
-          <div class="bg-cyan-50 border border-cyan-100 text-cyan-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-waves"></i></div>
-          <div>
-            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Ocean & Marine</h3>
-            <p class="text-sm text-slate-500">Tracking coral bleaching inversions, microplastic accumulations, and unexplained marine die-offs.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm flex flex-col sm:flex-row group reveal">
+          <div class="w-full sm:w-1/3 bg-emerald-50 border-r border-slate-100 flex items-center justify-center p-8 shrink-0 group-hover:bg-emerald-100 transition-colors">
+            <i class="ph-fill ph-plant text-6xl text-emerald-600"></i>
+          </div>
+          <div class="p-8">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-600 mb-2 block">Case Study: Biodiversity</span>
+            <h3 class="font-display font-bold text-xl text-slate-900 mb-3">The "Silent Forest" Effect</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Before a major forest ecosystem collapses, ecologists often note a dramatic drop in localized insect noise. This weak signal indicates a breakdown at the bottom of the food chain, which inevitably leads to bird migration failures and subsequent apex predator starvation months later.</p>
           </div>
         </div>
-        <!-- Climate -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
-          <div class="bg-sky-50 border border-sky-100 text-sky-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-cloud-sun"></i></div>
-          <div>
-            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Climate Anomalies</h3>
-            <p class="text-sm text-slate-500">Detecting phenological shifts, like premature flowering, and localized extreme heatwaves.</p>
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm flex flex-col sm:flex-row group reveal">
+          <div class="w-full sm:w-1/3 bg-blue-50 border-r border-slate-100 flex items-center justify-center p-8 shrink-0 group-hover:bg-blue-100 transition-colors">
+            <i class="ph-fill ph-drop text-6xl text-blue-600"></i>
+          </div>
+          <div class="p-8">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-2 block">Case Study: Water & DRR</span>
+            <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Ghost Aquifers & Subsidence</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">In coastal megacities, a slight, creeping increase in groundwater salinity proves that freshwater aquifers are being over-extracted. Ignoring this leads directly to the physical collapse of the aquifer structure, resulting in irreversible land subsidence and catastrophic urban flooding.</p>
           </div>
         </div>
-        <!-- DRR -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
-          <div class="bg-orange-50 border border-orange-100 text-orange-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-volcano"></i></div>
-          <div>
-            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Disaster Risk (DRR)</h3>
-            <p class="text-sm text-slate-500">Monitoring soil cracks, sudden ground subsidence, and structural collapses acting as precursors.</p>
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm flex flex-col sm:flex-row group reveal">
+          <div class="w-full sm:w-1/3 bg-violet-50 border-r border-slate-100 flex items-center justify-center p-8 shrink-0 group-hover:bg-violet-100 transition-colors">
+            <i class="ph-fill ph-fire text-6xl text-orange-500"></i>
+          </div>
+          <div class="p-8">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-violet-600 mb-2 block">Case Study: Social / DRR</span>
+            <h3 class="font-display font-bold text-xl text-slate-900 mb-3">The Peatland Burn Cycle</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">In Kalimantan and Sumatra, isolated illegal burn events — detectable in satellite FIRMS data weeks in advance — precede the catastrophic haze events that blanket Southeast Asia each year, causing $16 billion+ in economic losses and mass respiratory emergencies.</p>
           </div>
         </div>
-        <!-- Water -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
-          <div class="bg-blue-50 border border-blue-100 text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-drop"></i></div>
-          <div>
-            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Water Systems</h3>
-            <p class="text-sm text-slate-500">Identifying groundwater salinity spikes, toxic river foam, and unseasonal aquifer depletion.</p>
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm flex flex-col sm:flex-row group reveal">
+          <div class="w-full sm:w-1/3 bg-sky-50 border-r border-slate-100 flex items-center justify-center p-8 shrink-0 group-hover:bg-sky-100 transition-colors">
+            <i class="ph-fill ph-thermometer-hot text-6xl text-sky-500"></i>
           </div>
-        </div>
-        <!-- Biodiversity -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
-          <div class="bg-emerald-50 border border-emerald-100 text-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-leaf"></i></div>
-          <div>
-            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Biodiversity</h3>
-            <p class="text-sm text-slate-500">Watching for mass bird deaths, invasive species spread, and critical pollinator collapses.</p>
-          </div>
-        </div>
-        <!-- Social -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
-          <div class="bg-purple-50 border border-purple-100 text-purple-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-users-three"></i></div>
-          <div>
-            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Social & Behavioral</h3>
-            <p class="text-sm text-slate-500">Flagging human actions like illegal sand mining, slash-and-burn farming, and informal waste dumping.</p>
+          <div class="p-8">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-sky-600 mb-2 block">Case Study: Climate</span>
+            <h3 class="font-display font-bold text-xl text-slate-900 mb-3">The Micro-Heatwave Blind Spot</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Localized community reports of abnormally hot nights — not captured in national weather station averages — are a consistent latent signal for urban heat emergencies. The 2003 European heat wave killed over 70,000 people, yet local thermal anomalies were visible in community observations weeks before official alerts.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= WHY WEAK SIGNALS ================= -->
-  <section id="weak-signals" class="py-20 bg-white">
+  <!-- ================= THE ENGINE ================= -->
+  <section id="engine" class="py-20 bg-white border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
-        <div>
-          <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-6 leading-tight">
-            Why do <span class="text-nexus-main">"Weak Signals"</span> matter?
-          </h2>
-          <p class="text-slate-600 text-base leading-relaxed mb-6">
-            Traditional disaster management is <strong>reactive</strong>. It mobilizes resources only after a crisis—like a category 5 hurricane or massive forest fire—has already destroyed infrastructure and lives.
-          </p>
-          <p class="text-slate-600 text-base leading-relaxed mb-8">
-            But crises rarely happen overnight. They are preceded by subtle, creeping anomalies known as <em>Latent Signals</em>. A drop in well water pressure today is the drought famine of next year. An isolated 'test burn' in a forest is the regional haze of next month. <strong>Nexus Radar catches the breadcrumbs before the explosion.</strong>
-          </p>
-
-          <ul class="space-y-4">
-            <li class="flex gap-3 items-start">
-              <i class="ph-fill ph-check-circle text-emerald-500 text-xl shrink-0 mt-0.5"></i>
-              <span class="text-slate-700 text-sm font-medium">Shifts the paradigm from reactive rescue to proactive intervention.</span>
+        <div class="reveal">
+          <span class="text-nexus-main text-sm font-bold uppercase tracking-widest mb-2 block">The Solution</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-6 leading-tight">Automating the Discovery of Vulnerability.</h2>
+          <p class="text-slate-600 text-base leading-relaxed mb-6">Human analysts cannot monitor the entire globe simultaneously. <strong>Nexus Radar</strong> solves this by acting as an autonomous Open-Source Intelligence (OSINT) crawler, scanning all 6 domains continuously.</p>
+          <ul class="space-y-6 mt-8">
+            <li class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold shrink-0 shadow-inner">1</div>
+              <div>
+                <h4 class="font-bold text-slate-900">Global Scraping</h4>
+                <p class="text-sm text-slate-600 mt-1">The engine runs daily, querying the web using highly specific "anomaly keywords" designed to bypass mainstream disaster news and find obscure, local reports across all 6 domains.</p>
+              </div>
             </li>
-            <li class="flex gap-3 items-start">
-              <i class="ph-fill ph-check-circle text-emerald-500 text-xl shrink-0 mt-0.5"></i>
-              <span class="text-slate-700 text-sm font-medium">Saves significant economic capital by preventing systemic collapse.</span>
+            <li class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-nexus-light text-nexus-main flex items-center justify-center font-bold shrink-0 shadow-inner">2</div>
+              <div>
+                <h4 class="font-bold text-slate-900">AI Structuring & Domain Classification</h4>
+                <p class="text-sm text-slate-600 mt-1">Unstructured data is fed into a 5-layer LLM pipeline that filters noise, classifies the domain (DRR / Ocean / Climate / Water / Biodiversity / Social), and calculates an algorithmic <em>Threat Score (1–100)</em>.</p>
+              </div>
             </li>
-            <li class="flex gap-3 items-start">
-              <i class="ph-fill ph-check-circle text-emerald-500 text-xl shrink-0 mt-0.5"></i>
-              <span class="text-slate-700 text-sm font-medium">Empowers policymakers with data to stop anthropogenic hazards early.</span>
+            <li class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold shrink-0 shadow-inner">3</div>
+              <div>
+                <h4 class="font-bold text-slate-900">Intelligence Synthesis</h4>
+                <p class="text-sm text-slate-600 mt-1">Data is plotted on a geospatial dashboard. Periodically, the AI reads the entire database to generate an executive "Intelligence Resume" for policymakers.</p>
+              </div>
             </li>
           </ul>
         </div>
-
-        <!-- Infographic Timeline -->
-        <div class="relative bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-inner">
-          <div class="absolute left-11 top-12 bottom-12 w-1 bg-gradient-to-b from-blue-300 via-orange-300 to-red-500 rounded-full"></div>
-          
-          <div class="space-y-8 relative z-10">
-            <!-- Step 1 -->
-            <div class="flex gap-6 items-center">
-              <div class="w-8 h-8 rounded-full bg-blue-100 border-4 border-white flex items-center justify-center shrink-0 shadow-md z-10"><div class="w-2.5 h-2.5 bg-blue-500 rounded-full"></div></div>
-              <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm w-full">
-                <h4 class="font-bold text-slate-800 text-sm">1. Latent Signal</h4>
-                <p class="text-xs text-slate-500 mt-1">E.g., Minor coral bleaching at 30m depth.</p>
-                <span class="text-[9px] font-bold uppercase text-blue-500 mt-2 block">Radar Detection Zone</span>
-              </div>
-            </div>
-            <!-- Step 2 -->
-            <div class="flex gap-6 items-center">
-              <div class="w-8 h-8 rounded-full bg-orange-100 border-4 border-white flex items-center justify-center shrink-0 shadow-md z-10"><div class="w-2.5 h-2.5 bg-orange-500 rounded-full"></div></div>
-              <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm w-full opacity-80">
-                <h4 class="font-bold text-slate-800 text-sm">2. Escalating Anomaly</h4>
-                <p class="text-xs text-slate-500 mt-1">E.g., Loss of deep-water seed populations.</p>
-                <span class="text-[9px] font-bold uppercase text-orange-500 mt-2 block">Tipping Point</span>
-              </div>
-            </div>
-            <!-- Step 3 -->
-            <div class="flex gap-6 items-center">
-              <div class="w-8 h-8 rounded-full bg-red-100 border-4 border-white flex items-center justify-center shrink-0 shadow-md z-10"><div class="w-2.5 h-2.5 bg-red-600 rounded-full animate-ping absolute"></div><div class="w-2.5 h-2.5 bg-red-600 rounded-full relative z-10"></div></div>
-              <div class="bg-red-50 p-4 rounded-xl border border-red-200 shadow-sm w-full opacity-60">
-                <h4 class="font-bold text-red-800 text-sm">3. Confirmed Disaster</h4>
-                <p class="text-xs text-red-600 mt-1">E.g., Total reef collapse & fishery loss.</p>
-                <span class="text-[9px] font-bold uppercase text-red-600 mt-2 block">Traditional Media / News Zone</span>
-              </div>
-            </div>
+        <div class="grid grid-cols-2 gap-4 reveal">
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-orange-200 hover:bg-orange-50/50 transition-all group">
+            <i class="ph-fill ph-volcano text-3xl text-orange-500 mb-4 block group-hover:scale-110 transition-transform"></i>
+            <h4 class="font-bold text-slate-800 text-sm">DRR</h4>
+            <p class="text-[11px] text-slate-500 mt-2">Structural stress, slope instability & pre-collapse warnings.</p>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/50 transition-all group">
+            <i class="ph-fill ph-waves text-3xl text-cyan-500 mb-4 block group-hover:scale-110 transition-transform"></i>
+            <h4 class="font-bold text-slate-800 text-sm">Ocean & Marine</h4>
+            <p class="text-[11px] text-slate-500 mt-2">Bleaching inversions, die-offs & thermal anomalies.</p>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-sky-200 hover:bg-sky-50/50 transition-all group">
+            <i class="ph-fill ph-cloud-sun text-3xl text-sky-500 mb-4 block group-hover:scale-110 transition-transform"></i>
+            <h4 class="font-bold text-slate-800 text-sm">Climate Anomalies</h4>
+            <p class="text-[11px] text-slate-500 mt-2">Phenological shifts & extreme micro-heatwaves.</p>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-blue-200 hover:bg-blue-50/50 transition-all group">
+            <i class="ph-fill ph-drop text-3xl text-blue-500 mb-4 block group-hover:scale-110 transition-transform"></i>
+            <h4 class="font-bold text-slate-800 text-sm">Water Systems</h4>
+            <p class="text-[11px] text-slate-500 mt-2">Aquifer stress, salinity creep & contamination signals.</p>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-emerald-200 hover:bg-emerald-50/50 transition-all group">
+            <i class="ph-fill ph-leaf text-3xl text-emerald-500 mb-4 block group-hover:scale-110 transition-transform"></i>
+            <h4 class="font-bold text-slate-800 text-sm">Biodiversity</h4>
+            <p class="text-[11px] text-slate-500 mt-2">Invasive species spread & pollinator collapses.</p>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-violet-200 hover:bg-violet-50/50 transition-all group">
+            <i class="ph-fill ph-users text-3xl text-violet-500 mb-4 block group-hover:scale-110 transition-transform"></i>
+            <h4 class="font-bold text-slate-800 text-sm">Social / Behavioral</h4>
+            <p class="text-[11px] text-slate-500 mt-2">Human amplifiers: burning, extraction & encroachment.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ================= FAQ SECTION ================= -->
+  <!-- ================= THREAT SCORE EXPLAINER ================= -->
+  <section class="py-20 bg-slate-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-14 reveal">
+        <span class="text-blue-400 text-sm font-bold uppercase tracking-widest mb-2 block">Scoring Methodology</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-4">How the Threat Score is Calculated</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto">Every detected signal receives a composite score of 0–100, combining three weighted factors across all domains.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-7 text-center reveal">
+          <div class="w-16 h-16 mx-auto rounded-full bg-red-500/20 border border-red-400/40 flex items-center justify-center mb-4">
+            <span class="font-display font-black text-2xl text-red-400">40%</span>
+          </div>
+          <h4 class="font-display font-bold text-white text-lg mb-2">Catastrophe Risk</h4>
+          <p class="text-sm text-slate-400 leading-relaxed">The magnitude of potential irreversible damage if the signal is ignored and the system reaches Phase 3.</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-7 text-center reveal" style="transition-delay:0.1s">
+          <div class="w-16 h-16 mx-auto rounded-full bg-orange-500/20 border border-orange-400/40 flex items-center justify-center mb-4">
+            <span class="font-display font-black text-2xl text-orange-400">40%</span>
+          </div>
+          <h4 class="font-display font-bold text-white text-lg mb-2">Threat Impact</h4>
+          <p class="text-sm text-slate-400 leading-relaxed">The breadth of systems affected — people, ecosystems, infrastructure, and livelihoods currently under threat.</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-7 text-center reveal" style="transition-delay:0.2s">
+          <div class="w-16 h-16 mx-auto rounded-full bg-yellow-500/20 border border-yellow-400/40 flex items-center justify-center mb-4">
+            <span class="font-display font-black text-2xl text-yellow-400">20%</span>
+          </div>
+          <h4 class="font-display font-bold text-white text-lg mb-2">Escalation Urgency</h4>
+          <p class="text-sm text-slate-400 leading-relaxed">The estimated velocity of progression from current latent state to acute crisis if no intervention occurs.</p>
+        </div>
+      </div>
+      <!-- Score Legend -->
+      <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 flex flex-wrap gap-4 justify-center items-center reveal">
+        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider mr-2">Score bands:</span>
+        <span class="signal-pill bg-green-900/50 text-green-400 border border-green-700">0–39 · Monitor</span>
+        <span class="signal-pill bg-yellow-900/50 text-yellow-400 border border-yellow-700">40–59 · Watch</span>
+        <span class="signal-pill bg-orange-900/50 text-orange-400 border border-orange-700">60–79 · Warning</span>
+        <span class="signal-pill bg-red-900/50 text-red-400 border border-red-700">80–100 · Critical</span>
+        <span class="text-xs text-slate-500 ml-2">Scores ≥80 trigger a Critical Flag — expect severe irreversible damage if ignored.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
   <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 reveal">
         <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4">Frequently Asked Questions</h2>
         <p class="text-slate-600">Everything you need to know about the engine and data.</p>
       </div>
-
       <div class="space-y-4">
-        <!-- FAQ 1 -->
         <details class="group bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
           <summary class="flex justify-between items-center font-bold text-slate-800 p-6 select-none">
             Where does the data come from?
-            <span class="transition group-open:rotate-180 text-slate-400">
-              <i class="ph-bold ph-caret-down text-lg"></i>
-            </span>
+            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down text-lg"></i></span>
           </summary>
           <div class="text-slate-600 text-sm leading-relaxed px-6 pb-6 pt-0 border-t border-slate-100 mt-2">
-            The data is aggregated autonomously by an AI script utilizing Google Search Grounding. It scours local news, NGO reports, academic pre-prints, and community forums based on a rotating list of highly specific "anomaly keywords." We do not generate fake news; all signals come with verified original source URLs.
+            The data is aggregated autonomously by an AI script utilizing Google Search Grounding. It scours local news, NGO reports, academic pre-prints, and community forums based on a rotating list of highly specific "anomaly keywords" across all 6 domains. We do not generate fake news; all signals come with verified original source URLs.
           </div>
         </details>
-
-        <!-- FAQ 2 -->
         <details class="group bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
           <summary class="flex justify-between items-center font-bold text-slate-800 p-6 select-none">
             What is the 'Threat Score'?
-            <span class="transition group-open:rotate-180 text-slate-400">
-              <i class="ph-bold ph-caret-down text-lg"></i>
-            </span>
+            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down text-lg"></i></span>
           </summary>
           <div class="text-slate-600 text-sm leading-relaxed px-6 pb-6 pt-0 border-t border-slate-100 mt-2">
-            The Threat Score (Priority Score) is an algorithmic calculation from 0-100. It combines the <strong>Catastrophe Risk level (40%)</strong>, the <strong>Threat Impact scale (40%)</strong>, and the <strong>Escalation Urgency (20%)</strong>. A score above 80 triggers a Critical Flag, meaning the system expects severe irreversible damage if ignored.
+            The Threat Score is an algorithmic calculation from 0–100. It combines the <strong>Catastrophe Risk level (40%)</strong>, the <strong>Threat Impact scale (40%)</strong>, and the <strong>Escalation Urgency (20%)</strong>. A score above 80 triggers a Critical Flag, meaning the system expects severe irreversible damage if ignored.
           </div>
         </details>
-
-        <!-- FAQ 3 -->
         <details class="group bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
           <summary class="flex justify-between items-center font-bold text-slate-800 p-6 select-none">
-            How often is the Intelligence Resume updated?
-            <span class="transition group-open:rotate-180 text-slate-400">
-              <i class="ph-bold ph-caret-down text-lg"></i>
-            </span>
+            How are the 6 domains classified?
+            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down text-lg"></i></span>
           </summary>
           <div class="text-slate-600 text-sm leading-relaxed px-6 pb-6 pt-0 border-t border-slate-100 mt-2">
-            While the Signal Inventory (raw data) is updated daily, the Intelligence Resume is a synthesis report generated automatically every 90 days (Quarterly). The AI reads the entire database to find overarching geographic threats, root cause trends, and formulates strategic intervention recommendations.
+            Domain classification is performed by the AI pipeline as part of signal extraction. The model is instructed to assign each signal a primary domain (DRR, Ocean, Climate, Water, Biodiversity, or Social/Behavioral) and may assign a secondary domain if the signal is cross-cutting. For example, a peatland fire signal would be classified as <strong>DRR (primary)</strong> + <strong>Social/Behavioral (secondary)</strong> since illegal burning is the human driver.
           </div>
         </details>
-
-        <!-- FAQ 4 -->
         <details class="group bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
           <summary class="flex justify-between items-center font-bold text-slate-800 p-6 select-none">
             Can I export the data for my own research?
-            <span class="transition group-open:rotate-180 text-slate-400">
-              <i class="ph-bold ph-caret-down text-lg"></i>
-            </span>
+            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down text-lg"></i></span>
           </summary>
           <div class="text-slate-600 text-sm leading-relaxed px-6 pb-6 pt-0 border-t border-slate-100 mt-2">
-            Yes! Inside the radar dashboard, there is an "Export OSINT Data" button at the top right. It allows you to download the entire dataset formatted in standard DCMI (Dublin Core Metadata Initiative) XML, ready to be imported into QGIS, academic databases, or other analytical tools.
+            Yes! Inside the radar dashboard, there is an "Export OSINT Data" button at the top right. It allows you to download the entire dataset formatted in standard DCMI (Dublin Core Metadata Initiative) XML, ready to be imported into QGIS, academic databases, or other analytical tools. Domain filters can be applied before export.
+          </div>
+        </details>
+        <details class="group bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+          <summary class="flex justify-between items-center font-bold text-slate-800 p-6 select-none">
+            Why is "Social/Behavioral" a domain — isn't this a human OSINT system?
+            <span class="transition group-open:rotate-180 text-slate-400"><i class="ph-bold ph-caret-down text-lg"></i></span>
+          </summary>
+          <div class="text-slate-600 text-sm leading-relaxed px-6 pb-6 pt-0 border-t border-slate-100 mt-2">
+            Human behavior is the primary accelerant of almost all environmental crises. An illegal burn, an over-extraction event, or an informal settlement on a floodplain is not just a social issue — it is a direct, measurable threat to the environmental systems Nexus monitors. By including Social/Behavioral as a domain, Nexus can detect the <em>human trigger</em> before the <em>environmental consequence</em> manifests.
           </div>
         </details>
       </div>
@@ -425,13 +1121,25 @@
   <section class="py-20 bg-slate-900 text-center px-4 relative overflow-hidden">
     <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-nexus-main rounded-full mix-blend-screen filter blur-[100px] opacity-30"></div>
-    
     <div class="relative z-10 max-w-2xl mx-auto">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="signal-pill bg-orange-900/40 text-orange-300 border border-orange-700/50"><i class="ph-fill ph-volcano text-xs"></i> DRR</span>
+        <span class="signal-pill bg-cyan-900/40 text-cyan-300 border border-cyan-700/50"><i class="ph-fill ph-waves text-xs"></i> Ocean</span>
+        <span class="signal-pill bg-sky-900/40 text-sky-300 border border-sky-700/50"><i class="ph-fill ph-cloud-sun text-xs"></i> Climate</span>
+        <span class="signal-pill bg-blue-900/40 text-blue-300 border border-blue-700/50"><i class="ph-fill ph-drop text-xs"></i> Water</span>
+        <span class="signal-pill bg-emerald-900/40 text-emerald-300 border border-emerald-700/50"><i class="ph-fill ph-leaf text-xs"></i> Biodiversity</span>
+        <span class="signal-pill bg-violet-900/40 text-violet-300 border border-violet-700/50"><i class="ph-fill ph-users text-xs"></i> Social</span>
+      </div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6 leading-tight">Ready to explore the signals?</h2>
-      <p class="text-slate-400 mb-8">Access the live dashboard. No registration, no paywalls. Pure, actionable intelligence.</p>
-      <a href="radar.html" class="inline-flex items-center justify-center gap-2 bg-nexus-main hover:bg-nexus-dark text-white text-base font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-nexus-main/50 transform hover:-translate-y-1">
-        <i class="ph-bold ph-rocket-launch text-xl"></i> Launch Nexus Radar
-      </a>
+      <p class="text-slate-400 mb-8">Access the live dashboard. No registration, no paywalls. Pure, actionable intelligence across all 6 domains.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="radar.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-nexus-main hover:bg-nexus-dark text-white text-base font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-nexus-main/50 transform hover:-translate-y-1">
+          <i class="ph-bold ph-rocket-launch text-xl"></i> Launch Nexus Radar
+        </a>
+        <a href="info.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base font-bold px-8 py-4 rounded-xl transition-all">
+          <i class="ph-bold ph-chart-polar text-xl"></i> View Interactive Data
+        </a>
+      </div>
     </div>
   </section>
 
@@ -441,45 +1149,121 @@
       <i class="ph-fill ph-target text-2xl text-slate-600"></i>
       <span class="font-display font-bold text-xl tracking-tight text-slate-500">Nexus Radar</span>
     </div>
-    <p class="text-slate-500 text-sm font-medium">Global Early Warning & Latent Signal Engine &copy; 2026</p>
-    <div class="mt-4 flex justify-center gap-6">
-      <a href="#" class="text-slate-600 hover:text-slate-300 transition-colors"><i class="ph-fill ph-github-logo text-2xl"></i></a>
-      <a href="#" class="text-slate-600 hover:text-slate-300 transition-colors"><i class="ph-fill ph-twitter-logo text-2xl"></i></a>
-      <a href="#" class="text-slate-600 hover:text-slate-300 transition-colors"><i class="ph-fill ph-envelope-simple text-2xl"></i></a>
+    <div class="flex flex-wrap justify-center gap-4 mb-4">
+      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">DRR</span>
+      <span class="text-slate-700">·</span>
+      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Ocean</span>
+      <span class="text-slate-700">·</span>
+      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Climate</span>
+      <span class="text-slate-700">·</span>
+      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Water</span>
+      <span class="text-slate-700">·</span>
+      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Biodiversity</span>
+      <span class="text-slate-700">·</span>
+      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Social</span>
     </div>
+    <p class="text-slate-500 text-sm font-medium">Global Early Warning & Latent Signal Engine &copy; 2026</p>
   </footer>
 
-  <!-- Mobile Menu Script -->
+  <!-- ================= SCRIPTS ================= -->
   <script>
-    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-      const nav = document.querySelector('nav div.hidden');
-      if(nav) {
-        nav.classList.remove('hidden');
-        nav.classList.add('flex', 'flex-col', 'absolute', 'top-20', 'left-0', 'w-full', 'bg-white', 'p-6', 'shadow-xl', 'border-b', 'border-slate-200');
-      } else {
-        const openedNav = document.querySelector('nav div.flex-col');
-        if(openedNav) {
-          openedNav.classList.add('hidden');
-          openedNav.classList.remove('flex', 'flex-col', 'absolute', 'top-20', 'left-0', 'w-full', 'bg-white', 'p-6', 'shadow-xl', 'border-b', 'border-slate-200');
-        }
-      }
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const menuIcon = document.getElementById('menu-icon');
+    mobileBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+      menuIcon.className = mobileNav.classList.contains('open') ? 'ph-bold ph-x' : 'ph-bold ph-list';
     });
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => { mobileNav.classList.remove('open'); menuIcon.className = 'ph-bold ph-list'; });
+    });
+
+    // Domain panel system
+    let activeDomain = null;
+    const tabColors = {
+      drr:    ['border-orange-400', 'bg-orange-50', 'text-orange-700'],
+      ocean:  ['border-cyan-400', 'bg-cyan-50', 'text-cyan-700'],
+      climate:['border-sky-400', 'bg-sky-50', 'text-sky-700'],
+      water:  ['border-blue-400', 'bg-blue-50', 'text-blue-700'],
+      bio:    ['border-emerald-400', 'bg-emerald-50', 'text-emerald-700'],
+      social: ['border-violet-400', 'bg-violet-50', 'text-violet-700'],
+    };
+
+    function openDomain(id) {
+      const allPanels = document.querySelectorAll('.domain-panel');
+      const allTabs = document.querySelectorAll('.domain-tab');
+
+      // Reset all tabs
+      allTabs.forEach(t => {
+        t.classList.remove(...['border-orange-400','border-cyan-400','border-sky-400','border-blue-400','border-emerald-400','border-violet-400','bg-orange-50','bg-cyan-50','bg-sky-50','bg-blue-50','bg-emerald-50','bg-violet-50','text-orange-700','text-cyan-700','text-sky-700','text-blue-700','text-emerald-700','text-violet-700']);
+        t.classList.add('bg-white', 'border-slate-200', 'text-slate-600');
+      });
+
+      if (activeDomain === id) {
+        // Close if already open
+        allPanels.forEach(p => p.classList.remove('open'));
+        activeDomain = null;
+        return;
+      }
+
+      // Close all, open target
+      allPanels.forEach(p => p.classList.remove('open'));
+      const panel = document.getElementById('panel-' + id);
+      const tab = document.getElementById('tab-' + id);
+
+      if (panel) {
+        panel.classList.add('open');
+        activeDomain = id;
+
+        // Highlight active tab
+        if (tab && tabColors[id]) {
+          tab.classList.remove('bg-white', 'border-slate-200', 'text-slate-600');
+          tab.classList.add(...tabColors[id]);
+        }
+
+        // Animate progress bars
+        setTimeout(() => {
+          panel.querySelectorAll('.progress-fill').forEach(bar => {
+            const w = bar.getAttribute('data-width');
+            bar.style.width = w + '%';
+          });
+        }, 100);
+
+        // Smooth scroll to panel
+        setTimeout(() => {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 50);
+      }
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+      anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
-        if(target) {
+        if (target) {
+          e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth' });
-          // Close mobile menu if open
-          const openedNav = document.querySelector('nav div.flex-col');
-          if(openedNav) {
-            openedNav.classList.add('hidden');
-            openedNav.classList.remove('flex', 'flex-col', 'absolute', 'top-20', 'left-0', 'w-full', 'bg-white', 'p-6', 'shadow-xl', 'border-b', 'border-slate-200');
-          }
+          mobileNav.classList.remove('open');
+          menuIcon.className = 'ph-bold ph-list';
         }
       });
+    });
+
+    // Auto-open first domain on load for demo
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        // Only auto-open if #domains is in view or user scrolls to it
+      }, 500);
     });
   </script>
 </body>
