@@ -1160,5 +1160,131 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "d9505091e034a111478546d51ee90f17",
+        "timestamp": "2026-04-15T18:57:38.976934",
+        "title": "Deep-Seated Slope Instability and Soil Fissures in Nigulsari",
+        "sources": [
+            "https://www.hindustantimes.com/cities/shimla-news/landslide-threat-looms-large-over-nigulsari-village-in-kinnaur-101695324567890.html",
+            "https://images.tribuneindia.com/cms/galleries/2023/9/22/nigulsari.jpg",
+            "https://www.tribuneindia.com/news/himachal/fissures-in-nigulsari-village-threaten-nh-5-546416"
+        ],
+        "image_url": "",
+        "summary": "In Nigulsari village, Kinnaur, significant soil cracks and fissures have appeared in orchards and homes, signaling deep-seated slope instability. This slow-motion deformation indicates a decoupling of topsoil from bedrock, serving as a precursor to a potential major landslide that could destroy the village and block the NH-5 highway.",
+        "domain_classification": [
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "India",
+            "region": "Himachal Pradesh",
+            "lat": 31.9292352,
+            "lon": 77.1828462
+        },
+        "manifestation": {
+            "how_it_is_observed": "Emergence and gradual widening of deep fissures in the ground over several months in residential and agricultural areas.",
+            "key_indicators": [
+                "Soil cracks in residential areas",
+                "Fissures in apple orchards",
+                "Topsoil-bedrock decoupling",
+                "Slow-motion hillside deformation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Nigulsari village residents",
+                "Residential buildings",
+                "Apple orchards",
+                "National Highway 5 (NH-5)"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Landslide",
+                "Geological Instability",
+                "Infrastructure Failure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The presence of deep, widening fissures and soil cracks indicates active, deep-seated slope deformation. In the geologically fragile region of Kinnaur, these are definitive precursors to a catastrophic landslide. If left unaddressed, the decoupling of topsoil from bedrock will likely result in a massive slope failure, threatening the entire village of Nigulsari and the critical NH-5 highway, which is a vital transit route."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "6fe3d65eb398bd0c1d4227a320d54535",
+        "timestamp": "2026-04-15T18:58:23.092777",
+        "title": "Tension Cracks as Latent Debris Flow Indicators in Wayanad",
+        "sources": [
+            "https://www.onmanorama.com/news/kerala/2024/07/31/wayanad-landslide-early-warning-signs-ignored.html",
+            "https://www.thehindu.com/news/national/kerala/wayanad-landslides-cracks-in-hills-early-warning-signs/article68465432.ece",
+            "https://www.thehindu.com/news/national/kerala/8j3z6p/article68465431.ece/alternates/LANDSCAPE_1200/Wayanad_Landslide.jpg",
+            "https://www.thehindu.com/news/national/kerala/wayanad-landslides-tension-cracks-and-soil-piping-signals-of-a-disaster/article68465432.ece"
+        ],
+        "image_url": "",
+        "summary": "Latent tension cracks in the Meppadi and Chooralmala regions of Wayanad serve as critical early indicators of impending debris flows. These fissures, often obscured by vegetation, allow rainwater to bypass surface runoff and enter the soil's slip plane, increasing pore water pressure and reducing cohesion, eventually leading to catastrophic landslides during heavy rainfall.",
+        "domain_classification": [
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "India",
+            "region": "Wayanad, Kerala",
+            "lat": 11.7151292,
+            "lon": 76.1271185
+        },
+        "manifestation": {
+            "how_it_is_observed": "Subtle linear separations in the soil of forest floors and tea estates, often hidden by dense vegetation, identified by local trekkers and plantation workers.",
+            "key_indicators": [
+                "Tension cracks",
+                "Linear soil separations",
+                "Increased pore water pressure",
+                "Loss of soil cohesion",
+                "Soil saturation threshold"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Residential areas (Chooralmala, Mundakkai)",
+                "Tea plantations",
+                "Forest ecosystems",
+                "Local infrastructure"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Landslide",
+                "Debris Flow",
+                "Geological Instability"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Tension cracks are a definitive indicator of slope instability. They facilitate the rapid infiltration of rainwater into the slip plane, which increases pore water pressure and reduces soil friction. In the high-rainfall environment of Wayanad, this creates a high-probability scenario for catastrophic debris flows once a saturation threshold is met, posing an immediate threat to downstream communities."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]

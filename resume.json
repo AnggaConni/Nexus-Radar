@@ -118,7 +118,7 @@
     },
     {
         "report_metadata": {
-            "report_id": "gsi-current",
+            "report_id": "gsi-older",
             "generated_at": "2026-04-15T18:51:02.252672",
             "period": "Q2 2026",
             "total_signals_analyzed": 18
@@ -259,6 +259,171 @@
                 {
                     "level": "High",
                     "count": 13
+                },
+                {
+                    "level": "Medium",
+                    "count": 5
+                },
+                {
+                    "level": "Low",
+                    "count": 0
+                }
+            ]
+        }
+    },
+    {
+        "report_metadata": {
+            "report_id": "gsi-current",
+            "generated_at": "2026-04-15T18:58:44.119234",
+            "period": "Q2 2026",
+            "total_signals_analyzed": 20
+        },
+        "global_summary": {
+            "total_signals": 20,
+            "high_urgency_percentage": 80.0,
+            "anthropogenic_percentage": 80.0
+        },
+        "domain_insights": [
+            {
+                "domain": "Climate",
+                "count": 12,
+                "key_pattern": "Thermal anomalies are penetrating previously stable refugia, including deep-water corals, high-latitude zones, and nighttime cooling cycles."
+            },
+            {
+                "domain": "Biodiversity",
+                "count": 7,
+                "key_pattern": "Phenological desynchronization is causing trophic mismatches and forcing large predators into permanent urban residency."
+            },
+            {
+                "domain": "Water",
+                "count": 6,
+                "key_pattern": "Systemic infrastructure failure and groundwater salinization are manifesting as visible indicators like toxic foam and soil efflorescence."
+            },
+            {
+                "domain": "DRR",
+                "count": 5,
+                "key_pattern": "Latent geological and structural signals (tension cracks, seafloor deepening) are bypassing traditional disaster predictive models."
+            }
+        ],
+        "geographic_threats": [
+            {
+                "region": "South Asia (India/Bangladesh)",
+                "dominant_issue": "Ecosystem resilience loss and catastrophic slope instability",
+                "threat_level": "high"
+            },
+            {
+                "region": "North America (USA)",
+                "dominant_issue": "Coastal structural collapse and subterranean urban heat",
+                "threat_level": "high"
+            },
+            {
+                "region": "East Asia (Japan)",
+                "dominant_issue": "Loss of temperate marine refugia and predator-human conflict",
+                "threat_level": "high"
+            },
+            {
+                "region": "Middle East/North Africa (Egypt)",
+                "dominant_issue": "Deep-water coral bleaching and soil salinization",
+                "threat_level": "high"
+            }
+        ],
+        "risk_analysis": {
+            "high_risk_cases": 15,
+            "critical_cases": 0,
+            "top_threats": [
+                "Loss of Mesophotic Coral Refugia",
+                "Seafloor Deepening from Reef Collapse",
+                "Sundarbans Critical Slowing Down",
+                "Urban Diurnal Cooling Failure"
+            ],
+            "emerging_risks": [
+                "Subterranean Urban Heat Islands",
+                "Metabolic Desynchronization in Wildlife",
+                "Groundwater Salinization (Ghost Forests)"
+            ]
+        },
+        "critical_signals": [
+            {
+                "title": "Mesophotic Coral Ecosystems Losing Thermal Refugia Status",
+                "country": "Egypt",
+                "reason_for_urgency": "Marine heatwaves are penetrating the thermocline, destroying the 'seed' populations required for reef recovery."
+            },
+            {
+                "title": "Seafloor Deepening from Coral Reef Structural Collapse",
+                "country": "USA",
+                "reason_for_urgency": "Loss of vertical reef height causes sudden, catastrophic coastal retreat even without storm events."
+            },
+            {
+                "title": "Critical Slowing Down in Sundarbans Mangrove Forest",
+                "country": "Bangladesh/India",
+                "reason_for_urgency": "Statistical signal indicates the forest is approaching an irreversible tipping point despite appearing healthy in imagery."
+            },
+            {
+                "title": "Tension Cracks as Latent Debris Flow Indicators",
+                "country": "India",
+                "reason_for_urgency": "Vegetation-obscured fissures allow rapid water infiltration, making catastrophic landslides inevitable during high rainfall."
+            }
+        ],
+        "intervention_opportunities": [
+            {
+                "type": "drr_action",
+                "target": "High-resolution slope monitoring",
+                "justification": "Early detection of tension cracks in Wayanad and Nigulsari can prevent mass casualty events."
+            },
+            {
+                "type": "policy",
+                "target": "Urban Thermal Management",
+                "justification": "Mitigating Subterranean Urban Heat Islands is critical for long-term building foundation stability and heatwave resilience."
+            },
+            {
+                "type": "education",
+                "target": "Ocean Literacy & Refugia Protection",
+                "justification": "Public and policy awareness of mesophotic and temperate refugia is needed to prioritize deep-water conservation."
+            },
+            {
+                "type": "conservation",
+                "target": "Wastewater Infrastructure",
+                "justification": "Investment in secondary sewage treatment is the only way to reverse the 'E-class' status of major urban rivers."
+            }
+        ],
+        "root_cause_insights": {
+            "most_common_cause": "Anthropogenic Climate Change & Systemic Infrastructure Neglect",
+            "observation": "Human activities are creating 'latent' risks that accumulate invisibly (underground, underwater, or statistically) until they reach a catastrophic tipping point."
+        },
+        "recommendations": [
+            "Incorporate 'seafloor deepening' and reef height loss into coastal flood and storm-surge modeling.",
+            "Deploy high-resolution thermal sensors to detect 'test burns' before they escalate into regional haze.",
+            "Integrate Traditional Ecological Knowledge (TEK) with phenological monitoring to detect ecosystem decoupling early.",
+            "Develop heat-warning systems based on nighttime minimum temperatures rather than daytime peaks.",
+            "Mandate subsurface thermal impact assessments for new urban infrastructure projects."
+        ],
+        "charts": {
+            "signals_by_domain": [
+                {
+                    "domain": "Climate",
+                    "count": 12
+                },
+                {
+                    "domain": "Biodiversity",
+                    "count": 7
+                },
+                {
+                    "domain": "Water",
+                    "count": 6
+                },
+                {
+                    "domain": "DRR",
+                    "count": 5
+                },
+                {
+                    "domain": "Ocean",
+                    "count": 4
+                }
+            ],
+            "risk_distribution": [
+                {
+                    "level": "High",
+                    "count": 15
                 },
                 {
                     "level": "Medium",
