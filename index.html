@@ -1,28 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexus Radar | Early Warning Dashboard</title>
   
+  <!-- SEO Meta Tags -->
+  <title>Nexus Radar | Global Early Warning & Latent Signal Engine</title>
+  <meta name="description" content="Nexus Radar is an autonomous AI-powered OSINT platform that detects latent environmental and societal signals before they escalate into global crises." />
+  <meta name="keywords" content="Early warning system, OSINT, latent signals, environmental disaster, climate change tracker, AI radar, disaster risk reduction, ocean literacy" />
+  <meta name="author" content="Nexus Radar" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Nexus Radar | Global Early Warning Engine" />
+  <meta property="og:description" content="Detecting the whispers before the storm. Nexus Radar uses AI to track latent environmental signals worldwide." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com" />
+  <meta property="og:image" content="https://yourwebsite.com/og-image.jpg" /> <!-- Ganti dengan URL gambar Anda nanti -->
+
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%230ea5e9' d='M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM128,152a48,48,0,1,1,48-48A48.05,48.05,0,0,1,128,152Zm64.12,36.54a80,80,0,0,0-128.24,0A87.91,87.91,0,0,1,40,128a88,88,0,1,1,176,0A87.91,87.91,0,0,1,192.12,188.54Z'/%3E%3C/svg%3E" />
 
-  <!-- Fonts: Space Grotesk for Display, Plus Jakarta Sans for UI -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
   
-  <!-- Leaflet Map CSS & JS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
-  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-  
-  <!-- Tailwind, Icons, Echarts -->
+  <!-- Tailwind CSS & Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
   
   <script>
     tailwind.config = {
@@ -30,10 +36,20 @@
         extend: {
           fontFamily: {
             sans: ['Plus Jakarta Sans', 'sans-serif'],
-            display:['Space Grotesk', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
           },
           colors: {
             nexus: { main: '#0ea5e9', dark: '#0369a1', light: '#f0f9ff', darkbg: '#0f172a' }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
           }
         }
       }
@@ -42,1171 +58,429 @@
 
   <style>
     body { background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
-    ::-webkit-scrollbar { width: 4px; height: 4px; }
-    @media (min-width: 768px) { ::-webkit-scrollbar { width: 6px; height: 6px; } }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
-    .glass-panel { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.4); }
+    .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
+    .hero-gradient { background: radial-gradient(circle at top right, #f0f9ff 0%, #ffffff 50%, #f8fafc 100%); }
     .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01); }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.1), 0 8px 10px -6px rgba(14, 165, 233, 0.1); }
     
-    /* Blueprint Grid Pattern for Cards */
-    .bg-grid-pattern {
-      background-size: 24px 24px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px), 
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
-    }
-
-    .nav-item { transition: all 0.2s ease; cursor: pointer; }
-    .nav-item.active { background-color: #f0f9ff; color: #0ea5e9; border-right: 3px solid #0ea5e9; font-weight: 600; }
-    .nav-item:not(.active):hover { background-color: #f1f5f9; color: #334155; }
-
-    .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); font-family: 'Plus Jakarta Sans', sans-serif; }
-    .pulse-marker { width:18px; height:18px; background:#ef4444; border-radius:50%; border:3px solid #fff; box-shadow: 0 0 0 rgba(239, 68, 68, 0.4); animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
-
-    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .animate-slide { animation: slideIn 0.4s ease forwards; }
-
-    .modal-backdrop { backdrop-filter: blur(5px); background-color: rgba(15, 23, 42, 0.6); }
-
-    /* Custom scrollbar for carousel */
-    .media-carousel::-webkit-scrollbar { height: 6px; }
-    .media-carousel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    /* Details/Accordion Styling */
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] summary ~ * { animation: sweep .3s ease-in-out; }
+    @keyframes sweep { 0% {opacity: 0; transform: translateY(-10px)} 100% {opacity: 1; transform: translateY(0)} }
+    
+    /* Background Pattern */
+    .bg-grid-pattern { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 30px 30px; }
   </style>
 </head>
-<body class="flex h-screen overflow-hidden">
+<body class="antialiased selection:bg-nexus-main selection:text-white">
 
-  <!-- MOBILE OVERLAY -->
-  <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-slate-900/50 z-[50] hidden lg:hidden transition-opacity"></div>
-
-  <!-- SIDEBAR NAVIGATION -->
-  <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white border-r border-slate-200 flex flex-col z-[60] transform -translate-x-full lg:translate-x-0 lg:static transition-transform duration-300">
-    <div class="h-20 flex items-center justify-between px-6 border-b border-slate-100 shrink-0">
-      <div class="flex items-center">
-        <div class="w-10 h-10 bg-nexus-light rounded-xl flex items-center justify-center text-nexus-main mr-3">
-          <i class="ph-fill ph-target text-2xl"></i>
+  <!-- ================= NAV BAR ================= -->
+  <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-nexus-light rounded-xl flex items-center justify-center text-nexus-main">
+            <i class="ph-fill ph-target text-2xl"></i>
+          </div>
+          <span class="font-display font-bold text-xl tracking-tight text-slate-900">Nexus Radar</span>
         </div>
+        
+        <!-- Desktop Links -->
+        <div class="hidden md:flex space-x-8">
+          <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">What is it?</a>
+          <a href="#domains" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">Thematic Domains</a>
+          <a href="#weak-signals" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">Why Weak Signals?</a>
+          <a href="#faq" class="text-sm font-semibold text-slate-600 hover:text-nexus-main transition-colors">FAQ</a>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="flex items-center gap-4">
+          <a href="radar.html" class="hidden md:flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg">
+            Launch Radar <i class="ph-bold ph-arrow-right"></i>
+          </a>
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden text-slate-600 text-2xl" id="mobile-menu-btn">
+            <i class="ph-bold ph-list"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-gradient overflow-hidden">
+    <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+    <!-- Blur Orbs -->
+    <div class="absolute top-20 right-0 w-96 h-96 bg-nexus-main rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse-slow"></div>
+    <div class="absolute bottom-0 left-20 w-72 h-72 bg-emerald-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse-slow" style="animation-delay: 2s;"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left: Copy & CTA -->
+        <div class="lg:col-span-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-widest mb-6">
+            <span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span> Live OSINT Engine
+          </div>
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-slate-900 leading-[1.1] tracking-tight mb-6">
+            Catch the whispers <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-nexus-main to-indigo-600">before the storm.</span>
+          </h1>
+          <p class="text-base sm:text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Nexus Radar is an autonomous AI-driven platform that scours the global web to detect <strong>latent environmental and societal signals</strong>. We identify creeping vulnerabilities before they escalate into confirmed disasters.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+            <a href="radar.html" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-nexus-main hover:bg-nexus-dark text-white text-base font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-nexus-main/30">
+              <i class="ph-bold ph-radar text-xl"></i> Open Dashboard
+            </a>
+            <a href="#about" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-base font-bold px-8 py-4 rounded-xl transition-all">
+              Learn How It Works
+            </a>
+          </div>
+          <p class="mt-4 text-xs text-slate-400 font-medium"><i class="ph-fill ph-check-circle text-emerald-500"></i> No login required. Open-access intelligence.</p>
+        </div>
+
+        <!-- Right: Dummy Node Card -->
+        <div class="lg:col-span-6 flex justify-center lg:justify-end relative perspective-1000">
+          <!-- The floating card mimicking the dashboard UI -->
+          <div class="w-full max-w-md bg-white rounded-3xl border border-slate-200 shadow-2xl shadow-slate-200/50 overflow-hidden animate-float relative z-10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+            <div class="absolute top-0 left-0 bottom-0 w-2 bg-red-500"></div>
+            <div class="p-6 pl-8">
+              <div class="flex justify-between items-start mb-4">
+                <span class="bg-cyan-50 text-cyan-700 text-[10px] font-bold px-2.5 py-1.5 rounded-lg uppercase tracking-wider border border-cyan-100 shadow-sm flex items-center gap-1.5">
+                  <i class="ph-bold ph-waves"></i> Water / DRR
+                </span>
+                <div class="flex flex-col items-end">
+                  <span class="text-[10px] font-bold uppercase text-slate-400 leading-none">Threat Score</span>
+                  <span class="font-display font-black text-3xl text-red-600 leading-none mt-1">90</span>
+                </div>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-900 leading-snug mb-3">Groundwater Salinity Spike in Coastal Freshwater Wells</h3>
+              <p class="text-xs text-slate-500 font-medium flex items-center gap-1.5 mb-4">
+                <i class="ph-bold ph-map-pin text-nexus-main"></i> North Java, Indonesia
+              </p>
+              <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 mb-4">
+                <p class="text-sm text-slate-600 leading-relaxed line-clamp-3">
+                  Routine tests in a coastal community showed a 300% spike in salinity in deep freshwater wells, signaling a potential irreversible aquifer breach before the community loses its drinking source.
+                </p>
+              </div>
+              <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+                <div class="flex items-center gap-2">
+                  <span class="flex h-3 w-3 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                  </span>
+                  <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Critical Alert</span>
+                </div>
+                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded">AI EXTRACTED</span>
+              </div>
+            </div>
+          </div>
+          <!-- Decorative background card -->
+          <div class="absolute top-10 right-0 w-full max-w-md bg-white/50 backdrop-blur-sm rounded-3xl border border-white/40 shadow-xl h-full transform -rotate-3 z-0 scale-95 opacity-50"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT SECTION ================= -->
+  <section id="about" class="py-20 bg-white border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4">What is Nexus Radar?</h2>
+        <p class="text-slate-600 text-lg">It is an automated Open-Source Intelligence (OSINT) pipeline designed to bridge the gap between local environmental observations and global policy intervention.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 card-hover">
+          <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+            <i class="ph-bold ph-globe-magnifying-glass"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Autonomous Scanning</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">The engine runs daily, scraping the web for specific keywords indicating environmental degradation, animal behavioral anomalies, and localized societal shifts.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 card-hover">
+          <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+            <i class="ph-bold ph-brain"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-900 mb-3">5-Layer AI Pipeline</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Powered by Google Gemini, the AI validates the signal, extracts affected elements, assesses catastrophe risk, and analyzes the root cause (anthropogenic vs natural).</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 card-hover">
+          <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+            <i class="ph-bold ph-chart-line-up"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Actionable Synthesis</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Raw data is compiled into a high-level Intelligence Resume every quarter, providing policymakers with direct geographic hotspots and intervention targets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DOMAINS SECTION ================= -->
+  <section id="domains" class="py-20 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-nexus-main text-sm font-bold uppercase tracking-widest mb-2 block">System Coverage</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4">Thematic Observation Domains</h2>
+        <p class="text-slate-600 text-lg">We classify incoming signals across 6 critical scientific and societal vectors to map the holistic health of our planet.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Ocean -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
+          <div class="bg-cyan-50 border border-cyan-100 text-cyan-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-waves"></i></div>
+          <div>
+            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Ocean & Marine</h3>
+            <p class="text-sm text-slate-500">Tracking coral bleaching inversions, microplastic accumulations, and unexplained marine die-offs.</p>
+          </div>
+        </div>
+        <!-- Climate -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
+          <div class="bg-sky-50 border border-sky-100 text-sky-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-cloud-sun"></i></div>
+          <div>
+            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Climate Anomalies</h3>
+            <p class="text-sm text-slate-500">Detecting phenological shifts, like premature flowering, and localized extreme heatwaves.</p>
+          </div>
+        </div>
+        <!-- DRR -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
+          <div class="bg-orange-50 border border-orange-100 text-orange-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-volcano"></i></div>
+          <div>
+            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Disaster Risk (DRR)</h3>
+            <p class="text-sm text-slate-500">Monitoring soil cracks, sudden ground subsidence, and structural collapses acting as precursors.</p>
+          </div>
+        </div>
+        <!-- Water -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
+          <div class="bg-blue-50 border border-blue-100 text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-drop"></i></div>
+          <div>
+            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Water Systems</h3>
+            <p class="text-sm text-slate-500">Identifying groundwater salinity spikes, toxic river foam, and unseasonal aquifer depletion.</p>
+          </div>
+        </div>
+        <!-- Biodiversity -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
+          <div class="bg-emerald-50 border border-emerald-100 text-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-leaf"></i></div>
+          <div>
+            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Biodiversity</h3>
+            <p class="text-sm text-slate-500">Watching for mass bird deaths, invasive species spread, and critical pollinator collapses.</p>
+          </div>
+        </div>
+        <!-- Social -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start">
+          <div class="bg-purple-50 border border-purple-100 text-purple-600 w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"><i class="ph-fill ph-users-three"></i></div>
+          <div>
+            <h3 class="font-display font-bold text-lg text-slate-900 mb-1">Social & Behavioral</h3>
+            <p class="text-sm text-slate-500">Flagging human actions like illegal sand mining, slash-and-burn farming, and informal waste dumping.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY WEAK SIGNALS ================= -->
+  <section id="weak-signals" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
         <div>
-          <h1 class="font-display font-bold text-xl text-slate-900 leading-none">Nexus Radar</h1>
-          <p class="text-[10px] uppercase tracking-widest text-slate-400 mt-1 font-bold">Signal Engine</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-6 leading-tight">
+            Why do <span class="text-nexus-main">"Weak Signals"</span> matter?
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed mb-6">
+            Traditional disaster management is <strong>reactive</strong>. It mobilizes resources only after a crisis—like a category 5 hurricane or massive forest fire—has already destroyed infrastructure and lives.
+          </p>
+          <p class="text-slate-600 text-base leading-relaxed mb-8">
+            But crises rarely happen overnight. They are preceded by subtle, creeping anomalies known as <em>Latent Signals</em>. A drop in well water pressure today is the drought famine of next year. An isolated 'test burn' in a forest is the regional haze of next month. <strong>Nexus Radar catches the breadcrumbs before the explosion.</strong>
+          </p>
+
+          <ul class="space-y-4">
+            <li class="flex gap-3 items-start">
+              <i class="ph-fill ph-check-circle text-emerald-500 text-xl shrink-0 mt-0.5"></i>
+              <span class="text-slate-700 text-sm font-medium">Shifts the paradigm from reactive rescue to proactive intervention.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <i class="ph-fill ph-check-circle text-emerald-500 text-xl shrink-0 mt-0.5"></i>
+              <span class="text-slate-700 text-sm font-medium">Saves significant economic capital by preventing systemic collapse.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <i class="ph-fill ph-check-circle text-emerald-500 text-xl shrink-0 mt-0.5"></i>
+              <span class="text-slate-700 text-sm font-medium">Empowers policymakers with data to stop anthropogenic hazards early.</span>
+            </li>
+          </ul>
         </div>
+
+        <!-- Infographic Timeline -->
+        <div class="relative bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-inner">
+          <div class="absolute left-11 top-12 bottom-12 w-1 bg-gradient-to-b from-blue-300 via-orange-300 to-red-500 rounded-full"></div>
+          
+          <div class="space-y-8 relative z-10">
+            <!-- Step 1 -->
+            <div class="flex gap-6 items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 border-4 border-white flex items-center justify-center shrink-0 shadow-md z-10"><div class="w-2.5 h-2.5 bg-blue-500 rounded-full"></div></div>
+              <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm w-full">
+                <h4 class="font-bold text-slate-800 text-sm">1. Latent Signal</h4>
+                <p class="text-xs text-slate-500 mt-1">E.g., Minor coral bleaching at 30m depth.</p>
+                <span class="text-[9px] font-bold uppercase text-blue-500 mt-2 block">Radar Detection Zone</span>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="flex gap-6 items-center">
+              <div class="w-8 h-8 rounded-full bg-orange-100 border-4 border-white flex items-center justify-center shrink-0 shadow-md z-10"><div class="w-2.5 h-2.5 bg-orange-500 rounded-full"></div></div>
+              <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm w-full opacity-80">
+                <h4 class="font-bold text-slate-800 text-sm">2. Escalating Anomaly</h4>
+                <p class="text-xs text-slate-500 mt-1">E.g., Loss of deep-water seed populations.</p>
+                <span class="text-[9px] font-bold uppercase text-orange-500 mt-2 block">Tipping Point</span>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="flex gap-6 items-center">
+              <div class="w-8 h-8 rounded-full bg-red-100 border-4 border-white flex items-center justify-center shrink-0 shadow-md z-10"><div class="w-2.5 h-2.5 bg-red-600 rounded-full animate-ping absolute"></div><div class="w-2.5 h-2.5 bg-red-600 rounded-full relative z-10"></div></div>
+              <div class="bg-red-50 p-4 rounded-xl border border-red-200 shadow-sm w-full opacity-60">
+                <h4 class="font-bold text-red-800 text-sm">3. Confirmed Disaster</h4>
+                <p class="text-xs text-red-600 mt-1">E.g., Total reef collapse & fishery loss.</p>
+                <span class="text-[9px] font-bold uppercase text-red-600 mt-2 block">Traditional Media / News Zone</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <!-- Close button for mobile -->
-      <button onclick="toggleSidebar()" class="lg:hidden text-slate-400 hover:text-slate-800"><i class="ph-bold ph-x text-xl"></i></button>
     </div>
+  </section>
 
-    <nav class="flex-1 py-6 flex flex-col gap-2 px-3 overflow-y-auto">
-      <p class="px-3 text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Dashboards</p>
-      <button onclick="switchTab('inventory')" id="nav-inventory" class="nav-item active flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
-        <i class="ph-fill ph-squares-four text-lg"></i> Signal Inventory
-      </button>
-      <button onclick="switchTab('map')" id="nav-map" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
-        <i class="ph-fill ph-globe-hemisphere-west text-lg"></i> Global Map
-      </button>
-      <button onclick="switchTab('resume')" id="nav-resume" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
-        <i class="ph-fill ph-chart-polar text-lg"></i> Intel Resume
-      </button>
-    </nav>
+  <!-- ================= FAQ SECTION ================= -->
+  <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-4">Frequently Asked Questions</h2>
+        <p class="text-slate-600">Everything you need to know about the engine and data.</p>
+      </div>
 
-    <div class="p-4 border-t border-slate-100 shrink-0 flex flex-col gap-2">
-      <button onclick="openGuideModal()" class="w-full flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 text-xs font-bold py-2.5 rounded-lg transition-colors">
-        <i class="ph-fill ph-question text-base"></i> How to Use
-      </button>
-      <div class="text-center mt-2">
-        <p class="text-[9px] text-slate-400 font-medium">Nexus Radar v2.0 &copy; 2026</p>
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <details class="group bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+          <summary class="flex justify-between items-center font-bold text-slate-800 p-6 select-none">
+            Where does the data come from?
+            <span class="transition group-open:rotate-180 text-slate-400">
+              <i class="ph-bold ph-caret-down text-lg"></i>
+            </span>
+          </summary>
+          <div class="text-slate-600 text-sm leading-relaxed px-6 pb-6 pt-0 border-t border-slate-100 mt-2">
+            The data is aggregated autonomously by an AI script utilizing Google Search Grounding. It scours local news, NGO reports, academic pre-prints, and community forums based on a rotating list of highly specific "anomaly keywords." We do not generate fake news; all signals come with verified original source URLs.
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+          <summary class="flex justify-between items-center font-bold text-slate-800 p-6 select-none">
+            What is the 'Threat Score'?
+            <span class="transition group-open:rotate-180 text-slate-400">
+              <i class="ph-bold ph-caret-down text-lg"></i>
+            </span>
+          </summary>
+          <div class="text-slate-600 text-sm leading-relaxed px-6 pb-6 pt-0 border-t border-slate-100 mt-2">
+            The Threat Score (Priority Score) is an algorithmic calculation from 0-100. It combines the <strong>Catastrophe Risk level (40%)</strong>, the <strong>Threat Impact scale (40%)</strong>, and the <strong>Escalation Urgency (20%)</strong>. A score above 80 triggers a Critical Flag, meaning the system expects severe irreversible damage if ignored.
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+          <summary class="flex justify-between items-center font-bold text-slate-800 p-6 select-none">
+            How often is the Intelligence Resume updated?
+            <span class="transition group-open:rotate-180 text-slate-400">
+              <i class="ph-bold ph-caret-down text-lg"></i>
+            </span>
+          </summary>
+          <div class="text-slate-600 text-sm leading-relaxed px-6 pb-6 pt-0 border-t border-slate-100 mt-2">
+            While the Signal Inventory (raw data) is updated daily, the Intelligence Resume is a synthesis report generated automatically every 90 days (Quarterly). The AI reads the entire database to find overarching geographic threats, root cause trends, and formulates strategic intervention recommendations.
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+          <summary class="flex justify-between items-center font-bold text-slate-800 p-6 select-none">
+            Can I export the data for my own research?
+            <span class="transition group-open:rotate-180 text-slate-400">
+              <i class="ph-bold ph-caret-down text-lg"></i>
+            </span>
+          </summary>
+          <div class="text-slate-600 text-sm leading-relaxed px-6 pb-6 pt-0 border-t border-slate-100 mt-2">
+            Yes! Inside the radar dashboard, there is an "Export OSINT Data" button at the top right. It allows you to download the entire dataset formatted in standard DCMI (Dublin Core Metadata Initiative) XML, ready to be imported into QGIS, academic databases, or other analytical tools.
+          </div>
+        </details>
       </div>
     </div>
-  </aside>
+  </section>
 
-  <!-- MAIN CONTENT AREA -->
-  <main class="flex-1 flex flex-col h-screen overflow-y-auto relative bg-slate-50 w-full">
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-20 bg-slate-900 text-center px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-nexus-main rounded-full mix-blend-screen filter blur-[100px] opacity-30"></div>
     
-    <!-- Top Header -->
-    <header class="h-20 glass-panel sticky top-0 z-10 flex items-center justify-between px-4 sm:px-8 shrink-0">
-      <div class="flex items-center gap-3 sm:gap-4">
-        <!-- Hamburger Menu Button (Mobile) -->
-        <button onclick="toggleSidebar()" class="lg:hidden w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-xl text-slate-600 shadow-sm hover:bg-slate-50">
-          <i class="ph-bold ph-list text-lg"></i>
-        </button>
-        <div>
-          <h2 id="page-title" class="font-display font-bold text-lg sm:text-2xl text-slate-800">Signal Inventory</h2>
-          <p class="text-[10px] sm:text-xs text-slate-500 mt-0.5 sm:mt-1 truncate max-w-[200px] sm:max-w-none">Real-time latent environmental anomalies.</p>
-        </div>
-      </div>
-      
-      <div class="flex gap-4">
-        <div class="flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
-          <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-red-50 flex items-center justify-center text-red-500 shrink-0">
-            <i class="ph-fill ph-warning-octagon text-sm sm:text-base"></i>
-          </div>
-          <div>
-            <p class="text-[8px] sm:text-[10px] font-bold uppercase text-slate-400 leading-none hidden sm:block">Critical Signals</p>
-            <p class="font-display font-bold text-base sm:text-lg text-slate-800 leading-none mt-0 sm:mt-1" id="top-stat-critical">0</p>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <div class="p-4 sm:p-8 w-full max-w-7xl mx-auto flex flex-col gap-6">
-
-      <!-- ========================================== -->
-      <!-- TAB 1: INVENTORY (GRID) -->
-      <!-- ========================================== -->
-      <div id="view-inventory" class="flex flex-col gap-6 animate-slide">
-        
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-3 flex flex-col lg:flex-row gap-3">
-          <div class="relative flex-grow">
-            <i class="ph-bold ph-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-            <input type="text" id="filter-search" placeholder="Search signals by keyword..." class="w-full bg-slate-50 border border-slate-100 rounded-xl pl-11 pr-4 py-3 sm:py-2.5 text-sm focus:ring-2 focus:ring-nexus-main outline-none">
-          </div>
-          <div class="flex flex-col sm:flex-row gap-3 flex-wrap">
-            <select id="filter-domain" class="bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 sm:py-2.5 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-nexus-main cursor-pointer min-w-[140px]">
-              <option value="all">All Domains</option>
-            </select>
-            <select id="filter-sort" class="bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 sm:py-2.5 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-nexus-main cursor-pointer min-w-[150px]">
-              <option value="priority">Highest Threat</option>
-              <option value="newest">Latest Detected</option>
-              <option value="oldest">Oldest Detected</option>
-            </select>
-            <!-- Pagination Limit Option -->
-            <select id="filter-per-page" class="bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 sm:py-2.5 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-nexus-main cursor-pointer min-w-[130px]">
-              <option value="20">Show 20</option>
-              <option value="50">Show 50</option>
-              <option value="100">Show 100</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
-        
-        <div id="pagination-container" class="flex items-center justify-between bg-white border border-slate-200 p-3 rounded-xl shadow-sm hidden">
-          <div class="text-xs sm:text-sm text-slate-500 font-medium px-2" id="pagination-info"></div>
-          <div id="pagination-buttons" class="flex gap-1"></div>
-        </div>
-      </div>
-
-      <!-- ========================================== -->
-      <!-- TAB 2: GLOBAL MAP -->
-      <!-- ========================================== -->
-      <div id="view-map" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
-        
-        <div class="w-full bg-white rounded-2xl border border-slate-200 shadow-sm p-2 relative h-[350px] sm:h-[500px] flex flex-col">
-          <div class="absolute top-4 sm:top-6 left-4 sm:left-6 z-[400] bg-white/90 backdrop-blur-md border border-slate-200 rounded-xl p-3 sm:p-4 shadow-lg pointer-events-none">
-            <h3 class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Geospatial Distribution</h3>
-            <p class="text-xl sm:text-2xl font-display font-bold text-slate-800" id="map-signal-count">0 Signals</p>
-          </div>
-          <div id="map" class="w-full flex-grow rounded-xl bg-slate-100 border border-slate-100"></div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-          <div class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm">
-            <h3 class="font-display font-bold text-slate-800 mb-4 flex items-center gap-2 text-sm sm:text-base"><i class="ph-fill ph-intersect-three text-nexus-main"></i> Domain Matrix</h3>
-            <div id="chart-domain" class="w-full h-[200px] sm:h-[250px]"></div>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm flex flex-col">
-            <h3 class="font-display font-bold text-slate-800 mb-4 flex items-center gap-2 text-sm sm:text-base"><i class="ph-fill ph-tree-structure text-indigo-500"></i> Primary Root Causes</h3>
-            <div id="root-cause-container" class="flex-grow flex flex-col gap-4 overflow-y-auto"></div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- ========================================== -->
-      <!-- TAB 3: INTEL RESUME -->
-      <!-- ========================================== -->
-      <div id="view-resume" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
-        
-        <div class="bg-slate-900 rounded-2xl p-5 sm:p-8 text-white shadow-xl relative overflow-hidden flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6">
-          <div class="absolute top-0 right-0 w-64 h-64 bg-nexus-main opacity-20 blur-[80px] rounded-full pointer-events-none"></div>
-          
-          <div class="flex items-center gap-4 relative z-10">
-            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 rounded-xl flex items-center justify-center border border-white/20 backdrop-blur-sm shrink-0">
-              <i class="ph-fill ph-brain text-2xl sm:text-3xl text-nexus-light"></i>
-            </div>
-            <div>
-              <h2 class="font-display font-bold text-xl sm:text-2xl leading-tight text-white">AI Intelligence Synthesis</h2>
-              <p class="text-slate-400 text-xs sm:text-sm mt-1">Periodic global risk assessment generated by AI.</p>
-            </div>
-          </div>
-
-          <div class="relative z-10 w-full sm:w-auto flex flex-col mt-2 sm:mt-0">
-            <label class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Select Period</label>
-            <select id="report-selector" onchange="loadReport(this.value)" class="bg-slate-800 border border-slate-700 text-white text-sm font-semibold rounded-xl px-4 py-3 outline-none focus:border-nexus-main cursor-pointer shadow-inner w-full sm:min-w-[200px]"></select>
-          </div>
-        </div>
-
-        <div id="resume-meta" class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4"></div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 lg:col-span-1">
-            <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-4 text-xs sm:text-sm uppercase tracking-wider">Urgency Mix</h3>
-            <div id="resume-donut-chart" class="h-[200px] sm:h-[220px]"></div>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 lg:col-span-2">
-            <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-4 text-xs sm:text-sm uppercase tracking-wider">Domain Threats</h3>
-            <div id="resume-cat-chart" class="h-[200px] sm:h-[220px] w-full"></div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
-            <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-4 text-xs sm:text-sm uppercase tracking-wider">Risk Severity</h3>
-            <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-4" id="resume-risk-stats"></div>
-            <div id="resume-risk-chart" class="h-[180px] w-full"></div>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 flex flex-col">
-            <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-4 text-xs sm:text-sm uppercase tracking-wider">Root Cause Distribution</h3>
-            <div id="resume-root-chart" class="h-[180px] w-full mb-4"></div>
-            <div id="resume-knowledge-insight" class="bg-slate-50 rounded-xl p-4 text-xs sm:text-sm text-slate-600 border border-slate-100 flex-grow"></div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
-            <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-4 text-xs sm:text-sm uppercase tracking-wider text-red-600">Critical Signals to Watch</h3>
-            <div id="resume-gems" class="flex flex-col gap-3"></div>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
-            <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-4 text-xs sm:text-sm uppercase tracking-wider text-emerald-600">Intervention Targets</h3>
-            <div class="overflow-x-auto rounded-xl border border-slate-200">
-              <table class="w-full text-sm text-left whitespace-nowrap">
-                <thead class="bg-slate-50 text-slate-500 text-[10px] uppercase font-bold tracking-wider">
-                  <tr><th class="px-4 py-3">Type</th><th class="px-4 py-3">Target</th><th class="px-4 py-3 text-right">Priority</th></tr>
-                </thead>
-                <tbody id="resume-interventions" class="divide-y divide-slate-100"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 sm:p-8 text-white shadow-xl">
-            <h3 class="font-display font-bold text-lg sm:text-xl mb-4 sm:mb-6 flex items-center gap-2"><i class="ph-fill ph-lightbulb text-yellow-400"></i> Strategic Recommendations</h3>
-            <div id="resume-recommendations" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </div>
-
-      </div>
-
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6 leading-tight">Ready to explore the signals?</h2>
+      <p class="text-slate-400 mb-8">Access the live dashboard. No registration, no paywalls. Pure, actionable intelligence.</p>
+      <a href="radar.html" class="inline-flex items-center justify-center gap-2 bg-nexus-main hover:bg-nexus-dark text-white text-base font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-nexus-main/50 transform hover:-translate-y-1">
+        <i class="ph-bold ph-rocket-launch text-xl"></i> Launch Nexus Radar
+      </a>
     </div>
-  </main>
+  </section>
 
-  <!-- ========================================== -->
-  <!-- MODALS -->
-  <!-- ========================================== -->
-  
-  <div id="item-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden modal-backdrop p-3 sm:p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-3xl w-full max-w-5xl max-h-[95vh] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300 shadow-2xl" id="modal-content-wrapper">
-      
-      <div class="p-5 sm:p-8 border-b border-slate-100 bg-slate-50 shrink-0 flex justify-between items-start relative overflow-hidden">
-        <div id="modal-alert-strip" class="absolute top-0 left-0 bottom-0 w-2 hidden bg-red-500"></div>
-        <div class="pl-1 sm:pl-2">
-          <div class="flex flex-wrap gap-2 mb-2 sm:mb-3" id="modal-badges"></div>
-          <h3 class="font-display font-bold text-xl sm:text-3xl text-slate-900 pr-8 leading-tight" id="modal-title">Signal Name</h3>
-          <p class="text-xs sm:text-sm text-slate-500 mt-2 flex items-center gap-1 font-medium"><i class="ph-bold ph-map-pin"></i> <span id="modal-location">Location</span></p>
-        </div>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-800 bg-white border border-slate-200 hover:border-slate-400 transition-all p-2 rounded-xl shadow-sm shrink-0 absolute right-4 sm:right-8 top-4 sm:top-8"><i class="ph-bold ph-x text-xl"></i></button>
-      </div>
-      
-      <div class="p-5 sm:p-8 overflow-y-auto flex-grow bg-white">
-        
-        <!-- Media Carousel: Image + YouTube -->
-        <div id="modal-media-carousel" class="media-carousel flex gap-4 overflow-x-auto pb-4 mb-6 hidden snap-x items-center">
-            <!-- Content loaded via JS -->
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-          
-          <div class="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
-            <div id="modal-risk-box" class="bg-white rounded-2xl p-5 sm:p-6 border shadow-sm">
-              <h4 class="font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-3 flex items-center gap-2"><i class="ph-fill ph-warning-octagon text-lg"></i> Threat Score</h4>
-              <div class="flex items-end gap-2 mb-3">
-                <span class="text-5xl sm:text-6xl font-display font-black leading-none" id="modal-risk-score">0</span>
-                <span class="text-xs sm:text-sm font-bold text-slate-400 mb-1">/ 10</span>
-              </div>
-              <p class="text-[10px] font-bold uppercase mb-4 flex flex-wrap gap-1" id="modal-risk-types"></p>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3" id="modal-risk-desc"></p>
-            </div>
-            
-            <div class="bg-slate-50 rounded-2xl p-5 sm:p-6 border border-slate-100">
-              <h4 class="font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-4">Escalation Matrix</h4>
-              <div class="space-y-4">
-                <div>
-                  <div class="flex justify-between text-xs font-bold mb-1"><span class="text-slate-500">Urgency</span><span id="modal-urgency-txt" class="uppercase">High</span></div>
-                  <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden"><div id="modal-urgency-bar" class="h-full rounded-full"></div></div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-xs font-bold mb-1"><span class="text-slate-500">Impact Threat</span><span id="modal-impact-txt" class="uppercase">Medium</span></div>
-                  <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden"><div id="modal-impact-bar" class="h-full rounded-full"></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="lg:col-span-2 flex flex-col gap-5 sm:gap-6">
-            <div>
-              <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 mb-2">Executive Summary</h4>
-              <p class="text-sm sm:text-[15px] text-slate-700 leading-relaxed" id="modal-summary"></p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              <div class="bg-blue-50/50 p-4 sm:p-5 rounded-2xl border border-blue-100">
-                <h5 class="font-bold text-[10px] uppercase tracking-widest text-blue-600 mb-2 sm:mb-3 flex items-center gap-2"><i class="ph-bold ph-tree-structure text-sm"></i> Root Cause</h5>
-                <div id="modal-origin" class="flex flex-wrap gap-2"></div>
-              </div>
-              <div class="bg-indigo-50/50 p-4 sm:p-5 rounded-2xl border border-indigo-100">
-                <h5 class="font-bold text-[10px] uppercase tracking-widest text-indigo-600 mb-2 sm:mb-3 flex items-center gap-2"><i class="ph-bold ph-target text-sm"></i> Affected Systems</h5>
-                <div id="modal-affected" class="flex flex-wrap gap-2"></div>
-              </div>
-            </div>
-
-            <div>
-              <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 mb-3 mt-2">Observation & Manifestation</h4>
-              <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-                <div class="bg-slate-50 p-4 sm:p-5 border-b border-slate-100">
-                  <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium" id="modal-how-works"></p>
-                </div>
-                <div class="p-4 sm:p-5">
-                  <h5 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Key Indicators</h5>
-                  <ul class="space-y-2" id="modal-indicators"></ul>
-                </div>
-              </div>
-            </div>
-
-            <div id="modal-sources-section" class="mt-2 hidden">
-              <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 mb-3">Verified Sources</h4>
-              <div id="modal-sources-list" class="flex flex-col gap-2"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-950 py-10 border-t border-slate-800 text-center">
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <i class="ph-fill ph-target text-2xl text-slate-600"></i>
+      <span class="font-display font-bold text-xl tracking-tight text-slate-500">Nexus Radar</span>
     </div>
-  </div>
-
-  <div id="guide-modal" class="fixed inset-0 z-[110] flex items-center justify-center hidden modal-backdrop p-3 sm:p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300 shadow-2xl" id="guide-modal-wrapper">
-      <div class="flex justify-between items-center p-5 sm:p-6 border-b border-slate-100 bg-slate-50">
-        <h3 class="font-display font-bold text-lg sm:text-xl text-slate-900 flex items-center gap-3">
-          <i class="ph-fill ph-book-open-text text-nexus-main"></i> Engine Methodology
-        </h3>
-        <button onclick="closeGuideModal()" class="text-slate-400 hover:text-slate-800 bg-white border border-slate-200 rounded-xl p-2 transition-all"><i class="ph-bold ph-x text-lg"></i></button>
-      </div>
-      <div class="p-5 sm:p-8 overflow-y-auto flex-grow text-xs sm:text-sm text-slate-600 leading-relaxed space-y-5 sm:space-y-6">
-        
-        <div class="bg-nexus-light p-4 sm:p-5 rounded-2xl border border-blue-100 flex items-start gap-4">
-          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 text-white rounded-full flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm"><i class="ph-bold ph-radar"></i></div>
-          <div>
-            <h4 class="font-bold text-slate-900 mb-1">What is Nexus Radar?</h4>
-            <p>An autonomous Open-Source Intelligence (OSINT) platform focused on detecting <strong>Latent Signals</strong>—early warnings of environmental and societal systemic vulnerabilities <em>before</em> they escalate into confirmed disasters.</p>
-          </div>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">The AI Discovery Pipeline</h4>
-          <div class="space-y-3">
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs shrink-0">1</div><p><b>Validation:</b> AI ignores past disasters; exclusively looks for creeping anomalies.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs shrink-0">2</div><p><b>Extraction:</b> Structures text into Domains, Affected Elements, and Urgency metrics.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs shrink-0">3</div><p><b>Threat Assessment:</b> Evaluates potential casualty/catastrophe risk (1-10).</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-teal-100 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0">4</div><p><b>Root Cause Analysis:</b> Determines if the issue is natural, anthropogenic, or systemic.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0">5</div><p><b>Algorithmic Synthesis:</b> Applies Priority Scoring and Critical Flags.</p></div>
-          </div>
-        </div>
-      </div>
+    <p class="text-slate-500 text-sm font-medium">Global Early Warning & Latent Signal Engine &copy; 2026</p>
+    <div class="mt-4 flex justify-center gap-6">
+      <a href="#" class="text-slate-600 hover:text-slate-300 transition-colors"><i class="ph-fill ph-github-logo text-2xl"></i></a>
+      <a href="#" class="text-slate-600 hover:text-slate-300 transition-colors"><i class="ph-fill ph-twitter-logo text-2xl"></i></a>
+      <a href="#" class="text-slate-600 hover:text-slate-300 transition-colors"><i class="ph-fill ph-envelope-simple text-2xl"></i></a>
     </div>
-  </div>
+  </footer>
 
-  <!-- ========================================== -->
-  <!-- JAVASCRIPT LOGIC -->
-  <!-- ========================================== -->
+  <!-- Mobile Menu Script -->
   <script>
-  
-  // Coordinates dictionary for fallback if map data lacks lat/lon
-  const countryCoordinates = {
-    "vietnam": { lat: 14.0583, lon: 108.2772 },
-    "india": { lat: 20.5937, lon: 78.9629 },
-    "indonesia": { lat: -0.7893, lon: 113.9213 },
-    "egypt": { lat: 26.8206, lon: 30.8025 },
-    "japan": { lat: 36.2048, lon: 138.2529 },
-    "usa": { lat: 37.0902, lon: -95.7129 },
-    "united states": { lat: 37.0902, lon: -95.7129 },
-    "bangladesh": { lat: 23.6850, lon: 90.3563 },
-    "global": { lat: 20, lon: 0 }
-  };
-
-  // --- SAMPLE DATA FALLBACK ---
-  const FALLBACK_JSON = [
-    {
-      "id": "13476c61b30eee73ae9a17711e26c469",
-      "timestamp": "2026-04-15T18:17:45.473282",
-      "title": "Mesophotic Coral Ecosystems Losing Thermal Refugia Status",
-      "sources": [
-        "https://www.noaa.gov/news-release/noaa-confirms-4th-global-coral-bleaching-event",
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-      ],
-      "image_url": "https://images.unsplash.com/photo-1546500840-ae38253aba9b?q=80&w=600&auto=format&fit=crop",
-      "summary": "Mesophotic coral reefs at depths of 30m to 150m, historically considered 'thermal refugia' from surface heatwaves, are now experiencing deep-water thermal stress. Observations in the Egyptian Red Sea reveal an inversion of traditional bleaching patterns.",
-      "domain_classification": ["Ocean", "Climate", "Biodiversity"],
-      "location": {"country": "Egypt", "region": "Red Sea", "lat": 26.8206, "lon": 30.8025},
-      "manifestation": {
-        "how_it_is_observed": "Deep water acoustic and diving surveys.",
-        "key_indicators": ["Bleaching observed below 30 meters", "Thermocline penetration by surface heat"]
-      },
-      "potential_impact": {"threat_level": "high", "affected_elements": ["Marine Biodiversity", "Fisheries", "Seed Populations"]},
-      "escalation": {"speed": "medium", "urgency": "high"},
-      "root_cause_analysis": {"root_cause": ["anthropogenic"]},
-      "risk_assessment": {
-        "risk_score": 8, 
-        "risk_type": ["Ecological"], 
-        "explanation": "If deeper corals bleach, the primary natural mechanism for reef repopulation (spawning from depth) will collapse, making ecosystem recovery impossible."
-      },
-      "priority_score": 85,
-      "critical_flag": true
-    },
-    {
-      "id": "e8307b9736872517ae9a17711e26c469",
-      "timestamp": "2026-04-16T09:30:00.000000",
-      "title": "AOD Creep Warning: Latent Biomass Burning Surge",
-      "sources": ["https://earthobservatory.nasa.gov/", "https://youtu.be/jNQXAC9IVRw"],
-      "summary": "Aerosol Optical Depth (AOD) values are creeping upwards from 0.1 toward 0.5 in rural basins, serving as a critical early warning signal for impending large-scale transboundary haze events.",
-      "domain_classification": ["Climate", "Social/Behavioral"],
-      "location": {"country": "Indonesia", "region": "Sumatra/Kalimantan", "lat": -0.7893, "lon": 113.9213},
-      "manifestation": {
-        "how_it_is_observed": "Satellite monitoring detecting fine particulates before ground-level AQI fully degrades.",
-        "key_indicators": ["AOD values rising steadily", "Atmospheric particulate loading"]
-      },
-      "potential_impact": {"threat_level": "medium", "affected_elements": ["Public health", "Regional air quality", "Downwind urban populations"]},
-      "escalation": {"speed": "medium", "urgency": "medium"},
-      "root_cause_analysis": {"root_cause": ["anthropogenic"]},
-      "risk_assessment": {
-        "risk_score": 7, 
-        "risk_type": ["Environmental", "Public Health"], 
-        "explanation": "AOD creep serves as a critical early warning. Without intervention, increased particulate load from slash-and-burn will inevitably trigger severe public health crises in neighboring cities."
-      },
-      "priority_score": 62,
-      "critical_flag": false
-    },
-    {
-      "id": "899405a111223344ae9a17711e26c469",
-      "timestamp": "2026-04-14T14:20:00.000000",
-      "title": "Seafloor Deepening Triggering Anomalous Tidal Flooding",
-      "sources": [],
-      "summary": "The physical collapse of degraded coral reef frameworks has led to measurable seafloor widening and deepening. This altered bathymetry is allowing massive tidal surges to reach the coast without any associated storm activity.",
-      "domain_classification": ["DRR", "Ocean"],
-      "location": {"country": "Global", "region": "Low-lying coastal zones", "lat": 20.0, "lon": 0.0},
-      "manifestation": {
-        "how_it_is_observed": "Bathymetric surveys mapping nearshore depth changes paired with tide gauge data.",
-        "key_indicators": ["Increased tidal amplitude at shore", "Loss of reef friction coefficient"]
-      },
-      "potential_impact": {"threat_level": "high", "affected_elements": ["Coastal Infrastructure", "Human Settlements"]},
-      "escalation": {"speed": "slow", "urgency": "high"},
-      "root_cause_analysis": {"root_cause": ["anthropogenic", "systemic"]},
-      "risk_assessment": {
-        "risk_score": 9, 
-        "risk_type": ["Disaster", "Economic"], 
-        "explanation": "Directly impacts coastal habitation by eroding the natural breakwater. 'Sunny day flooding' will force rapid and unplanned retreat."
-      },
-      "priority_score": 92,
-      "critical_flag": true
-    }
-  ];
-
-  // --- SAMPLE RESUME FALLBACK ---
-  const FALLBACK_RESUME = [
-    {
-      "report_metadata": {
-        "report_id": "nexus-current",
-        "generated_at": "2026-04-16T10:00:00.000000",
-        "period": "Q2 2026",
-        "total_signals_analyzed": 3
-      },
-      "global_summary": {
-        "total_signals": 3,
-        "high_urgency_percentage": 66.7,
-        "anthropogenic_percentage": 100.0
-      },
-      "domain_insights": [
-        { "domain": "Ocean", "count": 2, "key_pattern": "Thermal refugia across depth are collapsing simultaneously." },
-        { "domain": "Climate", "count": 2, "key_pattern": "Aerosol creeping indicates severe transboundary haze risks." },
-        { "domain": "DRR", "count": 1, "key_pattern": "Physical reef degradation directly amplifying coastal flooding." },
-        { "domain": "Social/Behavioral", "count": 1, "key_pattern": "Agricultural land management escalating particulate loads." }
-      ],
-      "geographic_threats": [
-        { "region": "Red Sea", "dominant_issue": "Deep-water (mesophotic) thermal stress", "threat_level": "high" },
-        { "region": "Southeast Asia", "dominant_issue": "AOD creeping and latent haze", "threat_level": "medium" }
-      ],
-      "risk_analysis": {
-        "high_risk_cases": 2,
-        "critical_cases": 2,
-        "top_threats": []
-      },
-      "critical_signals": [
-        { "title": "Mesophotic Coral Ecosystems Losing Thermal Refugia Status", "country": "Egypt", "reason_for_urgency": "Irreversible loss of biodiversity seedbanks at depth." },
-        { "title": "Seafloor Deepening Triggering Anomalous Tidal Flooding", "country": "Global", "reason_for_urgency": "Immediate threat to coastal settlements without storm warnings." }
-      ],
-      "intervention_opportunities": [
-        { "type": "Policy", "target": "Redefine Marine Protected Areas (MPAs) to include mesophotic zones.", "priority_level": "High" },
-        { "type": "Monitoring", "target": "Early intervention tracking for AOD slash-and-burn patterns.", "priority_level": "Medium" }
-      ],
-      "root_cause_insights": {
-        "most_common_cause": "Anthropogenic Climate Change",
-        "observation": "Human-induced warming and land mismanagement have reached a threshold where traditional environmental buffers are failing."
-      },
-      "recommendations": [
-        "Redefine Marine Protected Areas (MPAs) to include mesophotic zones specifically as high-risk areas.",
-        "Implement high-latitude coral monitoring programs to track the collapse of temperate refugia.",
-        "Re-evaluate coastal defense engineering to account for degraded reef friction.",
-        "Develop preemptive strike policies for agricultural burning based on AOD creeping indicators."
-      ],
-      "charts": {
-        "risk_distribution": [
-          { "level": "High", "count": 2 },
-          { "level": "Medium", "count": 1 },
-          { "level": "Low", "count": 0 }
-        ]
-      }
-    }
-  ];
-
-  // STATE
-  let globalData = [];
-  let filteredData = [];
-  let globalResume = [];
-  let map = null, markersLayer = null;
-  let currentPage = 1, itemsPerPage = 20; // Default Show 20
-  let chartInstances = {};
-
-  // --- MOBILE SIDEBAR ---
-  function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('sidebar-overlay');
-    sidebar.classList.toggle('-translate-x-full');
-    overlay.classList.toggle('hidden');
-  }
-
-  // --- INIT DATA ---
-  async function init() {
-    
-    // 1. Fetch Data.json
-    try {
-      const res = await fetch('data.json');
-      if (res.ok) {
-        const raw = await res.json();
-        if (Array.isArray(raw) && raw.length > 0 && Array.isArray(raw[0].domain_classification)) {
-          globalData = raw;
-          console.log("Loaded actual data.json");
-        } else {
-          console.warn("data.json format is invalid or old. Using Fallback.");
-          globalData = FALLBACK_JSON;
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      const nav = document.querySelector('nav div.hidden');
+      if(nav) {
+        nav.classList.remove('hidden');
+        nav.classList.add('flex', 'flex-col', 'absolute', 'top-20', 'left-0', 'w-full', 'bg-white', 'p-6', 'shadow-xl', 'border-b', 'border-slate-200');
+      } else {
+        const openedNav = document.querySelector('nav div.flex-col');
+        if(openedNav) {
+          openedNav.classList.add('hidden');
+          openedNav.classList.remove('flex', 'flex-col', 'absolute', 'top-20', 'left-0', 'w-full', 'bg-white', 'p-6', 'shadow-xl', 'border-b', 'border-slate-200');
         }
-      } else { throw new Error("Fetch failed"); }
-    } catch(e) { 
-      console.warn("Failed to load data.json (CORS/Offline). Using robust fallback samples.", e);
-      globalData = FALLBACK_JSON; 
-    }
-
-    // 2. Fetch Resume.json
-    try {
-      const res = await fetch('resume.json');
-      if (res.ok) {
-        const raw = await res.json();
-        if (Array.isArray(raw) && raw.length > 0 && typeof raw[0].global_summary === 'object') {
-          globalResume = raw;
-          console.log("Loaded actual resume.json");
-        } else { globalResume = FALLBACK_RESUME; }
-      } else { throw new Error("Fetch failed"); }
-    } catch(e) { 
-      console.warn("Failed to load resume.json. Using fallback.");
-      globalResume = FALLBACK_RESUME; 
-    }
-
-    globalData.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
-    
-    renderTopStats();
-    setupFilters(); 
-    applyFilters();
-    populateReportSelector();
-  }
-
-  // --- UI CONTROLS ---
-  function switchTab(tabId) {
-    ['inventory','map','resume'].forEach(t => {
-      document.getElementById(`nav-${t}`).classList.toggle('active', t === tabId);
-      const view = document.getElementById(`view-${t}`);
-      if (t === tabId) { view.classList.remove('hidden'); view.classList.add('flex'); }
-      else { view.classList.add('hidden'); view.classList.remove('flex'); }
-    });
-
-    const titles = {
-      'inventory':['Signal Inventory', 'Real-time latent environmental anomalies.'],
-      'map':['Global Threat Map', 'Geospatial distribution of detected signals.'],
-      'resume':['Intelligence Resume', 'Quarterly synthesis and recommendations.']
-    };
-    document.getElementById('page-title').innerText = titles[tabId][0];
-    document.getElementById('page-title').nextElementSibling.innerText = titles[tabId][1];
-
-    // Close sidebar on mobile
-    const sidebar = document.getElementById('sidebar');
-    if (!sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
-      toggleSidebar();
-    }
-
-    if (tabId === 'map') {
-      if (!map) { initMap(); drawMapElements(); renderMapCharts(); }
-      setTimeout(() => { if(map) map.invalidateSize(); if(chartInstances.domainMap) chartInstances.domainMap.resize(); }, 150);
-    }
-    if (tabId === 'resume') {
-      const sel = document.getElementById('report-selector');
-      if (sel.options.length > 0) loadReport(sel.value);
-      setTimeout(() => resizeAllCharts(), 150);
-    }
-  }
-
-  function renderTopStats() {
-    const critical = globalData.filter(i => i.critical_flag === true).length;
-    document.getElementById('top-stat-critical').innerText = critical;
-  }
-
-  // --- TAB INVENTORY (GRID & PAGINATION) ---
-  function setupFilters() {
-    const selDomain = document.getElementById('filter-domain');
-    const domains = [...new Set(globalData.flatMap(i => Array.isArray(i.domain_classification) ? i.domain_classification : []))].sort();
-    
-    domains.forEach(d => selDomain.add(new Option(d, d)));
-
-    ['filter-domain', 'filter-sort'].forEach(id => 
-      document.getElementById(id).addEventListener('change', () => { currentPage=1; applyFilters(); })
-    );
-
-    // Specific listener for Items Per Page
-    document.getElementById('filter-per-page').addEventListener('change', (e) => {
-      itemsPerPage = parseInt(e.target.value);
-      currentPage = 1;
-      renderGrid();
-    });
-
-    document.getElementById('filter-search').addEventListener('input', () => { currentPage=1; applyFilters(); });
-  }
-
-  function applyFilters() {
-    const term = document.getElementById('filter-search').value.toLowerCase();
-    const domain = document.getElementById('filter-domain').value;
-    const sort = document.getElementById('filter-sort').value;
-
-    let res = [...globalData];
-    
-    if (term) {
-      res = res.filter(i => 
-        (i.title && i.title.toLowerCase().includes(term)) || 
-        (i.summary && i.summary.toLowerCase().includes(term))
-      );
-    }
-    
-    if (domain !== 'all') {
-      res = res.filter(i => Array.isArray(i.domain_classification) && i.domain_classification.includes(domain));
-    }
-
-    if(sort === 'newest') res.sort((a,b) => new Date(b.timestamp)-new Date(a.timestamp));
-    if(sort === 'oldest') res.sort((a,b) => new Date(a.timestamp)-new Date(b.timestamp));
-    if(sort === 'priority') res.sort((a,b) => (parseInt(b.priority_score)||0)-(parseInt(a.priority_score)||0));
-    
-    filteredData = res;
-    renderGrid();
-    if(map) { drawMapElements(); renderMapCharts(); }
-  }
-
-  // Mapping Domain to Visual Styles (Colors & Icons) for Cards
-  function getDomainStyle(d) {
-    if(!d) return { bgClass: 'bg-orange-500', icon: 'ph-radar' };
-    d = String(d).toLowerCase();
-    
-    if(d.includes('biodiversity') || d.includes('ecology')) return { bgClass: 'bg-green-500', icon: 'ph-leaf' };
-    if(d.includes('ocean') || d.includes('water')) return { bgClass: 'bg-blue-500', icon: 'ph-waves' };
-    if(d.includes('climate') || d.includes('air')) return { bgClass: 'bg-sky-500', icon: 'ph-cloud-warning' };
-    if(d.includes('drr') || d.includes('disaster')) return { bgClass: 'bg-red-500', icon: 'ph-shield-warning' };
-    if(d.includes('social') || d.includes('behavioral')) return { bgClass: 'bg-purple-500', icon: 'ph-users' };
-    
-    // Default fallback
-    return { bgClass: 'bg-orange-500', icon: 'ph-radar' };
-  }
-
-  function renderGrid() {
-    const grid = document.getElementById('inventory-grid');
-    grid.innerHTML = '';
-    
-    if (filteredData.length === 0) {
-      grid.innerHTML = `<div class="col-span-full text-center text-slate-400 py-16 bg-white rounded-2xl border border-slate-200 shadow-sm"><i class="ph-fill ph-empty text-5xl mb-3 text-slate-300"></i><p>No signals found matching your search.</p></div>`;
-      document.getElementById('pagination-container').classList.add('hidden');
-      return;
-    }
-
-    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-    if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
-    const pageData = filteredData.slice((currentPage-1)*itemsPerPage, currentPage*itemsPerPage);
-
-    pageData.forEach((item, index) => {
-      const isCritical = item.critical_flag === true;
-      const domainsArr = Array.isArray(item.domain_classification) ? item.domain_classification : ['General'];
-      const mainDomain = domainsArr.length > 0 ? domainsArr[0] : 'General';
-      const secondaryDomains = domainsArr.length > 1 ? ` &bull; ${domainsArr.slice(1).join(', ')}` : '';
-      
-      const domainStyle = getDomainStyle(mainDomain);
-      const pScore = parseInt(item.priority_score) || 0;
-      const riskScore = item.risk_assessment ? (parseInt(item.risk_assessment.risk_score) || 0) : 0;
-      
-      // Progress Bar Colors
-      let pColorBg = 'bg-emerald-500';
-      if (pScore >= 80) pColorBg = 'bg-red-500';
-      else if (pScore >= 50) pColorBg = 'bg-orange-500';
-
-      let rColorBg = 'bg-emerald-500';
-      if (riskScore >= 8) rColorBg = 'bg-red-500';
-      else if (riskScore >= 5) rColorBg = 'bg-orange-500';
-
-      const urgencyObj = item.escalation || {};
-      const urgencyText = (urgencyObj.urgency || 'Unknown').toUpperCase();
-
-      const card = document.createElement('div');
-      card.className = `bg-white rounded-2xl border border-slate-200 shadow-sm card-hover cursor-pointer flex flex-col fade-up overflow-hidden`;
-      card.style.animationDelay = `${(index % itemsPerPage) * 40}ms`;
-      card.onclick = () => openModal(item.id);
-
-      const countryStr = (item.location && item.location.country) ? item.location.country : 'Global';
-      const regionStr = (item.location && item.location.region) ? item.location.region : '-';
-
-      // Re-designed card structure based on reference image
-      card.innerHTML = `
-        <!-- Colored Header with Grid Pattern -->
-        <div class="${domainStyle.bgClass} relative h-40 shrink-0 p-4 sm:p-5 flex flex-col justify-between overflow-hidden">
-            <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
-            
-            <!-- Top Tags -->
-            <div class="relative z-10 flex justify-between items-start">
-                <span class="bg-white text-slate-800 text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase tracking-wider">${urgencyText}</span>
-                ${isCritical ? '<span class="bg-red-600 text-white text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase flex items-center gap-1"><i class="ph-fill ph-warning-octagon"></i> CRITICAL</span>' : '<span class="bg-[#fcd34d] text-yellow-900 text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase flex items-center gap-1"><i class="ph-fill ph-diamonds-four"></i> GEM</span>'}
-            </div>
-
-            <!-- Center Icon -->
-            <div class="relative z-10 flex-grow flex items-center justify-center pt-2">
-                <i class="ph-fill ${domainStyle.icon} text-6xl text-white opacity-95 drop-shadow-md"></i>
-            </div>
-        </div>
-
-        <!-- White Body Content -->
-        <div class="p-4 sm:p-5 flex flex-col flex-grow bg-white">
-            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-2 line-clamp-1">${mainDomain}${secondaryDomains}</p>
-            <h3 class="font-display font-bold text-lg text-slate-900 leading-snug line-clamp-2 mb-2 group-hover:text-nexus-main">${item.title}</h3>
-            <p class="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 mb-3"><i class="ph-bold ph-map-pin"></i> ${countryStr} <span class="text-slate-400 font-normal truncate">(${regionStr})</span></p>
-            <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed mb-4">${item.summary || '-'}</p>
-            
-            <!-- Progress Bars (Footer) -->
-            <div class="mt-auto space-y-3 pt-3 border-t border-slate-100">
-                <div>
-                    <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                        <span>Priority Index</span><span>${pScore} / 100</span>
-                    </div>
-                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                        <div class="h-full ${pColorBg} rounded-full" style="width: ${pScore}%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                        <span>Risk Level</span><span>${riskScore} / 10</span>
-                    </div>
-                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                        <div class="h-full ${rColorBg} rounded-full" style="width: ${riskScore * 10}%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>`;
-      grid.appendChild(card);
-    });
-
-    renderPagination(filteredData.length);
-  }
-
-  function renderPagination(total) {
-    const cont = document.getElementById('pagination-container');
-    if (total <= itemsPerPage && currentPage === 1) { 
-      // Option to hide pagination if not needed
-    }
-    cont.classList.remove('hidden');
-    
-    const totalPages = Math.ceil(total / itemsPerPage) || 1;
-    const start = (currentPage-1)*itemsPerPage+1, end = Math.min(currentPage*itemsPerPage, total);
-    
-    document.getElementById('pagination-info').innerHTML = `Viewing <b class="text-slate-900">${total > 0 ? start : 0}-${end}</b> of <b class="text-slate-900">${total}</b>`;
-    document.getElementById('pagination-buttons').innerHTML = `
-      <button onclick="changePage(-1)" ${currentPage===1?'disabled':''} class="p-2 rounded-lg ${currentPage===1?'text-slate-300':'text-slate-600 hover:bg-slate-100 transition-colors shadow-sm border border-slate-200 bg-white mr-1'}"><i class="ph-bold ph-caret-left"></i> Prev</button>
-      <div class="px-2 sm:px-3 text-xs sm:text-sm font-bold text-slate-700 self-center">Page ${currentPage} / ${totalPages}</div>
-      <button onclick="changePage(1)" ${currentPage===totalPages?'disabled':''} class="p-2 rounded-lg ${currentPage===totalPages?'text-slate-300':'text-slate-600 hover:bg-slate-100 transition-colors shadow-sm border border-slate-200 bg-white ml-1'}">Next <i class="ph-bold ph-caret-right"></i></button>`;
-  }
-  
-  function changePage(dir) { 
-    currentPage += dir; 
-    renderGrid(); 
-    // Scroll to top of grid
-    document.getElementById('view-inventory').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  // --- YOUTUBE PARSER ---
-  function extractYouTubeID(url) {
-    const regExp = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})/;
-    const match = url.match(regExp);
-    return (match && match[1]) ? match[1] : null;
-  }
-
-  // --- MODALS ---
-  function openModal(id) {
-    const item = globalData.find(i => i.id === id);
-    if (!item) return;
-
-    const urgObj = item.escalation || {};
-    const urg = (urgObj.urgency || 'UNKNOWN').toUpperCase();
-    let bHtml = `<span class="bg-slate-100 text-slate-600 text-[9px] sm:text-[10px] font-bold px-2 py-1.5 rounded border border-slate-200">URGENCY: ${urg}</span>`;
-    if(item.critical_flag) bHtml += `<span class="bg-red-100 text-red-700 text-[9px] sm:text-[10px] font-bold px-2 py-1.5 rounded border border-red-200"><i class="ph-fill ph-warning-octagon"></i> CRITICAL THREAT</span>`;
-    document.getElementById('modal-badges').innerHTML = bHtml;
-    
-    document.getElementById('modal-title').innerText = item.title || 'Untitled';
-    const locStr = (item.location && item.location.country) ? item.location.country : 'Global';
-    const regStr = (item.location && item.location.region) ? item.location.region : '-';
-    document.getElementById('modal-location').innerText = `${locStr} (${regStr})`;
-    
-    const strip = document.getElementById('modal-alert-strip');
-    if(item.critical_flag) { strip.classList.remove('hidden'); strip.classList.add('alert-strip'); } else { strip.classList.add('hidden'); }
-
-    const risk = item.risk_assessment || {};
-    const rs = parseInt(risk.risk_score) || 0;
-    document.getElementById('modal-risk-score').innerText = rs;
-    document.getElementById('modal-risk-score').className = `text-5xl sm:text-6xl font-display font-black leading-none ${rs >= 8 ? 'text-red-600' : (rs >= 5 ? 'text-orange-500' : 'text-emerald-500')}`;
-    
-    const riskTypes = Array.isArray(risk.risk_type) ? risk.risk_type : [];
-    document.getElementById('modal-risk-types').innerHTML = riskTypes.map(t=>`<span class="bg-slate-100 text-slate-600 px-2 py-1 rounded shadow-sm border border-slate-200">${t}</span>`).join('');
-    document.getElementById('modal-risk-desc').innerText = risk.explanation || 'No detailed assessment provided.';
-    const rBox = document.getElementById('modal-risk-box');
-    rBox.className = `bg-white rounded-2xl p-5 sm:p-6 border shadow-sm ${rs >= 8 ? 'border-red-200 bg-red-50/50' : 'border-slate-200'}`;
-
-    const impactObj = item.potential_impact || {};
-    const threatLvl = (impactObj.threat_level || 'low').toLowerCase();
-    const urgLvl = (urgObj.urgency || 'low').toLowerCase();
-    
-    const getLvlName = (l) => l==='high'?'High':(l==='medium'?'Medium':'Low');
-    const pctMap = { 'high': '100%', 'medium': '50%', 'low': '20%', 'tinggi': '100%', 'menengah': '50%', 'rendah': '20%' };
-    const colorMap = { 'high': 'bg-red-500', 'medium': 'bg-orange-400', 'low': 'bg-emerald-400', 'tinggi': 'bg-red-500', 'menengah': 'bg-orange-400', 'rendah': 'bg-emerald-400' };
-    
-    document.getElementById('modal-urgency-txt').innerText = getLvlName(urgLvl);
-    document.getElementById('modal-urgency-bar').style.width = pctMap[urgLvl] || '0%';
-    document.getElementById('modal-urgency-bar').className = `h-full rounded-full ${colorMap[urgLvl] || 'bg-slate-400'}`;
-    
-    document.getElementById('modal-impact-txt').innerText = getLvlName(threatLvl);
-    document.getElementById('modal-impact-bar').style.width = pctMap[threatLvl] || '0%';
-    document.getElementById('modal-impact-bar').className = `h-full rounded-full ${colorMap[threatLvl] || 'bg-slate-400'}`;
-
-    document.getElementById('modal-summary').innerText = item.summary || '-';
-    
-    const rootObj = item.root_cause_analysis || {};
-    const roots = Array.isArray(rootObj.root_cause) ? rootObj.root_cause : [];
-    document.getElementById('modal-origin').innerHTML = roots.length ? roots.map(o=>`<span class="bg-white text-blue-700 text-[10px] font-bold px-2 py-1 rounded capitalize border border-blue-200 shadow-sm">${String(o).replace(/_/g,' ')}</span>`).join('') : '<span class="text-xs text-slate-400">Unknown</span>';
-    
-    const elements = Array.isArray(impactObj.affected_elements) ? impactObj.affected_elements : [];
-    document.getElementById('modal-affected').innerHTML = elements.length ? elements.map(e=>`<span class="bg-white text-indigo-700 text-[10px] font-bold px-2 py-1 rounded capitalize border border-indigo-200 shadow-sm">${e}</span>`).join('') : '<span class="text-xs text-slate-400">Unknown</span>';
-
-    const maniObj = item.manifestation || {};
-    document.getElementById('modal-how-works').innerText = maniObj.how_it_is_observed || '-';
-    
-    const indicators = Array.isArray(maniObj.key_indicators) ? maniObj.key_indicators : [];
-    document.getElementById('modal-indicators').innerHTML = indicators.length ? indicators.map(i=>`<li class="flex items-start gap-2 text-xs sm:text-sm text-slate-600"><i class="ph-bold ph-caret-right text-nexus-main mt-1"></i> <span>${i}</span></li>`).join('') : '<li class="text-slate-400 italic text-sm">No specific indicators recorded.</li>';
-
-    // --- Media Carousel (YouTube / Image) ---
-    const mediaContainer = document.getElementById('modal-media-carousel');
-    mediaContainer.innerHTML = '';
-    let hasMedia = false;
-
-    // Insert Image URL if present
-    if (item.image_url) {
-      hasMedia = true;
-      mediaContainer.innerHTML += `
-        <div class="shrink-0 snap-start">
-           <img src="${item.image_url}" alt="Illustration" class="h-48 w-[280px] sm:w-[350px] object-cover rounded-xl border border-slate-200 shadow-sm" onerror="this.style.display='none'">
-        </div>
-      `;
-    }
-
-    // Source Links identification
-    const srcSec = document.getElementById('modal-sources-section');
-    const srcList = document.getElementById('modal-sources-list');
-    srcList.innerHTML = '';
-    const sources = Array.isArray(item.sources) ? item.sources : [];
-    let hasTextSources = false;
-
-    if (sources.length > 0) {
-        sources.forEach(url => {
-            const u = String(url);
-            const ytId = extractYouTubeID(u);
-            
-            if (ytId) {
-                // Render Embedded YouTube Video in Carousel
-                hasMedia = true;
-                mediaContainer.innerHTML += `
-                  <div class="shrink-0 snap-start">
-                    <iframe class="h-48 w-[280px] sm:w-[350px] rounded-xl border border-slate-200 shadow-sm" src="https://www.youtube.com/embed/${ytId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                  </div>
-                `;
-            } else {
-                // Render standard text links
-                hasTextSources = true;
-                srcList.innerHTML += `<a href="${u}" target="_blank" class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-nexus-main hover:bg-nexus-light transition-colors text-xs sm:text-sm text-blue-600 truncate"><i class="ph-fill ph-link-simple text-lg shrink-0"></i><span class="truncate underline">${u}</span></a>`;
-            }
-        });
-    }
-
-    // Toggle Carousel View
-    if (hasMedia) {
-        mediaContainer.classList.remove('hidden');
-    } else {
-        mediaContainer.classList.add('hidden');
-    }
-
-    // Toggle Text Sources View
-    if (hasTextSources) {
-        srcSec.classList.remove('hidden');
-    } else {
-        srcSec.classList.add('hidden');
-    }
-
-    const modal = document.getElementById('item-modal');
-    const wrapper = document.getElementById('modal-content-wrapper');
-    modal.classList.remove('hidden'); void modal.offsetWidth; 
-    modal.classList.remove('opacity-0'); wrapper.classList.remove('scale-95');
-  }
-
-  function closeModal() {
-    const m = document.getElementById('item-modal'), w = document.getElementById('modal-content-wrapper');
-    m.classList.add('opacity-0'); w.classList.add('scale-95'); 
-    
-    // Stop YouTube video playback by clearing innerHTML
-    setTimeout(() => {
-        m.classList.add('hidden');
-        document.getElementById('modal-media-carousel').innerHTML = '';
-    }, 300);
-  }
-  
-  function openGuideModal() {
-    const m = document.getElementById('guide-modal'), w = document.getElementById('guide-modal-wrapper');
-    m.classList.remove('hidden'); void m.offsetWidth; m.classList.remove('opacity-0'); w.classList.remove('scale-95');
-  }
-  function closeGuideModal() {
-    const m = document.getElementById('guide-modal'), w = document.getElementById('guide-modal-wrapper');
-    m.classList.add('opacity-0'); w.classList.add('scale-95'); setTimeout(() => m.classList.add('hidden'), 300);
-  }
-
-  document.addEventListener('keydown', e => {
-    if(e.key==='Escape') { closeModal(); closeGuideModal(); }
-  });
-
-  // --- MAP TAB ---
-  function initMap() {
-    map = L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([20,0],2);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap',subdomains:'abcd',maxZoom:18}).addTo(map);
-  }
-  
-  function drawMapElements() {
-    if(!map) return;
-    if(markersLayer) { map.removeLayer(markersLayer); markersLayer=null; }
-    
-    document.getElementById('map-signal-count').innerText = `${filteredData.length} Signals`;
-    
-    markersLayer = L.markerClusterGroup({
-      chunkedLoading:true, maxClusterRadius:40,
-      iconCreateFunction: c => L.divIcon({html:`<div class="bg-nexus-main text-white w-10 h-10 rounded-full flex items-center justify-center font-display font-bold shadow-lg border-2 border-white">${c.getChildCount()}</div>`,className:'',iconSize:[40,40]})
-    });
-    
-    filteredData.forEach(item => {
-      let lat = item.location && item.location.lat !== null ? parseFloat(item.location.lat) : null;
-      let lon = item.location && item.location.lon !== null ? parseFloat(item.location.lon) : null;
-      
-      // Fallback Logic
-      if (isNaN(lat) || isNaN(lon) || lat === null || lon === null) {
-         const countryStr = item.location && item.location.country ? String(item.location.country).toLowerCase().trim() : "";
-         if (countryCoordinates[countryStr]) {
-            lat = countryCoordinates[countryStr].lat;
-            lon = countryCoordinates[countryStr].lon;
-         } else {
-            lat = (Math.random() - 0.5) * 40; 
-            lon = (Math.random() - 0.5) * 100;
-         }
       }
-      
-      const isCritical = item.critical_flag === true;
-      const htmlIcon = isCritical ? '<div class="pulse-marker"></div>' : '<div class="marker-main" style="background:#0ea5e9; border-radius:50%; animation:none; border:2px solid white; width:14px; height:14px;"></div>';
-      const icon = L.divIcon({className:'', html: htmlIcon, iconSize:[20,20], iconAnchor:[10,10]});
-      
-      const dom = (Array.isArray(item.domain_classification) && item.domain_classification.length > 0) ? item.domain_classification[0] : 'General';
-      L.marker([lat,lon],{icon}).bindPopup(`
-        <div class="w-56 p-1">
-          <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">${dom}</p>
-          <h4 class="font-display font-bold text-sm ${isCritical?'text-red-600':'text-nexus-main'} mb-2 leading-tight">${item.title}</h4>
-          <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed border-t border-slate-100 pt-2">${item.summary||''}</p>
-          <button onclick="openModal('${item.id}')" class="mt-3 w-full bg-slate-100 border border-slate-200 text-slate-700 text-[10px] font-bold py-1.5 rounded-lg hover:bg-slate-200 transition-colors">VIEW DETAILS</button>
-        </div>
-      `).addTo(markersLayer);
     });
-    map.addLayer(markersLayer);
-  }
 
-  function renderMapCharts() {
-    try {
-      if(!chartInstances.domainMap) chartInstances.domainMap = echarts.init(document.getElementById('chart-domain'));
-      const domains = {}; const roots = {};
-      filteredData.forEach(i => {
-          if(Array.isArray(i.domain_classification)) i.domain_classification.forEach(c => domains[c]=(domains[c]||0)+1);
-          if(i.root_cause_analysis && Array.isArray(i.root_cause_analysis.root_cause)) i.root_cause_analysis.root_cause.forEach(r => roots[r]=(roots[r]||0)+1);
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile menu if open
+          const openedNav = document.querySelector('nav div.flex-col');
+          if(openedNav) {
+            openedNav.classList.add('hidden');
+            openedNav.classList.remove('flex', 'flex-col', 'absolute', 'top-20', 'left-0', 'w-full', 'bg-white', 'p-6', 'shadow-xl', 'border-b', 'border-slate-200');
+          }
+        }
       });
-
-      const domArr = Object.entries(domains).sort((a,b)=>b[1]-a[1]).slice(0,6);
-      if(domArr.length > 0) {
-        const maxVal = Math.max(...domArr.map(d=>d[1]), 5);
-        chartInstances.domainMap.hideLoading();
-        chartInstances.domainMap.setOption({
-          color: ['#0ea5e9'], tooltip: { trigger: 'item' },
-          radar: {
-            indicator: domArr.map(d=>({name:String(d[0]).toUpperCase(), max:maxVal})),
-            radius: window.innerWidth < 600 ? '55%' : '65%', splitNumber: 4,
-            axisName: { color: '#64748b', fontSize: 10, fontWeight: 'bold' },
-            splitArea: { areaStyle: { color:['rgba(248,250,252,0.8)', 'rgba(241,245,249,0.8)'] } },
-            axisLine: { lineStyle: { color: '#e2e8f0' } }, splitLine: { lineStyle: { color: '#cbd5e1' } }
-          },
-          series:[{ type: 'radar', symbolSize: 6, data:[{ value: domArr.map(d=>d[1]), name: 'Domain Distribution', areaStyle: { color: 'rgba(14, 165, 233, 0.2)' }, lineStyle: { width: 2 } }] }]
-        });
-      } else { chartInstances.domainMap.showLoading({ text: 'No Data', showSpinner: false }); }
-
-      const rootCont = document.getElementById('root-cause-container');
-      const rootArr = Object.entries(roots).sort((a,b)=>b[1]-a[1]);
-      if(rootArr.length > 0) {
-        const maxRoot = rootArr[0][1];
-        rootCont.innerHTML = rootArr.map(r => {
-          const cleanName = String(r[0]).replace(/_/g,' ').replace(/\b\w/g, l => l.toUpperCase());
-          const pct = (r[1]/maxRoot)*100;
-          return `
-            <div>
-              <div class="flex justify-between text-[10px] sm:text-[11px] font-bold text-slate-700 mb-1.5"><span class="truncate pr-2">${cleanName}</span><span>${r[1]}</span></div>
-              <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden"><div class="h-full rounded-full bg-indigo-500" style="width:${pct}%"></div></div>
-            </div>`;
-        }).join('');
-      } else { rootCont.innerHTML = '<p class="text-sm text-slate-400 italic">No data.</p>'; }
-    } catch(e) { console.warn('Chart Map render error:', e); }
-  }
-
-  // --- RESUME TAB ---
-  function populateReportSelector() {
-    const sel = document.getElementById('report-selector');
-    sel.innerHTML = '';
-    globalResume.forEach((r, i) => {
-      const isCur = r.report_metadata?.report_id === 'gsi-current' || r.report_metadata?.report_id === 'nexus-current';
-      const per = r.report_metadata?.period || `Report ${i+1}`;
-      sel.add(new Option(`${isCur ? '⭐ LATEST: ' : ''}${per}`, i));
-      if(isCur) { sel.value = i; loadReport(i); }
     });
-    if(globalResume.length > 0 && !sel.value) { sel.value = 0; loadReport(0); }
-  }
-
-  function loadReport(idx) {
-    try {
-      const r = globalResume[idx]; if(!r) return;
-      const meta = r.report_metadata||{}; const gs = r.global_summary||{}; 
-      const ra = r.risk_analysis||{}; const ki = r.root_cause_insights||{}; const ch = r.charts||{};
-
-      document.getElementById('resume-meta').innerHTML = `
-        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">Analysis Period</p><p class="font-display font-bold text-lg sm:text-xl text-slate-900">${meta.period||'-'}</p></div>
-        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">Total Signals</p><p class="font-display font-black text-xl sm:text-2xl text-nexus-main">${meta.total_signals_analyzed||0}</p></div>
-        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">High Urgency</p><p class="font-display font-black text-xl sm:text-2xl text-orange-500">${(gs.high_urgency_percentage||0).toFixed(1)}%</p></div>
-        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">Anthropogenic</p><p class="font-display font-black text-xl sm:text-2xl text-red-500">${(gs.anthropogenic_percentage||0).toFixed(1)}%</p></div>
-      `;
-
-      if(!chartInstances.donut) chartInstances.donut = echarts.init(document.getElementById('resume-donut-chart'));
-      const urgData =[{name:'High Urgency', value:gs.high_urgency_percentage||0, itemStyle:{color:'#f97316'}}, {name:'Standard', value:100-(gs.high_urgency_percentage||0), itemStyle:{color:'#cbd5e1'}}];
-      chartInstances.donut.setOption({ series:[{type:'pie', radius:['40%','75%'], data:urgData, label:{show:false}, itemStyle:{borderColor:'#fff', borderWidth:2}}] });
-
-      if(!chartInstances.cat) chartInstances.cat = echarts.init(document.getElementById('resume-cat-chart'));
-      const domInsights = Array.isArray(r.domain_insights) ? r.domain_insights : [];
-      chartInstances.cat.setOption({
-        grid: {top:10, bottom:20, left:10, right:30, containLabel:true},
-        xAxis: {type:'value', splitLine:{lineStyle:{type:'dashed', color:'#e2e8f0'}}},
-        yAxis: {type:'category', data:domInsights.map(d=>d.domain), axisLabel:{fontSize:10, fontWeight:'bold', color:'#475569'}},
-        series:[{ type:'bar', data:domInsights.map(d=>d.count), barWidth:'50%', itemStyle: {color:'#0ea5e9', borderRadius:[0,4,4,0]}, label: {show:true, position:'right', fontWeight:'bold', color:'#1e293b'} }]
-      });
-
-      document.getElementById('resume-risk-stats').innerHTML = `
-        <div class="bg-red-50 border border-red-100 rounded-xl p-3 sm:p-4 text-center"><p class="text-2xl sm:text-3xl font-display font-black text-red-600">${ra.high_risk_cases||0}</p><p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-red-400 mt-1">High Risk</p></div>
-        <div class="bg-rose-50 border border-rose-100 rounded-xl p-3 sm:p-4 text-center"><p class="text-2xl sm:text-3xl font-display font-black text-rose-700">${ra.critical_cases||0}</p><p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-rose-400 mt-1">Critical Tier</p></div>
-      `;
-      
-      if(!chartInstances.risk) chartInstances.risk = echarts.init(document.getElementById('resume-risk-chart'));
-      const rDist = Array.isArray(ch.risk_distribution) ? ch.risk_distribution : []; 
-      const rColors = {High:'#ef4444', Medium:'#f97316', Low:'#10b981', Tinggi:'#ef4444', Menengah:'#f97316', Rendah:'#10b981'};
-      
-      chartInstances.risk.setOption({
-        grid:{top:20, bottom:20, left:0, right:0, containLabel:true},
-        xAxis:{type:'category', data:rDist.map(d=>d.level), axisLabel:{fontWeight:'bold', color:'#64748b'}, axisTick:{show:false}},
-        yAxis:{type:'value', splitLine:{lineStyle:{type:'dashed', color:'#e2e8f0'}}, axisLabel:{fontSize:10, color:'#94a3b8'}},
-        series:[{
-          type: 'bar', 
-          data: rDist.map(d => ({ 
-            value: d.count, 
-            itemStyle: { 
-              color: rColors[d.level] || '#3b82f6', 
-              borderRadius: [4, 4, 0, 0] 
-            } 
-          })), 
-          barWidth:'40%', 
-          label:{show:true, position:'top', fontWeight:'bold', color:'#1e293b'}
-        }]
-      });
-
-      if(!chartInstances.root) chartInstances.root = echarts.init(document.getElementById('resume-root-chart'));
-      const rootPie =[{name: ki.most_common_cause?String(ki.most_common_cause).replace(/_/g,' '):'Anthropogenic', value:gs.anthropogenic_percentage||70}, {name:'Other', value:100-(gs.anthropogenic_percentage||70)}];
-      chartInstances.root.setOption({
-        color:['#14b8a6', '#cbd5e1'], series:[{type:'pie', radius:['40%','70%'], center:['50%','50%'], data:rootPie, label:{show:false}, itemStyle:{borderColor:'#fff', borderWidth:2}}]
-      });
-      document.getElementById('resume-knowledge-insight').innerHTML = `<b class="text-slate-800 font-display">AI Observation:</b> ${ki.observation||'-'}`;
-
-      const sigArr = Array.isArray(r.critical_signals) ? r.critical_signals : [];
-      document.getElementById('resume-gems').innerHTML = sigArr.map(s => `
-        <div class="p-3 sm:p-4 rounded-xl bg-red-50/50 border border-red-100 flex gap-3 sm:gap-4 items-start">
-          <i class="ph-fill ph-warning-circle text-xl sm:text-2xl text-red-500 shrink-0 mt-0.5"></i>
-          <div><p class="font-display font-bold text-xs sm:text-sm text-slate-900">${s.title}</p><p class="text-[8px] sm:text-[9px] font-bold uppercase tracking-widest text-red-500 mt-1 mb-1">${s.country}</p><p class="text-[11px] sm:text-xs text-slate-600 leading-relaxed">${s.reason_for_urgency}</p></div>
-        </div>
-      `).join('') || '<p class="text-sm text-slate-400">No critical signals highlighted in this period.</p>';
-
-      const intArr = Array.isArray(r.intervention_opportunities) ? r.intervention_opportunities : [];
-      document.getElementById('resume-interventions').innerHTML = intArr.map(i => {
-        const pc = (i.priority_level==='High' || i.priority_level==='Tinggi')?'text-red-600 bg-red-50':((i.priority_level==='Medium' || i.priority_level==='Menengah')?'text-orange-600 bg-orange-50':'text-emerald-600 bg-emerald-50');
-        return `<tr><td class="px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-xs font-bold text-slate-700 capitalize whitespace-normal min-w-[80px]">${i.type}</td><td class="px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-xs text-slate-600 whitespace-normal min-w-[150px]">${i.target}</td><td class="px-3 sm:px-4 py-2 sm:py-3 text-right"><span class="text-[8px] sm:text-[9px] font-bold px-2 py-1 rounded uppercase ${pc}">${i.priority_level || 'N/A'}</span></td></tr>`;
-      }).join('') || '<tr><td colspan="3" class="px-4 py-3 text-xs text-slate-400 italic">No targets identified.</td></tr>';
-
-      const recArr = Array.isArray(r.recommendations) ? r.recommendations : [];
-      document.getElementById('resume-recommendations').innerHTML = recArr.map((rec, i) => `
-        <div class="flex gap-3 sm:gap-4 items-start bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4">
-          <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-nexus-main/30 text-nexus-light flex items-center justify-center font-bold text-[10px] sm:text-xs shrink-0">${i+1}</div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${rec}</p>
-        </div>
-      `).join('') || '<p class="text-sm text-slate-400 italic">No recommendations.</p>';
-    } catch(e) { 
-      console.warn('Error loading report:', e); 
-    }
-  }
-
-  function resizeAllCharts() {
-    if(chartInstances.domainMap) chartInstances.domainMap.resize();
-    ['donut','cat','risk','root'].forEach(c => { 
-      if(chartInstances[c]) chartInstances[c].resize(); 
-    });
-  }
-
-  window.addEventListener('resize', resizeAllCharts);
-
-  window.onload = init;
   </script>
 </body>
 </html>
