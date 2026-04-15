@@ -254,5 +254,133 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "e8307b97204a179a8f151a3f289f6f0b",
+        "timestamp": "2026-04-15T18:25:55.457706",
+        "title": "Small-Scale Thermal Anomalies as Latent Signals for Regional Haze",
+        "sources": [
+            "https://firms.modaps.eosdis.nasa.gov/",
+            "https://firms.modaps.eosdis.nasa.gov/map/",
+            "https://earthdata.nasa.gov/data/tool-feature/firms-new-features-identify-active-fires-type",
+            "https://earthdata.nasa.gov/learn/articles/firms-lfta-landsat-fire-thermal-anomaly"
+        ],
+        "image_url": "",
+        "summary": "High-resolution satellite sensors detect isolated thermal hotspots in agricultural and forest zones during the early dry season. These 'test burns' or small-scale clearing fires serve as a latent signal for impending large-scale slash-and-burn events and subsequent regional haze crises, allowing for prediction before smoke becomes visible to the naked eye or reaches urban centers.",
+        "domain_classification": [
+            "DRR",
+            "Climate",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Global",
+            "region": "Agricultural zones and forest peripheries",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Detection of isolated thermal pixels via high-resolution satellite sensors like NASA's FIRMS.",
+            "key_indicators": [
+                "Isolated thermal pixels in agricultural zones",
+                "Hotspots on the periphery of protected forests",
+                "Frequency and clustering of anomalies in early dry season",
+                "Small-scale 'test burns'"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Regional air quality",
+                "Public health in urban centers",
+                "Forest ecosystems",
+                "Regional visibility and transportation"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Public Health",
+                "Air Quality"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The detection of clustered thermal anomalies serves as a leading indicator for large-scale slash-and-burn events. If these 'test burns' are not addressed through enforcement or land management, they inevitably escalate into regional haze crises and uncontrolled wildfires, posing significant threats to respiratory health, local economies, and forest ecosystems."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "ee0fc6b104353265f29b2d2c15e024bc",
+        "timestamp": "2026-04-15T18:26:14.277220",
+        "title": "Aerosol Optical Depth (AOD) Creep",
+        "sources": [
+            "https://modis.gsfc.nasa.gov/",
+            "https://aaqr.org/articles/aaqr-2015-10-0589",
+            "https://earthobservatory.nasa.gov/global-maps/MODAL2_M_AER_OD",
+            "https://www.earthdata.nasa.gov/sensors/viirs",
+            "https://earthdata.nasa.gov/learn/pathfinders/health-and-air-quality-data-pathfinder/aerosol-optical-depth"
+        ],
+        "image_url": "https://earthobservatory.nasa.gov/images/82061/aerosol-optical-depth-map.jpg",
+        "summary": "AOD creep is a latent atmospheric signal where satellite sensors detect rising concentrations of fine particles before visible haze forms. It serves as an early indicator of biomass burning from slash-and-burn farming, often preceding ground-level air quality alerts by days or weeks.",
+        "domain_classification": [
+            "Climate",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Global",
+            "region": "Rural agricultural basins",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Satellite-based monitoring of light extinction in the atmosphere using MODIS or VIIRS instruments.",
+            "key_indicators": [
+                "AOD values rising from 0.1 toward 0.5 or higher",
+                "Atmospheric particulate loading",
+                "Detection of fine particles prior to ground-level AQI degradation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Public health",
+                "Regional air quality",
+                "Downwind urban populations",
+                "Agricultural land management"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Environmental",
+                "Public Health"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "AOD creep serves as a critical early warning signal for impending large-scale haze events. If the increasing particulate load from biomass burning is not addressed, it will inevitably lead to severe air quality degradation, triggering public health crises in neighboring urban centers and causing significant ecological damage."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
