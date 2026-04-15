@@ -126,5 +126,133 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "899405a1664fdb7398c83c9f607af8dd",
+        "timestamp": "2026-04-15T18:21:06.607384",
+        "title": "Seafloor Deepening from Coral Reef Structural Collapse",
+        "sources": [
+            "https://www.mongabay.com/2026/03/florida-reefs-coastal-flood-risk/",
+            "https://theinvadingsea.com/2026/01/18/catastrophic-heat-wave-wiped-out-2-endangered-corals-in-the-florida-keys-now-what/",
+            "https://www.usgs.gov/news/floridas-fading-coral-reefs-could-sharply-increase-coastal-flood-risk"
+        ],
+        "image_url": "",
+        "summary": "Researchers have identified a latent signal of 'seafloor deepening' in the Florida Keys and Southwest Florida caused by the structural collapse of offshore coral reefs. As these reefs lose vertical height, they fail to attenuate wave energy, allowing larger waves to reach the shore even during calm weather. This phenomenon led to a sudden coastal shift in April 2026, where beaches in Bonita Springs and Sanibel Island retreated up to 45 feet inland within days, bypassing traditional storm-surge models.",
+        "domain_classification": [
+            "DRR",
+            "Ocean",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Florida Keys and Southwest Florida",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Loss of vertical height in offshore reefs leading to increased water depth and wave energy reaching the coastline during non-storm conditions.",
+            "key_indicators": [
+                "Seafloor depth increase",
+                "Coral reef structural degradation",
+                "Loss of wave attenuation",
+                "Rapid shoreline retreat without storm events"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Coastal infrastructure",
+                "Beach ecosystems",
+                "Residential properties",
+                "Tourism economy",
+                "Storm-surge modeling accuracy"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Coastal Erosion",
+                "Environmental Degradation",
+                "Infrastructure Risk"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The structural collapse of coral reefs acting as natural breakwaters creates a 'seafloor deepening' effect that allows high-energy waves to reach the shore unimpeded. This leads to rapid, catastrophic coastal erosion even in the absence of storm events, bypassing current predictive models and threatening coastal communities with sudden, irreversible land loss."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "a3648da624bd294fb1b0685db0609c2e",
+        "timestamp": "2026-04-15T18:21:36.547688",
+        "title": "Critical Slowing Down in Sundarbans Mangrove Forest",
+        "sources": [
+            "https://www.downtoearth.org.in/news/climate-change/up-to-15-of-sundarbans-losing-ability-to-recover-from-climate-stress-over-25-years-research-shows",
+            "https://www.preprints.org/manuscript/202508.1014/v1",
+            "https://www.climatefactchecks.org/new-study-finds-climate-stress-is-weakening-sundarbans-resilience/"
+        ],
+        "image_url": "",
+        "summary": "A mathematical signal known as 'critical slowing down' has been detected in 10-15% of the Sundarbans, indicating a loss of ecosystem resilience. While the forest appears healthy in satellite imagery, the statistical recovery time from environmental stresses like salinity shifts has lengthened significantly over 25 years, suggesting the ecosystem is approaching a tipping point toward irreversible collapse.",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate",
+            "Water"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Bangladesh and India",
+            "region": "Sundarbans",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Statistical analysis of recovery time following minor environmental perturbations such as salinity shifts and tidal flooding.",
+            "key_indicators": [
+                "Critical slowing down signal",
+                "Lengthening recovery time",
+                "Internal instability threshold",
+                "Latent resilience loss"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Mangrove ecosystem structure",
+                "Coastal protection services",
+                "Regional biodiversity",
+                "Carbon sequestration capacity"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological Collapse",
+                "Environmental Disaster"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The detection of 'critical slowing down' is a scientifically recognized precursor to a regime shift or ecosystem tipping point. While the forest currently appears healthy, the statistical loss of resilience over 25 years indicates that the Sundarbans is losing its capacity to self-repair. A collapse of this mangrove system would remove a vital buffer against cyclones for millions of people, lead to massive carbon emissions, and cause irreversible biodiversity loss. Intervention is required before the system crosses the threshold of instability."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
