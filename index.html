@@ -52,6 +52,14 @@
     .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01); }
     
+    /* Blueprint Grid Pattern for Cards */
+    .bg-grid-pattern {
+      background-size: 24px 24px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px), 
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    }
+
     .nav-item { transition: all 0.2s ease; cursor: pointer; }
     .nav-item.active { background-color: #f0f9ff; color: #0ea5e9; border-right: 3px solid #0ea5e9; font-weight: 600; }
     .nav-item:not(.active):hover { background-color: #f1f5f9; color: #334155; }
@@ -64,6 +72,10 @@
     .animate-slide { animation: slideIn 0.4s ease forwards; }
 
     .modal-backdrop { backdrop-filter: blur(5px); background-color: rgba(15, 23, 42, 0.6); }
+
+    /* Custom scrollbar for carousel */
+    .media-carousel::-webkit-scrollbar { height: 6px; }
+    .media-carousel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
   </style>
 </head>
 <body class="flex h-screen overflow-hidden">
@@ -160,10 +172,16 @@
               <option value="newest">Latest Detected</option>
               <option value="oldest">Oldest Detected</option>
             </select>
+            <!-- Pagination Limit Option -->
+            <select id="filter-per-page" class="bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 sm:py-2.5 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-nexus-main cursor-pointer min-w-[130px]">
+              <option value="20">Show 20</option>
+              <option value="50">Show 50</option>
+              <option value="100">Show 100</option>
+            </select>
           </div>
         </div>
 
-        <div id="inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"></div>
+        <div id="inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
         
         <div id="pagination-container" class="flex items-center justify-between bg-white border border-slate-200 p-3 rounded-xl shadow-sm hidden">
           <div class="text-xs sm:text-sm text-slate-500 font-medium px-2" id="pagination-info"></div>
@@ -198,7 +216,7 @@
       </div>
 
       <!-- ========================================== -->
-      <!-- TAB 3: INTELLIGENCE RESUME -->
+      <!-- TAB 3: INTEL RESUME -->
       <!-- ========================================== -->
       <div id="view-resume" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
         
@@ -293,6 +311,12 @@
       </div>
       
       <div class="p-5 sm:p-8 overflow-y-auto flex-grow bg-white">
+        
+        <!-- Media Carousel: Image + YouTube -->
+        <div id="modal-media-carousel" class="media-carousel flex gap-4 overflow-x-auto pb-4 mb-6 hidden snap-x items-center">
+            <!-- Content loaded via JS -->
+        </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           
           <div class="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
@@ -398,7 +422,7 @@
   <!-- ========================================== -->
   <script>
   
-  // Kamus Koordinat Fallback untuk Negara (jika lat/lon null dari API)
+  // Coordinates dictionary for fallback if map data lacks lat/lon
   const countryCoordinates = {
     "vietnam": { lat: 14.0583, lon: 108.2772 },
     "india": { lat: 20.5937, lon: 78.9629 },
@@ -411,13 +435,17 @@
     "global": { lat: 20, lon: 0 }
   };
 
-  // --- SAMPLE DATA FALLBACK (3 Comprehensive Objects) ---
+  // --- SAMPLE DATA FALLBACK ---
   const FALLBACK_JSON = [
     {
       "id": "13476c61b30eee73ae9a17711e26c469",
       "timestamp": "2026-04-15T18:17:45.473282",
       "title": "Mesophotic Coral Ecosystems Losing Thermal Refugia Status",
-      "sources": ["https://www.noaa.gov/news-release/noaa-confirms-4th-global-coral-bleaching-event"],
+      "sources": [
+        "https://www.noaa.gov/news-release/noaa-confirms-4th-global-coral-bleaching-event",
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1546500840-ae38253aba9b?q=80&w=600&auto=format&fit=crop",
       "summary": "Mesophotic coral reefs at depths of 30m to 150m, historically considered 'thermal refugia' from surface heatwaves, are now experiencing deep-water thermal stress. Observations in the Egyptian Red Sea reveal an inversion of traditional bleaching patterns.",
       "domain_classification": ["Ocean", "Climate", "Biodiversity"],
       "location": {"country": "Egypt", "region": "Red Sea", "lat": 26.8206, "lon": 30.8025},
@@ -440,7 +468,7 @@
       "id": "e8307b9736872517ae9a17711e26c469",
       "timestamp": "2026-04-16T09:30:00.000000",
       "title": "AOD Creep Warning: Latent Biomass Burning Surge",
-      "sources": ["https://earthobservatory.nasa.gov/"],
+      "sources": ["https://earthobservatory.nasa.gov/", "https://youtu.be/jNQXAC9IVRw"],
       "summary": "Aerosol Optical Depth (AOD) values are creeping upwards from 0.1 toward 0.5 in rural basins, serving as a critical early warning signal for impending large-scale transboundary haze events.",
       "domain_classification": ["Climate", "Social/Behavioral"],
       "location": {"country": "Indonesia", "region": "Sumatra/Kalimantan", "lat": -0.7893, "lon": 113.9213},
@@ -546,7 +574,7 @@
   let filteredData = [];
   let globalResume = [];
   let map = null, markersLayer = null;
-  let currentPage = 1, itemsPerPage = 9;
+  let currentPage = 1, itemsPerPage = 20; // Default Show 20
   let chartInstances = {};
 
   // --- MOBILE SIDEBAR ---
@@ -574,7 +602,6 @@
         }
       } else { throw new Error("Fetch failed"); }
     } catch(e) { 
-      // Penting: Jika dibuka via file:// tanpa live server, fetch akan error CORS
       console.warn("Failed to load data.json (CORS/Offline). Using robust fallback samples.", e);
       globalData = FALLBACK_JSON; 
     }
@@ -619,7 +646,7 @@
     document.getElementById('page-title').innerText = titles[tabId][0];
     document.getElementById('page-title').nextElementSibling.innerText = titles[tabId][1];
 
-    // Close sidebar on mobile after tab click
+    // Close sidebar on mobile
     const sidebar = document.getElementById('sidebar');
     if (!sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
       toggleSidebar();
@@ -641,7 +668,7 @@
     document.getElementById('top-stat-critical').innerText = critical;
   }
 
-  // --- INVENTORY TAB (GRID) ---
+  // --- TAB INVENTORY (GRID & PAGINATION) ---
   function setupFilters() {
     const selDomain = document.getElementById('filter-domain');
     const domains = [...new Set(globalData.flatMap(i => Array.isArray(i.domain_classification) ? i.domain_classification : []))].sort();
@@ -651,6 +678,14 @@
     ['filter-domain', 'filter-sort'].forEach(id => 
       document.getElementById(id).addEventListener('change', () => { currentPage=1; applyFilters(); })
     );
+
+    // Specific listener for Items Per Page
+    document.getElementById('filter-per-page').addEventListener('change', (e) => {
+      itemsPerPage = parseInt(e.target.value);
+      currentPage = 1;
+      renderGrid();
+    });
+
     document.getElementById('filter-search').addEventListener('input', () => { currentPage=1; applyFilters(); });
   }
 
@@ -681,15 +716,19 @@
     if(map) { drawMapElements(); renderMapCharts(); }
   }
 
-  function getDomainColor(d) {
-    if(!d) return 'bg-slate-50 text-slate-600 border-slate-200';
+  // Mapping Domain to Visual Styles (Colors & Icons) for Cards
+  function getDomainStyle(d) {
+    if(!d) return { bgClass: 'bg-orange-500', icon: 'ph-radar' };
     d = String(d).toLowerCase();
-    if(d.includes('ocean')) return 'bg-cyan-50 text-cyan-600 border-cyan-200';
-    if(d.includes('drr')) return 'bg-orange-50 text-orange-600 border-orange-200';
-    if(d.includes('climate')) return 'bg-sky-50 text-sky-600 border-sky-200';
-    if(d.includes('bio')) return 'bg-emerald-50 text-emerald-600 border-emerald-200';
-    if(d.includes('water')) return 'bg-blue-50 text-blue-600 border-blue-200';
-    return 'bg-purple-50 text-purple-600 border-purple-200';
+    
+    if(d.includes('biodiversity') || d.includes('ecology')) return { bgClass: 'bg-green-500', icon: 'ph-leaf' };
+    if(d.includes('ocean') || d.includes('water')) return { bgClass: 'bg-blue-500', icon: 'ph-waves' };
+    if(d.includes('climate') || d.includes('air')) return { bgClass: 'bg-sky-500', icon: 'ph-cloud-warning' };
+    if(d.includes('drr') || d.includes('disaster')) return { bgClass: 'bg-red-500', icon: 'ph-shield-warning' };
+    if(d.includes('social') || d.includes('behavioral')) return { bgClass: 'bg-purple-500', icon: 'ph-users' };
+    
+    // Default fallback
+    return { bgClass: 'bg-orange-500', icon: 'ph-radar' };
   }
 
   function renderGrid() {
@@ -697,7 +736,7 @@
     grid.innerHTML = '';
     
     if (filteredData.length === 0) {
-      grid.innerHTML = `<div class="col-span-full text-center text-slate-400 py-16 bg-white rounded-2xl border border-slate-200 shadow-sm"><i class="ph-fill ph-empty text-5xl mb-3 text-slate-300"></i><p>No signals found matching your criteria.</p></div>`;
+      grid.innerHTML = `<div class="col-span-full text-center text-slate-400 py-16 bg-white rounded-2xl border border-slate-200 shadow-sm"><i class="ph-fill ph-empty text-5xl mb-3 text-slate-300"></i><p>No signals found matching your search.</p></div>`;
       document.getElementById('pagination-container').classList.add('hidden');
       return;
     }
@@ -708,37 +747,78 @@
 
     pageData.forEach((item, index) => {
       const isCritical = item.critical_flag === true;
-      const mainDomain = (Array.isArray(item.domain_classification) && item.domain_classification.length > 0) ? item.domain_classification[0] : 'General';
-      const domColor = getDomainColor(mainDomain);
-      const pScore = parseInt(item.priority_score) || 0;
+      const domainsArr = Array.isArray(item.domain_classification) ? item.domain_classification : ['General'];
+      const mainDomain = domainsArr.length > 0 ? domainsArr[0] : 'General';
+      const secondaryDomains = domainsArr.length > 1 ? ` &bull; ${domainsArr.slice(1).join(', ')}` : '';
       
-      let pColor = 'text-slate-800';
-      let borderStrip = 'bg-slate-200';
-      if (pScore >= 80) { pColor = 'text-red-600'; borderStrip = 'bg-red-500'; }
-      else if (pScore >= 50) { pColor = 'text-orange-500'; borderStrip = 'bg-orange-400'; }
-      else { pColor = 'text-emerald-600'; borderStrip = 'bg-emerald-400'; }
+      const domainStyle = getDomainStyle(mainDomain);
+      const pScore = parseInt(item.priority_score) || 0;
+      const riskScore = item.risk_assessment ? (parseInt(item.risk_assessment.risk_score) || 0) : 0;
+      
+      // Progress Bar Colors
+      let pColorBg = 'bg-emerald-500';
+      if (pScore >= 80) pColorBg = 'bg-red-500';
+      else if (pScore >= 50) pColorBg = 'bg-orange-500';
+
+      let rColorBg = 'bg-emerald-500';
+      if (riskScore >= 8) rColorBg = 'bg-red-500';
+      else if (riskScore >= 5) rColorBg = 'bg-orange-500';
+
+      const urgencyObj = item.escalation || {};
+      const urgencyText = (urgencyObj.urgency || 'Unknown').toUpperCase();
 
       const card = document.createElement('div');
-      card.className = `bg-white rounded-2xl border border-slate-200 shadow-sm card-hover cursor-pointer flex flex-col fade-up overflow-hidden relative`;
+      card.className = `bg-white rounded-2xl border border-slate-200 shadow-sm card-hover cursor-pointer flex flex-col fade-up overflow-hidden`;
       card.style.animationDelay = `${(index % itemsPerPage) * 40}ms`;
       card.onclick = () => openModal(item.id);
 
       const countryStr = (item.location && item.location.country) ? item.location.country : 'Global';
       const regionStr = (item.location && item.location.region) ? item.location.region : '-';
 
+      // Re-designed card structure based on reference image
       card.innerHTML = `
-        <div class="absolute top-0 left-0 bottom-0 w-1.5 ${borderStrip}"></div>
-        <div class="p-4 sm:p-5 pl-5 sm:pl-6 flex flex-col flex-grow">
-          <div class="flex justify-between items-start mb-3">
-            <span class="${domColor} text-[9px] sm:text-[10px] font-bold px-2 py-1 rounded-md uppercase border shadow-sm">${mainDomain}</span>
-            <div class="flex items-center gap-1">
-              <span class="text-[9px] sm:text-[10px] font-bold uppercase text-slate-400">Score</span>
-              <span class="font-display font-black text-base sm:text-lg ${pColor} leading-none">${pScore}</span>
+        <!-- Colored Header with Grid Pattern -->
+        <div class="${domainStyle.bgClass} relative h-40 shrink-0 p-4 sm:p-5 flex flex-col justify-between overflow-hidden">
+            <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+            
+            <!-- Top Tags -->
+            <div class="relative z-10 flex justify-between items-start">
+                <span class="bg-white text-slate-800 text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase tracking-wider">${urgencyText}</span>
+                ${isCritical ? '<span class="bg-red-600 text-white text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase flex items-center gap-1"><i class="ph-fill ph-warning-octagon"></i> CRITICAL</span>' : '<span class="bg-[#fcd34d] text-yellow-900 text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase flex items-center gap-1"><i class="ph-fill ph-diamonds-four"></i> GEM</span>'}
             </div>
-          </div>
-          <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 leading-snug line-clamp-2 mb-2 group-hover:text-nexus-main">${item.title}</h3>
-          <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium flex items-center gap-1.5 mb-3"><i class="ph-bold ph-map-pin"></i> ${countryStr} <span class="text-slate-400 font-normal">(${regionStr})</span></p>
-          <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed border-t border-slate-100 pt-3">${item.summary || '-'}</p>
+
+            <!-- Center Icon -->
+            <div class="relative z-10 flex-grow flex items-center justify-center pt-2">
+                <i class="ph-fill ${domainStyle.icon} text-6xl text-white opacity-95 drop-shadow-md"></i>
+            </div>
+        </div>
+
+        <!-- White Body Content -->
+        <div class="p-4 sm:p-5 flex flex-col flex-grow bg-white">
+            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-2 line-clamp-1">${mainDomain}${secondaryDomains}</p>
+            <h3 class="font-display font-bold text-lg text-slate-900 leading-snug line-clamp-2 mb-2 group-hover:text-nexus-main">${item.title}</h3>
+            <p class="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 mb-3"><i class="ph-bold ph-map-pin"></i> ${countryStr} <span class="text-slate-400 font-normal truncate">(${regionStr})</span></p>
+            <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed mb-4">${item.summary || '-'}</p>
+            
+            <!-- Progress Bars (Footer) -->
+            <div class="mt-auto space-y-3 pt-3 border-t border-slate-100">
+                <div>
+                    <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+                        <span>Priority Index</span><span>${pScore} / 100</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                        <div class="h-full ${pColorBg} rounded-full" style="width: ${pScore}%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+                        <span>Risk Level</span><span>${riskScore} / 10</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                        <div class="h-full ${rColorBg} rounded-full" style="width: ${riskScore * 10}%"></div>
+                    </div>
+                </div>
+            </div>
         </div>`;
       grid.appendChild(card);
     });
@@ -748,19 +828,34 @@
 
   function renderPagination(total) {
     const cont = document.getElementById('pagination-container');
-    if (total <= itemsPerPage) { cont.classList.add('hidden'); return; }
+    if (total <= itemsPerPage && currentPage === 1) { 
+      // Option to hide pagination if not needed
+    }
     cont.classList.remove('hidden');
     
-    const totalPages = Math.ceil(total / itemsPerPage);
+    const totalPages = Math.ceil(total / itemsPerPage) || 1;
     const start = (currentPage-1)*itemsPerPage+1, end = Math.min(currentPage*itemsPerPage, total);
     
-    document.getElementById('pagination-info').innerHTML = `Viewing <b class="text-slate-900">${start}-${end}</b> of <b class="text-slate-900">${total}</b>`;
+    document.getElementById('pagination-info').innerHTML = `Viewing <b class="text-slate-900">${total > 0 ? start : 0}-${end}</b> of <b class="text-slate-900">${total}</b>`;
     document.getElementById('pagination-buttons').innerHTML = `
-      <button onclick="changePage(-1)" ${currentPage===1?'disabled':''} class="p-2 rounded-lg ${currentPage===1?'text-slate-300':'text-slate-600 hover:bg-slate-100'}"><i class="ph-bold ph-caret-left"></i></button>
+      <button onclick="changePage(-1)" ${currentPage===1?'disabled':''} class="p-2 rounded-lg ${currentPage===1?'text-slate-300':'text-slate-600 hover:bg-slate-100 transition-colors shadow-sm border border-slate-200 bg-white mr-1'}"><i class="ph-bold ph-caret-left"></i> Prev</button>
       <div class="px-2 sm:px-3 text-xs sm:text-sm font-bold text-slate-700 self-center">Page ${currentPage} / ${totalPages}</div>
-      <button onclick="changePage(1)" ${currentPage===totalPages?'disabled':''} class="p-2 rounded-lg ${currentPage===totalPages?'text-slate-300':'text-slate-600 hover:bg-slate-100'}"><i class="ph-bold ph-caret-right"></i></button>`;
+      <button onclick="changePage(1)" ${currentPage===totalPages?'disabled':''} class="p-2 rounded-lg ${currentPage===totalPages?'text-slate-300':'text-slate-600 hover:bg-slate-100 transition-colors shadow-sm border border-slate-200 bg-white ml-1'}">Next <i class="ph-bold ph-caret-right"></i></button>`;
   }
-  function changePage(dir) { currentPage += dir; renderGrid(); }
+  
+  function changePage(dir) { 
+    currentPage += dir; 
+    renderGrid(); 
+    // Scroll to top of grid
+    document.getElementById('view-inventory').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // --- YOUTUBE PARSER ---
+  function extractYouTubeID(url) {
+    const regExp = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})/;
+    const match = url.match(regExp);
+    return (match && match[1]) ? match[1] : null;
+  }
 
   // --- MODALS ---
   function openModal(id) {
@@ -795,14 +890,16 @@
     const impactObj = item.potential_impact || {};
     const threatLvl = (impactObj.threat_level || 'low').toLowerCase();
     const urgLvl = (urgObj.urgency || 'low').toLowerCase();
-    const pctMap = { 'high': '100%', 'medium': '50%', 'low': '20%' };
-    const colorMap = { 'high': 'bg-red-500', 'medium': 'bg-orange-400', 'low': 'bg-emerald-400' };
     
-    document.getElementById('modal-urgency-txt').innerText = urgLvl;
+    const getLvlName = (l) => l==='high'?'High':(l==='medium'?'Medium':'Low');
+    const pctMap = { 'high': '100%', 'medium': '50%', 'low': '20%', 'tinggi': '100%', 'menengah': '50%', 'rendah': '20%' };
+    const colorMap = { 'high': 'bg-red-500', 'medium': 'bg-orange-400', 'low': 'bg-emerald-400', 'tinggi': 'bg-red-500', 'menengah': 'bg-orange-400', 'rendah': 'bg-emerald-400' };
+    
+    document.getElementById('modal-urgency-txt').innerText = getLvlName(urgLvl);
     document.getElementById('modal-urgency-bar').style.width = pctMap[urgLvl] || '0%';
     document.getElementById('modal-urgency-bar').className = `h-full rounded-full ${colorMap[urgLvl] || 'bg-slate-400'}`;
     
-    document.getElementById('modal-impact-txt').innerText = threatLvl;
+    document.getElementById('modal-impact-txt').innerText = getLvlName(threatLvl);
     document.getElementById('modal-impact-bar').style.width = pctMap[threatLvl] || '0%';
     document.getElementById('modal-impact-bar').className = `h-full rounded-full ${colorMap[threatLvl] || 'bg-slate-400'}`;
 
@@ -821,19 +918,62 @@
     const indicators = Array.isArray(maniObj.key_indicators) ? maniObj.key_indicators : [];
     document.getElementById('modal-indicators').innerHTML = indicators.length ? indicators.map(i=>`<li class="flex items-start gap-2 text-xs sm:text-sm text-slate-600"><i class="ph-bold ph-caret-right text-nexus-main mt-1"></i> <span>${i}</span></li>`).join('') : '<li class="text-slate-400 italic text-sm">No specific indicators recorded.</li>';
 
+    // --- Media Carousel (YouTube / Image) ---
+    const mediaContainer = document.getElementById('modal-media-carousel');
+    mediaContainer.innerHTML = '';
+    let hasMedia = false;
+
+    // Insert Image URL if present
+    if (item.image_url) {
+      hasMedia = true;
+      mediaContainer.innerHTML += `
+        <div class="shrink-0 snap-start">
+           <img src="${item.image_url}" alt="Illustration" class="h-48 w-[280px] sm:w-[350px] object-cover rounded-xl border border-slate-200 shadow-sm" onerror="this.style.display='none'">
+        </div>
+      `;
+    }
+
+    // Source Links identification
     const srcSec = document.getElementById('modal-sources-section');
     const srcList = document.getElementById('modal-sources-list');
     srcList.innerHTML = '';
     const sources = Array.isArray(item.sources) ? item.sources : [];
+    let hasTextSources = false;
+
     if (sources.length > 0) {
-        srcSec.classList.remove('hidden');
         sources.forEach(url => {
             const u = String(url);
-            const isVid = u.includes('youtube') || u.includes('youtu.be');
-            const icon = isVid ? 'ph-youtube-logo text-red-500' : 'ph-link-simple text-blue-500';
-            srcList.innerHTML += `<a href="${u}" target="_blank" class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-nexus-main hover:bg-nexus-light transition-colors text-xs sm:text-sm text-blue-600 truncate"><i class="ph-fill ${icon} text-lg shrink-0"></i><span class="truncate underline">${u}</span></a>`;
+            const ytId = extractYouTubeID(u);
+            
+            if (ytId) {
+                // Render Embedded YouTube Video in Carousel
+                hasMedia = true;
+                mediaContainer.innerHTML += `
+                  <div class="shrink-0 snap-start">
+                    <iframe class="h-48 w-[280px] sm:w-[350px] rounded-xl border border-slate-200 shadow-sm" src="https://www.youtube.com/embed/${ytId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                `;
+            } else {
+                // Render standard text links
+                hasTextSources = true;
+                srcList.innerHTML += `<a href="${u}" target="_blank" class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-nexus-main hover:bg-nexus-light transition-colors text-xs sm:text-sm text-blue-600 truncate"><i class="ph-fill ph-link-simple text-lg shrink-0"></i><span class="truncate underline">${u}</span></a>`;
+            }
         });
-    } else { srcSec.classList.add('hidden'); }
+    }
+
+    // Toggle Carousel View
+    if (hasMedia) {
+        mediaContainer.classList.remove('hidden');
+    } else {
+        mediaContainer.classList.add('hidden');
+    }
+
+    // Toggle Text Sources View
+    if (hasTextSources) {
+        srcSec.classList.remove('hidden');
+    } else {
+        srcSec.classList.add('hidden');
+    }
 
     const modal = document.getElementById('item-modal');
     const wrapper = document.getElementById('modal-content-wrapper');
@@ -843,7 +983,13 @@
 
   function closeModal() {
     const m = document.getElementById('item-modal'), w = document.getElementById('modal-content-wrapper');
-    m.classList.add('opacity-0'); w.classList.add('scale-95'); setTimeout(() => m.classList.add('hidden'), 300);
+    m.classList.add('opacity-0'); w.classList.add('scale-95'); 
+    
+    // Stop YouTube video playback by clearing innerHTML
+    setTimeout(() => {
+        m.classList.add('hidden');
+        document.getElementById('modal-media-carousel').innerHTML = '';
+    }, 300);
   }
   
   function openGuideModal() {
@@ -880,7 +1026,7 @@
       let lat = item.location && item.location.lat !== null ? parseFloat(item.location.lat) : null;
       let lon = item.location && item.location.lon !== null ? parseFloat(item.location.lon) : null;
       
-      // LOGIKA FALLBACK AMAN UNTUK PETA
+      // Fallback Logic
       if (isNaN(lat) || isNaN(lon) || lat === null || lon === null) {
          const countryStr = item.location && item.location.country ? String(item.location.country).toLowerCase().trim() : "";
          if (countryCoordinates[countryStr]) {
@@ -948,7 +1094,7 @@
               <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden"><div class="h-full rounded-full bg-indigo-500" style="width:${pct}%"></div></div>
             </div>`;
         }).join('');
-      } else { rootCont.innerHTML = '<p class="text-sm text-slate-400 italic">No data available.</p>'; }
+      } else { rootCont.innerHTML = '<p class="text-sm text-slate-400 italic">No data.</p>'; }
     } catch(e) { console.warn('Chart Map render error:', e); }
   }
 
@@ -973,7 +1119,7 @@
 
       document.getElementById('resume-meta').innerHTML = `
         <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">Analysis Period</p><p class="font-display font-bold text-lg sm:text-xl text-slate-900">${meta.period||'-'}</p></div>
-        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">Signals</p><p class="font-display font-black text-xl sm:text-2xl text-nexus-main">${meta.total_signals_analyzed||0}</p></div>
+        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">Total Signals</p><p class="font-display font-black text-xl sm:text-2xl text-nexus-main">${meta.total_signals_analyzed||0}</p></div>
         <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">High Urgency</p><p class="font-display font-black text-xl sm:text-2xl text-orange-500">${(gs.high_urgency_percentage||0).toFixed(1)}%</p></div>
         <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">Anthropogenic</p><p class="font-display font-black text-xl sm:text-2xl text-red-500">${(gs.anthropogenic_percentage||0).toFixed(1)}%</p></div>
       `;
@@ -998,9 +1144,8 @@
       
       if(!chartInstances.risk) chartInstances.risk = echarts.init(document.getElementById('resume-risk-chart'));
       const rDist = Array.isArray(ch.risk_distribution) ? ch.risk_distribution : []; 
-      const rColors = {High:'#ef4444', Medium:'#f97316', Low:'#10b981'};
+      const rColors = {High:'#ef4444', Medium:'#f97316', Low:'#10b981', Tinggi:'#ef4444', Menengah:'#f97316', Rendah:'#10b981'};
       
-      // Fixed syntax error here
       chartInstances.risk.setOption({
         grid:{top:20, bottom:20, left:0, right:0, containLabel:true},
         xAxis:{type:'category', data:rDist.map(d=>d.level), axisLabel:{fontWeight:'bold', color:'#64748b'}, axisTick:{show:false}},
@@ -1036,7 +1181,7 @@
 
       const intArr = Array.isArray(r.intervention_opportunities) ? r.intervention_opportunities : [];
       document.getElementById('resume-interventions').innerHTML = intArr.map(i => {
-        const pc = i.priority_level==='High'?'text-red-600 bg-red-50':(i.priority_level==='Medium'?'text-orange-600 bg-orange-50':'text-emerald-600 bg-emerald-50');
+        const pc = (i.priority_level==='High' || i.priority_level==='Tinggi')?'text-red-600 bg-red-50':((i.priority_level==='Medium' || i.priority_level==='Menengah')?'text-orange-600 bg-orange-50':'text-emerald-600 bg-emerald-50');
         return `<tr><td class="px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-xs font-bold text-slate-700 capitalize whitespace-normal min-w-[80px]">${i.type}</td><td class="px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-xs text-slate-600 whitespace-normal min-w-[150px]">${i.target}</td><td class="px-3 sm:px-4 py-2 sm:py-3 text-right"><span class="text-[8px] sm:text-[9px] font-bold px-2 py-1 rounded uppercase ${pc}">${i.priority_level || 'N/A'}</span></td></tr>`;
       }).join('') || '<tr><td colspan="3" class="px-4 py-3 text-xs text-slate-400 italic">No targets identified.</td></tr>';
 
@@ -1046,7 +1191,7 @@
           <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-nexus-main/30 text-nexus-light flex items-center justify-center font-bold text-[10px] sm:text-xs shrink-0">${i+1}</div>
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${rec}</p>
         </div>
-      `).join('') || '<p class="text-sm text-slate-400 italic">No recommendations available.</p>';
+      `).join('') || '<p class="text-sm text-slate-400 italic">No recommendations.</p>';
     } catch(e) { 
       console.warn('Error loading report:', e); 
     }
