@@ -1,10 +1,9 @@
-name: Innovation Radar Auto-Crawler
+name: Latent Signal Auto-Crawler
 
 on:
   schedule:
-    # Memeriksa setiap 2 hari. Script Python yang akan menentukan 
-    # apakah hanya data.json yang dicrawl, atau sekalian resume.json
-    - cron: "0 0 */1 * *"
+    # Berjalan setiap hari pada jam 00:00 UTC
+    - cron: "0 0 * * *"
   workflow_dispatch: 
     inputs:
       run_type:
@@ -13,9 +12,9 @@ on:
         default: 'auto'
         type: choice
         options:
-          - 'auto'          # Mengikuti jadwal history (Data 2 hari, Resume 3 bulan)
-          - 'force_data'    # Hanya mencari 3 data.json baru secara paksa
-          - 'force_resume'  # Hanya men-generate resume.json baru secara paksa
+          - 'auto'          # Mengikuti jadwal (Cari data setiap 1 hari, Resume setiap 3 bulan)
+          - 'force_data'    # Hanya mencari 2 data sinyal baru secara paksa
+          - 'force_resume'  # Hanya men-generate resume laporan baru secara paksa
           - 'force_both'    # Mencari data sekaligus men-generate resume
 
 jobs:
@@ -44,12 +43,12 @@ jobs:
       - name: Run Intelligent Scheduler & AI
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          # Ambil input dari dropdown jika di-trigger manual, jika tidak (cron) gunakan 'auto'
-
-          # 👇 TAMBAHKAN BARIS INI 👇
-          GEMINI_MODEL: "gemini-3-flash-preview" # Default model, bisa diubah lewat env var jika ingin coba model lain
-          # Ambil input dari dropdown jika di-trigger manual, jika tidak (cron) gunakan 'auto'
+          GEMINI_MODEL: "gemini-3-flash-preview" # Default model
           RUN_TYPE: ${{ github.event.inputs.run_type || 'auto' }}
+          
+          # Parameter opsional yang disesuaikan dengan script v2.1
+          DATA_INTERVAL_DAYS: 1
+          MAX_ITEMS_PER_RUN: 2
         run: python scraper.py
 
       - name: Commit and Push changes
@@ -57,13 +56,13 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Daftarkan semua file yang berpotensi berubah
-          git add data.json resume.json history.json report.md || true
+          # HANYA daftarkan file yang sekarang di-generate (report.md dihapus)
+          git add data.json resume.json history.json || true
           
           if git diff --staged --quiet; then
             echo "No new data to commit."
           else
-            git commit -m "🤖 Auto-update: Synchronized Radar Data & Resumes [skip ci]"
+            git commit -m "🚨 Auto-update: Synchronized Signal Data & Risk Resumes [skip ci]"
             git push
           fi
 
