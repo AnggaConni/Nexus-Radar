@@ -390,6 +390,11 @@ CRITICAL RULES:
         success_count += 1
         log.info(f"🚨 Signal Detected: {final_item['title']} ({final_item.get('domain_classification')})")
 
+        # ✅ TAMBAHAN BARU: Jeda 15 detik agar aman untuk Key Non-Billing (Free Tier)
+        # 15 detik = maks 4 iterasi per menit. Aman dari batas 15 RPM.
+        log.info("⏳ Throttling API calls... waiting 15 seconds.")
+        time.sleep(15)
+
     return success_count
     
 def generate_intelligence_report(api_key, database):
