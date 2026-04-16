@@ -206,16 +206,21 @@ def get_real_world_signals(keyword, max_results=5):
     log.info(f"🌐 Searching web for real-world news: '{keyword}'")
     try:
         with DDGS() as ddgs:
-            # Tambahkan konteks agar pencarian lebih relevan
-            query = f"{keyword} recent news environmental risk"
+            # PERBAIKAN: Hanya gunakan keyword asli ditambah kata "news", agar hasil pencarian tidak kosong
+            query = f"{keyword} news"
             results = ddgs.text(query, max_results=max_results)
             
-            for r in results:
-                search_results.append({
-                    "title": r.get("title", ""),
-                    "snippet": r.get("body", ""),
-                    "url": r.get("href", "")
-                })
+            # Jika hasil list tidak kosong
+            if results:
+                for r in results:
+                    search_results.append({
+                        "title": r.get("title", ""),
+                        "snippet": r.get("body", ""),
+                        "url": r.get("href", "")
+                    })
+            else:
+                log.warning(f"⚠️ Pencarian '{query}' tidak menemukan artikel. Coba sederhanakan keyword di pengaturan.")
+                
     except Exception as e:
         log.error(f"❌ Web Search error: {e}")
     
