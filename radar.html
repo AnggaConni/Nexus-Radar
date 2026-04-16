@@ -161,6 +161,16 @@
           </div>
         </div>
 
+        <div class="hidden sm:flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
+          <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-purple-50 flex items-center justify-center text-purple-500 shrink-0">
+            <i class="ph-fill ph-lightning text-sm sm:text-base"></i>
+          </div>
+          <div>
+            <p class="text-[8px] sm:text-[10px] font-bold uppercase text-slate-400 leading-none hidden sm:block">Act Now</p>
+            <p class="font-display font-bold text-base sm:text-lg text-slate-800 leading-none mt-0 sm:mt-1" id="top-stat-action">0</p>
+          </div>
+        </div>
+
         <div class="flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
           <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-red-50 flex items-center justify-center text-red-500 shrink-0">
             <i class="ph-fill ph-warning-octagon text-sm sm:text-base"></i>
@@ -176,6 +186,8 @@
     </header>
 
     <div class="p-4 sm:p-8 w-full max-w-7xl mx-auto flex flex-col gap-6">
+
+
 
       <!-- ========================================== -->
       <!-- TAB 1: INVENTORY (GRID) -->
@@ -203,6 +215,14 @@
               <option value="100">Show 100</option>
             </select>
           </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 mb-2 flex flex-col gap-2">
+          <div class="flex justify-between items-center mb-1">
+            <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest"><i class="ph-bold ph-trend-up text-nexus-main"></i> Escalation Speed Breakdown</h4>
+          </div>
+          <div class="w-full h-3 flex rounded-full overflow-hidden" id="escalation-bar"></div>
+          <div class="flex gap-4 mt-1 text-[10px] font-bold text-slate-500" id="escalation-legend"></div>
         </div>
 
         <div id="inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
@@ -648,6 +668,7 @@
     globalData.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
     
     renderTopStats();
+    renderMiniCharts();
     setupFilters(); 
     applyFilters();
     populateReportSelector();
@@ -688,23 +709,50 @@
   }
 
 function renderTopStats() {
-    // 1. Hitung Total Semua Sinyal
+    // Menghitung Data
     const total = globalData.length;
-    
-    // 2. Hitung Sinyal High Risk (Asumsi: Jika risk_score >= 8)
     const highRisk = globalData.filter(i => i.risk_assessment && parseInt(i.risk_assessment.risk_score) >= 8).length;
-    
-    // 3. Hitung Sinyal Critical
+    const actNow = globalData.filter(i => i.risk_assessment && i.risk_assessment.needs_immediate_intervention === true).length;
     const critical = globalData.filter(i => i.critical_flag === true).length;
     
-    // Memasukkan angka ke dalam HTML Header
+    // Menampilkan ke HTML Header
     const elTotal = document.getElementById('top-stat-total');
     const elHighRisk = document.getElementById('top-stat-highrisk');
+    const elAction = document.getElementById('top-stat-action');
     const elCritical = document.getElementById('top-stat-critical');
     
     if (elTotal) elTotal.innerText = total;
     if (elHighRisk) elHighRisk.innerText = highRisk;
+    if (elAction) elAction.innerText = actNow;
     if (elCritical) elCritical.innerText = critical;
+  }
+
+  function renderMiniCharts() {
+    // Hitung jumlah kecepatan eskalasi
+    const fast = globalData.filter(i => i.escalation?.speed === 'fast').length;
+    const medium = globalData.filter(i => i.escalation?.speed === 'medium').length;
+    const slow = globalData.filter(i => i.escalation?.speed === 'slow').length;
+    const total = fast + medium + slow;
+
+    if (total === 0) return; // Mencegah error jika data kosong
+
+    // Hitung persentase lebar bar
+    const fastPct = (fast / total) * 100;
+    const medPct = (medium / total) * 100;
+    const slowPct = (slow / total) * 100;
+
+    // Render ke dalam HTML Mini Chart
+    document.getElementById('escalation-bar').innerHTML = `
+      <div style="width: ${fastPct}%" class="bg-red-500 hover:opacity-80 transition-opacity" title="Fast: ${fast}"></div>
+      <div style="width: ${medPct}%" class="bg-orange-400 hover:opacity-80 transition-opacity" title="Medium: ${medium}"></div>
+      <div style="width: ${slowPct}%" class="bg-emerald-400 hover:opacity-80 transition-opacity" title="Slow: ${slow}"></div>
+    `;
+
+    document.getElementById('escalation-legend').innerHTML = `
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-red-500"></span> Fast (${fast})</div>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-400"></span> Medium (${medium})</div>
+      <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Slow (${slow})</div>
+    `;
   }
 
   // --- TAB INVENTORY (GRID & PAGINATION) ---
