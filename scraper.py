@@ -1,10 +1,10 @@
 """
 =======================================================================
-  LATENT SIGNAL RADAR v2.1 — Global Early Warning Engine
-  AI Engine : Google Gemini 2.5 Flash
+  LATENT SIGNAL RADAR v2.2 — Global Early Warning Engine
+  AI Engine : Google Gemini 1.5 Flash (Free Tier Optimized)
+  Crawler   : DuckDuckGo Search (100% Free Python Wrapper)
   Mode      : Multi-Schedule Tracker (Data = 1 Day, Resume = 3 Months)
   Feature   : Pre-crisis Detection, Environmental & Societal Systems
-  Added     : Strict Original URL Cleaner, Map-Ready Lat/Lon
 =======================================================================
 """
 
@@ -18,6 +18,7 @@ import unicodedata
 from datetime import datetime, timedelta
 from urllib.parse import urlparse, parse_qs
 import requests
+from duckduckgo_search import DDGS  # ✅ Tambahan baru untuk pencarian web gratis
 
 # ── Logging Configuration ──
 logging.basicConfig(
@@ -32,14 +33,13 @@ BASE_DIR         = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE        = os.path.join(BASE_DIR, "data.json")
 RESUME_FILE      = os.path.join(BASE_DIR, "resume.json")
 HISTORY_FILE     = os.path.join(BASE_DIR, "history.json")
-# ✅ REPORT_MD dihapus sesuai permintaan
 
 # ── Konfigurasi Jadwal ──
 DATA_INTERVAL_DAYS   = int(os.environ.get("DATA_INTERVAL_DAYS", 1))
 RESUME_INTERVAL_DAYS = int(os.environ.get("RESUME_INTERVAL_DAYS", 90))
 MAX_ITEMS_PER_RUN    = int(os.environ.get("MAX_ITEMS_PER_RUN", 2))
 
-# ── Domain Keyword Latent Signals ──
+# ── Domain Keyword (DIPERSINGKAT UNTUK EFISIENSI) ──
 KEYWORDS =[
     # --- Ocean ---
     "turtle entangled plastic debris local beach",
@@ -131,7 +131,7 @@ KEYWORDS =[
     "critical wildlife corridor blocked by new settlement",
     "panic buying of water local market rumor",
     "local fishing fleet ignoring seasonal quotas",
-    "rapid deforestation for informal mining camp",
+    "rapid deforestation for informal mining camp",       # Social
 ]
 
 # =====================================================================
@@ -171,31 +171,26 @@ def extract_json_safe(text):
 def normalize_title(title):
     return unicodedata.normalize("NFKC", title).strip().lower()
 
-# ✅ NEW: URL Cleaner untuk memastikan tidak ada link redirect Google
 def clean_url(url):
     url = str(url).strip()
     if "google.com/url" in url:
         parsed = urlparse(url)
         qs = parse_qs(parsed.query)
-        if 'q' in qs:
-            return qs['q'][0]
-        elif 'url' in qs:
-            return qs['url'][0]
+        if 'q' in qs: return qs['q'][0]
+        elif 'url' in qs: return qs['url'][0]
     return url
 
-# ✅ Lat & Long di-generate di sini untuk visualisasi Peta (Dashboard)
 def get_coordinates(location_name):
     if not location_name or str(location_name).lower() == "unknown":
         return None, None
     url = f"https://nominatim.openstreetmap.org/search?q={location_name}&format=json&limit=1"
-    headers = {"User-Agent": "SignalRadarApp/2.1 (research-bot)"}
+    headers = {"User-Agent": "SignalRadarApp/2.2 (research-bot)"}
     try:
         time.sleep(1.5)
         resp = requests.get(url, headers=headers, timeout=15)
         if resp.status_code == 200:
             data = resp.json()
-            if data:
-                return float(data[0]["lat"]), float(data[0]["lon"])
+            if data: return float(data[0]["lat"]), float(data[0]["lon"])
     except Exception as e:
         log.warning(f"Geocoding failed for {location_name}: {e}")
     return None, None
@@ -205,14 +200,35 @@ def get_current_quarter():
     quarter = (now.month - 1) // 3 + 1
     return f"Q{quarter} {now.year}"
 
+# ✅ NEW: FUNGSI PENCARIAN WEB (GRATIS VIA DUCKDUCKGO)
+def get_real_world_signals(keyword, max_results=5):
+    search_results = []
+    log.info(f"🌐 Searching web for real-world news: '{keyword}'")
+    try:
+        with DDGS() as ddgs:
+            # Tambahkan konteks agar pencarian lebih relevan
+            query = f"{keyword} recent news environmental risk"
+            results = ddgs.text(query, max_results=max_results)
+            
+            for r in results:
+                search_results.append({
+                    "title": r.get("title", ""),
+                    "snippet": r.get("body", ""),
+                    "url": r.get("href", "")
+                })
+    except Exception as e:
+        log.error(f"❌ Web Search error: {e}")
+    
+    return search_results
+
 # =====================================================================
-# CORE AI ENGINE (GEMINI)
+# CORE AI ENGINE (GEMINI 1.5 FLASH)
 # =====================================================================
 
-def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_json=True):
+def call_gemini(api_key, prompt, system_instruction, expect_json=True):
     if not isinstance(prompt, str): prompt = json.dumps(prompt)
         
-    model_name = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash") # atau "gemini-2.0-flash-exp"
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash") # ✅ Menggunakan model stabil & gratis
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent"
     
     payload = {
@@ -224,19 +240,12 @@ def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_js
             "responseMimeType": "application/json" if expect_json else "text/plain"
         }
     }
-    
-    if expect_json and not use_search:
-        payload["generationConfig"]["responseMimeType"] = "application/json"
-        
-    if use_search:
-        payload["tools"] = [{"googleSearch": {}}]
         
     headers = {
         'Content-Type': 'application/json',
         'x-goog-api-key': api_key
     }
     
-    # ✅ PERUBAHAN 1: Biarkan HTTPError lolos agar bisa ditangkap oleh fungsi retry
     response = requests.post(url, json=payload, headers=headers, timeout=120)
     response.raise_for_status() 
     
@@ -244,8 +253,7 @@ def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_js
         data = response.json()
         raw_text = data.get("candidates",[{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
         
-        if expect_json:
-            return extract_json_safe(raw_text)
+        if expect_json: return extract_json_safe(raw_text)
         return raw_text
     except Exception as e:
         log.error(f"Gemini Data Parse Error: {e}")
@@ -254,22 +262,19 @@ def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_js
 def call_gemini_with_retry(api_key, prompt, system_instruction, retries=4, **kwargs):
     for attempt in range(retries):
         try:
-            # Jeda kecil standar 3 detik agar aman untuk Free Tier
-            time.sleep(5) 
+            time.sleep(5) # Jeda aman 5 detik
             result = call_gemini(api_key, prompt, system_instruction, **kwargs)
             if result: return result
             
         except requests.exceptions.HTTPError as e:
             status_code = e.response.status_code if hasattr(e, 'response') else 500
             
-            # ✅ PERUBAHAN 2: Menangkap 429 dan MEMAKSA tidur 45 detik
             if status_code == 429:
-                wait_time = 45 # Waktu yang cukup untuk mereset kuota RPM Google
-                log.warning(f"⚠️ [429] Rate Limit Hit. API tidur selama {wait_time} detik... (Attempt {attempt+1}/{retries})")
+                wait_time = 45 # Tidur 45 detik jika kena Rate Limit Google
+                log.warning(f"⚠️ [429] Rate Limit Hit. Sleeping {wait_time}s... (Attempt {attempt+1}/{retries})")
                 time.sleep(wait_time)
                 continue
                 
-            # Jika error karena key salah, langsung berhenti
             if status_code in [400, 403, 404]: 
                 log.error(f"Fatal API Error {status_code}: {e}")
                 break
@@ -279,41 +284,37 @@ def call_gemini_with_retry(api_key, prompt, system_instruction, retries=4, **kwa
         except Exception as e:
             log.error(f"Unexpected Request Error: {e}")
             
-        # Jeda eksponensial untuk error server lainnya (500, 503)
-        wait_time = 2 ** attempt
-        time.sleep(wait_time)
+        time.sleep(2 ** attempt)
         
     return None
 
 # =====================================================================
-# 5-LAYER PIPELINE (LATENT SIGNAL DISCOVERY)
+# 4-LAYER PIPELINE (LATENT SIGNAL DISCOVERY)
 # =====================================================================
 
 def pass_1_validate(api_key, raw_content):
-    sys_prompt = """Determine whether the following content represents a real-world LATENT SIGNAL (environmental or societal early warning, anomaly, or degradation). 
+    sys_prompt = """Determine whether the following news snippet represents a real-world LATENT SIGNAL (early warning, anomaly, or creeping environmental/societal degradation). 
     CRITICAL RULES:
     - Must be a problem, risk, or degradation (NOT a solution).
-    - Must NOT be a confirmed, finalized disaster. Focus on early signs or creeping issues.
+    - Must NOT be a finalized historical disaster. Focus on early signs.
     Return exactly: {"is_signal": true/false, "confidence": 0.0-1.0}"""
     res = call_gemini_with_retry(api_key, raw_content, sys_prompt)
     return res if res else {"is_signal": False, "confidence": 0}
 
 def pass_2_extract(api_key, raw_content):
-    sys_prompt = """Extract structured data about this environmental/societal latent signal.
-    IMPORTANT: For 'sources', provide only DIRECT, ORIGINAL links (e.g., website, youtube). 
-    If there is any relevant image URL mentioned or inferable from the source, put it in 'image_url'. 
+    sys_prompt = """Extract structured data from this latent signal.
     CLASSIFICATION MUST BE ONE OF:[DRR, Ocean, Climate, Water, Biodiversity, Social/Behavioral].
-    Return EXACTLY this JSON structure:
-{"title": "", "sources":[], "image_url": "", "summary": "", "domain_classification":[], "signal_intensity": "weak | moderate | strong", "location": {"country": "", "region": ""}, "manifestation": {"how_it_is_observed": "", "key_indicators":[]}, "potential_impact": {"threat_level": "low | medium | high", "affected_elements":[]}, "escalation": {"speed": "slow | medium | fast", "urgency": "low | medium | high"}}"""
+    Return EXACTLY this JSON:
+{"title": "", "summary": "", "domain_classification":[], "signal_intensity": "weak | moderate | strong", "location": {"country": "", "region": ""}, "manifestation": {"how_it_is_observed": "", "key_indicators":[]}, "potential_impact": {"threat_level": "low | medium | high", "affected_elements":[]}, "escalation": {"speed": "slow | medium | fast", "urgency": "low | medium | high"}}"""
     return call_gemini_with_retry(api_key, raw_content, sys_prompt)
 
 def pass_3_risk(api_key, raw_content):
-    sys_prompt = """Analyze the latent signal and assess potential disaster/crisis risks if left unaddressed. Return EXACTLY this JSON:
+    sys_prompt = """Analyze this latent signal and assess potential disaster risks if left unaddressed. Return EXACTLY this JSON:
 {"risk_score": <int 1-10>, "risk_type": ["type1"], "severity_level": "low|medium|high", "needs_immediate_intervention": true/false, "explanation": ""}"""
     return call_gemini_with_retry(api_key, raw_content, sys_prompt)
 
 def pass_4_lineage(api_key, raw_content):
-    sys_prompt = """Determine the underlying root cause of this latent signal. Options:[anthropogenic, systemic_failure, natural_anomaly, policy_gap, behavioral_neglect]. Return EXACTLY this JSON: {"root_cause": ["cause1"]}"""
+    sys_prompt = """Determine the underlying root cause. Options:[anthropogenic, systemic_failure, natural_anomaly, policy_gap, behavioral_neglect]. Return EXACTLY this JSON: {"root_cause": ["cause1"]}"""
     return call_gemini_with_retry(api_key, raw_content, sys_prompt)
 
 def calculate_advanced_metrics(data):
@@ -328,7 +329,7 @@ def calculate_advanced_metrics(data):
         priority_score = int(((threat_val * 0.4) + (risk_val * 0.4) + (urgency_val * 0.2)) * 10)
         data["priority_score"] = min(100, max(0, priority_score))
 
-        has_critical = any(k in t.lower() for t in data.get("risk_assessment", {}).get("risk_type",[]) for k in["fatal", "extinction", "catastrophe", "irreversible"])
+        has_critical = any(k in t.lower() for t in data.get("risk_assessment", {}).get("risk_type",[]) for k in["fatal", "extinction", "catastrophe"])
         data["critical_flag"] = bool(risk_val >= 8 and has_critical)
         return data
     except Exception:
@@ -340,36 +341,26 @@ def calculate_advanced_metrics(data):
 
 def run_discovery_pipeline(api_key, database, max_items=2):
     keyword = random.choice(KEYWORDS)
-    log.info(f"Initiating radar ping with keyword: '{keyword}'")
+    log.info(f"🚀 Initiating radar ping for: '{keyword}'")
 
-    seed_prompt = f"Search the web for 5 distinct, real-world examples of latent signals related to: {keyword}. Provide a detailed paragraph for each, AND include a list of all relevant original source URLs (including YouTube or image links) found. Return a JSON object with an array 'signals' containing these descriptions and their associated URLs."
+    # 1. PYTHON MENCARI DATA DI WEB
+    raw_web_data = get_real_world_signals(keyword, max_results=5)
     
-    seed_sys = """You are an advanced global signal detection AI.
-Your task is to identify LATENT SIGNALS related to environmental and societal systems.
-CRITICAL RULES:
-- DO NOT focus on solutions or innovations.
-- DO NOT analyze confirmed disasters (e.g. past major earthquakes/floods).
-- Focus ONLY on early signals BEFORE crisis occurs or chronic degradation symptoms.
-- IMPORTANT: Always return the direct, original source URLs. Include image links if present. Return pure JSON."""
-
-    seed_data = call_gemini_with_retry(api_key, seed_prompt, seed_sys, use_search=False) # Ubah ke False
-    if not seed_data or "signals" not in seed_data:
-        log.warning("No raw signals found on this run.")
+    if not raw_web_data:
+        log.warning("⚠️ No raw signals found on web this run.")
         return 0
 
-    raw_descriptions = seed_data["signals"]
     success_count = 0
 
-    for idx, item in enumerate(raw_descriptions):
+    # 2. GEMINI MENGANALISA DATA
+    for item in raw_web_data:
         if success_count >= max_items: break
 
-        if isinstance(item, dict):
-            raw_text = item.get("description", str(item))
-            discovered_urls = item.get("urls",[])
-        else:
-            raw_text = str(item)
-            discovered_urls =[]
+        # Gabungkan judul dan deskripsi dari web
+        raw_text = f"Title: {item['title']}\nSummary: {item['snippet']}\nURL: {item['url']}"
+        discovered_url = clean_url(item['url'])
 
+        # Cek apakah artikel ini membicarakan Sinyal Laten
         validation = pass_1_validate(api_key, raw_text)
         if not validation.get("is_signal") or validation.get("confidence", 0) < 0.6:
             continue
@@ -383,6 +374,7 @@ CRITICAL RULES:
         unique_string = f"{normalized_title}-{country}"
         title_hash = hashlib.md5(unique_string.encode('utf-8')).hexdigest()
 
+        # Cegah duplikasi data
         if any(db_item.get("id") == title_hash for db_item in database):
             continue
 
@@ -393,29 +385,22 @@ CRITICAL RULES:
             "id": title_hash, 
             "timestamp": datetime.now().isoformat(),
             **base_data,
+            "sources": [discovered_url] if discovered_url else [],
             "root_cause_analysis": lineage_data if lineage_data else {"root_cause":[]},
             "risk_assessment": risk_data if risk_data else {}
         }
 
-        # ✅ Pastikan array sumber disatukan dan difilter agar hanya berisi Clean Original URLs
-        raw_sources = final_item.get("sources",[]) + discovered_urls
-        clean_sources = list(set([clean_url(u) for u in raw_sources if u]))
-        final_item["sources"] = clean_sources
-
-        # ✅ Lat/Lon untuk MAP Dashboard
-        country = final_item.get("location", {}).get("country", "")
-        region = final_item.get("location", {}).get("region", "")
-        lat, lon = get_coordinates(f"{region}, {country}".strip(", "))
+        # Dapatkan Lat/Lon untuk Map
+        loc_str = f"{final_item.get('location', {}).get('region', '')}, {country}".strip(", ")
+        lat, lon = get_coordinates(loc_str)
         final_item["location"]["lat"] = lat
         final_item["location"]["lon"] = lon
 
         final_item = calculate_advanced_metrics(final_item)
         database.append(final_item)
         success_count += 1
+        
         log.info(f"🚨 Signal Detected: {final_item['title']} ({final_item.get('domain_classification')})")
-
-        # ✅ TAMBAHAN BARU: Jeda 15 detik agar aman untuk Key Non-Billing (Free Tier)
-        # 15 detik = maks 4 iterasi per menit. Aman dari batas 15 RPM.
         log.info("⏳ Throttling API calls... waiting 15 seconds.")
         time.sleep(15)
 
@@ -430,81 +415,33 @@ def generate_intelligence_report(api_key, database):
     quarter = get_current_quarter()
     db_string = json.dumps(database, ensure_ascii=False)
 
-    sys_prompt = """
-You are an elite AI Intelligence Analyst generating a global report on Latent Environmental & Societal Signals.
-You will be given a JSON array containing structured signal records.
-
-YOUR OBJECTIVE:
-- Detect patterns of environmental degradation & early crisis warnings.
-- Highlight signals in Ocean Literacy, DRR, Climate, Water, Biodiversity.
-- Identify human behaviors amplifying risks.
-
+    sys_prompt = """You are an elite AI Intelligence Analyst generating a global report on Latent Environmental & Societal Signals.
 OUTPUT FORMAT (STRICT JSON ONLY):
 {
   "report_metadata": { "report_id": "gsi-current", "generated_at": "", "period": "", "total_signals_analyzed": 0 },
   "global_summary": { "total_signals": 0, "high_urgency_percentage": 0, "anthropogenic_percentage": 0 },
   "domain_insights":[ { "domain": "", "count": 0, "key_pattern": "" } ],
   "geographic_threats":[ { "region": "", "dominant_issue": "", "threat_level": "low|medium|high" } ],
-  "risk_analysis": { "high_risk_cases": 0, "critical_cases": 0, "top_threats": [], "emerging_risks":[] },
-  "critical_signals": [ { "title": "", "country": "", "reason_for_urgency": "" } ],
-  "intervention_opportunities":[ { "type": "policy | education | drr_action | conservation", "target": "", "justification": "" } ],
-  "root_cause_insights": { "most_common_cause": "", "observation": "" },
-  "recommendations": [ "" ],
-  "charts": {
-    "signals_by_domain":[ { "domain": "", "count": 0 } ],
-    "risk_distribution":[ { "level": "High", "count": 0 } ]
-  }
-}
-"""
+  "risk_analysis": { "high_risk_cases": 0, "critical_cases": 0, "top_threats": [], "emerging_risks":[] }
+}"""
 
-    prompt = f"Analyze the following signal dataset and generate the report.\n\nDATASET:\n{db_string}"
+    prompt = f"Analyze this dataset and generate the report.\n\nDATASET:\n{db_string}"
     new_report = call_gemini_with_retry(api_key, prompt, sys_prompt, expect_json=True)
 
     if new_report:
-        total_records = len(database)
-        
-        high_urgency = sum(1 for x in database if x.get("escalation", {}).get("urgency") == "high")
-        anthropogenic = sum(1 for x in database if "anthropogenic" in x.get("root_cause_analysis", {}).get("root_cause", []))
-
-        new_report["report_metadata"]["total_signals_analyzed"] = total_records
-        
-        if "global_summary" not in new_report: new_report["global_summary"] = {}
-        new_report["global_summary"]["total_signals"] = total_records
-        new_report["global_summary"]["high_urgency_percentage"] = round((high_urgency / total_records) * 100, 2) if total_records > 0 else 0
-        new_report["global_summary"]["anthropogenic_percentage"] = round((anthropogenic / total_records) * 100, 2) if total_records > 0 else 0
-
-        high_risk_count = sum(1 for x in database if x.get("risk_assessment", {}).get("risk_score", 0) >= 8)
-        medium_risk_count = sum(1 for x in database if 4 <= x.get("risk_assessment", {}).get("risk_score", 0) <= 7)
-        low_risk_count = sum(1 for x in database if x.get("risk_assessment", {}).get("risk_score", 0) <= 3)
-        critical_count = sum(1 for x in database if x.get("critical_flag") == True)
-
-        if "risk_analysis" not in new_report: new_report["risk_analysis"] = {}
-        new_report["risk_analysis"]["high_risk_cases"] = high_risk_count
-        new_report["risk_analysis"]["critical_cases"] = critical_count
-
-        if "charts" not in new_report: new_report["charts"] = {}
-        new_report["charts"]["risk_distribution"] =[
-            {"level": "High", "count": high_risk_count},
-            {"level": "Medium", "count": medium_risk_count},
-            {"level": "Low", "count": low_risk_count}
-        ]
-        
-        resume_db = load_json_file(RESUME_FILE,[])
-        if not isinstance(resume_db, list): resume_db =[]
-
-        for report in resume_db:
-            if isinstance(report, dict):
-                if "report_metadata" not in report: report["report_metadata"] = {}
-                report["report_metadata"]["report_id"] = "gsi-older"
-
+        new_report["report_metadata"]["total_signals_analyzed"] = len(database)
         new_report["report_metadata"]["generated_at"] = datetime.now().isoformat()
         new_report["report_metadata"]["period"] = quarter
         new_report["report_metadata"]["report_id"] = "gsi-current"
         
+        resume_db = load_json_file(RESUME_FILE,[])
+        for report in resume_db:
+            if isinstance(report, dict):
+                report.setdefault("report_metadata", {})["report_id"] = "gsi-older"
+
         resume_db.append(new_report)
         save_json_file(RESUME_FILE, resume_db)
-
-        log.info(f"✅ Resume successfully generated and rotated. ID: gsi-current")
+        log.info(f"✅ Resume successfully generated.")
     else:
         log.error("Failed to generate intelligence report.")
 
@@ -537,41 +474,26 @@ def main():
         do_data = False
         do_resume = False
 
-        if run_type == "force_data":
-            do_data = True
-        elif run_type == "force_resume":
-            do_resume = True
-        elif run_type == "force_both":
-            do_data = True
-            do_resume = True
+        if run_type == "force_data": do_data = True
+        elif run_type == "force_resume": do_resume = True
+        elif run_type == "force_both": do_data = do_resume = True
         else:
             log.info("⏳ TRIGGER: Auto Schedule Mode. Checking Timestamps...")
-
-            if now - last_data_time >= timedelta(days=DATA_INTERVAL_DAYS):
-                do_data = True
-                log.info(f"-> Data schedule triggered (>= {DATA_INTERVAL_DAYS} days).")
-            else:
-                log.info(f"-> Data schedule skipped. Last run: {last_data_time.strftime('%Y-%m-%d')}.")
-
-            if now - last_resume_time >= timedelta(days=RESUME_INTERVAL_DAYS):
-                do_resume = True
-                log.info(f"-> Resume schedule triggered (>= {RESUME_INTERVAL_DAYS} days).")
-            else:
-                log.info(f"-> Resume schedule skipped. Last run: {last_resume_time.strftime('%Y-%m-%d')}.")
+            if now - last_data_time >= timedelta(days=DATA_INTERVAL_DAYS): do_data = True
+            if now - last_resume_time >= timedelta(days=RESUME_INTERVAL_DAYS): do_resume = True
 
         if do_data:
             log.info("--- 🟢 STARTING SIGNAL PIPELINE ---")
             found = run_discovery_pipeline(api_key, db, max_items=MAX_ITEMS_PER_RUN)
-            if found > 0:
-                save_json_file(DATA_FILE, db)
+            if found > 0: save_json_file(DATA_FILE, db)
             history["last_data_crawl"] = now.isoformat()
-            log.info(f"🟢 SIGNAL PIPELINE COMPLETE. Added {found} new signals. Total: {len(db)}")
+            log.info(f"🟢 COMPLETE. Added {found} new signals. Total: {len(db)}")
 
         if do_resume:
             log.info("--- 🔵 STARTING RESUME PIPELINE ---")
             generate_intelligence_report(api_key, db)
             history["last_resume_gen"] = now.isoformat()
-            log.info("🔵 RESUME PIPELINE COMPLETE.")
+            log.info("🔵 COMPLETE.")
 
         save_json_file(HISTORY_FILE, history)
         log.info("✅ All requested tasks completed.")
