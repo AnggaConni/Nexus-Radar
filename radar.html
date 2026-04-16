@@ -138,17 +138,41 @@
         </div>
       </div>
       
-      <div class="flex gap-4">
+
+      <div class="flex gap-2 sm:gap-4">
+        
+        <div class="hidden md:flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
+          <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 shrink-0">
+            <i class="ph-fill ph-radar text-sm sm:text-base"></i>
+          </div>
+          <div>
+            <p class="text-[8px] sm:text-[10px] font-bold uppercase text-slate-400 leading-none hidden sm:block">Total Signals</p>
+            <p class="font-display font-bold text-base sm:text-lg text-slate-800 leading-none mt-0 sm:mt-1" id="top-stat-total">0</p>
+          </div>
+        </div>
+
+        <div class="hidden sm:flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
+          <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 shrink-0">
+            <i class="ph-fill ph-fire text-sm sm:text-base"></i>
+          </div>
+          <div>
+            <p class="text-[8px] sm:text-[10px] font-bold uppercase text-slate-400 leading-none hidden sm:block">High Risk</p>
+            <p class="font-display font-bold text-base sm:text-lg text-slate-800 leading-none mt-0 sm:mt-1" id="top-stat-highrisk">0</p>
+          </div>
+        </div>
+
         <div class="flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
           <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-red-50 flex items-center justify-center text-red-500 shrink-0">
             <i class="ph-fill ph-warning-octagon text-sm sm:text-base"></i>
           </div>
           <div>
-            <p class="text-[8px] sm:text-[10px] font-bold uppercase text-slate-400 leading-none hidden sm:block">Critical Signals</p>
+            <p class="text-[8px] sm:text-[10px] font-bold uppercase text-slate-400 leading-none hidden sm:block">Critical</p>
             <p class="font-display font-bold text-base sm:text-lg text-slate-800 leading-none mt-0 sm:mt-1" id="top-stat-critical">0</p>
           </div>
         </div>
+
       </div>
+
     </header>
 
     <div class="p-4 sm:p-8 w-full max-w-7xl mx-auto flex flex-col gap-6">
@@ -663,9 +687,24 @@
     }
   }
 
-  function renderTopStats() {
+function renderTopStats() {
+    // 1. Hitung Total Semua Sinyal
+    const total = globalData.length;
+    
+    // 2. Hitung Sinyal High Risk (Asumsi: Jika risk_score >= 8)
+    const highRisk = globalData.filter(i => i.risk_assessment && parseInt(i.risk_assessment.risk_score) >= 8).length;
+    
+    // 3. Hitung Sinyal Critical
     const critical = globalData.filter(i => i.critical_flag === true).length;
-    document.getElementById('top-stat-critical').innerText = critical;
+    
+    // Memasukkan angka ke dalam HTML Header
+    const elTotal = document.getElementById('top-stat-total');
+    const elHighRisk = document.getElementById('top-stat-highrisk');
+    const elCritical = document.getElementById('top-stat-critical');
+    
+    if (elTotal) elTotal.innerText = total;
+    if (elHighRisk) elHighRisk.innerText = highRisk;
+    if (elCritical) elCritical.innerText = critical;
   }
 
   // --- TAB INVENTORY (GRID & PAGINATION) ---
