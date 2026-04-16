@@ -233,7 +233,7 @@ def get_real_world_signals(keyword, max_results=5):
 def call_gemini(api_key, prompt, system_instruction, expect_json=True):
     if not isinstance(prompt, str): prompt = json.dumps(prompt)
         
-    model_name = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash") # ✅ Menggunakan model stabil & gratis
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash") # ✅ Menggunakan model stabil & gratis
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent"
     
     payload = {
