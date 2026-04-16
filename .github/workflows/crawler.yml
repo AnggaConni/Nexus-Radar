@@ -44,7 +44,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           # ✅ PERBAIKAN: Mengganti model yang tidak ada ke model stabil & gratis
-          GEMINI_MODEL: "gemini-1.5-flash" 
+          GEMINI_MODEL: "gemini-2.5-flash" 
           RUN_TYPE: ${{ github.event.inputs.run_type || 'auto' }}
           
           # Parameter opsional yang disesuaikan dengan script v2.1
