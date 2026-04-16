@@ -212,7 +212,7 @@ def get_current_quarter():
 def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_json=True):
     if not isinstance(prompt, str): prompt = json.dumps(prompt)
         
-    model_name = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash") # atau "gemini-2.0-flash-exp"
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent"
     
     payload = {
@@ -255,7 +255,7 @@ def call_gemini_with_retry(api_key, prompt, system_instruction, retries=4, **kwa
     for attempt in range(retries):
         try:
             # Jeda kecil standar 3 detik agar aman untuk Free Tier
-            time.sleep(3) 
+            time.sleep(5) 
             result = call_gemini(api_key, prompt, system_instruction, **kwargs)
             if result: return result
             
@@ -352,7 +352,7 @@ CRITICAL RULES:
 - Focus ONLY on early signals BEFORE crisis occurs or chronic degradation symptoms.
 - IMPORTANT: Always return the direct, original source URLs. Include image links if present. Return pure JSON."""
 
-    seed_data = call_gemini_with_retry(api_key, seed_prompt, seed_sys, use_search=True)
+    seed_data = call_gemini_with_retry(api_key, seed_prompt, seed_sys, use_search=False) # Ubah ke False
     if not seed_data or "signals" not in seed_data:
         log.warning("No raw signals found on this run.")
         return 0
