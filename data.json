@@ -1286,5 +1286,135 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "9ad64540331c8ed637564b1326bfa109",
+        "timestamp": "2026-04-16T07:32:13.142685",
+        "title": "Marsh Drowning via Interior Ponding and Runaway Fragmentation",
+        "sources": [
+            "https://tamu.edu",
+            "https://www.nature.com/articles/s41598-019-45962-y",
+            "https://www.frontiersin.org/articles/10.3389/fmars.2022.993635/full",
+            "https://www.usgs.gov/centers/wetland-and-aquatic-research-center/science/wetland-fragmentation-and-loss",
+            "https://images.nasa.gov/details-GSFC_20171208_Archive_e000570"
+        ],
+        "image_url": "https://www.usgs.gov/media/images/aerial-view-fragmenting-marsh-louisiana",
+        "summary": "The formation and coalescence of interior ponds, known as 'runaway fragmentation' or the 'Swiss cheese' effect, is a critical latent signal of marsh drowning. This occurs when sea-level rise outpaces the vertical growth of the marsh platform, creating shallow depressions that trap water. This leads to root hypoxia and vegetation death, eventually causing the marsh to collapse into open water mudflats.",
+        "domain_classification": [
+            "Ocean",
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Global",
+            "region": "Coastal Estuaries and Salt Marshes",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Aerial and satellite monitoring of marsh interiors showing the development of small, isolated ponds that gradually merge into larger bodies of water.",
+            "key_indicators": [
+                "Pond coalescence rate",
+                "Interior vegetation die-off",
+                "Surface elevation deficit relative to sea level",
+                "Root zone hypoxia"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Coastal storm surge protection",
+                "Carbon sequestration capacity",
+                "Fisheries and nursery habitats",
+                "Shoreline structural integrity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Collapse",
+                "Climate Change Impact",
+                "Coastal Erosion"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Interior marsh fragmentation is a critical tipping point signal indicating that sea-level rise has exceeded the ecosystem's vertical accretion capacity. This 'Swiss cheese' effect leads to runaway structural failure, resulting in the permanent loss of coastal buffers, which increases the vulnerability of inland infrastructure to storm surges and flooding."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "871b0e3b3c50d7acae04d73359f22268",
+        "timestamp": "2026-04-16T07:33:01.629764",
+        "title": "Decline in Belowground Biomass (BGB) in Coastal Marshes",
+        "sources": [
+            "https://news.utexas.edu/2025/06/24/study-finds-early-signs-of-widespread-coastal-marsh-decline/",
+            "https://www.pnas.org/doi/10.1073/pnas.2425501122",
+            "https://www.youtube.com/watch?v=7M7oE0z_9Wk"
+        ],
+        "image_url": "",
+        "summary": "A latent environmental signal where the thinning of root and rhizome networks in marshes occurs years before visible surface degradation. This loss of structural integrity, driven by inundation stress and oxygen deprivation, compromises the marsh's ability to accumulate sediment and resist sea-level rise, leading to eventual sudden ecosystem collapse.",
+        "domain_classification": [
+            "Ocean",
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Global",
+            "region": "Coastal and Estuarine zones",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Subsurface sampling of root density and rhizome health, often contrasting with healthy-looking aboveground vegetation.",
+            "key_indicators": [
+                "Thinning root network",
+                "Increased soil hypoxia",
+                "Reduced sediment accretion rates",
+                "Stable aboveground biomass despite subsurface degradation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Marsh structural integrity",
+                "Coastal flood protection",
+                "Carbon sequestration capacity",
+                "Benthic habitats"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Climate Change"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The decline in belowground biomass is a critical leading indicator of coastal ecosystem collapse. Because the surface remains green, the loss of structural integrity is often undetected until a tipping point is reached. If left unaddressed, the marsh loses its ability to build elevation, leading to sudden collapse during storm events, which removes vital natural buffers for inland infrastructure and increases the risk of catastrophic coastal flooding."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
