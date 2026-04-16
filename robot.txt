@@ -1,0 +1,17 @@
+User-agent: * memberikan instruksi untuk semua robot mesin pencari
+
+User-agent: *
+
+Mengizinkan akses ke seluruh halaman publik
+
+Allow: /
+
+Melarang akses ke folder sistem dan skrip internal agar crawl lebih efisien
+
+Disallow: /.github/
+Disallow: /scraper.py
+Disallow: /.heartbeat
+
+Lokasi file Sitemap untuk membantu indexing
+
+Sitemap: https://www.google.com/search?q=https://anggaconni.github.io/Nexus-Radar/sitemap.xml
