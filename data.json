@@ -1547,5 +1547,120 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "5c85161e7a7887936e45f6a2cfbbd3cb",
+        "timestamp": "2026-04-16T16:10:54.857291",
+        "title": "Red Tide Blooms In Florida Panhandle; Gulf County Sees Highest ... - Tampa",
+        "summary": "The red tide organism, Karenia brevis, has been detected in 16 water samples collected over the past week along Northwest Florida and Florida's East Coast, with bloom concentrations confirmed in the Panhandle. The Florida Fish and Wildlife Conservation Commission (FWC) reported that five samples from Gulf County contained bloom concentrations (greater than 100,000 cells/liter) of the harmful ...",
+        "domain_classification": [
+            "Ocean",
+            "Water",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Florida",
+            "lat": 27.7567667,
+            "lon": -81.4639835
+        },
+        "manifestation": {
+            "how_it_is_observed": "Red tide organism, Karenia brevis, detected in water samples with bloom concentrations confirmed.",
+            "key_indicators": [
+                "Karenia brevis detection",
+                "Bloom concentrations (greater than 100,000 cells/liter)"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Marine ecosystems",
+                "Water quality",
+                "Coastal communities",
+                "Local economy (tourism, fishing)"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.tampafp.com/red-tide-blooms-in-florida-panhandle-gulf-county-sees-highest-concentrations/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Public Health",
+                "Economic"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Red tide blooms with high concentrations of Karenia brevis have been confirmed in the Florida Panhandle, particularly Gulf County, and detected in multiple samples across Northwest and East Florida. This poses significant risks to marine ecosystems, public health (respiratory irritation, shellfish contamination), and local economies reliant on tourism and fishing. Immediate monitoring, public advisories, and potential mitigation efforts are crucial."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "3a796d06ebadb855eef4b9999d136417",
+        "timestamp": "2026-04-16T16:13:20.383873",
+        "title": "Red Tide - WUSF",
+        "summary": "Red Tide The season typically begins in early fall and can persist for months. While the southwest and central areas of the state remain free of algal blooms, the red tde is causing problems along the north Gulf coast.",
+        "domain_classification": [
+            "Ocean",
+            "Water",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "North Gulf Coast of Florida",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Algal blooms, specifically red tide",
+            "key_indicators": [
+                "Red Tide",
+                "Algal blooms"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Marine ecosystems",
+                "Water quality",
+                "Coastal communities"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.wusf.org/tags/red-tide"
+        ],
+        "root_cause_analysis": {
+            "root_cause": []
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Environmental",
+                "Public Health",
+                "Economic"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Red tide is actively causing problems along the north Gulf coast and is expected to persist for months. This poses significant risks to marine ecosystems (fish kills), public health (respiratory irritation, shellfish poisoning), and the local economy (fisheries, tourism). While seasonal, the current presence and impact warrant immediate monitoring and public advisories."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
