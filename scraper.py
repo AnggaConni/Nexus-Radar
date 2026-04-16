@@ -18,7 +18,7 @@ import unicodedata
 from datetime import datetime, timedelta
 from urllib.parse import urlparse, parse_qs
 import requests
-from duckduckgo_search import DDGS  # ✅ Tambahan baru untuk pencarian web gratis
+from ddgs import DDGS  # ✅ Tambahan baru untuk pencarian web gratis
 
 # ── Logging Configuration ──
 logging.basicConfig(
