@@ -252,13 +252,30 @@ def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_js
 def call_gemini_with_retry(api_key, prompt, system_instruction, retries=3, **kwargs):
     for attempt in range(retries):
         try:
+            # Beri jeda kecil standar sebelum setiap panggilan untuk mendinginkan API
+            time.sleep(2) 
             result = call_gemini(api_key, prompt, system_instruction, **kwargs)
             if result: return result
+            
         except requests.exceptions.HTTPError as e:
             status_code = e.response.status_code if hasattr(e, 'response') else 500
-            if status_code in[400, 403, 404]: break
+            
+            # Jika error fatal (salah key, dsb), langsung hentikan
+            if status_code in [400, 403, 404]: 
+                log.error(f"Fatal API Error {status_code}. Stopping retries.")
+                break
+                
+            # ✅ JIKA KENA 429 (LIMIT FREE TIER), PAKSA TIDUR 30 DETIK
+            if status_code == 429:
+                wait_time = 30
+                log.warning(f"⚠️ [429] Rate Limit Hit. Sleeping {wait_time}s before retry {attempt+1}/{retries}...")
+                time.sleep(wait_time)
+                continue
+                
+        # Jeda eksponensial untuk error lain (500, 503, dll)
         wait_time = 2 ** attempt
         time.sleep(wait_time)
+        
     return None
 
 # =====================================================================
