@@ -38,12 +38,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          # ✅ TAMBAHAN: Memasukkan duckduckgo-search agar bisa mencari web secara gratis
+          pip install requests duckduckgo-search
 
       - name: Run Intelligent Scheduler & AI
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: "gemini-3-flash-preview" # Default model
+          # ✅ PERBAIKAN: Mengganti model yang tidak ada ke model stabil & gratis
+          GEMINI_MODEL: "gemini-1.5-flash" 
           RUN_TYPE: ${{ github.event.inputs.run_type || 'auto' }}
           
           # Parameter opsional yang disesuaikan dengan script v2.1
