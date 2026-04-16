@@ -236,9 +236,11 @@ def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_js
         'x-goog-api-key': api_key
     }
     
+    # ✅ PERUBAHAN 1: Biarkan HTTPError lolos agar bisa ditangkap oleh fungsi retry
+    response = requests.post(url, json=payload, headers=headers, timeout=120)
+    response.raise_for_status() 
+    
     try:
-        response = requests.post(url, json=payload, headers=headers, timeout=120)
-        response.raise_for_status()
         data = response.json()
         raw_text = data.get("candidates",[{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
         
@@ -246,33 +248,38 @@ def call_gemini(api_key, prompt, system_instruction, use_search=False, expect_js
             return extract_json_safe(raw_text)
         return raw_text
     except Exception as e:
-        log.error(f"Gemini API Error: {e}")
+        log.error(f"Gemini Data Parse Error: {e}")
         return None
 
-def call_gemini_with_retry(api_key, prompt, system_instruction, retries=3, **kwargs):
+def call_gemini_with_retry(api_key, prompt, system_instruction, retries=4, **kwargs):
     for attempt in range(retries):
         try:
-            # Beri jeda kecil standar sebelum setiap panggilan untuk mendinginkan API
-            time.sleep(2) 
+            # Jeda kecil standar 3 detik agar aman untuk Free Tier
+            time.sleep(3) 
             result = call_gemini(api_key, prompt, system_instruction, **kwargs)
             if result: return result
             
         except requests.exceptions.HTTPError as e:
             status_code = e.response.status_code if hasattr(e, 'response') else 500
             
-            # Jika error fatal (salah key, dsb), langsung hentikan
-            if status_code in [400, 403, 404]: 
-                log.error(f"Fatal API Error {status_code}. Stopping retries.")
-                break
-                
-            # ✅ JIKA KENA 429 (LIMIT FREE TIER), PAKSA TIDUR 30 DETIK
+            # ✅ PERUBAHAN 2: Menangkap 429 dan MEMAKSA tidur 45 detik
             if status_code == 429:
-                wait_time = 30
-                log.warning(f"⚠️ [429] Rate Limit Hit. Sleeping {wait_time}s before retry {attempt+1}/{retries}...")
+                wait_time = 45 # Waktu yang cukup untuk mereset kuota RPM Google
+                log.warning(f"⚠️ [429] Rate Limit Hit. API tidur selama {wait_time} detik... (Attempt {attempt+1}/{retries})")
                 time.sleep(wait_time)
                 continue
                 
-        # Jeda eksponensial untuk error lain (500, 503, dll)
+            # Jika error karena key salah, langsung berhenti
+            if status_code in [400, 403, 404]: 
+                log.error(f"Fatal API Error {status_code}: {e}")
+                break
+                
+            log.error(f"HTTP Error {status_code}: {e}")
+            
+        except Exception as e:
+            log.error(f"Unexpected Request Error: {e}")
+            
+        # Jeda eksponensial untuk error server lainnya (500, 503)
         wait_time = 2 ** attempt
         time.sleep(wait_time)
         
