@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Optimization Meta Tags -->
+  <title>Nexus Calculator | Scenario Planning & Science Systems</title>
+  <meta name="description" content="Interactive calculator to model environmental externalities, disaster mitigation ROI, and groundwater depletion with real-time data visualization." />
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%230ea5e9' d='M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM128,152a48,48,0,1,1,48-48A48.05,48.05,0,0,1,128,152Zm64.12,36.54a80,80,0,0,0-128.24,0A87.91,87.91,0,0,1,40,128a88,88,0,1,1,176,0A87.91,87.91,0,0,1,192.12,188.54Z'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Chart.js for Data Visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
+          },
+          colors: {
+            nexus: { main: '#0ea5e9', dark: '#0369a1', light: '#f0f9ff', ink: '#0c1a2e' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --ink: #0c1a2e;
+      --surface: #f8fafc;
+    }
+
+    body { background: var(--surface); color: var(--ink); overflow-x: hidden; }
+    
+    .glass-nav { 
+      background: rgba(255,255,255,0.9); 
+      backdrop-filter: blur(20px); 
+      border-bottom: 1px solid rgba(226,232,240,0.9); 
+    }
+    
+    .bg-grid { 
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px); 
+      background-size: 28px 28px; 
+    }
+
+    .tag-chip { 
+      display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border-radius: 99px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; 
+    }
+
+    /* Custom Range Slider */
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #0ea5e9;
+      cursor: pointer;
+      margin-top: -8px;
+      box-shadow: 0 2px 6px rgba(14, 165, 233, 0.4);
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      background: #e2e8f0;
+      border-radius: 99px;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+
+    /* Animations */
+    .fade-in { animation: fadeIn 0.5s ease-in; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-nexus-main selection:text-white">
+
+  <!-- ══════════════ NAV ══════════════ -->
+  <nav class="fixed w-full z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-nexus-light rounded-xl flex items-center justify-center text-nexus-main border border-blue-100">
+            <i class="ph-bold ph-chart-line-up text-2xl"></i>
+          </div>
+          <span class="font-display font-bold text-xl tracking-tight text-slate-900">Nexus Data Model</span>
+        </div>
+        
+        <div class="flex items-center gap-4">
+          <a href="index.html" class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-nexus-main transition-colors px-4 py-2 rounded-lg hover:bg-slate-100">
+            <i class="ph-bold ph-arrow-left"></i> Back to Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <header class="relative pt-36 pb-12 bg-white border-b border-slate-100 overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-[0.12] pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-400 rounded-full mix-blend-multiply filter blur-[150px] opacity-[0.05] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="tag-chip bg-blue-50 text-blue-600 border border-blue-100 mb-6">
+          <i class="ph-fill ph-sliders-horizontal"></i> Scenario Planning Module
+        </span>
+        <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-slate-900 leading-tight mb-6">
+          Visualizing <span style="background: linear-gradient(135deg, #0ea5e9, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Systemic Impact</span>
+        </h1>
+        <p class="text-lg text-slate-500 leading-relaxed mb-8">
+          Interact with variables to model different scenarios (Business as Usual vs Mitigation). See how local actions trigger large-scale chain reactions.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ MAIN WORKSPACE ══════════════ -->
+  <main class="py-12 bg-slate-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <!-- 1. SCENARIO: DEFORESTATION & EXTERNALITIES -->
+      <article class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col lg:flex-row">
+        <!-- Control Panel (Left) -->
+        <div class="lg:w-2/5 p-8 border-b lg:border-b-0 lg:border-r border-slate-200 bg-slate-50/50">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 bg-red-50 text-red-600 rounded-xl flex items-center justify-center text-xl"><i class="ph-bold ph-tree-palm"></i></div>
+            <h2 class="font-display font-bold text-2xl text-slate-900">Biosphere Externalities</h2>
+          </div>
+          <p class="text-sm text-slate-500 mb-8">Test different land-use change scenarios to reveal the economic value gap between private gain and public loss.</p>
+          
+          <div class="space-y-6">
+            <!-- Ecosystem Type Selection -->
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Disrupted Ecosystem Type</label>
+              <select id="def-type" class="w-full bg-white border border-slate-200 text-slate-900 text-sm rounded-xl px-4 py-3 focus:ring-2 focus:ring-red-400 focus:outline-none" onchange="updateDeforestation()">
+                <option value="50000">Secondary Forest (Carbon Cost: Low)</option>
+                <option value="150000" selected>Peatland (Carbon Cost: High)</option>
+                <option value="250000">Mangrove Forest (Carbon + Coastal Cost: Critical)</option>
+              </select>
+            </div>
+            
+            <!-- Area Slider -->
+            <div>
+              <div class="flex justify-between mb-2">
+                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Cleared Land Area</label>
+                <span class="text-sm font-bold text-red-600" id="def-area-val">100 Hectares</span>
+              </div>
+              <input type="range" id="def-area" min="10" max="5000" step="10" value="100" oninput="updateDeforestation()">
+            </div>
+          </div>
+
+          <div class="mt-8 p-4 bg-white rounded-xl border border-slate-200">
+            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Mathematical Model:</div>
+            <code class="text-xs text-slate-600 font-mono block">Private Gain = Area × $1,200/Ha</code>
+            <code class="text-xs text-slate-600 font-mono block mt-1">Social Cost = Area × Ecosystem Type Index</code>
+          </div>
+        </div>
+
+        <!-- Visualization Panel (Right) -->
+        <div class="lg:w-3/5 p-8 flex flex-col justify-center">
+          <div class="relative h-64 w-full">
+            <canvas id="chartDeforestation"></canvas>
+          </div>
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-4">
+              <div class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Private Gain / Harvest</div>
+              <div class="font-display font-bold text-2xl text-emerald-700" id="res-private">$0</div>
+            </div>
+            <div class="bg-red-50 border border-red-100 rounded-xl p-4">
+              <div class="text-[10px] font-bold text-red-600 uppercase tracking-wider">Planetary Damage Burden</div>
+              <div class="font-display font-bold text-2xl text-red-700" id="res-social">$0</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. SCENARIO: DRR & DISASTER MITIGATION -->
+      <article class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col lg:flex-row">
+        <!-- Control Panel (Left) -->
+        <div class="lg:w-2/5 p-8 border-b lg:border-b-0 lg:border-r border-slate-200 bg-slate-50/50">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 bg-sky-50 text-nexus-main rounded-xl flex items-center justify-center text-xl"><i class="ph-bold ph-shield-check"></i></div>
+            <h2 class="font-display font-bold text-2xl text-slate-900">Disaster Mitigation (DRR)</h2>
+          </div>
+          <p class="text-sm text-slate-500 mb-8">Plan prevention budget allocations to see the scale of economic and infrastructure losses prevented.</p>
+          
+          <div class="space-y-6">
+            <!-- Intervention Type Selection -->
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Prevention Intervention Type</label>
+              <select id="drr-type" class="w-full bg-white border border-slate-200 text-slate-900 text-sm rounded-xl px-4 py-3 focus:ring-2 focus:ring-nexus-main focus:outline-none" onchange="updateDRR()">
+                <option value="4">Physical Seawall (1:4 Savings Ratio)</option>
+                <option value="6" selected>Multi-Hazard Early Warning (1:6 Ratio)</option>
+                <option value="10">Community Education & Evacuation (1:10 Ratio)</option>
+              </select>
+            </div>
+            
+            <!-- Budget Slider -->
+            <div>
+              <div class="flex justify-between mb-2">
+                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Allocated Budget</label>
+                <span class="text-sm font-bold text-sky-600" id="drr-budget-val">$1,000,000</span>
+              </div>
+              <input type="range" id="drr-budget" min="100000" max="10000000" step="100000" value="1000000" oninput="updateDRR()">
+            </div>
+          </div>
+        </div>
+
+        <!-- Visualization Panel (Right) -->
+        <div class="lg:w-3/5 p-8 flex flex-col justify-center">
+          <div class="relative h-64 w-full">
+            <canvas id="chartDRR"></canvas>
+          </div>
+          <div class="mt-8 bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+            <p class="text-sm text-slate-600 font-medium">An investment of <strong class="text-sky-600" id="res-drr-inv">$0</strong> can potentially prevent economic and infrastructure losses of <strong class="text-slate-900 text-xl" id="res-drr-saved">$0</strong> during a disaster event.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. SCENARIO: GROUNDWATER DEPLETION -->
+      <article class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col lg:flex-row">
+        <!-- Control Panel (Left) -->
+        <div class="lg:w-2/5 p-8 border-b lg:border-b-0 lg:border-r border-slate-200 bg-slate-50/50">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl"><i class="ph-bold ph-drop"></i></div>
+            <h2 class="font-display font-bold text-2xl text-slate-900">Aquifer Depletion</h2>
+          </div>
+          <p class="text-sm text-slate-500 mb-6">Project the resilience of groundwater reserves over the next 30 years based on human vs natural consumption rates.</p>
+          
+          <!-- Quick Scenario Buttons -->
+          <div class="mb-6 flex gap-2">
+            <button onclick="setWaterScenario(3500, 1000)" class="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded-lg hover:bg-slate-100 transition">BaU (Deficit)</button>
+            <button onclick="setWaterScenario(1500, 1500)" class="px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold rounded-lg hover:bg-emerald-100 transition">Conservation (Sustainable)</button>
+            <button onclick="setWaterScenario(4000, 500)" class="px-3 py-1.5 bg-red-50 border border-red-200 text-red-700 text-xs font-bold rounded-lg hover:bg-red-100 transition">Critical Drought</button>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Extraction Slider -->
+            <div>
+              <div class="flex justify-between mb-2">
+                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Extraction (Million L/yr)</label>
+                <span class="text-sm font-bold text-red-500" id="wat-ext-val">3500</span>
+              </div>
+              <input type="range" id="wat-ext" min="500" max="6000" step="100" value="3500" oninput="updateWater()">
+            </div>
+
+            <!-- Recharge Slider -->
+            <div>
+              <div class="flex justify-between mb-2">
+                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Natural Recharge (Million L/yr)</label>
+                <span class="text-sm font-bold text-emerald-500" id="wat-rec-val">1000</span>
+              </div>
+              <input type="range" id="wat-rec" min="100" max="3000" step="100" value="1000" oninput="updateWater()">
+            </div>
+            
+            <!-- Hidden Reserve Input (Fixed for simulation) -->
+            <input type="hidden" id="wat-reserve" value="50000">
+          </div>
+        </div>
+
+        <!-- Visualization Panel (Right) -->
+        <div class="lg:w-3/5 p-8 flex flex-col justify-center relative">
+          <div id="water-warning" class="absolute top-4 right-8 bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full hidden animate-pulse border border-red-200 z-10">
+            🚨 Tipping Point Reached!
+          </div>
+          <div class="relative h-64 w-full">
+            <canvas id="chartWater"></canvas>
+          </div>
+          <div class="mt-6 flex justify-between items-center text-sm">
+            <span class="text-slate-500">Year 0 (Now)</span>
+            <span class="font-bold text-slate-900" id="res-water-status">Approaching Depletion</span>
+            <span class="text-slate-500">Year 30</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer style="background:#0c1a2e" class="py-12 text-center border-t border-slate-800">
+    <div class="flex items-center justify-center gap-3 mb-3">
+      <i class="ph-fill ph-sliders-horizontal text-2xl text-slate-600"></i>
+      <span class="font-display font-bold text-xl tracking-tight text-slate-500">Nexus Scenario Model</span>
+    </div>
+    <p class="text-slate-600 text-sm font-medium">Predictive visualization based on the Tipping Point framework &copy; 2026</p>
+  </footer>
+
+  <!-- ══════════════ CHART.JS LOGIC & SCENARIOS ══════════════ -->
+  <script>
+    // Formatters
+    const fmtCur = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+    const fmtNum = new Intl.NumberFormat('en-US');
+
+    // Chart Instances
+    let chartDef, chartDRR, chartWat;
+
+    // --- INITIALIZE ALL CHARTS ON PAGE LOAD ---
+    document.addEventListener("DOMContentLoaded", () => {
+      initCharts();
+      // Call updates once to load default slider values
+      updateDeforestation();
+      updateDRR();
+      updateWater();
+    });
+
+    function initCharts() {
+      Chart.defaults.font.family = "'DM Sans', sans-serif";
+      Chart.defaults.color = "#64748b";
+
+      // 1. Deforestation Chart (Bar Chart: Gain vs Cost)
+      const ctxDef = document.getElementById('chartDeforestation').getContext('2d');
+      chartDef = new Chart(ctxDef, {
+        type: 'bar',
+        data: {
+          labels: ['Private Gain (Short-term)', 'Damage Cost (Long-term)'],
+          datasets: [{
+            label: 'Economic Value (USD)',
+            data: [0, 0],
+            backgroundColor: ['#10b981', '#ef4444'],
+            borderRadius: 8,
+            borderSkipped: false
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => fmtCur.format(ctx.raw) } } },
+          scales: {
+            y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { callback: (val) => '$' + (val/1000000) + 'M' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // 2. DRR Chart (Bar Chart: Investment vs Savings)
+      const ctxDRR = document.getElementById('chartDRR').getContext('2d');
+      chartDRR = new Chart(ctxDRR, {
+        type: 'bar',
+        data: {
+          labels: ['Mitigation Budget', 'Saved Assets'],
+          datasets: [{
+            label: 'USD',
+            data: [0, 0],
+            backgroundColor: ['#0ea5e9', '#6366f1'],
+            borderRadius: 8
+          }]
+        },
+        options: {
+          indexAxis: 'y', // Horizontal bar for visual variety
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => fmtCur.format(ctx.raw) } } },
+          scales: {
+            x: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { callback: (val) => '$' + (val/1000000) + 'M' } },
+            y: { grid: { display: false } }
+          }
+        }
+      });
+
+      // 3. Water Depletion Chart (Line Chart: 30 Year Forecast)
+      const ctxWat = document.getElementById('chartWater').getContext('2d');
+      chartWat = new Chart(ctxWat, {
+        type: 'line',
+        data: {
+          labels: Array.from({length: 31}, (_, i) => i), // Years 0-30
+          datasets: [{
+            label: 'Water Reserve Volume (Million Liters)',
+            data: [],
+            borderColor: '#f59e0b',
+            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.1,
+            pointRadius: 0, // Hide points for a cleaner look
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { 
+            legend: { display: false },
+            tooltip: { intersect: false, mode: 'index' }
+          },
+          scales: {
+            y: { beginAtZero: true, max: 55000, grid: { color: '#f1f5f9' } },
+            x: { grid: { display: false }, title: { display: true, text: 'Years Ahead' } }
+          }
+        }
+      });
+    }
+
+    // --- DEFORESTATION SCENARIO UPDATE FUNCTION ---
+    function updateDeforestation() {
+      const area = parseFloat(document.getElementById('def-area').value);
+      const costMultiplier = parseFloat(document.getElementById('def-type').value);
+      
+      // Update slider label
+      document.getElementById('def-area-val').textContent = fmtNum.format(area) + " Hectares";
+
+      // Calculations
+      const privateGain = area * 1200;
+      const socialCost = area * costMultiplier;
+
+      // Update Bottom Text
+      document.getElementById('res-private').textContent = fmtCur.format(privateGain);
+      document.getElementById('res-social').textContent = fmtCur.format(socialCost);
+
+      // Update Chart
+      chartDef.data.datasets[0].data = [privateGain, socialCost];
+      chartDef.update();
+    }
+
+    // --- DRR SCENARIO UPDATE FUNCTION ---
+    function updateDRR() {
+      const budget = parseFloat(document.getElementById('drr-budget').value);
+      const ratio = parseFloat(document.getElementById('drr-type').value);
+      
+      // Update label
+      document.getElementById('drr-budget-val').textContent = fmtCur.format(budget);
+
+      // Calculations
+      const saved = budget * ratio;
+
+      // Update Bottom Text
+      document.getElementById('res-drr-inv').textContent = fmtCur.format(budget);
+      document.getElementById('res-drr-saved').textContent = fmtCur.format(saved);
+
+      // Update Chart
+      chartDRR.data.datasets[0].data = [budget, saved];
+      chartDRR.update();
+    }
+
+    // --- GROUNDWATER SCENARIO UPDATE FUNCTION ---
+    function updateWater() {
+      const extract = parseFloat(document.getElementById('wat-ext').value);
+      const recharge = parseFloat(document.getElementById('wat-rec').value);
+      const reserveStart = parseFloat(document.getElementById('wat-reserve').value); // 50000
+
+      // Update label
+      document.getElementById('wat-ext-val').textContent = fmtNum.format(extract);
+      document.getElementById('wat-rec-val').textContent = fmtNum.format(recharge);
+
+      const annualDeficit = extract - recharge;
+      
+      // Create data array for 30 years (Years 0 to 30)
+      let projection = [];
+      let currentReserve = reserveStart;
+      let yearZero = 0;
+
+      for(let i=0; i<=30; i++) {
+        projection.push(currentReserve);
+        currentReserve -= annualDeficit;
+        if(currentReserve < 0) currentReserve = 0; // Prevent negative values
+        if(currentReserve === 0 && yearZero === 0 && i > 0) yearZero = i;
+      }
+
+      // Update status text & UI Warning
+      const statusText = document.getElementById('res-water-status');
+      const warningBadge = document.getElementById('water-warning');
+
+      if (annualDeficit <= 0) {
+        statusText.textContent = "Sustainable System (Safe)";
+        statusText.className = "font-bold text-emerald-600";
+        chartWat.data.datasets[0].borderColor = "#10b981"; // Green
+        chartWat.data.datasets[0].backgroundColor = "rgba(16, 185, 129, 0.1)";
+        warningBadge.classList.add('hidden');
+      } else {
+        if (yearZero > 0 && yearZero <= 30) {
+          statusText.textContent = `Tipping Point: Aquifer Collapse in Year ${yearZero}`;
+          statusText.className = "font-bold text-red-600";
+          chartWat.data.datasets[0].borderColor = "#ef4444"; // Red
+          chartWat.data.datasets[0].backgroundColor = "rgba(239, 68, 68, 0.1)";
+          if(yearZero < 15) {
+             warningBadge.classList.remove('hidden');
+          } else {
+             warningBadge.classList.add('hidden');
+          }
+        } else {
+          statusText.textContent = "Gradual Deficit (Depletes >30 Years)";
+          statusText.className = "font-bold text-amber-600";
+          chartWat.data.datasets[0].borderColor = "#f59e0b"; // Yellow/Amber
+          chartWat.data.datasets[0].backgroundColor = "rgba(245, 158, 11, 0.1)";
+          warningBadge.classList.add('hidden');
+        }
+      }
+
+      // Update Chart
+      chartWat.data.datasets[0].data = projection;
+      chartWat.update();
+    }
+
+    // Helper for Setting Water Scenario Presets
+    function setWaterScenario(extValue, recValue) {
+      document.getElementById('wat-ext').value = extValue;
+      document.getElementById('wat-rec').value = recValue;
+      updateWater();
+    }
+
+  </script>
+</body>
+</html>
