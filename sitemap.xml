@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Halaman Utama -->
+  <url>
+    <loc>https://anggaconni.github.io/Nexus-Radar/index.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Halaman Radar Utama -->
+  <url>
+    <loc>https://anggaconni.github.io/Nexus-Radar/radar.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Halaman Kalkulator & Skenario (Yang baru kita buat) -->
+  <url>
+    <loc>https://anggaconni.github.io/Nexus-Radar/cal.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Halaman Informasi / Dokumentasi -->
+  <url>
+    <loc>https://anggaconni.github.io/Nexus-Radar/info.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
