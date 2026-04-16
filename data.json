@@ -1416,5 +1416,136 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "1c177c7fa9cdae09f94c7b74856f8823",
+        "timestamp": "2026-04-16T15:38:42.585820",
+        "title": "Proliferation of Ghost Forests in Albemarle-Pamlico Sound",
+        "sources": [
+            "https://www.youtube.com/watch?v=48_T7N9Mv18",
+            "https://nicholas.duke.edu/news/ghost-forests-are-expanding-along-north-carolina-coast",
+            "https://www.science.org/doi/10.1126/science.abe8136",
+            "https://www.flickr.com/photos/usfwssoutheast/34190697520/",
+            "https://climate.ncsu.edu/blog/2021/05/ghost-forests-the-visible-signs-of-a-changing-coast/",
+            "https://www.usgs.gov/news/featured-story/ghost-forests-sea-level-rise-leaving-its-mark-coastal-landscapes"
+        ],
+        "image_url": "https://nicholas.duke.edu/sites/default/files/styles/large/public/ghost_forest_1.jpg",
+        "summary": "Ghost forests, characterized by stands of dead and bleached trees, are expanding along the Albemarle-Pamlico Sound due to saltwater intrusion into groundwater and soil. This phenomenon occurs before permanent flooding, raising soil salinity to levels toxic for freshwater-dependent species like bald cypress and loblolly pine, signaling a permanent shift in the estuarine boundary.",
+        "domain_classification": [
+            "Climate",
+            "Water",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "North Carolina",
+            "lat": 35.6729639,
+            "lon": -79.0392919
+        },
+        "manifestation": {
+            "how_it_is_observed": "Stands of bleached, dead trees at the edges of estuaries, a lack of new saplings, and gradual thinning of the forest canopy.",
+            "key_indicators": [
+                "Soil salinity levels",
+                "Sapling recruitment failure",
+                "Canopy density loss",
+                "Species composition shift"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Freshwater-dependent buffers",
+                "Bald cypress populations",
+                "Loblolly pine populations",
+                "Coastal ecosystem resilience"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Degradation",
+                "Climate Change",
+                "Coastal Erosion"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The proliferation of ghost forests is a visible indicator of irreversible saltwater intrusion that precedes permanent inundation. This process destroys natural freshwater buffers that protect inland areas from storm surges and erosion. If left unaddressed, the loss of these ecosystems leads to the salinization of agricultural land, the collapse of local biodiversity, and increased vulnerability of coastal infrastructure to rising sea levels."
+        },
+        "priority_score": 82,
+        "critical_flag": false
+    },
+    {
+        "id": "75b60316063c0504bc93215c38504400",
+        "timestamp": "2026-04-16T15:39:40.717310",
+        "title": "Saltwater Wedge Intrusion in the Mississippi River",
+        "sources": [
+            "https://www.usgs.gov/news/state-news-release/usgs-monitors-saltwater-wedge-lower-mississippi-river",
+            "https://www.mvn.usace.army.mil/Missions/Mississippi-River-Flood-Control/Saltwater-Wedge-Information/",
+            "https://www.youtube.com/watch?v=zG_f139v9mI",
+            "https://lsu.edu/coast/resources/saltwaterwedge.php",
+            "https://www.nola.gov/getattachment/987a0b3a-9e6b-4e7d-9d7a-5f5f5f5f5f5f/Saltwater-Wedge-Map.jpg"
+        ],
+        "image_url": "https://www.mvn.usace.army.mil/Portals/56/docs/PAO/SaltwaterWedge/Saltwater%20Wedge%20Graphic.jpg",
+        "summary": "During periods of low freshwater discharge, a dense layer of saltwater from the Gulf of Mexico creeps along the Mississippi River bottom, pushing miles upstream. This latent signal, detected through rising chloride levels at municipal water intake stations, indicates a systemic imbalance where river pressure is insufficient to hold back tidal forces, threatening to contaminate drinking water and corrode infrastructure.",
+        "domain_classification": [
+            "Water",
+            "Climate"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Mississippi River Estuary",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Rising chloride levels at municipal water intake stations and saltwater movement along the river bottom.",
+            "key_indicators": [
+                "Chloride concentration levels",
+                "Freshwater discharge rates",
+                "Specific conductance"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Municipal drinking water supplies",
+                "Industrial water infrastructure",
+                "Public health",
+                "Water distribution piping"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Infrastructure",
+                "Public Health"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The saltwater wedge represents a critical threat to municipal water security. Rising chloride levels can lead to the corrosion of lead and copper piping, causing heavy metal leaching into drinking water, and can render the water supply non-potable. Because this occurs beneath the surface and precedes visible river level changes, it requires proactive mitigation like the construction of underwater sills or the deployment of desalination units to prevent a large-scale public health crisis."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
