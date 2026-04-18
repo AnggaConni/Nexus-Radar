@@ -1662,5 +1662,121 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "776051144927f7e17f18223278ca9ab6",
+        "timestamp": "2026-04-18T02:11:33.095190",
+        "title": "Glacial lake flood hits Juneau, Alaska, reflecting a growing global ...",
+        "summary": "Suicide Basin, an ice-dammed lake on an arm of Mendenhall Glacier, has filled up with meltwater and sent destructive surges of water into Juneau for 3 straight summers.",
+        "domain_classification": [
+            "Water",
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Alaska",
+            "lat": 64.4459613,
+            "lon": -149.680909
+        },
+        "manifestation": {
+            "how_it_is_observed": "An ice-dammed lake (Suicide Basin) on Mendenhall Glacier fills with meltwater, causing destructive surges of water into Juneau.",
+            "key_indicators": [
+                "Glacial lake flood",
+                "Meltwater surges",
+                "Ice-dammed lake filling",
+                "Recurring annual floods"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Juneau (city)",
+                "Infrastructure",
+                "Residents",
+                "Local environment"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.yahoo.com/news/articles/glacial-lake-flood-hits-juneau-211017633.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Flooding",
+                "Climate Change",
+                "Environmental"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Suicide Basin, an ice-dammed lake, is causing recurring destructive glacial lake outburst floods (GLOFs) in Juneau, Alaska, for three consecutive summers. This phenomenon, driven by meltwater, poses a significant and ongoing threat to the community, indicating an urgent need for mitigation strategies and long-term adaptation to climate change impacts."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "8f8473a5ec7e2977c3635c2781c136fe",
+        "timestamp": "2026-04-18T02:12:37.840577",
+        "title": "Ice dam in Alaska releases historic amounts of floodwater toward ...",
+        "summary": "Communities in Alaska have issued flood warnings and evacuations as the glacial release from Suicide Basin above Mendenhall Lake has begun.",
+        "domain_classification": [
+            "Water",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Alaska",
+            "lat": 64.4459613,
+            "lon": -149.680909
+        },
+        "manifestation": {
+            "how_it_is_observed": "Glacial release from Suicide Basin above Mendenhall Lake has begun, causing historic amounts of floodwater.",
+            "key_indicators": [
+                "Flood warnings",
+                "Evacuations",
+                "Historic amounts of floodwater"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Communities",
+                "Downstream homes"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.14news.com/2025/08/12/ice-dam-alaska-releases-historic-amounts-floodwater-toward-downstream-homes/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Flood"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A historic glacial outburst flood from Suicide Basin in Alaska has begun, releasing massive amounts of water towards downstream communities. Flood warnings and evacuations are already in effect, indicating an active and severe disaster requiring immediate emergency response and mitigation efforts."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
