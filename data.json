@@ -1778,5 +1778,124 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "1e743ca410b61da65aeec98ecd8a2070",
+        "timestamp": "2026-04-19T02:33:41.439579",
+        "title": "Towards Semi-automatic Detection of Illegal Logging ... - Springer",
+        "summary": "Two logging scenarios were examined: clear-cutting and selective logging. The exploratory analysis provided valuable insights into forest disturbance patterns, while breakpoint analysis successfully identified the timing of logging events in both scenarios. This system offers a promising approach for detecting illegal logging.",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "forest disturbance patterns and timing of logging events",
+            "key_indicators": [
+                "clear-cutting",
+                "selective logging",
+                "forest disturbance patterns"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "forests",
+                "biodiversity",
+                "ecosystems",
+                "climate",
+                "local communities"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://link.springer.com/chapter/10.1007/978-3-031-97663-6_36"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Degradation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal describes a system for detecting illegal logging. If illegal logging is left unaddressed, it leads to severe environmental degradation, deforestation, biodiversity loss, and contributes to climate change. The system is a promising tool, but the underlying problem of illegal logging requires immediate and sustained intervention to prevent catastrophic long-term impacts."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "b54560d128d73f0b8ada10f4c35280c0",
+        "timestamp": "2026-04-19T02:34:34.517314",
+        "title": "New research reveals large-scale illegal logging linked to deadly ...",
+        "summary": "However, the pattern of activity visible through satellite imagery looks like that typically seen in development of industrial timber plantations, and does not resemble smallholder-associated agricultural encroachment or selective illegal logging.",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Indonesia",
+            "region": "Sumatra",
+            "lat": -0.1432942,
+            "lon": 101.6241024
+        },
+        "manifestation": {
+            "how_it_is_observed": "Pattern of activity visible through satellite imagery resembles development of industrial timber plantations.",
+            "key_indicators": [
+                "Satellite imagery",
+                "Industrial timber plantations development"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Forests",
+                "Biodiversity",
+                "Local communities",
+                "Ecosystems",
+                "Climate"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.earthsight.org.uk/news/sumatra-floods"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Degradation",
+                "Deforestation",
+                "Illegal Activity",
+                "Natural Disaster (exacerbated)"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Large-scale illegal logging, resembling industrial timber plantation development, is directly linked to deadly floods. This indicates severe environmental degradation, significant human impact, and ongoing illegal activity, requiring urgent intervention to prevent further disasters."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
