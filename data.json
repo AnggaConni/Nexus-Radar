@@ -1897,5 +1897,121 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "a10181a4b4531f2d76ff42de06476010",
+        "timestamp": "2026-04-20T02:33:56.803653",
+        "title": "The Ganges River is drying faster than ever – here’s what it means for...",
+        "summary": "The pattern is repeating across the world’s largest mountain range, as rising temperatures are melting glaciers faster than ever. Initially, this brings sudden floods from glacial lakes. In the long-run, it means far less water flowing downstream during the dry season.",
+        "domain_classification": [
+            "Water",
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "India",
+            "region": "South Asia",
+            "lat": 21.4117746,
+            "lon": 39.889743
+        },
+        "manifestation": {
+            "how_it_is_observed": "Rising temperatures are melting glaciers faster than ever, leading to sudden floods from glacial lakes and, in the long-run, significantly less water flowing downstream during the dry season.",
+            "key_indicators": [
+                "Rapid glacier melt",
+                "Sudden glacial lake floods",
+                "Reduced river flow",
+                "River drying"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Water supply for communities",
+                "Agricultural systems",
+                "Ecosystems",
+                "Regional stability"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://theconversation.com/the-ganges-river-is-drying-faster-than-ever-heres-what-it-means-for-the-region-and-the-world-265891"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Hydrological",
+                "Humanitarian"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Accelerated glacial melt in the world's largest mountain range is causing immediate risks of sudden floods from glacial lakes, followed by severe long-term water scarcity in critical river systems like the Ganges. This poses significant environmental, hydrological, and humanitarian disaster risks to vast populations dependent on these rivers, impacting agriculture, livelihoods, and access to clean water."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "9b40da86a4e3a885b2b07bea5cd15def",
+        "timestamp": "2026-04-20T02:34:43.388860",
+        "title": "The Nile River Is Drying Up: Everything You Need to Know",
+        "summary": "The Nile River, which runs through Egypt and ten other African countries, is essential to the survival of the inhabitants of those nations. Unfortunately, climate change is largely to blame for the Nile River drying up, which is expected to worsen circumstances for millions of people.",
+        "domain_classification": [
+            "Water",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Egypt",
+            "region": "Africa",
+            "lat": 30.056581,
+            "lon": 31.3647966
+        },
+        "manifestation": {
+            "how_it_is_observed": "The Nile River is drying up",
+            "key_indicators": [
+                "drying up of the Nile River"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "millions of people",
+                "inhabitants of nations reliant on the Nile"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.greenmatters.com/weather-and-global-warming/nile-river-drying-up"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Humanitarian",
+                "Geopolitical"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The Nile River, a vital water source for millions across 11 African countries, is drying up primarily due to climate change. This poses an immediate and severe threat to the survival and well-being of inhabitants, necessitating urgent intervention to address water scarcity and mitigate widespread humanitarian and potential geopolitical crises."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
