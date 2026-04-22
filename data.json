@@ -2013,5 +2013,63 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "00b8289334967570353371fa3823ab64",
+        "timestamp": "2026-04-22T02:27:30.300620",
+        "title": "Warm-water 'blobs' significantly diminish salmon, other fish populatio...",
+        "summary": "Current sea surface temperature anomalies (variations from average) for the Pacific Coast off North and South America.That will decrease the amount of fish available for harvest as well as changing the location where the fish can be caught.",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Pacific Coast off North and South America",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Sea surface temperature anomalies (variations from average)",
+            "key_indicators": [
+                "Sea surface temperature anomalies",
+                "Decreased fish available for harvest",
+                "Changing location of fish catches"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Salmon populations",
+                "Other fish populations",
+                "Fish harvest"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.pugetsoundinstitute.org/warm-water-blobs-significantly-diminish-salmon-other-fish-populations-study-says/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Economic",
+                "Food Security"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Warm-water 'blobs' (sea surface temperature anomalies) are significantly diminishing salmon and other fish populations, leading to decreased availability for harvest and changes in fish distribution. This poses a high risk to marine ecosystems, the fishing industry, and regional food security, requiring immediate intervention to mitigate impacts."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
