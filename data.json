@@ -2071,5 +2071,114 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "790b4f938a8ec5367118cd39e4bacac5",
+        "timestamp": "2026-04-23T02:32:32.255587",
+        "title": "Shifting Stocks and Catch Quotas | Marine Stewardship Council",
+        "summary": "Change in distribution of fish stocks has accelerated due to climate change. International quota agreements are needed to avoid overfishing these stocks.",
+        "domain_classification": [
+            "Ocean",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Global",
+            "region": "Global",
+            "lat": 21.0965094,
+            "lon": 105.8529112
+        },
+        "manifestation": {
+            "how_it_is_observed": "Change in distribution of fish stocks has accelerated due to climate change.",
+            "key_indicators": [
+                "Shifting fish stocks",
+                "Need for international quota agreements",
+                "Risk of overfishing"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Fish stocks",
+                "Marine ecosystems",
+                "Fishing industry",
+                "International cooperation"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.msc.org/what-we-are-doing/oceans-at-risk/shifting-stocks-and-international-catch-quotas"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "policy_gap"
+            ]
+        },
+        "risk_assessment": {},
+        "priority_score": 64,
+        "critical_flag": false
+    },
+    {
+        "id": "e730824d27cf605b853d5233296c3299",
+        "timestamp": "2026-04-23T02:33:24.061562",
+        "title": "Fleet threatened by quota cuts based on uncertain advice | The Shetland Fishermen",
+        "summary": "October 28, 2022 - SFA chairman James Anderson, skipper of whitefish vessel Alison Kay (LK57), said this new data helped quantify the anecdotal evidence constantly reported by local crews. “Shetland’s fleet has had concerns for many years with mismatched quota advice which causes needless economic harm to an essential part of our island economy, and a mental strain on fishing crews - who are left unable to catch important species despite an obvious abundance of stocks around Shetland.",
+        "domain_classification": [
+            "Social/Behavioral",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United Kingdom",
+            "region": "Shetland",
+            "lat": 60.333333,
+            "lon": -1.333333
+        },
+        "manifestation": {
+            "how_it_is_observed": "Mismatched quota advice leading to fishing crews being unable to catch important species despite obvious abundance of stocks.",
+            "key_indicators": [
+                "Quota cuts",
+                "Economic harm to island economy",
+                "Mental strain on fishing crews",
+                "Discrepancy between scientific advice and observed stock abundance"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Shetland's fishing fleet",
+                "Island economy",
+                "Fishing crews",
+                "Fish stocks (indirectly, due to management issues)"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.shetlandfishermen.com/news/fleet-threatened-by-quota-cuts-based-on-uncertain-advice"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Economic",
+                "Social",
+                "Policy"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The primary risk is severe economic harm to an essential island economy due to quota cuts based on uncertain advice, leading to an inability to catch abundant species. This also causes significant mental strain on fishing crews, threatening livelihoods and the sustainability of the local fishing industry."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
