@@ -2180,5 +2180,120 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "4456c358bcee033ce119e9cf1725acf5",
+        "timestamp": "2026-04-24T02:31:29.658409",
+        "title": "Rockfall frequency from French mountains has doubled since Little...",
+        "summary": "Rockfall frequency in the Mont-Blanc massif has doubled since the Little Ice Age, with erosion rates increasing from 2.2mm/yr to over 4.1mm/yr between 2006 and 2011.",
+        "domain_classification": [
+            "DRR",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "France",
+            "region": "Mont-Blanc massif",
+            "lat": 45.8887285,
+            "lon": 6.8913925
+        },
+        "manifestation": {
+            "how_it_is_observed": "Rockfall frequency has doubled and erosion rates are increasing significantly.",
+            "key_indicators": [
+                "Rockfall frequency",
+                "Erosion rates"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Infrastructure",
+                "Human safety",
+                "Mountain ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://phys.org/news/2025-01-rockfall-frequency-french-mountains-ice.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Geological hazard",
+                "Human safety",
+                "Infrastructure damage"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Rockfall frequency in the Mont-Blanc massif has doubled since the Little Ice Age, with erosion rates significantly increasing from 2.2mm/yr to over 4.1mm/yr between 2006 and 2011. This accelerating trend presents a severe and escalating geological hazard, posing high risks to human safety, infrastructure, and the environment in the region, demanding immediate assessment and potential mitigation."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "57496cbfee93787bed2dd8348958c6e3",
+        "timestamp": "2026-04-24T02:32:17.888134",
+        "title": "NHESS - Rockfall triggering and meteorological variables in the...",
+        "summary": "This is particularly prevalent in areas with steep slopes, sparse vegetation, or permafrost. This study specifically focuses on the effects of meteorological variables in triggering rockfall events.",
+        "domain_classification": [
+            "DRR",
+            "Climate"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Rockfall events are triggered by meteorological variables, especially in areas with steep slopes, sparse vegetation, or permafrost.",
+            "key_indicators": [
+                "Meteorological variables",
+                "Steep slopes",
+                "Sparse vegetation",
+                "Permafrost degradation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Human safety",
+                "Infrastructure",
+                "Ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://nhess.copernicus.org/articles/26/187/2026/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Geological Hazard",
+                "Climatic Hazard"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The signal indicates a high-severity geological hazard (rockfall) exacerbated by meteorological variables, particularly in vulnerable areas like steep slopes, sparse vegetation, or permafrost. Understanding these triggers is critical for developing effective mitigation strategies. If left unaddressed, the lack of understanding and subsequent preventative measures could lead to significant property damage, injuries, or fatalities, warranting immediate intervention in terms of research application and risk management."
+        },
+        "priority_score": 66,
+        "critical_flag": false
     }
 ]
