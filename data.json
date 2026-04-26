@@ -2295,5 +2295,118 @@
         },
         "priority_score": 66,
         "critical_flag": false
+    },
+    {
+        "id": "1582535f6d3733dab7f513fe1071005a",
+        "timestamp": "2026-04-26T02:36:26.353891",
+        "title": "Abandoned industrial complex in Cleveland’s Central neighborhood to get second life | City of Cleveland Ohio",
+        "summary": "We extend our gratitude to the ... supply in Cleveland. Cleveland has about 4,000 to 5,000 acres — about the size of Shaker Heights — of vacant, abandoned or underutilized industrial property....",
+        "domain_classification": [
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Ohio",
+            "lat": 40.2253569,
+            "lon": -82.6881395
+        },
+        "manifestation": {
+            "how_it_is_observed": "Presence of vast tracts of vacant, abandoned, or underutilized industrial property within the city.",
+            "key_indicators": [
+                "4,000 to 5,000 acres of vacant, abandoned or underutilized industrial property in Cleveland"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Urban communities",
+                "local economy",
+                "land value",
+                "environmental quality",
+                "public health"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.clevelandohio.gov/news/abandoned-industrial-complex-clevelands-central-neighborhood-get-second-life"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "If left unaddressed, abandoned industrial complexes and large tracts of vacant land pose significant disaster risks. These include environmental contamination (soil and groundwater pollution from hazardous materials), public safety hazards (structural collapse, exposure to toxins, increased crime), and severe urban blight leading to economic stagnation and decreased property values. The mentioned scale of 4,000-5,000 acres amplifies these potential long-term impacts, requiring immediate intervention to prevent widespread negative consequences."
+        },
+        "priority_score": 66,
+        "critical_flag": false
+    },
+    {
+        "id": "a5da25405833d26b7922315c98c04b6b",
+        "timestamp": "2026-04-26T02:37:28.440836",
+        "title": "A long-forgotten toxic dump site is raising new worries for this Los Angeles neighborhood",
+        "summary": "May 2, 2022 - “How could this get support from city council, local regulatory agencies and the state regulatory agency?” · The American Caster Corp., which operated at the Avenue 34 site, was forced to buy a full-page advertisement in the L.A. Times after being convicted of burying and dumping toxic waste in Lincoln Heights. “The entire purpose of it was deterrence,” said Barry Groveman, an attorney who prosecuted the 1984 case. (Click image above to view a pdf.) ... Today, hulking and abandoned warehouses span most of the development site.",
+        "domain_classification": [
+            "DRR",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Los Angeles",
+            "lat": 34.0536909,
+            "lon": -118.242766
+        },
+        "manifestation": {
+            "how_it_is_observed": "A long-forgotten toxic dump site is raising new worries for the neighborhood, with abandoned warehouses spanning the site.",
+            "key_indicators": [
+                "toxic waste burial and dumping",
+                "abandoned warehouses",
+                "community worries"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "public health",
+                "local environment",
+                "community well-being",
+                "property development"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.latimes.com/environment/story/2022-04-30/an-old-toxic-dump-brings-new-worries-for-lincoln-heights"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Contamination",
+                "Public Health"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A long-forgotten toxic dump site, where a company was convicted in 1984 for burying and dumping toxic waste, is now raising new concerns in a Los Angeles neighborhood. The presence of unaddressed toxic waste poses significant environmental contamination risks to soil and groundwater, leading to severe public health hazards for residents if not immediately assessed and remediated."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
