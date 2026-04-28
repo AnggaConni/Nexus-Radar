@@ -2517,5 +2517,119 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "0f433458def9f7e04877cf1c5b182059",
+        "timestamp": "2026-04-28T02:45:41.329826",
+        "title": "Why Is There So Much Wind",
+        "summary": "Unusual wind patterns are affecting the US, explained by a meteorologist. Local movement was disrupted as the weather turned severe for a short period, with residents staying indoors due to suddenly increased wind intensity.",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unusual wind patterns and severe weather, with wind intensity increasing suddenly.",
+            "key_indicators": [
+                "Unusual wind patterns",
+                "Severe weather",
+                "Increased wind intensity",
+                "Disrupted local movement"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Local movement",
+                "Residents' daily life and safety"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.tiktok.com/discover/why-is-there-so-much-wind"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Weather Event",
+                "Public Safety",
+                "Disruption"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "Unusual and severe wind patterns are causing local disruptions and forcing residents indoors across the US. While events are described as 'short period' severe, the ongoing 'unusual patterns' indicate a persistent meteorological phenomenon that poses a medium risk to public safety and daily life, requiring continuous monitoring and public advisories."
+        },
+        "priority_score": 62,
+        "critical_flag": false
+    },
+    {
+        "id": "5aac9a3cc7921effc7afbe49c1a967fb",
+        "timestamp": "2026-04-28T02:46:39.480824",
+        "title": "Navigating Wind Patterns for Sailing in SF Bay",
+        "summary": "Understanding Wind Patterns: Familiarizing oneself with local wind trends helps sailors avoid dangerous situations. For instance, the winds in the Bay often wrap around the hills, creating sudden and unpredictable gusts.",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "San Francisco Bay",
+            "lat": 37.7140291,
+            "lon": -122.3077942
+        },
+        "manifestation": {
+            "how_it_is_observed": "Winds wrapping around hills, creating sudden and unpredictable gusts.",
+            "key_indicators": [
+                "Sudden gusts",
+                "unpredictable winds",
+                "dangerous situations for sailors"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Sailors",
+                "sailing vessels",
+                "recreational activities"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://wavescultures.com/articles/sailing-wind-forecast-san-francisco-bay/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Environmental Hazard"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": false,
+            "explanation": "Unpredictable wind patterns, specifically sudden and unpredictable gusts created by winds wrapping around hills in the SF Bay, pose a significant safety risk to sailors. A lack of understanding of these local wind trends can lead to dangerous situations, including potential accidents or capsizing. While not an immediate crisis, it requires ongoing education and preparedness to mitigate."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
