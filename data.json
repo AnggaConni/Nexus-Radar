@@ -2740,5 +2740,125 @@
         },
         "priority_score": 16,
         "critical_flag": false
+    },
+    {
+        "id": "4675739e6db780a7c158e576c631845e",
+        "timestamp": "2026-05-01T02:53:26.987873",
+        "title": "“When the Wild Roses Bloom”: Indigenous Knowledge and Environmental Change in Northwestern North America - PMC",
+        "summary": "At the same time as they have described the ways in which they and their ancestors have been able to mark the changing seasons—for example, through naming of the different moons, or tracking the flowering of certain plants or the songs of certain birds—to help them determine the best times for undertaking particular activities, many have noted both the importance of these phenological markers and the effects of environmental change that have caused them to shift. Given the wide spectrum of experiences and observations reflected by local land experts from different regions, presenting a synthesis of their collective, firsthand knowledge about environmental change and its impacts is of critical importance (Reid et al., 2014).",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Northwestern North America",
+            "lat": 41.8954416,
+            "lon": -87.6182448
+        },
+        "manifestation": {
+            "how_it_is_observed": "Indigenous communities observe shifts in traditional phenological markers, such as the flowering of plants, songs of birds, and seasonal changes, which historically guided activities.",
+            "key_indicators": [
+                "Flowering of specific plants",
+                "Songs of specific birds",
+                "Timing of changing seasons",
+                "Lunar cycles"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Indigenous knowledge systems",
+                "Cultural practices",
+                "Traditional seasonal activities",
+                "Ecosystems",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC9665002/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "environmental",
+                "ecological",
+                "socio-cultural"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Environmental change is causing significant shifts in phenological markers (e.g., plant flowering, bird songs) that Indigenous communities in Northwestern North America have historically used to track seasons and guide activities. This disruption to traditional ecological knowledge poses a high risk to cultural practices, resource management, and ecosystem stability. Synthesizing this firsthand knowledge is critically important for understanding and mitigating these ongoing impacts."
+        },
+        "priority_score": 76,
+        "critical_flag": false
+    },
+    {
+        "id": "129f6ba061dadb17ba6a190d8d6cb013",
+        "timestamp": "2026-05-01T02:54:17.873339",
+        "title": "Impact of climate change on flowering phenology of indigenous flora in Tehsil Bhimber Azad Jammu and Kashmir Pakistan",
+        "summary": "The present study was designed to explore the floristic composition of Tehsil Bhimber and to assess the influence of CC on the phenology of wild flowering plants. Phenological observations included the flowering time and duration of local wild ...",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Pakistan",
+            "region": "Azad Jammu and Kashmir",
+            "lat": 33.84412,
+            "lon": 73.796642
+        },
+        "manifestation": {
+            "how_it_is_observed": "Changes in the flowering time and duration of wild flowering plants due to climate change.",
+            "key_indicators": [
+                "Flowering time",
+                "Flowering duration",
+                "Floristic composition"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Indigenous flora",
+                "Wild flowering plants",
+                "Ecosystems",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.nature.com/articles/s41598-025-13692-y"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Environmental",
+                "Ecological"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The study identifies a significant impact of climate change on the flowering phenology of indigenous flora. Alterations in flowering times and duration can disrupt critical ecological processes such as pollination, seed dispersal, and food availability for dependent species, leading to cascading effects throughout the ecosystem. This poses a high risk to biodiversity, ecosystem stability, and long-term environmental health in the region. While the study itself is an observation, the underlying cause (climate change) and its documented ecological consequences demand immediate and sustained intervention to mitigate further damage and prevent potential biodiversity loss."
+        },
+        "priority_score": 88,
+        "critical_flag": false
     }
 ]
