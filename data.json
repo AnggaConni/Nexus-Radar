@@ -2860,5 +2860,120 @@
         },
         "priority_score": 88,
         "critical_flag": false
+    },
+    {
+        "id": "7847b50a022fd636f9ed12dd2af35804",
+        "timestamp": "2026-05-03T02:45:46.066848",
+        "title": "Large plastic sheet found in dead turtle stranded on beach",
+        "summary": "Jan 14, 2025 · A 1-square-meter plastic sheet was found inside a dead leatherback sea turtle on a beach in Fukui Prefecture, the largest piece of plastic debris reported ingested by the species,...",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Japan",
+            "region": "Fukui Prefecture",
+            "lat": 35.9263502,
+            "lon": 136.6068127
+        },
+        "manifestation": {
+            "how_it_is_observed": "A 1-square-meter plastic sheet found inside a dead leatherback sea turtle stranded on a beach.",
+            "key_indicators": [
+                "Marine wildlife mortality",
+                "Ingestion of large plastic debris by marine species"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Marine ecosystems",
+                "Sea turtle populations",
+                "Marine biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.asahi.com/ajw/articles/15561969"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Pollution",
+                "Biodiversity Loss",
+                "Ecosystem Degradation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The discovery of a 1-square-meter plastic sheet in an endangered leatherback sea turtle is a critical indicator of severe and widespread ocean plastic pollution. This latent signal points to an ongoing environmental disaster threatening marine biodiversity, disrupting ecosystems, and potentially impacting human health and economies. If left unaddressed, plastic pollution will continue to decimate marine life, accelerate species extinction, and degrade vital ocean ecosystems, leading to irreversible ecological collapse in affected areas. Immediate and sustained global intervention is required to mitigate plastic waste generation and improve waste management."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "7b324c414320a25381c5ebed2ca71bac",
+        "timestamp": "2026-05-03T02:46:34.640306",
+        "title": "Experts issue warning after finding distressed turtle on ...",
+        "summary": "A stranded loggerhead sea turtle was recently found on a beach in Playa de Bajo del Mejillón, located on the Canary Islands, and tangled up in plastic, according to a report by Canary...",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Spain",
+            "region": "Canary Islands",
+            "lat": 28.2935785,
+            "lon": -16.6214471
+        },
+        "manifestation": {
+            "how_it_is_observed": "A loggerhead sea turtle was found stranded on a beach, tangled in plastic.",
+            "key_indicators": [
+                "Stranded sea turtle",
+                "Plastic entanglement",
+                "Marine pollution"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Marine biodiversity",
+                "Sea turtles",
+                "Marine ecosystems",
+                "Ocean health"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.msn.com/en-us/science/ecology/experts-issue-warning-after-finding-distressed-turtle-on-beach-here-s-what-you-need-to-know/ar-AA1EjP3C"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Environmental Degradation",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The distressed turtle, tangled in plastic, is a clear indicator of widespread marine plastic pollution. While this specific incident involved one animal, it highlights a systemic issue that, if left unaddressed, poses a severe long-term disaster risk to marine ecosystems, leading to significant environmental degradation and biodiversity loss across numerous species."
+        },
+        "priority_score": 88,
+        "critical_flag": false
     }
 ]
