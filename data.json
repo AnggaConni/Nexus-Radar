@@ -2975,5 +2975,120 @@
         },
         "priority_score": 88,
         "critical_flag": false
+    },
+    {
+        "id": "3832f0a2b2b1ac0e6ebcd062e8dd98e7",
+        "timestamp": "2026-05-05T02:36:43.202873",
+        "title": "California: Lake Oroville Water-Level Photos Show...",
+        "summary": "Photos show quite how drastically the water level in the lake has dropped: in 2019, the lake water sits right up by the treeline, while now, there is a significant amount of bank between the water and the trees. In 2021, the lake, which is north of Sacramento, nearly dried up entirely.",
+        "domain_classification": [
+            "Water",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "California",
+            "lat": 36.7014631,
+            "lon": -118.755997
+        },
+        "manifestation": {
+            "how_it_is_observed": "Photos show drastically dropped water levels, with a significant amount of bank visible between the water and the treeline compared to previous years.",
+            "key_indicators": [
+                "low water levels",
+                "lake nearly dried up"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "water supply",
+                "ecosystems",
+                "recreation"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.newsweek.com/lake-oroville-california-drought-low-water-levels-1717582"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Water Scarcity"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Critically low water levels in Lake Oroville, a vital water source for California, indicate severe drought conditions. The lake nearly dried up in 2021, highlighting the extreme vulnerability of the region's water supply. Unaddressed, this poses significant risks to drinking water, agriculture, hydroelectric power generation, and ecosystem health, necessitating urgent water conservation and management strategies to prevent further critical drops."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "7ff3ff6007e6c98386972b3a4fa878ab",
+        "timestamp": "2026-05-05T02:37:42.870814",
+        "title": "Drastic drop in water levels concern for Arrow Lakes residents",
+        "summary": "They say the drastic change in water levels could affect camping for summers to come, with several guests cancelling reservations - a threat to their livelihood and the local economy. We are supposed to be a lake front campground and that is not the case this summer.",
+        "domain_classification": [
+            "Water",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Canada",
+            "region": "British Columbia",
+            "lat": 55.001251,
+            "lon": -125.002441
+        },
+        "manifestation": {
+            "how_it_is_observed": "Drastic drop in water levels, resulting in lakefront campgrounds no longer being on the lake and guests cancelling reservations.",
+            "key_indicators": [
+                "Drastic drop in water levels",
+                "Cancelled reservations",
+                "Loss of lakefront access"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Camping industry",
+                "Local economy",
+                "Livelihoods",
+                "Recreational activities",
+                "Water availability"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://infotel.ca/newsitem/drastic-drop-in-water-levels-concern-for-arrow-lakes-residents/it100085"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Economic",
+                "Social"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A drastic drop in water levels at Arrow Lakes is severely impacting the local economy, particularly the tourism sector and livelihoods of campground operators. The issue is current, with guests cancelling reservations, and poses a long-term threat to recreational activities and community well-being for 'summers to come'. Immediate intervention is needed to investigate the cause and mitigate ongoing economic and environmental damage."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
