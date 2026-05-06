@@ -3090,5 +3090,124 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "c347b6cf264b19054a6600b7e64c7978",
+        "timestamp": "2026-05-06T02:41:09.293835",
+        "title": "Ocean Acidification's impact on oysters and other shellfish",
+        "summary": "Ocean acidification ... pH means less carbonate, which they rely on to build their essential shells. As acidity increases, shells become thinner, growth slows down and death rates rise....",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Ocean pH decrease leading to less carbonate availability for shell formation in marine organisms.",
+            "key_indicators": [
+                "Thinner shells in shellfish",
+                "Slower growth in shellfish",
+                "Increased death rates in shellfish"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Oysters",
+                "Shellfish",
+                "Marine ecosystems",
+                "Fisheries"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.pmel.noaa.gov/co2/story/Ocean+Acidification's+impact+on+oysters+and+other+shellfish"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Economic"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Ocean acidification reduces carbonate availability, which is crucial for shellfish to build shells. This leads to thinner shells, slower growth, and increased death rates among oysters and other shellfish, posing a severe threat to marine ecosystems and related industries."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "27987c7e263779d4bd21e31c8c9425d3",
+        "timestamp": "2026-05-06T02:41:55.625478",
+        "title": "How ocean acidification upsets oyster reefs delicate ecosystems and affects the economy",
+        "summary": "January 29, 2024 - For oysters specifically, weakened ... render them more susceptible to damage from predators, parasites and environmental stress, as well as damage during handling, harvesting and processing, resulting in further losses...",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Oyster shells are weakened, making them more susceptible to damage from predators, parasites, environmental stress, and during handling, harvesting, and processing.",
+            "key_indicators": [
+                "Weakened oyster shells",
+                "Increased susceptibility to damage (predators, parasites, stress)",
+                "Losses during oyster handling, harvesting, and processing"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Oyster reefs",
+                "Oyster populations",
+                "Marine ecosystems",
+                "Economy (oyster industry)"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.weforum.org/stories/2024/01/oysters-ocean-acidification/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Economic"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Ocean acidification is severely compromising oyster reefs, leading to weakened oysters highly susceptible to predators, parasites, and environmental stress. This not only upsets delicate ecosystems but also causes significant economic losses in the harvesting and processing sectors, demanding immediate intervention to mitigate widespread ecological and economic damage."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
