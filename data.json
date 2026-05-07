@@ -3209,5 +3209,120 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "dbfa8b1316d8218df6b699561f9979ab",
+        "timestamp": "2026-05-07T02:43:35.611612",
+        "title": "Ecologist's Corner: Wildlife Corridor - Puente Hills Habitat Preservation Authority",
+        "summary": "1 day ago - While strong public investment ... and reserves, critical gaps remain. Ongoing and proposed development in these areas could further fragment habitat and constrain wildlife movement....",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "California",
+            "lat": 36.7014631,
+            "lon": -118.755997
+        },
+        "manifestation": {
+            "how_it_is_observed": "Ongoing and proposed development is fragmenting habitat and constraining wildlife movement due to critical gaps in preservation efforts.",
+            "key_indicators": [
+                "Habitat fragmentation",
+                "Constrained wildlife movement",
+                "Critical gaps in reserves"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Wildlife movement",
+                "Habitat connectivity",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.habitatauthority.org/2026/05/05/ecologists-corner-wildlife-corridor/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "policy_gap"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Ongoing and proposed development threatens to further fragment critical wildlife habitats and constrain animal movement, exacerbating existing 'critical gaps' in preservation efforts. This poses a high risk to biodiversity and ecological stability, requiring immediate intervention to prevent irreversible damage."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "855b49decaa4936653284530b8e30763",
+        "timestamp": "2026-05-07T02:44:22.994916",
+        "title": "KWS moves wildlife due to habitat loss",
+        "summary": "Shrinking wildlife habitats are forcing the Kenya Wildlife Service to intensify translocation efforts, as pressure from human settlement, infrastructure expansion and land fragmentation continues to erode key ecological corridors across the country.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Kenya",
+            "region": "",
+            "lat": 1.4419683,
+            "lon": 38.4313975
+        },
+        "manifestation": {
+            "how_it_is_observed": "Kenya Wildlife Service is intensifying translocation efforts due to shrinking wildlife habitats.",
+            "key_indicators": [
+                "habitat loss",
+                "human settlement expansion",
+                "infrastructure expansion",
+                "land fragmentation",
+                "erosion of ecological corridors"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "wildlife",
+                "wildlife habitats",
+                "ecological corridors"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.the-star.co.ke/news/2026-04-25-kws-moves-wildlife-due-to-habitat-loss"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Degradation",
+                "Biodiversity Loss",
+                "Habitat Fragmentation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Shrinking wildlife habitats due to human settlement, infrastructure expansion, and land fragmentation are forcing intensive translocation efforts. This indicates severe ongoing environmental degradation and biodiversity loss, eroding critical ecological corridors and requiring immediate, comprehensive intervention to address the root causes."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
