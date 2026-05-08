@@ -3324,5 +3324,118 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "a05c1ce1f5ff49f8cbf73e8c43662e2a",
+        "timestamp": "2026-05-08T02:47:39.773638",
+        "title": "Extent and Speed of Lionfish Spread Unprecedented—Invasive Marine Fish May Stress Reefs | U.S. Geological Survey",
+        "summary": "Foremost on the minds of both citizens and scientists is the lionfishes' predatory behavior, which may negatively impact native species in the newly invaded reef ecosystems. Generalist species with a broad diet, they have already been observed preying on and competing with a wide range of native species. ... Group of juvenile lionfish, each fish approximately 120 mm in total length. Photograph taken in October 2004 by James Morris, Jr., an ecologist with NOAA's National Ocean Service, at his lab in Beaufort, North Carolina. Invasive lionfishes were first reported off Florida's Atlantic coast in the mid-1980s but did not become numerous in the region until 2000.",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Atlantic Coast",
+            "lat": 30.2035314,
+            "lon": -81.5049805
+        },
+        "manifestation": {
+            "how_it_is_observed": "Lionfish are exhibiting predatory behavior, preying on and competing with native species in reef ecosystems. Their spread and increasing numbers are observed.",
+            "key_indicators": [
+                "Unprecedented spread",
+                "Increasing numbers (numerous)",
+                "Predatory behavior on native species",
+                "Competition with native species"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Native marine species",
+                "Reef ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.usgs.gov/programs/cmhrp/news/extent-and-speed-lionfish-spread-unprecedented-invasive-marine-fish-may-stress"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "invasive species",
+                "ecological damage"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The unprecedented extent and speed of lionfish spread pose a severe threat to reef ecosystems. Their predatory behavior and competition with native species are causing significant negative impacts, stressing marine biodiversity and ecosystem health. This situation demands immediate intervention to mitigate further ecological damage."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "b1e180b459bf61c039396bec54d5f35d",
+        "timestamp": "2026-05-08T02:48:27.739806",
+        "title": "Atlantic and Caribbean: Lionfish Invasion Threatens Reefs | World Resources Institute",
+        "summary": "Lionfish have quickly become established across the waters of the southeastern U.S. and the Caribbean. New sightings abound—earlier this month lionfish reached the Flower Garden Banks National Marine Sanctuary off the coasts of Texas and Louisiana. Because of their role in upsetting the ...",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Atlantic and Caribbean",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Lionfish have quickly become established and new sightings are abundant, reaching new areas like the Flower Garden Banks National Marine Sanctuary.",
+            "key_indicators": [
+                "New sightings",
+                "Rapid establishment across waters"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Reefs",
+                "Marine ecosystems",
+                "Ecological balance"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.wri.org/research/reefs-risk-revisited/atlantic-and-caribbean-lionfish-invasion-threatens-reefs"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological",
+                "Invasive Species"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The widespread and rapid establishment of lionfish across the Atlantic and Caribbean, including critical national marine sanctuaries, poses a severe threat to reef ecosystems. Their role in upsetting the ecological balance requires urgent and sustained intervention to prevent further biodiversity loss and environmental degradation."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
