@@ -3437,5 +3437,119 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "90deab04f6c02e8444a64add457c522c",
+        "timestamp": "2026-05-10T02:48:10.388743",
+        "title": "World enters era of ‘global water bankruptcy’ | UN News",
+        "summary": "January 20, 2026 - The world has moved beyond a water crisis and into a state of global water bankruptcy, says a new flagship report released on Tuesday by UN researchers.",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "The world has moved beyond a water crisis and into a state of global water bankruptcy.",
+            "key_indicators": [
+                "global water bankruptcy",
+                "water crisis"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "global ecosystems",
+                "human societies",
+                "economies",
+                "food security"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://news.un.org/en/story/2026/01/1166800"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 10,
+            "risk_type": [
+                "Resource Depletion",
+                "Environmental",
+                "Humanitarian",
+                "Geopolitical"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The report indicates a state of 'global water bankruptcy,' signifying a complete and systemic failure in water resource management and availability worldwide. This goes beyond a mere crisis, implying widespread depletion, contamination, and unequal access, leading to catastrophic consequences for ecosystems, agriculture, human health, economic stability, and potentially triggering mass displacement and conflicts. Immediate, coordinated global intervention is critically required to avert widespread disaster."
+        },
+        "priority_score": 100,
+        "critical_flag": false
+    },
+    {
+        "id": "91702d27c774e56956645f5aad55bfcb",
+        "timestamp": "2026-05-10T02:48:59.138045",
+        "title": "Thousands still left without safe water as homeowners panic buy stock",
+        "summary": "March 12, 2016 - The One Stop convenience store in Chellaston, Derbyshire, ran out of bottled water in just two hours today, shift manager Angela Woodcock told MailOnline. She said: 'There is nothing at all left.",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "UK",
+            "region": "Derbyshire",
+            "lat": 53.1666927,
+            "lon": -1.5833223
+        },
+        "manifestation": {
+            "how_it_is_observed": "Thousands of residents are without safe water, leading to panic buying of bottled water and stores running out of stock rapidly.",
+            "key_indicators": [
+                "lack of safe water supply",
+                "panic buying of bottled water",
+                "empty store shelves"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "residents' health and safety",
+                "local businesses (supply chain)"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.dailymail.co.uk/news/article-3489023/Thousands-left-without-safe-water-homeowners-strip-supermarket-shelves-bottles-following-high-chlorine-alert.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Public Health",
+                "Supply Chain Disruption",
+                "Environmental Contamination"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Thousands are without safe drinking water due to contamination (high chlorine alert), leading to widespread panic buying and depletion of emergency supplies. This represents a critical public health and humanitarian crisis with potential for social unrest if not immediately addressed by restoring safe water access and managing public anxiety."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
