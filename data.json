@@ -3551,5 +3551,119 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "8ab56fd2b51b6050f0571b1b6e7eeeed",
+        "timestamp": "2026-05-11T02:57:12.369960",
+        "title": "Invasive Fungus Threatening Native Indiana Trees",
+        "summary": "Aug 15, 2025 · Unfortunately these crucial trees are being threatened by an invasive fungus spread through the trees' root systems. Bretziella fagacearum, or oak wilt as it is known, has the capacity to kill affected trees within a matter of weeks.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Indiana",
+            "lat": 40.3270127,
+            "lon": -86.1746933
+        },
+        "manifestation": {
+            "how_it_is_observed": "Invasive fungus (Bretziella fagacearum / oak wilt) spreading through tree root systems, causing rapid tree death.",
+            "key_indicators": [
+                "Bretziella fagacearum",
+                "oak wilt",
+                "killing affected trees within weeks",
+                "spread through root systems"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Native Indiana trees",
+                "Oak trees",
+                "Forest ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://wkfr.com/invasive-oak-wilt-indiana/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "ecological",
+                "biological"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "An invasive fungus, Bretziella fagacearum (oak wilt), is rapidly spreading through the root systems of crucial native Indiana trees. It has the capacity to kill affected trees within a matter of weeks, posing a significant and immediate threat to the local ecosystem."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "388a0ac90946337cf986aa9c7db707e6",
+        "timestamp": "2026-05-11T02:57:59.895174",
+        "title": "Tree-killing, invasive fungal disease reaches NY - syracuse",
+        "summary": "Sep 3, 2025 · An invasive fungal disease that targets trees and shrubs in the laurel family was detected for the first time in New York in July, according to the state Department of Environmental...",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "New York",
+            "lat": 40.7127281,
+            "lon": -74.0060152
+        },
+        "manifestation": {
+            "how_it_is_observed": "An invasive fungal disease that targets trees and shrubs in the laurel family was detected for the first time in New York.",
+            "key_indicators": [
+                "invasive fungal disease",
+                "targets trees and shrubs in the laurel family",
+                "first detection in New York"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "trees",
+                "shrubs",
+                "laurel family plants"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.syracuse.com/outdoors/2025/09/tree-killing-invasive-fungal-disease-reaches-ny.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Invasive Species"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "An invasive, tree-killing fungal disease has been detected for the first time in New York. This poses a high risk to the state's tree and shrub populations, particularly those in the laurel family. If left unaddressed, it could lead to widespread ecological damage, loss of biodiversity, and potential economic impacts on forestry and related industries. Immediate intervention is crucial for containment and management to prevent further spread."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
