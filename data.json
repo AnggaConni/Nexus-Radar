@@ -3665,5 +3665,120 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "4ebc59efaedaa167bab9ec14ca311873",
+        "timestamp": "2026-05-31T14:48:19.951185",
+        "title": "Officials are warning about the possible failure of a a 120-year-old ...",
+        "summary": "Mar 20, 2026 · Officials are warning about the possible failure of a a 120-year-old dam. More than 4,000 told to evacuate catastrophic flooding in Hawaii. WLKY ...",
+        "domain_classification": [
+            "DRR",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Hawaii",
+            "lat": 19.5938015,
+            "lon": -155.4283701
+        },
+        "manifestation": {
+            "how_it_is_observed": "Officials are warning about the possible failure of a 120-year-old dam, leading to evacuation orders.",
+            "key_indicators": [
+                "Dam failure warning",
+                "Catastrophic flooding",
+                "Evacuation orders (4,000 people)"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Human lives (4,000 people)",
+                "Infrastructure (dam, homes, property)",
+                "Local environment"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.facebook.com/wlkynews/posts/officials-are-warning-about-the-possible-failure-of-a-a-120-year-old-dam/935718898832046/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 10,
+            "risk_type": [
+                "Dam Failure",
+                "Flooding"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Officials are warning about the possible failure of a 120-year-old dam, leading to a risk of catastrophic flooding and the evacuation of over 4,000 people. This situation demands immediate and critical intervention to prevent loss of life and extensive property damage."
+        },
+        "priority_score": 100,
+        "critical_flag": false
+    },
+    {
+        "id": "d8ec44d1bc389ad7580761a5b11d241e",
+        "timestamp": "2026-05-31T14:49:09.080199",
+        "title": "Seepage detection in earth-filled dam from self-potential and electrical ...",
+        "summary": "Sep 5, 2022 · Earth-filled dams are prone to serious erosion and seepage by water flow. Anomalous seepage is a threat to the stability of dam structures and ...Missing: micro warning news",
+        "domain_classification": [
+            "Water",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Seepage detection in earth-filled dam; erosion and seepage by water flow",
+            "key_indicators": [
+                "Anomalous seepage",
+                "Erosion",
+                "Water flow"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Stability of dam structures",
+                "Earth-filled dams"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.sciencedirect.com/science/article/abs/pii/S0013795222002356"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Structural integrity",
+                "Infrastructure failure",
+                "Environmental disaster",
+                "Human safety"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Seepage in earth-filled dams directly threatens the structural stability of the dam. If left unaddressed, anomalous seepage can lead to erosion, internal piping, and ultimately dam failure, resulting in catastrophic flooding, loss of life, significant property damage, and widespread environmental disaster. Early detection and immediate intervention are critical to prevent such high-severity outcomes."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
