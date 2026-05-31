@@ -43,8 +43,13 @@ jobs:
       - name: Run Intelligent Scheduler & AI
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          # ✅ PERBAIKAN: Mengganti model yang tidak ada ke model stabil & gratis
-          GEMINI_MODEL: "gemini-2.5-flash" 
+          # ✅ UBAH KE VERSI INI:
+          GEMINI_MODEL: "gemini-1.5-flash" 
+          RUN_TYPE: ${{ github.event.inputs.run_type || 'auto' }}
+          
+          # Parameter opsional yang disesuaikan dengan script v2.1
+          DATA_INTERVAL_DAYS: 1
+          MAX_ITEMS_PER_RUN: 2 
           RUN_TYPE: ${{ github.event.inputs.run_type || 'auto' }}
           
           # Parameter opsional yang disesuaikan dengan script v2.1
