@@ -3780,5 +3780,115 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "8e1752cbd6f0e80f068c00bc34ab8141",
+        "timestamp": "2026-06-02T02:30:44.693167",
+        "title": "Land Subsidence",
+        "summary": "Land subsidence is a phenomenon where the ground surface sinks, often occurring over large areas, making it less immediately noticeable than localized events like sinkholes.",
+        "domain_classification": [
+            "Water",
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Occurs over large areas, making it less noticeable than localized events like sinkholes.",
+            "key_indicators": []
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": []
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.usgs.gov/water-science-school/science/land-subsidence"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Geological Hazard",
+                "Infrastructure Damage",
+                "Environmental Hazard",
+                "Flood Risk"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Land subsidence, though often occurring slowly and over large areas, poses a significant and escalating disaster risk if left unaddressed. It can lead to severe, long-term consequences including extensive damage to infrastructure (buildings, roads, pipelines), increased susceptibility to flooding, and irreversible environmental changes. Proactive monitoring and mitigation strategies are crucial to prevent widespread and costly future disasters."
+        },
+        "priority_score": 66,
+        "critical_flag": false
+    },
+    {
+        "id": "b1abb2c0e764af037da542595ebee9dc",
+        "timestamp": "2026-06-02T02:31:43.799108",
+        "title": "Ground Subsidence - Colorado Geological Survey",
+        "summary": "Ground subsidence means a process characterized by downward displacement of surface material caused by natural phenomena such as removal of underground fluids.",
+        "domain_classification": [
+            "DRR",
+            "Water"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "North America",
+            "lat": 36.1979526,
+            "lon": -94.5268355
+        },
+        "manifestation": {
+            "how_it_is_observed": "Downward displacement of surface material",
+            "key_indicators": [
+                "Removal of underground fluids",
+                "Sinkholes",
+                "Cracks in infrastructure",
+                "Changes in land elevation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Infrastructure (buildings, roads, pipelines)",
+                "Land",
+                "Water systems",
+                "Ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://coloradogeologicalsurvey.org/hazards/ground-subsidence/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Geological Hazard",
+                "Infrastructure Damage"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": false,
+            "explanation": "Ground subsidence is a critical geological hazard involving the downward displacement of surface material, often due to the removal of underground fluids. This phenomenon can lead to severe damage to buildings, roads, pipelines, and other infrastructure, as well as potential safety risks. While the provided information defines the hazard rather than reporting an active event, the existence of such a hazard, as recognized by the Colorado Geological Survey, indicates a need for continuous monitoring, risk assessment, and proactive mitigation strategies to prevent future disasters. Leaving the underlying causes of subsidence unaddressed in prone areas carries a high risk of significant long-term consequences."
+        },
+        "priority_score": 82,
+        "critical_flag": false
     }
 ]
