@@ -3890,5 +3890,123 @@
         },
         "priority_score": 82,
         "critical_flag": false
+    },
+    {
+        "id": "08071316e8fc865c14c052ea5bfea26d",
+        "timestamp": "2026-06-03T02:35:58.604945",
+        "title": "Coastal Seagrass Loss Converts Ancient Carbon Stores into Potent ...",
+        "summary": "Coastal seagrass meadows are rapidly transitioning from carbon-absorbing sinks into significant sources of atmospheric CO2 as warming waters and human activity drive widespread \"die-backs.\"",
+        "domain_classification": [
+            "Climate",
+            "Ocean",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Coastal seagrass meadows are rapidly transitioning from carbon-absorbing sinks into significant sources of atmospheric CO2.",
+            "key_indicators": [
+                "warming waters",
+                "human activity",
+                "widespread 'die-backs' of seagrass",
+                "conversion of ancient carbon stores into greenhouse emissions"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "atmospheric CO2 levels",
+                "global carbon cycle",
+                "marine ecosystems",
+                "climate regulation"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://news.sustainability-directory.com/climate/coastal-seagrass-loss-converts-ancient-carbon-stores-into-potent-greenhouse-emissions/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Climate Change",
+                "Environmental Degradation",
+                "Ecosystem Collapse"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Coastal seagrass meadows are rapidly dying off due to warming waters and human activity. This transition converts them from vital carbon sinks into significant sources of atmospheric CO2, releasing ancient carbon stores and accelerating climate change. The widespread nature of these 'die-backs' indicates a critical, ongoing environmental degradation and ecosystem collapse that requires urgent intervention to mitigate further greenhouse gas emissions and protect marine biodiversity."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "2440ae4fef0ad05f8ac3de54759168b8",
+        "timestamp": "2026-06-03T02:36:59.826238",
+        "title": "This seagrass is taking over the Chesapeake Bay. That's good and bad news",
+        "summary": "The largest recorded dieback of seagrass meadows in Chesapeake Bay history occurred in 2019, when half of the widgeongrass — about 9,000 hectares — vanished.",
+        "domain_classification": [
+            "Ocean",
+            "Water",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Mid-Atlantic",
+            "lat": 43.1606855,
+            "lon": -77.444328
+        },
+        "manifestation": {
+            "how_it_is_observed": "Largest recorded dieback of seagrass meadows; half of widgeongrass vanished.",
+            "key_indicators": [
+                "9,000 hectares of widgeongrass vanished",
+                "Half of widgeongrass population lost"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Seagrass meadows",
+                "Widgeongrass",
+                "Chesapeake Bay ecosystem"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.sciencenews.org/article/seagrass-chesapeake-bay-ecosystem"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "environmental",
+                "ecological"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The largest recorded dieback of seagrass meadows in Chesapeake Bay history, with half (9,000 hectares) of widgeongrass vanishing, represents a severe ecological event. Seagrasses are critical for ecosystem health, providing habitat, improving water quality, and stabilizing sediments. Such a significant loss poses a high risk to the Bay's biodiversity and overall environmental stability if the causes are not immediately investigated and addressed."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
