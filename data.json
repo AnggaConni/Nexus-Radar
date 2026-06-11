@@ -4008,5 +4008,110 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "9b3869a2e5c45fe4ba7eb6a7215244c2",
+        "timestamp": "2026-06-11T02:32:06.835488",
+        "title": "Longest River in Italy Is Drying Up, Threatening Local...",
+        "summary": "River Po stretches 652 kilometres (405 miles) from the Cottian Alps all the way to the Adriatic Sea near Venice, crossing several important cities in Northern Italy including Turin and Piacenza. The vast valley around it – called the Po Basin or Po Valley (Italian Pianura Padana) – is the main...",
+        "domain_classification": [
+            "Water",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Italy",
+            "region": "Northern Italy",
+            "lat": 37.3321816,
+            "lon": -121.8943425
+        },
+        "manifestation": {
+            "how_it_is_observed": "The River Po is drying up",
+            "key_indicators": [
+                "River drying"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Water supply",
+                "Agriculture",
+                "Local communities",
+                "Ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://earth.org/longest-river-in-italy-drying-up/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {},
+        "priority_score": 64,
+        "critical_flag": false
+    },
+    {
+        "id": "487cf8f7d655943ba6439e581e22ac73",
+        "timestamp": "2026-06-11T02:34:02.060740",
+        "title": "As a section of Ogun River dries up: Thousands turn Kara to tourists site",
+        "summary": "Kara river dries up. Shocked residents walk on dry riverbed. Why rivers dry up, by experts.Whether in the rainy or dry season, the river, many noted, had consistently flowed at high velocity. Many had drowned in the river after the boat, ferrying them suddenly capsized.",
+        "domain_classification": [
+            "Water",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Nigeria",
+            "region": "Ogun State",
+            "lat": 6.9788582,
+            "lon": 3.4389293
+        },
+        "manifestation": {
+            "how_it_is_observed": "A section of Ogun River (Kara river) has completely dried up, allowing residents to walk on the dry riverbed. This is a significant change for a river that previously flowed at high velocity even during dry seasons.",
+            "key_indicators": [
+                "dry riverbed",
+                "absence of water flow in a historically fast-flowing river"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "local communities",
+                "ecosystems",
+                "water supply",
+                "livelihoods",
+                "transportation (boat services)"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://thesun.ng/as-a-section-of-ogun-river-dries-up-thousands-turn-kara-to-tourists-site/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Socio-economic"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The drying up of a major river section, previously known for high velocity and consistent flow, represents a severe environmental crisis. This has immediate impacts on local ecosystems, water availability for communities, and potentially livelihoods. The sudden and complete cessation of flow in a historically active river necessitates urgent investigation into the causes (e.g., climate change, upstream water diversion, groundwater depletion) and immediate intervention to prevent further ecological damage and socio-economic disruption."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
