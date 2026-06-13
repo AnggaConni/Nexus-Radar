@@ -4113,5 +4113,122 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "5505e62b2d3f10124aa4398d745f31b4",
+        "timestamp": "2026-06-13T02:06:24.677820",
+        "title": "Observation-constrained projections reveal longer-than-expected dry ...",
+        "summary": "A newly identified emergent constraint applied to a key drought metric reduces uncertainty in future predictions of the longest annual dry spells, revealing that their increase due to climate ...",
+        "domain_classification": [
+            "Climate",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Increase in the length of annual dry spells, revealed by new observation-constrained projections.",
+            "key_indicators": [
+                "Longest annual dry spells",
+                "Drought metric"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Water resources",
+                "Agriculture",
+                "Ecosystems",
+                "Human well-being"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.nature.com/articles/s41586-024-07887-y"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "drought",
+                "climate change",
+                "water scarcity",
+                "food insecurity"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The signal reveals observation-constrained projections of 'longer-than-expected' annual dry spells, directly linked to climate change. This reduced uncertainty in future predictions points to a significant and escalating risk of severe and prolonged droughts. Such conditions pose a high threat to water resources, agricultural productivity, and ecosystem stability, potentially leading to widespread water scarcity and food insecurity. The 'longer-than-expected' aspect underscores the urgency for immediate and robust climate mitigation and adaptation strategies."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "0a6e772ade12f13d4f0c22d4d94c8060",
+        "timestamp": "2026-06-13T02:07:15.896375",
+        "title": "Prolonged Dry Spell Puts Crops Under Stress; Horticulture University ...",
+        "summary": "Long-term data from 1980 to 2024 show that November receives below-normal rainfall in nearly 68.2 per cent of the years. This season, the last rainfall was recorded on October 9, 2025, after which the state has witnessed a dry spell of around 70 days. The extended dry period has resulted in significant water stress in fruit crops and nurseries.",
+        "domain_classification": [
+            "Water",
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "India",
+            "region": "Himachal Pradesh",
+            "lat": 31.9292352,
+            "lon": 77.1828462
+        },
+        "manifestation": {
+            "how_it_is_observed": "Prolonged dry spell, below-normal rainfall, significant water stress in fruit crops and nurseries.",
+            "key_indicators": [
+                "70 days of dry spell",
+                "Below-normal November rainfall in 68.2% of years",
+                "Water stress in fruit crops and nurseries"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Fruit crops",
+                "Nurseries",
+                "Agriculture"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://thenewshimachal.com/2025/12/prolonged-dry-spell-puts-crops-under-stress-horticulture-university-issues-advisory/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Drought",
+                "Agricultural Impact"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "A prolonged dry spell of 70 days, following a historical trend of below-normal November rainfall (68.2% of years since 1980), has led to significant water stress in fruit crops and nurseries. This poses a substantial risk to agricultural production and economic stability in the affected region, requiring immediate intervention to mitigate crop losses and potential long-term impacts on food security."
+        },
+        "priority_score": 88,
+        "critical_flag": false
     }
 ]
