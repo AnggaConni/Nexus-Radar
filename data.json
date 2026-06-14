@@ -4230,5 +4230,121 @@
         },
         "priority_score": 88,
         "critical_flag": false
+    },
+    {
+        "id": "8435e9dcc685f1a6651162c63a9f4695",
+        "timestamp": "2026-06-14T02:28:57.597288",
+        "title": "Countless dead fish wash up on shores of Outer Banks, Virginia Beach",
+        "summary": "March 6, 2026 - COROLLA, N.C. — Hundreds of dead fish are washing up along the shores of Virginia Beach and North Carolina's Outer Banks. News 3 is now learning from the Virginia Marine Resources Commission that this is because of an offshore cold stun event.",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Southeastern US",
+            "lat": 41.3341713,
+            "lon": -72.0466732
+        },
+        "manifestation": {
+            "how_it_is_observed": "Hundreds of dead fish washing up along the shores of Virginia Beach and North Carolina's Outer Banks.",
+            "key_indicators": [
+                "Dead fish",
+                "Offshore cold stun event"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Fish populations",
+                "Marine ecosystem",
+                "Coastal environment"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.wtkr.com/news/environment/countless-fish-found-washed-up-on-shores-of-outer-banks-virginia-beach"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 5,
+            "risk_type": [
+                "Environmental"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": false,
+            "explanation": "Hundreds of dead fish washing ashore due to an offshore cold stun event indicate significant ecological stress on local marine populations. While concerning for the environment, this is described as a natural phenomenon and does not immediately threaten human life or infrastructure, thus not requiring immediate human disaster intervention. The primary risk is ecological disruption."
+        },
+        "priority_score": 54,
+        "critical_flag": false
+    },
+    {
+        "id": "618beddd8ff6aff14666044a65b8102f",
+        "timestamp": "2026-06-14T02:29:51.150208",
+        "title": "Massive fish die-off in Baja blamed on climate swings | Border Report",
+        "summary": "4 days ago - Some of the fish that washed ashore dead at a lake behind Tijuana’s Rodríguez Dam in recent weeks. (Jorge Nieto/Special for Border Report) He said the fish die-off is the result of a phenomenon associated with sudden climate changes and swings in temperatures called “thermal rollover,” which can lead to oxygen-depleted water at certain depths.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Mexico",
+            "region": "Baja California",
+            "lat": 30.0338923,
+            "lon": -115.1425107
+        },
+        "manifestation": {
+            "how_it_is_observed": "Massive fish die-off in a lake, with dead fish washing ashore, attributed to 'thermal rollover' and oxygen-depleted water.",
+            "key_indicators": [
+                "Fish mortality",
+                "Oxygen-depleted water",
+                "Thermal rollover",
+                "Sudden climate changes/temperature swings"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Fish populations",
+                "Aquatic ecosystems",
+                "Water quality",
+                "Local biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.cenlanow.com/news/border-report-tour/massive-fish-die-off-at-baja-lake-blamed-on-climate-swings/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Ecological Degradation",
+                "Climate Change Impacts"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A massive fish die-off in Baja, attributed to 'thermal rollover' caused by sudden climate swings, has led to oxygen-depleted water in a lake behind Tijuana’s Rodríguez Dam. This indicates severe ecological degradation and highlights the immediate impact of climate change on local ecosystems, requiring urgent attention to water quality and climate adaptation strategies to prevent recurrence and further environmental damage."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
