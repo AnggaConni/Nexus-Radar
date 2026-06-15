@@ -4346,5 +4346,119 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "5112f3fa606ed201d8d26a0a55c67154",
+        "timestamp": "2026-06-15T02:32:54.584210",
+        "title": "Accelerating upward treeline shift in the Altai Mountains under ... - Nature",
+        "summary": "May 22, 2019 · We document a relatively fast upward shift of the treeline. During the last 52 years, treeline moved about 150 m upward and the rate of movement accelerated ...",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Central Asia",
+            "lat": 3.1624869,
+            "lon": 101.7125461
+        },
+        "manifestation": {
+            "how_it_is_observed": "Upward shift of the treeline, moving approximately 150 meters upward over 52 years",
+            "key_indicators": [
+                "Upward treeline shift",
+                "Accelerated rate of movement"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Mountain ecosystems",
+                "Biodiversity",
+                "Vegetation zones"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.nature.com/articles/s41598-019-44188-1"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Climate Change"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The accelerating upward treeline shift in the Altai Mountains is a clear and documented indicator of significant regional warming, driven by global climate change. This rapid change fundamentally alters alpine ecosystems, leading to habitat loss for cold-adapted species, changes in biodiversity, and potential impacts on water cycles. The acceleration of this movement signifies an urgent need to address the root causes of climate change and implement adaptation strategies to mitigate ecological disruption."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "9b8fb4dca474f9b684c3773fc96f7a46",
+        "timestamp": "2026-06-15T02:33:44.011434",
+        "title": "A review of modern treeline migration, the factors controlling it and the ...",
+        "summary": "Feb 7, 2021 · Numerous studies have reported that treelines are moving to higher elevations and higher latitudes. Most treelines are temperature limited ...",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Treelines are moving to higher elevations and higher latitudes.",
+            "key_indicators": [
+                "Treeline migration",
+                "Temperature limitation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Ecosystems",
+                "Biodiversity",
+                "Mountain environments"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://link.springer.com/article/10.1007/s11629-020-6221-1"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Degradation",
+                "Climate Change Impacts",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Treeline migration to higher elevations and latitudes is a direct indicator of global warming and climate change. If left unaddressed, this signal points to widespread ecosystem shifts, loss of unique alpine biodiversity, altered hydrological cycles (impacting water resources), and increased vulnerability to other climate-related disasters like wildfires. While not an acute disaster, the long-term cumulative effects represent a high-severity risk to natural systems and human societies, necessitating immediate and sustained intervention to mitigate climate change."
+        },
+        "priority_score": 66,
+        "critical_flag": false
     }
 ]
