@@ -4460,5 +4460,120 @@
         },
         "priority_score": 66,
         "critical_flag": false
+    },
+    {
+        "id": "800c198ca99dbe5b35a454908462303a",
+        "timestamp": "2026-06-16T02:36:48.500804",
+        "title": "Monitoring road development in Congo Basin forests with multi ...",
+        "summary": "For example, the canopy above logging roads can quickly close after a timber harvest, making them only temporarily visible in satellite imagery (Fig. 1). This ...",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "Congo Basin",
+            "lat": -0.5,
+            "lon": 18.0
+        },
+        "manifestation": {
+            "how_it_is_observed": "Logging roads in Congo Basin forests are quickly obscured by canopy closure after timber harvest, making them only temporarily visible in satellite imagery.",
+            "key_indicators": [
+                "logging roads",
+                "canopy closure",
+                "satellite imagery visibility"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Congo Basin forests",
+                "biodiversity",
+                "climate regulation"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.sciencedirect.com/science/article/pii/S0034425724004061"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Biodiversity",
+                "Illegal Activity"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The rapid closure of forest canopy over logging roads in the Congo Basin makes them difficult to monitor with satellite imagery, leading to a significant risk of undetected deforestation, habitat fragmentation, and potential illegal logging or poaching activities. This lack of visibility hinders effective conservation efforts and sustainable forest management in a critical global ecosystem."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "92f46d002900d66b39370dadef58926b",
+        "timestamp": "2026-06-16T02:37:40.133552",
+        "title": "MAAP #125: Detecting Illegal Logging with Very High Resolution Satellites",
+        "summary": "Oct 3, 2020 · In this report, we present the enormous potential of very high resolution satellite imagery (<70 cm) to identify illegal logging.",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Illegal logging is detected through very high resolution satellite imagery.",
+            "key_indicators": [
+                "Very high resolution satellite imagery (<70 cm)"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Forests",
+                "Biodiversity",
+                "Ecosystems",
+                "Climate"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.maapprogram.org/high-res-satellites/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Degradation",
+                "Deforestation",
+                "Illegal Activity"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The signal highlights the ongoing problem of illegal logging, which poses a high-severity risk due to its significant environmental impacts, including deforestation, habitat destruction, and contribution to climate change. While the report discusses a detection method, the underlying activity itself requires immediate and sustained intervention to mitigate its severe and often irreversible consequences on ecosystems and biodiversity."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
