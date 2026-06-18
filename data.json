@@ -4575,5 +4575,119 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "4a2869b7d6d923c441ca8d86e5412543",
+        "timestamp": "2026-06-18T02:30:45.769522",
+        "title": "A Meadow Beneath the Water Vanishes, and With It, the Foundation of an Ecosystem",
+        "summary": "1 month ago - Wasting disease — a pathogen that causes dark lesions on eelgrass leaves and can trigger rapid dieback, particularly in warmer water — is one possibility. A major wasting disease event in the 1930s is believed to have wiped out large swaths ...",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Eelgrass meadows are vanishing due to a wasting disease, characterized by dark lesions on leaves and rapid dieback.",
+            "key_indicators": [
+                "dark lesions on eelgrass leaves",
+                "rapid dieback of eelgrass",
+                "vanishing eelgrass meadows"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "eelgrass ecosystems",
+                "marine biodiversity dependent on eelgrass"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.mendolocal.news/p/a-meadow-beneath-the-water-vanishes"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological collapse",
+                "Disease outbreak",
+                "Habitat loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A wasting disease is causing rapid dieback of eelgrass, which is described as the 'foundation of an ecosystem.' Historical events show this can wipe out large swaths, indicating a severe and potentially widespread ecological disaster requiring immediate intervention to assess spread and mitigate impact."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "e332881c0ca2895baa5ad0d2906b1103",
+        "timestamp": "2026-06-18T02:31:45.639672",
+        "title": "This seagrass is taking over the Chesapeake Bay. That’s good and bad news",
+        "summary": "July 10, 2023 - Widgeongrass habitats are far less stable than their eelgrass predecessors. The largest recorded dieback of seagrass meadows in Chesapeake Bay history occurred in 2019, when half of the widgeongrass — about 9,000 hectares — vanished.",
+        "domain_classification": [
+            "Biodiversity",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Chesapeake Bay",
+            "lat": 38.2280573,
+            "lon": -76.2629345
+        },
+        "manifestation": {
+            "how_it_is_observed": "Largest recorded dieback of seagrass meadows, with half of widgeongrass (9,000 hectares) vanishing, indicating habitat instability.",
+            "key_indicators": [
+                "Widgeongrass dieback",
+                "Habitat instability",
+                "Loss of seagrass hectares"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Seagrass meadows",
+                "Widgeongrass habitats",
+                "Chesapeake Bay ecosystem"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.sciencenews.org/article/seagrass-chesapeake-bay-ecosystem"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Ecological instability",
+                "Habitat degradation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The dominance of less stable widgeongrass over eelgrass in the Chesapeake Bay poses a significant ecological risk. The largest recorded dieback in 2019, where half of the widgeongrass vanished, demonstrates the severe fragility of this new habitat. This instability threatens the overall health and biodiversity of the Bay's ecosystem, requiring immediate monitoring and potential management strategies to prevent future large-scale losses."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
