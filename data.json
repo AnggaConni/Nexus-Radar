@@ -4689,5 +4689,122 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "ca1f1f664ffb642b22fda520ac79887c",
+        "timestamp": "2026-06-19T02:47:20.775851",
+        "title": "Untrashing Flinders Beach: Our Biggest Haul of Plastic Pollution to Date",
+        "summary": "Plastic debris obstructs nesting sites, ghost nets can entangle turtles, and hatchlings must navigate piles of plastic just to reach the ocean. By clearing the beach before nesting season, the team gave marine turtles a meaningfully better chance of survival.",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Plastic debris obstructs nesting sites, ghost nets entangle turtles, and hatchlings struggle to reach the ocean through plastic piles.",
+            "key_indicators": [
+                "Plastic debris on beaches",
+                "Ghost nets",
+                "Obstruction of turtle nesting sites",
+                "Turtle entanglement",
+                "Difficulty for hatchlings to reach the ocean"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Marine turtles",
+                "Marine ecosystems",
+                "Nesting sites"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.seashepherd.org.au/latest-news/untrashing-flinders-beach-our-biggest-haul-of-plas/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "environmental pollution",
+                "biodiversity loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Extensive plastic pollution and ghost nets at Flinders Beach pose a severe and immediate threat to marine turtles. It obstructs nesting sites, entangles adults, and impedes hatchlings, leading to significant biodiversity loss and ecological damage if not addressed promptly before nesting season."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "5232aa320e04844251f23f1bcbe9f39c",
+        "timestamp": "2026-06-19T02:48:06.714807",
+        "title": "Turtles entangled in plastic on Bangladesh beach | AFP - YouTube",
+        "summary": "At least 20 turtles are dead and dozens more have had to be rescued after being entangled in plastic waste washed ashore on one of the world's longest beache...",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Bangladesh",
+            "region": "",
+            "lat": 24.4769288,
+            "lon": 90.2934413
+        },
+        "manifestation": {
+            "how_it_is_observed": "Turtles entangled in plastic waste washed ashore on a beach, leading to deaths and necessitating rescue operations.",
+            "key_indicators": [
+                "Dead turtles",
+                "Entangled turtles",
+                "Plastic waste on beach"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Marine biodiversity",
+                "Sea turtle populations",
+                "Coastal ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.youtube.com/watch?v=x4O0fi58w0M"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The entanglement and death of numerous turtles due to plastic waste highlight a severe and ongoing environmental crisis. This incident indicates significant marine pollution impacting biodiversity and ecosystem health. The underlying issue of plastic waste accumulation requires immediate and sustained intervention to prevent further ecological damage and loss of marine life."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
