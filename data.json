@@ -4806,5 +4806,122 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "21b137e86c7f1a5b394d8c08403a6b42",
+        "timestamp": "2026-06-21T02:30:23.325760",
+        "title": "Outbreak of viral deer-killing disease prompts alarm, warning to meat ...",
+        "summary": "An outbreak of the viral epizootic hemorrhagic disease is killing white-tailed deer in numerous Eastern states, sparking a warning to hunters about the potential dangers of eating infected venison.",
+        "domain_classification": [
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Eastern states",
+            "lat": 42.09136,
+            "lon": -72.6186655
+        },
+        "manifestation": {
+            "how_it_is_observed": "An outbreak of the viral epizootic hemorrhagic disease is killing white-tailed deer.",
+            "key_indicators": [
+                "epizootic hemorrhagic disease (EHD)",
+                "white-tailed deer deaths",
+                "warning to hunters"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "white-tailed deer populations",
+                "wildlife health",
+                "hunters",
+                "venison consumers",
+                "ecosystem balance"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://nypost.com/2025/09/27/science/outbreak-of-viral-deer-killing-disease-prompts-alarm-warning-to-meat-eaters/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Wildlife Health",
+                "Food Safety",
+                "Economic"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "An outbreak of epizootic hemorrhagic disease (EHD) is actively killing white-tailed deer across multiple Eastern states. This poses a significant risk to wildlife populations, potentially leading to ecological imbalances. Furthermore, a warning has been issued to hunters regarding the dangers of consuming infected venison, indicating a food safety concern and potential for human exposure, even if not directly pathogenic to humans. The economic impact on hunting and related industries could also be substantial. Immediate intervention is needed for public awareness, disease monitoring, and potential wildlife management strategies to mitigate spread and protect public health."
+        },
+        "priority_score": 88,
+        "critical_flag": false
+    },
+    {
+        "id": "f72f60a7274d4a0c0b7121475cb6c497",
+        "timestamp": "2026-06-21T02:31:14.469417",
+        "title": "Local hunters report uptick in diseased dead deer; state says likely ...",
+        "summary": "Some local hunters say they've encountered an unusual number of dead deer in the woods this season — prompting questions about disease and deer health across the region. Officials with the Kentucky Department of Fish and Wildlife say the most likely explanation is an outbreak of Epizootic Hemorrhagic Disease (EHD) that hit earlier this fall.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Kentucky",
+            "lat": 37.5726028,
+            "lon": -85.1551411
+        },
+        "manifestation": {
+            "how_it_is_observed": "Hunters report an unusual number of dead deer in the woods.",
+            "key_indicators": [
+                "Dead deer",
+                "Diseased deer",
+                "Epizootic Hemorrhagic Disease (EHD) outbreak"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Deer population",
+                "Wildlife health",
+                "Local ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.owensborotimes.com/news/2025/11/local-hunters-report-uptick-in-diseased-dead-deer-state-says-likely-result-of-earlier-ehd-outbreak/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Wildlife Disease Outbreak",
+                "Ecological Impact",
+                "Economic Impact (Hunting/Tourism)"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": false,
+            "explanation": "Local hunters are reporting an unusual number of dead deer, which state officials attribute to an earlier Epizootic Hemorrhagic Disease (EHD) outbreak. While EHD is common and not typically a direct threat to humans, a significant die-off of deer poses a medium-level risk to local wildlife populations and the ecological balance, potentially impacting the hunting economy. The state has identified the likely cause, suggesting awareness and existing protocols, so new immediate intervention beyond current monitoring is not explicitly indicated as unaddressed."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
