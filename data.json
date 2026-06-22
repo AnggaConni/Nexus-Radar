@@ -4923,5 +4923,118 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "29def78ae15512491efbc1a5c7a92f95",
+        "timestamp": "2026-06-22T02:35:21.326205",
+        "title": "Mountain treelines are shifting - and not always upward - Earth.com",
+        "summary": "April 10, 2026 - High up in the mountains, there is a quiet boundary where forests suddenly stop. This line, called the treeline, looks simple at first. Many people think it is slowly climbing higher because of global warming. But scientists now show a very different story.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Mountain treelines are shifting, and not always upward, challenging previous assumptions that they are solely climbing higher due to global warming.",
+            "key_indicators": [
+                "Shifting treelines",
+                "Changes in forest boundaries"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Mountain ecosystems",
+                "Forests",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.earth.com/news/mountain-treelines-are-shifting-and-not-always-upward/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Ecological Disruption",
+                "Climate Change Impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Shifting treelines, particularly those not moving consistently upward, signal complex and potentially destabilizing ecological changes. This phenomenon, driven by global warming, can lead to significant biodiversity loss, altered ecosystem services, and unpredictable environmental impacts, requiring urgent research and adaptive management strategies to understand and mitigate."
+        },
+        "priority_score": 66,
+        "critical_flag": false
+    },
+    {
+        "id": "62c4702d8b6d468716b06e753038af0f",
+        "timestamp": "2026-06-22T02:36:18.678069",
+        "title": "Why treelines don't simply rise with the climate",
+        "summary": "April 9, 2026 - The results of the study were published in the International Journal of Applied Earth Observation and Geoinformation. The researchers examined shifts in the actual treeline using satellite data and compared this with the potential treeline; that is, where trees could theoretically grow based on climate. The study sheds light on processes that unfold over decades. \"The shift of treelines occurs slowly, it would take a lifetime to fully grasp the changes,\" says Dr. Mathieu Gravey of the Institute for Interdisciplinary Mountain Research at the Austrian Academy of Sciences (ÖAW).",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Austria",
+            "region": "Mountains",
+            "lat": 47.3277085,
+            "lon": 11.1809028
+        },
+        "manifestation": {
+            "how_it_is_observed": "Shifts in actual treeline examined using satellite data and compared with potential treeline (where trees could theoretically grow based on climate).",
+            "key_indicators": [
+                "shifts in actual treeline",
+                "potential treeline"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "treelines",
+                "trees",
+                "mountain ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "low"
+        },
+        "sources": [
+            "https://phys.org/news/2026-04-treelines-dont-simply-climate.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "environmental",
+                "ecological",
+                "climate change"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": false,
+            "explanation": "The study highlights that treelines are not adapting to climate change as quickly as theoretically possible, indicating a slow, decades-long disruption in mountain ecosystems. This latent signal points to long-term ecological imbalance, affecting biodiversity and ecosystem services, rather than an immediate, acute disaster. While the underlying cause (climate change) requires urgent action, the treeline shift itself is a slow process that doesn't demand immediate, localized intervention."
+        },
+        "priority_score": 56,
+        "critical_flag": false
     }
 ]
