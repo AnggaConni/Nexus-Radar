@@ -5036,5 +5036,121 @@
         },
         "priority_score": 56,
         "critical_flag": false
+    },
+    {
+        "id": "7ce332096424eb39bea587c250b6dfd5",
+        "timestamp": "2026-06-24T02:02:02.041440",
+        "title": "Atlantic Bluefin Tuna Spawning Grounds: Gulf of Mexico...",
+        "summary": "Beyond fishing pressure, spawning habitat quality is influenced by environmental factors that are shifting under climate change. Rising sea surface temperatures may alter the timing and location of spawning...",
+        "domain_classification": [
+            "Ocean",
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "Gulf of Mexico",
+            "lat": 25.2834459,
+            "lon": -89.9066163
+        },
+        "manifestation": {
+            "how_it_is_observed": "Rising sea surface temperatures may alter the timing and location of Atlantic Bluefin Tuna spawning.",
+            "key_indicators": [
+                "Rising sea surface temperatures",
+                "Changes in spawning timing",
+                "Changes in spawning location"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Atlantic Bluefin Tuna population",
+                "Marine ecosystem health",
+                "Spawning habitat quality"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://asmr.education/faq/tuna/atlantic-bluefin-tuna-spawning-grounds"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological collapse",
+                "Biodiversity loss",
+                "Climate change impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Rising sea surface temperatures, a direct consequence of climate change, are actively altering the critical spawning habitat quality for Atlantic Bluefin Tuna. This threatens to disrupt their reproductive timing and location, which could lead to significant population decline for an already vulnerable species. The potential for biodiversity loss and ecological imbalance in the marine ecosystem is high, necessitating immediate monitoring, research, and conservation strategies to mitigate these impacts."
+        },
+        "priority_score": 70,
+        "critical_flag": false
+    },
+    {
+        "id": "9d531459ebfc25b8b3e5f4c7939937da",
+        "timestamp": "2026-06-24T02:03:30.936418",
+        "title": "Fish spawning grounds in danger after collapse of highway at...",
+        "summary": "He said because of the existing collapse, the project should be halted immediately until proper hydrological studies are done. He noted that an environmental impact assessment should be done as the project is having a devastating impact on the fish spawning grounds.",
+        "domain_classification": [
+            "Biodiversity",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Trinidad and Tobago",
+            "region": "",
+            "lat": 10.7466905,
+            "lon": -61.0840075
+        },
+        "manifestation": {
+            "how_it_is_observed": "Collapse of highway impacting fish spawning grounds.",
+            "key_indicators": [
+                "Highway collapse",
+                "Devastating impact on fish spawning grounds"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Fish spawning grounds",
+                "Aquatic ecosystems",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.guardian.co.tt/news/fish-spawning-grounds-in-danger-after-collapse-of-highway-at-mosquito-creek-6.2.1447566.c509f545f8"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Infrastructure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The collapse of a highway is having a devastating impact on critical fish spawning grounds, necessitating immediate halting of the project and comprehensive hydrological and environmental impact assessments to prevent further ecological damage."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
