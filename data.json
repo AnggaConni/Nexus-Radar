@@ -5152,5 +5152,121 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "7f06fa466427cef0a35f4e84c83fb9d7",
+        "timestamp": "2026-06-25T02:03:54.776590",
+        "title": "Climate change is causing bears to come out of hibernation a month early — which can be dangerous for humans - CBS News",
+        "summary": "March 12, 2020 - The Moscow Zoo told CBS News that its bears — one brown bear and two Himalayan black bears — all woke up a whole month sooner than expected, but the zoo said there was no apparent impact on the bears' health or behavior.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Russia",
+            "region": "",
+            "lat": 64.6863136,
+            "lon": 97.7453061
+        },
+        "manifestation": {
+            "how_it_is_observed": "Bears waking up from hibernation a month earlier than expected.",
+            "key_indicators": [
+                "Early emergence from hibernation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Humans",
+                "Bears",
+                "Wildlife ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.cbsnews.com/news/climate-change-bears-come-out-of-hibernation-month-early/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Wildlife-Human Conflict",
+                "Environmental"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Climate change is causing bears to emerge from hibernation early, as evidenced by the Moscow Zoo. While the immediate health of the zoo bears was unaffected, this altered behavior in wild populations significantly increases the potential for dangerous human-wildlife encounters and disrupts natural ecosystems, posing a substantial and escalating risk if the underlying climate change is not addressed."
+        },
+        "priority_score": 62,
+        "critical_flag": false
+    },
+    {
+        "id": "988728e88751e01ceb2ebec3d8dfd192",
+        "timestamp": "2026-06-25T02:04:58.573301",
+        "title": "Bearly awake: N.H. black bears waking up from hibernation, looking for food | WBUR News",
+        "summary": "March 30, 2026 - As spring melts the snow pack and the weather warms up, New Hampshire’s approximately 6,000 bears are coming out of hibernation hungry and looking for food. To keep bears away from residential areas as they wake up, New Hampshire Fish and Game black bear expert Dan Bailey said it's time to put away the bird feeder.",
+        "domain_classification": [
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "New Hampshire",
+            "lat": 43.4849133,
+            "lon": -71.6553992
+        },
+        "manifestation": {
+            "how_it_is_observed": "Black bears are emerging from hibernation as spring weather arrives, actively seeking food sources, potentially leading them into residential areas.",
+            "key_indicators": [
+                "Bears waking up from hibernation",
+                "Bears looking for food",
+                "Bears approaching residential areas",
+                "Advice to remove bird feeders"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Black bear populations",
+                "Human residents",
+                "Residential properties",
+                "Wildlife management efforts",
+                "Bird feeder owners"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.wbur.org/news/2026/03/30/new-england-black-bears-spring-hibernation-hungry-bird-feeders"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "behavioral_neglect"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 6,
+            "risk_type": [
+                "human-wildlife conflict",
+                "public safety",
+                "property damage"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "Black bears are emerging from hibernation, hungry and seeking food, increasing the likelihood of encounters with residential areas. This poses risks of human-wildlife conflict, potential property damage (e.g., to bird feeders, trash cans), and public safety concerns. Immediate intervention, such as securing food attractants, is necessary to mitigate these seasonal risks."
+        },
+        "priority_score": 58,
+        "critical_flag": false
     }
 ]
