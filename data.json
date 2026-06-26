@@ -5268,5 +5268,118 @@
         },
         "priority_score": 58,
         "critical_flag": false
+    },
+    {
+        "id": "b72668dde8fcaf554c2cd3c7aa6bd251",
+        "timestamp": "2026-06-26T02:05:26.069123",
+        "title": "As U.S. Butterfly Populations Plummet, Scientists Map a Road to ...",
+        "summary": "It also includes information on the ecological and social importance of butterflies, causes of decline, natural history, and what butterflies need. The report outlines specific actions for anyone - including wildlife agency staff, farmers and gardeners - to help recover butterflies.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "U.S.",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "U.S. butterfly populations are plummeting",
+            "key_indicators": [
+                "declining butterfly populations"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "butterflies",
+                "ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://beecityusa.org/as-u-s-butterfly-populations-plummet-scientists-map-a-road-to-recovery/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "ecological",
+                "biodiversity_loss",
+                "agricultural_impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The plummeting U.S. butterfly populations represent a high ecological risk. Butterflies are crucial pollinators, and their decline threatens plant reproduction, agricultural systems, and overall biodiversity. This signal indicates a significant disruption to ecosystems that, if unaddressed, could lead to cascading environmental and economic consequences, necessitating immediate and widespread intervention."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "7440d4331e61d55a35436699e3471e7e",
+        "timestamp": "2026-06-26T02:06:17.803617",
+        "title": "Why Your Garden Didn't Attract Pollinators This Season—and How to Fix ...",
+        "summary": "Pollination is important for maintaining genetic diversity in many plants, including our food sources of fruits, vegetables, and nuts. The absence of pollinators in a home garden negatively impacts the health of flowering plants and reduces the yield of a home vegetable garden. Bees, wasps, moths, birds, and butterflies work hard and need shelter, a variety of food sources, clean water, and ...",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Absence of pollinators in a home garden, negatively impacting the health of flowering plants and reducing the yield of a home vegetable garden.",
+            "key_indicators": [
+                "Absence of bees, wasps, moths, birds, and butterflies",
+                "Reduced yield of fruits, vegetables, and nuts",
+                "Unhealthy flowering plants"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Genetic diversity of plants",
+                "Food sources (fruits, vegetables, nuts)",
+                "Health of flowering plants",
+                "Home vegetable garden yield",
+                "Pollinator populations"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.thespruce.com/why-you-didn-t-get-any-pollinators-11784229"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "behavioral_neglect"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Ecological",
+                "Food Security",
+                "Agricultural"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The signal, while focused on a home garden, highlights the critical importance of pollinators for maintaining genetic diversity and ensuring food sources (fruits, vegetables, nuts). A widespread absence of pollinators, if left unaddressed, represents a severe ecological disaster leading to significant agricultural yield reductions, potential food shortages, and broad biodiversity loss. The decline of pollinator populations is a global crisis requiring immediate and sustained intervention."
+        },
+        "priority_score": 66,
+        "critical_flag": false
     }
 ]
