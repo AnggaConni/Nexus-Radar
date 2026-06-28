@@ -5381,5 +5381,120 @@
         },
         "priority_score": 66,
         "critical_flag": false
+    },
+    {
+        "id": "b730ab9365eff64bea47f348cc5f6513",
+        "timestamp": "2026-06-28T02:10:33.872521",
+        "title": "Out of Site, Out of Mind? New Study Finds Missing Apex Predators Are Too Often Neglected in Ecological Research - Inside Climate News",
+        "summary": "July 11, 2024 - “You lose the apex predator, and the native ungulate populations take over. They heavily impact plant communities and have all kinds of other effects.” · For instance, the loss of wolves from some ecosystems caused a spike in elk populations that subsequently overgrazed vegetation, dramatically changing the habitat.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Loss of apex predators leads to unchecked growth of native ungulate populations, which then overgraze and heavily impact plant communities and dramatically change habitats.",
+            "key_indicators": [
+                "Loss of apex predators",
+                "Increase in native ungulate populations",
+                "Overgrazing of vegetation",
+                "Changes in plant communities and habitat structure"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Ecosystems",
+                "Plant communities",
+                "Native ungulate populations",
+                "Habitat integrity",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://insideclimatenews.org/news/19062024/missing-apex-predators-often-neglected-in-ecological-research/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "ecological imbalance",
+                "habitat degradation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The neglect of missing apex predators leads to severe ecological imbalances, such as unchecked ungulate populations causing overgrazing and dramatic habitat changes. This has cascading negative effects on plant communities and overall ecosystem health, requiring urgent attention and intervention to restore balance."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "c9c00a48dd95c13fbc039d183fba18c2",
+        "timestamp": "2026-06-28T02:11:28.871585",
+        "title": "What happens when an apex predator goes missing? - Earth.com",
+        "summary": "February 11, 2023 - “This study gives us a fuller picture of the changes that occur when an apex predator goes missing. While many people think that smaller carnivores can move into the apex role, we see that mesocarnivores like coyotes don’t provide the same effects as a true apex predator.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Changes in ecosystem dynamics when an apex predator is absent, with mesocarnivores not fully replacing their ecological role.",
+            "key_indicators": [
+                "Absence of apex predators",
+                "Changes in mesocarnivore populations",
+                "Altered ecological effects"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Ecosystem stability",
+                "Biodiversity",
+                "Food web dynamics",
+                "Mesocarnivore populations"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.earth.com/news/what-happens-when-an-apex-predator-goes-missing/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Ecological Imbalance"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": false,
+            "explanation": "The absence of an apex predator causes significant ecological disruption, as mesocarnivores cannot adequately fill the vacant role, leading to cascading effects throughout the food web and ecosystem. While the study highlights a critical risk, the provided text is a general scientific observation rather than a report of a specific, unfolding disaster requiring immediate intervention based solely on this information."
+        },
+        "priority_score": 66,
+        "critical_flag": false
     }
 ]
