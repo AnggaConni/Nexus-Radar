@@ -5496,5 +5496,117 @@
         },
         "priority_score": 66,
         "critical_flag": false
+    },
+    {
+        "id": "3cb0a174519f04887ad871875d4e51db",
+        "timestamp": "2026-06-30T02:06:26.182919",
+        "title": "Accelerating upward treeline shift in the Altai Mountains under last-century climate change | Scientific Reports",
+        "summary": "May 22, 2019 - Trees did not move upward after 2004 and this might reflect the recent temperature decrease observed both at the local meteorological stations31 and from our estimates derived from the hyperbolic relationship between the mean annual growth and ...",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Altai Mountains",
+            "lat": 48.0,
+            "lon": 90.0
+        },
+        "manifestation": {
+            "how_it_is_observed": "Accelerating upward treeline shift, followed by a pause in upward movement after 2004, potentially linked to recent temperature decrease.",
+            "key_indicators": [
+                "treeline shift",
+                "temperature decrease",
+                "mean annual growth"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Trees",
+                "Mountain ecosystems",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.nature.com/articles/s41598-019-44188-1"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 5,
+            "risk_type": [
+                "Ecological instability"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": false,
+            "explanation": "The observed stalling of upward treeline shift due to a recent temperature decrease, following a period of acceleration, highlights significant ecological sensitivity to climate variability in the Altai Mountains. If left unaddressed, this signal indicates an unpredictable ecosystem response to fluctuating climate conditions, potentially leading to long-term ecosystem degradation, loss of unique biodiversity adapted to specific climatic niches, and disruption of vital ecological services like water regulation and soil stability. While not an immediate disaster, the lack of understanding and monitoring of these rapid shifts increases the risk of unforeseen ecological collapse."
+        },
+        "priority_score": 54,
+        "critical_flag": false
+    },
+    {
+        "id": "3446048326c665856d35493bf0f4de3b",
+        "timestamp": "2026-06-30T02:08:13.832383",
+        "title": "No treeline shift despite climate change over the last 70 years - ScienceDirect",
+        "summary": "February 25, 2022 - In another protected area of Greece, the Olympus Mountains, both an upward shift and a retreat of the treeline were observed, which could not be explained by climate alone (Zindros et al., 2020).",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "Greece",
+            "region": "Olympus Mountains",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Both an upward shift and a retreat of the treeline were observed in the Olympus Mountains, while another area showed no shift despite climate change.",
+            "key_indicators": [
+                "Treeline shift (upward)",
+                "Treeline retreat"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Mountain ecosystems",
+                "Biodiversity",
+                "Vegetation zones"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.sciencedirect.com/science/article/pii/S2197562022000021"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Ecological Disruption",
+                "Climate Change Impacts"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The observed upward shift and retreat of the treeline in a protected area (Olympus Mountains) is a significant ecological disruption. The fact that these changes 'could not be explained by climate alone' indicates the presence of other, potentially unknown or unaddressed environmental stressors. This unexplained complexity elevates the risk, suggesting ecosystem instability and potential biodiversity loss that requires immediate investigation and intervention to identify and mitigate all contributing factors."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
