@@ -5608,5 +5608,120 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "f2ce6f9647d8dba6e3095f78f5f0c6e2",
+        "timestamp": "2026-07-01T02:10:32.394771",
+        "title": "Toxic 'forever chemicals' taint rural California drinking water, far from ...",
+        "summary": "Dec 12, 2024 · The chemicals have unexpectedly turned up in well water in rural farmland far from known contamination sites, like industrial areas, airports, and military ...",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "California",
+            "lat": 36.7014631,
+            "lon": -118.755997
+        },
+        "manifestation": {
+            "how_it_is_observed": "Toxic 'forever chemicals' have unexpectedly turned up in well water in rural farmland.",
+            "key_indicators": [
+                "Toxic 'forever chemicals' (PFAS)",
+                "well water contamination"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Drinking water supply",
+                "Rural communities",
+                "Public health"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.kvpr.org/environment/2024-12-12/toxic-forever-chemicals-taint-rural-california-drinking-water-far-from-known-sources"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Contamination",
+                "Public Health",
+                "Water Safety"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Toxic 'forever chemicals' (PFAS) have been detected in rural California drinking water, specifically well water, posing a severe public health risk. These chemicals are persistent and linked to various adverse health effects. The unexpected presence in farmland far from known industrial or military sites suggests a widespread or unknown contamination source, necessitating urgent intervention to protect residents' health and identify remediation strategies for safe drinking water."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "724fe9fbf43d0196f9ed905bcaef7bcc",
+        "timestamp": "2026-07-01T02:11:21.988107",
+        "title": "Risky level of heavy metals found in Mora County groundwater",
+        "summary": "Nov 14, 2025 · Eleven metals were found at elevated levels in groundwater samples from private wells, including three — antimony, arsenic and uranium — at ...",
+        "domain_classification": [
+            "Water",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "New Mexico, Mora County",
+            "lat": 36.0145487,
+            "lon": -105.3803703
+        },
+        "manifestation": {
+            "how_it_is_observed": "Eleven metals found at elevated levels in groundwater samples from private wells",
+            "key_indicators": [
+                "antimony",
+                "arsenic",
+                "uranium",
+                "elevated metal levels"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "groundwater",
+                "private wells",
+                "human health"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.santafenewmexican.com/news/local_news/risky-level-of-heavy-metals-found-in-mora-county-groundwater/article_556f15b1-38d4-471f-9f81-f73b0e97f8ed.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Contamination",
+                "Public Health",
+                "Water Quality"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Elevated levels of heavy metals, including antimony, arsenic, and uranium, have been found in groundwater samples from private wells in Mora County. These metals are highly toxic and pose significant long-term health risks to residents consuming the contaminated water. The direct impact on drinking water sources necessitates immediate intervention to protect public health."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
