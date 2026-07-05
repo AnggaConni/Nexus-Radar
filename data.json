@@ -5832,5 +5832,120 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "7a8e8b0049d38ced8e4d30faeaa7f1c6",
+        "timestamp": "2026-07-05T01:50:43.909609",
+        "title": "State Agriculture Commissioner Tours Frost-Damaged Vineyards in the Southern Tier and Finger Lakes Regions | Agriculture and Markets",
+        "summary": "Unseasonable Weather Significantly Impacted Grape Growers and Other Fruit and Vegetable Crops Across the State · State Agriculture Commissioner Richard A. Ball on Friday joined state and local leaders, representatives from the New York Wine & Grape Foundation, New York Farm Bureau, the United States Department of Agriculture Farm Service Agency (USDA FSA), Empire State Development, and Cornell Cooperative Extension to tour several vineyards in the Southern Tier and Finger Lakes regions impacted by a recent freeze.",
+        "domain_classification": [
+            "Climate",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United States",
+            "region": "Southern Tier and Finger Lakes Regions",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unseasonable weather, specifically a recent freeze, significantly impacted grape growers and other fruit and vegetable crops.",
+            "key_indicators": [
+                "Frost-damaged vineyards",
+                "Impacted grape growers",
+                "Damage to fruit and vegetable crops"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Grape growers",
+                "Fruit and vegetable crops",
+                "Vineyards",
+                "Agricultural economy"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://agriculture.ny.gov/news/state-agriculture-commissioner-tours-frost-damaged-vineyards-southern-tier-and-finger-lakes"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Agricultural Economic Loss",
+                "Crop Failure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Unseasonable weather has caused significant frost damage to vineyards and other fruit and vegetable crops across the state, posing a substantial economic threat to the agricultural sector. The involvement of state and federal agencies, including USDA FSA, indicates the severity and the need for immediate assessment and potential support to mitigate economic losses for farmers and ensure the stability of the agricultural industry."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "89a77d11bc0f2d575ed0c67b394ef863",
+        "timestamp": "2026-07-05T01:51:32.630242",
+        "title": "Assessing Frost Damage - Premier Co-op",
+        "summary": "Fortunately, most of the corn has the growing point below ground and soybeans are either not planted or they have not emerged. However, some of the Midwest, these crops are at more susceptible stages for injury.",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Midwest",
+            "lat": 43.411391,
+            "lon": -106.280075
+        },
+        "manifestation": {
+            "how_it_is_observed": "Frost damage to agricultural crops, specifically corn and soybeans, in susceptible stages of growth.",
+            "key_indicators": [
+                "Frost damage",
+                "Susceptible crop stages",
+                "Corn",
+                "Soybeans"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Agricultural crops (corn, soybeans)",
+                "Farmers' livelihoods",
+                "Local agricultural output"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.premiercooperative.com/news/co-op-news/assessing-frost-damage"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Agricultural Damage"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "While most corn and soybean crops are currently safe from frost damage due to their developmental stage, specific regions in the Midwest have crops at more susceptible stages for injury. This indicates a localized but significant risk of crop loss that requires immediate assessment and potential intervention to mitigate impact."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
