@@ -5947,5 +5947,109 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "e67d7fd6c71bb77c876517f0ff6b0b54",
+        "timestamp": "2026-07-06T01:58:14.021143",
+        "title": "Groundwater regulation weakness exploited by large farms",
+        "summary": "Douglas Basin Groundwater Pumping Annual groundwater pumping from the Douglas basin for all wells that can pump at least 35 gallons per minute from 1980* to 2021, when the basin was regulated as an Irrigation Non-expansion Area. One acre foot of water, or 325,851 gallons, can support the equivalent water needs of three Arizona families for one ...",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United States",
+            "region": "Arizona, Southwest US",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Large farms are exploiting weaknesses in groundwater regulations, leading to excessive groundwater pumping in the Douglas Basin, despite its designation as an Irrigation Non-expansion Area.",
+            "key_indicators": [
+                "Annual groundwater pumping data (1980-2021)",
+                "Regulation failures in Irrigation Non-expansion Areas",
+                "Increased water extraction by large-scale agriculture"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Groundwater resources",
+                "Local ecosystems",
+                "Future water supply for communities",
+                "Agricultural sustainability",
+                "Water security"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://azcir.org/news/2024/04/23/groundwater-regulation-weaknesses-exploited-by-industrial-scale-agriculture/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "policy_gap"
+            ]
+        },
+        "risk_assessment": {},
+        "priority_score": 64,
+        "critical_flag": false
+    },
+    {
+        "id": "4a00ce1cee21f178ad6e1ae520eb55d9",
+        "timestamp": "2026-07-06T01:59:51.950757",
+        "title": "Arizona Comes to Agreement With Major Dairy Farm to Cut Groundwater ...",
+        "summary": "That's led to industrial agriculture operations pumping unlimited amounts of water, leaving communities like Willcox vulnerable to unsustainable groundwater use.",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Arizona",
+            "lat": 34.395342,
+            "lon": -111.763275
+        },
+        "manifestation": {
+            "how_it_is_observed": "Industrial agriculture operations pumping unlimited amounts of water.",
+            "key_indicators": [
+                "Unsustainable groundwater use",
+                "Vulnerable communities"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Groundwater resources",
+                "Local communities (e.g., Willcox)",
+                "Agricultural sustainability"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://insideclimatenews.org/news/10012026/arizona-agreement-with-dairy-farm-to-cut-groundwater-pumping/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "policy_gap"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Resource Depletion"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Unsustainable groundwater pumping by industrial agriculture operations has led to significant resource depletion, leaving communities vulnerable to water scarcity. While an agreement has been reached, the historical context indicates a high-severity risk that requires continuous monitoring and intervention to prevent long-term environmental and societal disaster."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
