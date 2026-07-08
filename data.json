@@ -6051,5 +6051,123 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "64c67828165c490125bb0353fc4fd91b",
+        "timestamp": "2026-07-08T01:24:38.432290",
+        "title": "Himachal Pradesh faces severe wildfire crisis amid prolonged dry spell",
+        "summary": "Wildfires Ravage Himachal Pradesh's Forests Over 3,300 hectares impacted, with damages surpassing ₹82 lakh due to ongoing dry conditions fueling wildfires in the Himalayan region Munish Sood ...",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "India",
+            "region": "Himachal Pradesh",
+            "lat": 31.9292352,
+            "lon": 77.1828462
+        },
+        "manifestation": {
+            "how_it_is_observed": "Wildfires ravaging forests, fueled by prolonged dry conditions",
+            "key_indicators": [
+                "Over 3,300 hectares impacted",
+                "Damages surpassing ₹82 lakh"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Forests",
+                "Ecosystems",
+                "Biodiversity",
+                "Economic infrastructure"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.msn.com/en-in/news/India/himachal-pradesh-faces-severe-wildfire-crisis-amid-prolonged-dry-spell/ar-AA24mAg3"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "wildfire"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Himachal Pradesh is experiencing a severe wildfire crisis, with over 3,300 hectares impacted and damages exceeding ₹82 lakh. Prolonged dry conditions are fueling these fires, indicating an urgent need for intervention to prevent further destruction and mitigate environmental and economic losses."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "a91eb9ba73c029d6a66285c3225d7399",
+        "timestamp": "2026-07-08T01:25:24.664404",
+        "title": "Amazon Rainforest Drought - Rainforest Foundation US",
+        "summary": "The Amazon rainforest generates much of its own rainfall through a process known as evapotranspiration, in which trees release moisture into the atmosphere. As deforestation increases and forests are cleared, this natural water cycle weakens. As a result, rainfall declines, the regional climate is altered, and drought becomes more likely.",
+        "domain_classification": [
+            "Climate",
+            "Water",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Brazil",
+            "region": "South America",
+            "lat": -22.6965925,
+            "lon": -47.3652706
+        },
+        "manifestation": {
+            "how_it_is_observed": "The natural water cycle weakens due to deforestation, leading to declining rainfall, altered regional climate, and increased likelihood of drought.",
+            "key_indicators": [
+                "Declining rainfall",
+                "Weakening natural water cycle",
+                "Altered regional climate",
+                "Increased drought frequency"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Amazon rainforest ecosystem",
+                "Regional climate",
+                "Water cycle",
+                "Rainfall patterns"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://rainforestfoundation.org/our-work/where-we-work/amazon/amazon-rainforest-drought/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Degradation",
+                "Climate Risk",
+                "Ecological Collapse"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Deforestation in the Amazon is severely disrupting the natural evapotranspiration process, weakening the regional water cycle. This leads to reduced rainfall, altered climate patterns, and increased frequency and intensity of droughts, posing a critical threat to the rainforest ecosystem and global climate stability. Immediate intervention is required to halt deforestation and restore ecological balance."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
