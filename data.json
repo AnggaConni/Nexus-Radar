@@ -6169,5 +6169,140 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "8726674c90cd36d4e85798e3f92cfd64",
+        "timestamp": "2026-07-09T01:45:55.556705",
+        "title": "How a dry river bed is changing activity on the Rio Grande",
+        "summary": "Rivers like the Rio Grande and Colorado River are drying up at unprecedented rates, with the Rio Grande running dry in Albuquerque earlier than in decades. This widespread water scarcity, exacerbated by climate change and a lack of spring rain, is causing reservoir levels to drop and leading to significant impacts. The Colorado River, a vital water source for millions, is shrinking, prompting disputes among Western states. The drying rivers threaten ecosystems, agriculture, biodiversity (e.g., fish populations), and human populations, leading to food insecurity and a deepening water crisis across the Southwest, necessitating permanent adaptation.",
+        "domain_classification": [
+            "Water",
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Western United States",
+            "lat": 18.3398041,
+            "lon": -64.9427005
+        },
+        "manifestation": {
+            "how_it_is_observed": "Major rivers (Rio Grande, Colorado River, Merced River) are drying up, running dry earlier in the season, and delivering less water than expected. Reservoir levels are dropping.",
+            "key_indicators": [
+                "Dry river beds",
+                "Dropping reservoir levels (Lake Mead)",
+                "Reduced river flow",
+                "Lack of spring rain",
+                "Winter snow drought",
+                "Collapsing fish populations"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Ecosystems",
+                "Agriculture",
+                "Human populations",
+                "Water supply",
+                "Biodiversity",
+                "Local communities",
+                "Regional economy"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.krqe.com/news/albuquerque-metro/how-a-dry-river-bed-is-changing-activity-on-the-rio-grande/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Water Scarcity",
+                "Environmental Degradation",
+                "Agricultural Collapse"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Severe and accelerating drought, driven by climate change and lack of snowpack/rain, is causing major rivers like the Colorado, Rio Grande, and Merced to dry up at record rates. This poses a critical threat to water supply for approximately 35 million people, devastates 5 million acres of farmland, leads to ecosystem collapse (e.g., fish populations), and fuels interstate conflicts over dwindling resources. The situation is already critical, with the Rio Grande dry in Albuquerque and Lake Mead projected to reach extremely low levels, necessitating immediate and comprehensive intervention to prevent widespread humanitarian and ecological disaster."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "126b838d86dbc6fe84adb7a42e329b78",
+        "timestamp": "2026-07-09T01:46:48.105921",
+        "title": "The Colorado River is drying up, deepening water crisis in Western states",
+        "summary": "The Colorado River, a water source for roughly one in ten Americans, is drying up due to a worsening drought, partly driven by climate change, and increased water absorption by plants. Rivers worldwide are experiencing record drying rates, posing critical threats to ecosystems, agriculture, and human populations. This scarcity is leading to conflicts among Western states over water allocation and threatens fish populations, biodiversity, and food security. Reservoir levels, such as Lake Mead, are dropping to critically low levels, necessitating permanent adaptation to less water in the Southwest.",
+        "domain_classification": [
+            "Water",
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Western US",
+            "lat": 42.6840289,
+            "lon": -73.8480069
+        },
+        "manifestation": {
+            "how_it_is_observed": "Rivers drying up (Colorado, Merced), less water delivered than expected, dropping reservoir levels (Lake Mead), winter snow drought, landscapes drier than ever.",
+            "key_indicators": [
+                "Drying rivers",
+                "Decreased water flow",
+                "Lower reservoir levels",
+                "Winter snow drought",
+                "Increased plant water absorption",
+                "Lack of spring rain"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "35 million people",
+                "5 million acres of farmland",
+                "Ecosystems",
+                "Fish populations",
+                "Countless species",
+                "Local communities",
+                "Agriculture",
+                "Human populations",
+                "Water supply for major cities (e.g., Los Angeles)"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.youtube.com/watch?v=39-z063W1WY"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Water Scarcity",
+                "Environmental Degradation",
+                "Food Insecurity",
+                "Socio-political Instability"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The drying up of the Colorado River, driven by worsening drought and climate change, poses a critical and immediate threat to approximately 35 million people and 5 million acres of farmland in the Southwest. This leads to severe water scarcity, threatens agricultural collapse, causes widespread environmental degradation (collapsing fish populations, biodiversity loss), and is escalating socio-political conflict among states over dwindling water resources. The situation is worsening at record rates, with no easy fixes, necessitating urgent and permanent adaptation strategies to avert a major disaster."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
