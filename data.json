@@ -6304,5 +6304,117 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "3066e7d8a56d7dd773adb310711d7ec1",
+        "timestamp": "2026-07-11T01:23:52.120619",
+        "title": "NOAA Coral Reef Watch Homepage and Near Real-Time Products Portal",
+        "summary": "The near real-time satellite products and modeled Outlooks that comprise CRW's global early-warning system of coral reef environmental changes have successfully and accurately predicted and monitored all major mass coral bleaching events observed globally since 1997, and have provided other critical information to users, especially during ...",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Mass coral bleaching events and coral reef environmental changes are predicted and monitored using near real-time satellite products and modeled Outlooks.",
+            "key_indicators": [
+                "Mass coral bleaching events",
+                "Coral reef environmental changes"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Coral reefs",
+                "Marine ecosystems",
+                "Marine biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://coralreefwatch.noaa.gov/main/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological Disaster",
+                "Biodiversity Loss",
+                "Climate Change Impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal refers to the severe and ongoing threat of mass coral bleaching events globally, driven by environmental changes. If these environmental stressors impacting coral reefs were left unaddressed, it would result in widespread ecological disaster, irreversible biodiversity loss, and significant degradation of marine ecosystems, impacting coastal communities and economies. The NOAA Coral Reef Watch system's success in predicting these events underscores the high and continuous risk posed by coral reef degradation."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "fd41fcdf06d96989550f23d91d90212e",
+        "timestamp": "2026-07-11T01:24:44.384109",
+        "title": "Coral Bleaching: Early Warning Signs and What to Do",
+        "summary": "Coral bleaching is a complex, fast-moving threat, but early warning signs are often visible to trained eyes—and to attentive communities. By combining careful observation, rapid local stress reduction, and preparedness planning, reefs stand a better chance of surviving the next heat spike.",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Early warning signs are visible to trained eyes and attentive communities.",
+            "key_indicators": [
+                "Early warning signs of coral bleaching"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Coral reefs",
+                "Marine ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://saltwaterreefco.com/blog/coral_bleaching_early_warning_signs_and_what_to_do/2026-06-23-115"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Ecological"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Coral bleaching is identified as a 'complex, fast-moving threat' that requires 'careful observation, rapid local stress reduction, and preparedness planning' to give reefs a 'better chance of surviving the next heat spike.' The emphasis on early warning signs and rapid action underscores the urgency and high severity of this ecological disaster risk."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
