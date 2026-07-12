@@ -6416,5 +6416,121 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "1159199d2ea8343d2f94cf9780f2dfc6",
+        "timestamp": "2026-07-12T01:25:31.846432",
+        "title": "Seismic Sensing Reveals Rapid Permafrost Thaw Under Rivers",
+        "summary": "Thawing permafrost buried underneath rivers may be accelerating permafrost degradation faster than previously estimated.",
+        "domain_classification": [
+            "Climate",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Seismic sensing reveals rapid permafrost thaw under rivers",
+            "key_indicators": [
+                "Permafrost thaw",
+                "Permafrost degradation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Permafrost",
+                "Rivers",
+                "Ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.seismosoc.org/news/seismic-sensing-reveals-rapid-permafrost-thaw-under-rivers/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Climate Change",
+                "Infrastructure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Seismic sensing reveals rapid permafrost thaw under rivers, accelerating degradation faster than previously estimated. This poses significant environmental risks, contributes to climate change feedback loops through greenhouse gas release, and threatens infrastructure stability in affected regions. The accelerated nature demands immediate attention and intervention."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "203788daa5d77925220b3c265e867984",
+        "timestamp": "2026-07-12T01:26:18.201521",
+        "title": "Reducing Individual Costs of Permafrost Thaw Damage in Canada's ...",
+        "summary": "Mar 4, 2021 ... Across the Arctic region, the effects of permafrost thaw are costing communities and governments millions of dollars in infrastructure repairs ...",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Canada",
+            "region": "Arctic",
+            "lat": 74.0,
+            "lon": -93.5
+        },
+        "manifestation": {
+            "how_it_is_observed": "Permafrost thaw is causing damage to infrastructure, leading to millions of dollars in repair costs for communities and governments.",
+            "key_indicators": [
+                "permafrost thaw",
+                "infrastructure damage",
+                "repair costs"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "communities",
+                "governments",
+                "infrastructure"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.thearcticinstitute.org/reducing-individual-costs-permafrost-thaw-damage-canada-arctic/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Infrastructure",
+                "Economic",
+                "Societal"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Permafrost thaw across the Arctic region is causing widespread and significant damage to infrastructure, costing communities and governments millions of dollars in repairs. This ongoing environmental degradation has severe economic and societal consequences, necessitating immediate intervention to mitigate further damage and financial burdens."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
