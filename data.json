@@ -6532,5 +6532,122 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "9e32a9977e039c66ecd8790d54b637c7",
+        "timestamp": "2026-07-13T01:27:08.308094",
+        "title": "How Northeast Ohio abandoned factories are slowing local recovery",
+        "summary": "May 23, 2019 - Jim Rokakis, with the Western Reserve Land Conservancy estimates greater Cleveland has more than 10 million square feet of potentially hazardous abandoned factory space. Rokakis said these vacant buildings are havens for crime and seriously ...",
+        "domain_classification": [
+            "DRR",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Northeast Ohio",
+            "lat": 41.1038377,
+            "lon": -81.2455978
+        },
+        "manifestation": {
+            "how_it_is_observed": "Abandoned factory space, potentially hazardous sites, havens for crime, slowing local economic recovery.",
+            "key_indicators": [
+                "10 million square feet of abandoned factory space",
+                "Crime rates in affected areas",
+                "Local economic recovery metrics"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Local economic recovery",
+                "Community safety",
+                "Public health (due to hazardous materials)",
+                "Urban development"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.news5cleveland.com/news/local-news/cleveland-metro/how-northeast-ohio-abandoned-factories-are-slowing-local-recovery"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Hazard",
+                "Public Safety",
+                "Economic Stagnation",
+                "Urban Decay"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Over 10 million square feet of abandoned factory space in Northeast Ohio poses significant environmental hazards due to potential contaminants, creates public safety risks by serving as crime havens, and actively hinders local economic recovery. The large scale and multifaceted nature of these issues warrant high severity and immediate, sustained intervention to mitigate ongoing harm."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "bfbf6de52bb8a1d0d8a73674eae77d4f",
+        "timestamp": "2026-07-13T01:28:01.162297",
+        "title": "Superfund Sites in Reuse in Pennsylvania | US EPA",
+        "summary": "July 7, 2016 - Berks Sand Pit was used for residential refuse disposal until 1978. Industrial waste was allegedly disposed of around the pit until 1982, when area residents reported a chemical taste and odor in their drinking water.",
+        "domain_classification": [
+            "Water",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Pennsylvania",
+            "lat": 40.9699889,
+            "lon": -77.7278831
+        },
+        "manifestation": {
+            "how_it_is_observed": "Contamination of drinking water due to improper disposal of residential refuse and industrial waste.",
+            "key_indicators": [
+                "Chemical taste and odor in drinking water",
+                "Disposal of residential refuse and industrial waste"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Drinking water quality",
+                "Human health",
+                "Local environment"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.epa.gov/superfund-redevelopment/superfund-sites-reuse-pennsylvania"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Contamination",
+                "Public Health",
+                "Water Contamination"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The site involved the disposal of residential and industrial waste, leading to confirmed chemical contamination of local drinking water, as evidenced by residents reporting taste and odor issues. If left unaddressed, this poses a severe risk of long-term public health impacts, including potential chronic illnesses from chemical exposure, and widespread environmental degradation through groundwater and soil contamination. The Superfund designation itself indicates a high level of contamination requiring extensive remediation."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
