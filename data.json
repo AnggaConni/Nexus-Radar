@@ -6649,5 +6649,123 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "a127c689fd2339ab7bc3f73755f368fd",
+        "timestamp": "2026-07-15T01:13:06.648075",
+        "title": "When Apex Predators Vanish: Ecosystem Collapse Explained",
+        "summary": "The science is unambiguous: apex predators are not luxury items in healthy ecosystems - they are fundamental architecture. Their removal triggers cascading collapses that reshape landscapes, decimate biodiversity, destabilize carbon cycles, and cost human communities billions in lost ecosystem services and restoration efforts.",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Removal of apex predators triggers cascading collapses that reshape landscapes, decimate biodiversity, and destabilize carbon cycles.",
+            "key_indicators": [
+                "cascading collapses",
+                "reshaped landscapes",
+                "decimated biodiversity",
+                "destabilized carbon cycles",
+                "lost ecosystem services"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "ecosystems",
+                "landscapes",
+                "biodiversity",
+                "carbon cycles",
+                "human communities",
+                "ecosystem services"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://nature.sciencearray.com/apex-predators-ecosystem-collapse-trophic-cascade"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 10,
+            "risk_type": [
+                "Ecosystem Collapse",
+                "Biodiversity Loss",
+                "Climate Change Impact",
+                "Economic Impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The vanishing of apex predators is explicitly stated to trigger 'cascading collapses' that 'reshape landscapes, decimate biodiversity, destabilize carbon cycles, and cost human communities billions.' This represents a fundamental architectural failure of ecosystems with widespread and severe environmental and economic consequences, demanding immediate and significant intervention to prevent further disaster."
+        },
+        "priority_score": 100,
+        "critical_flag": false
+    },
+    {
+        "id": "40e68f411393407ecba8ff27b6660da1",
+        "timestamp": "2026-07-15T01:14:04.285969",
+        "title": "Why the Return of Apex Predators Could Save Entire Ecosystems",
+        "summary": "For decades, ecosystems worldwide have suffered from the absence of apex predators—those magnificent hunters at the top of the food chain.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Ecosystems worldwide have suffered from the absence of apex predators.",
+            "key_indicators": [
+                "Ecosystem degradation",
+                "Disrupted food chains"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Entire ecosystems",
+                "Food chains"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.animalsaroundtheglobe.com/why-the-return-of-apex-predators-could-save-entire-ecosystems-6-333495/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Ecological Imbalance",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The absence of apex predators for decades has caused widespread suffering and imbalance in ecosystems worldwide. This long-term degradation poses a high risk to ecological stability and biodiversity, requiring immediate intervention to restore natural balances and prevent further collapse."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
