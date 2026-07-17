@@ -6878,5 +6878,126 @@
         },
         "priority_score": 88,
         "critical_flag": false
+    },
+    {
+        "id": "6255ff4b789f817f949ed2ebe8f04f4a",
+        "timestamp": "2026-07-17T01:25:49.243693",
+        "title": "Satellite images reveals mangroves rebounding worldwide — but here's ...",
+        "summary": "The researchers used a model that combined water flow, sediment movement, carbon storage, and mangrove growth and dieback — when a large number of mangrove trees rapidly die off — to get a ...",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate",
+            "Ocean"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Satellite images reveal mangroves rebounding worldwide, analyzed using a model combining water flow, sediment movement, carbon storage, and mangrove growth and dieback.",
+            "key_indicators": [
+                "mangrove growth",
+                "mangrove dieback",
+                "water flow",
+                "sediment movement",
+                "carbon storage"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "mangrove ecosystems",
+                "coastal protection",
+                "carbon sequestration"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.livescience.com/planet-earth/satellite-images-reveals-mangroves-rebounding-worldwide-but-heres-why-they-could-still-drown"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental degradation",
+                "Climate change impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Despite a global rebound, mangroves face a significant long-term risk of widespread dieback or 'drowning' due to factors like sea-level rise and altered water/sediment dynamics. This poses a high risk of environmental degradation, biodiversity loss, and reduced coastal protection, necessitating urgent conservation and climate adaptation strategies to prevent future collapse."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "248fdd0ee587e8cd98b5b8f95ff43f40",
+        "timestamp": "2026-07-17T01:26:42.516936",
+        "title": "Rising seas could drown mangroves and release vast ... - ScienceDaily",
+        "summary": "As flooding becomes too extreme, mangroves may die off and their carbon-rich soils could erode, potentially turning these coastal ecosystems from carbon sinks into carbon sources.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity",
+            "Ocean",
+            "Water"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Mangroves may die off and their carbon-rich soils could erode as flooding becomes too extreme due to rising seas.",
+            "key_indicators": [
+                "Rising sea levels",
+                "Mangrove die-off",
+                "Coastal soil erosion",
+                "Release of stored carbon"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Mangrove ecosystems",
+                "Coastal biodiversity",
+                "Carbon sequestration capacity",
+                "Global carbon cycle"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.sciencedaily.com/releases/2026/06/260604044238.htm"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Climate Change"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Rising sea levels threaten to drown mangrove ecosystems, leading to their death and the erosion of their carbon-rich soils. This transforms vital carbon sinks into carbon sources, exacerbating climate change and removing natural coastal protection, posing a severe environmental and climate risk that requires urgent intervention."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
