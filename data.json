@@ -6999,5 +6999,122 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "3808b906d184f6857cd24d4eb615cf6e",
+        "timestamp": "2026-07-19T01:23:44.924684",
+        "title": "Forests are migrating up mountain peaks - Science | AAAS",
+        "summary": "The study of tree lines is surprisingly contentious. Partly this comes down to definitions. For many ecologists and biologists like Körner, a mountain's tree line is an isotherm: a fixed elevation representing the boundary where growing-season temperatures dip below 6°C and trees fail to grow. Even if there are no trees at the tree line—because of, say, past fires—this boundary does ...",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Forests are migrating up mountain peaks, observed through changes in tree lines and the elevation where trees can grow.",
+            "key_indicators": [
+                "Tree lines",
+                "Growing-season temperatures",
+                "6°C isotherm"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Forest ecosystems",
+                "Mountain biodiversity",
+                "Ecological boundaries"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.science.org/content/article/forests-are-migrating-mountain-peaks"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Climate Change Impacts",
+                "Biodiversity Loss",
+                "Ecosystem Instability"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The upward migration of forests on mountain peaks is a direct indicator of rising global temperatures, specifically the warming of higher elevations. If left unaddressed, this fundamental shift in ecological boundaries will lead to significant biodiversity loss as cold-adapted alpine species lose their habitats, destabilization of mountain ecosystems crucial for water regulation and soil stability, and potentially increased wildfire risks due to altered vegetation patterns. It signifies a profound and ongoing impact of climate change on natural environments."
+        },
+        "priority_score": 66,
+        "critical_flag": false
+    },
+    {
+        "id": "5f9f9e91f64fa2a88d2ddb0ca9659f03",
+        "timestamp": "2026-07-19T01:24:33.669136",
+        "title": "Mountain treelines are shifting - and not always upward",
+        "summary": "A global study shows treelines are not just moving upward. Climate, human activity, and fires shape where trees grow.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Mountain treelines are shifting, not always upward",
+            "key_indicators": [
+                "Climate",
+                "Human activity",
+                "Fires"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Mountain ecosystems",
+                "Tree distribution",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.earth.com/news/mountain-treelines-are-shifting-and-not-always-upward/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Degradation",
+                "Biodiversity Loss",
+                "Climate Change Impact",
+                "Increased Wildfire Risk"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Shifting mountain treelines, influenced by climate, human activity, and fires, represent a significant and widespread ecological disruption. This indicates ongoing environmental degradation, potential biodiversity loss as habitats change, and altered ecosystem services (e.g., water regulation). While not an acute disaster, the global scale and systemic nature of these changes, driven by climate change and human impact, necessitate immediate intervention to mitigate further ecological destabilization and prevent long-term, severe consequences, including potentially increased wildfire risks in new areas."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
