@@ -7116,5 +7116,130 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "008db7189851e41ef41f6611505d708e",
+        "timestamp": "2026-07-20T01:27:25.942385",
+        "title": "Illegal Sand Mining Mafia Exposed: Eroding Rivers, Livelihoods, and Cultures",
+        "summary": "Investigations across India (Uttarakhand, Gujarat, Bihar, Kerala, Hamirpur) reveal rampant illegal sand mining, often facilitated by a 'sand mafia' operating with unchecked impunity. This activity, observed through overloaded trucks and tractors ravaging riverbeds, is devastating rivers like the Kosi, Shetrunji, Betwa, Chaliyar, and Lower Mekong. It leads to destabilized riverbeds, eroding banks, and depleting sediment stocks, causing significant environmental damage. The illegal operations foster corruption, marginalize local communities, and intimidate those who report on it. Despite bans and protests, the clandestine nature of the trade persists, highlighting a critical need for intensified surveillance and action.",
+        "domain_classification": [
+            "Water",
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "India",
+            "region": "Multiple states (Uttarakhand, Gujarat, Bihar, Kerala, Uttar Pradesh)",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Rampant illegal sand mining operations by a 'sand mafia', use of overloaded trucks/tractors ravaging riverbeds, protests by local villagers, police stepping up surveillance, intimidation of reporting teams.",
+            "key_indicators": [
+                "Destabilized riverbeds",
+                "Eroding riverbanks",
+                "Depleting sediment stocks",
+                "Lowering riverbeds",
+                "Corruption in mining permits",
+                "Loss of livelihoods for local communities"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Rivers (Kosi, Shetrunji, Betwa, Chaliyar, Lower Mekong)",
+                "Riverbeds and riverbanks",
+                "Local communities and their livelihoods",
+                "Ecosystems and wildlife",
+                "Cultural heritage tied to rivers"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.indiatoday.in/india/video/india-today-investigation-illegal-sand-mining-mafia-exposed-in-uttarakhands-kosi-river-ytvd-2843656-2025-12-29"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Degradation",
+                "Corruption/Governance Failure",
+                "Organized Crime",
+                "Social Disruption"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal indicates widespread and rampant illegal sand mining across multiple regions, leading to severe environmental degradation (riverbed erosion, ecosystem disruption, bank destabilization). The issue is exacerbated by the alleged involvement of a 'sand mafia' operating with impunity, intimidation of reporters, and alleged complicity or lack of oversight from government entities. This activity also causes significant social disruption, affecting local communities, livelihoods, and fostering corruption. Despite some police intervention and community protests, the problem persists, highlighting a critical need for immediate and comprehensive intervention to prevent further ecological damage, address criminal activity, and restore governance."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "0b0c403103ef97522b1927b114e93d3d",
+        "timestamp": "2026-07-20T01:28:19.996389",
+        "title": "Sarambhada Amreli Protest Against Illegal Sand Mining in ...",
+        "summary": "10 hours ago · Amreli Sarambhada village residents protest against illegal sand mining in Shetrunji river. Latest Updates. અમરેલી જિલ્લાના સરંભડા ગામમાં શેત્રુંજી નદીમાંથી થતી ગેરકાયદેસર રેતી ચોરી સામે ગ્રામજનોએ એકજૂટ થઈ વિરોધ ...",
+        "domain_classification": [
+            "Water",
+            "DRR",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "India",
+            "region": "Gujarat",
+            "lat": 22.3850051,
+            "lon": 71.745261
+        },
+        "manifestation": {
+            "how_it_is_observed": "Village residents protesting against illegal sand mining in a river.",
+            "key_indicators": [
+                "Community protest",
+                "Illegal sand mining",
+                "River degradation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "River ecosystem",
+                "Water resources",
+                "Local communities",
+                "Environmental stability"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.divyabhaskar.co.in/local/gujarat/amreli/news/sarambhada-amreli-river-sand-mining-protest-138485256.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Resource depletion",
+                "Social unrest"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Illegal sand mining in the Shetrunji river poses significant environmental risks, including riverbed erosion, habitat destruction, and potential impact on local water tables. The ongoing protests by village residents highlight immediate community distress and the potential for social unrest, necessitating urgent intervention to prevent further ecological damage and maintain public order."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
