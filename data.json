@@ -7241,5 +7241,122 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "a273a38c66da88e51d62eb02f4973e98",
+        "timestamp": "2026-07-22T01:21:54.397432",
+        "title": "Satellite Technology Aims to Combat Illegal Logging in Real Time – Renewable Natural Resources Foundation",
+        "summary": "The images are now clear enough to detect new roads and pathways beginning to snake through uncut primary forests, usually a sign that logging or illegal gold mining is starting, but the alerts also highlight what are likely new patches of cleared forest in bright pink.",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Satellite images detect new roads, pathways, and cleared forest patches in primary forests.",
+            "key_indicators": [
+                "New roads",
+                "Pathways",
+                "Cleared forest patches"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Primary forests",
+                "Biodiversity",
+                "Natural resources",
+                "Ecosystem health"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://rnrf.org/satellite-technology-aims-to-combat-illegal-logging-in-real-time/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "environmental degradation",
+                "resource depletion",
+                "illegal activity"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal indicates the real-time detection of new roads, pathways, and cleared patches in primary forests, which are direct signs of commencing illegal logging and gold mining. These activities lead to rapid environmental degradation, loss of biodiversity, and depletion of critical natural resources. Early detection through satellite technology highlights the urgent need for immediate intervention to prevent widespread and potentially irreversible damage to these vital ecosystems."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "41fc8886f872dc592d7527d5814b7caf",
+        "timestamp": "2026-07-22T01:22:42.217196",
+        "title": "Satellite Technology Aims to Combat Illegal Logging in Real Time - Inside Climate News",
+        "summary": "December 7, 2020 - The images are now clear enough to detect new roads and pathways beginning to snake through uncut primary forests, usually a sign that logging or illegal gold mining is starting, but the alerts also highlight what are likely new patches of cleared ...",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Indonesia",
+            "region": "",
+            "lat": -2.4833826,
+            "lon": 117.8902853
+        },
+        "manifestation": {
+            "how_it_is_observed": "Satellite images detect new roads and pathways in primary forests, and new patches of cleared land.",
+            "key_indicators": [
+                "new roads and pathways",
+                "new patches of cleared land"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "primary forests",
+                "biodiversity",
+                "climate change",
+                "ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://insideclimatenews.org/news/25032016/illegal-logging-indonesia-satellite-deforestation-climate-change/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental Degradation",
+                "Climate Change",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Unaddressed illegal logging and gold mining lead to severe deforestation, habitat destruction, and significant biodiversity loss. This contributes substantially to climate change through carbon emissions. Gold mining also introduces toxic pollutants (e.g., mercury) into ecosystems, posing severe health risks and environmental degradation. These activities threaten ecological stability, indigenous communities, and global climate goals."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
