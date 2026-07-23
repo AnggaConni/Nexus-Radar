@@ -7358,5 +7358,115 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "f6675f5ad89ec2c385d853fa5c123112",
+        "timestamp": "2026-07-23T01:29:35.649443",
+        "title": "Derby Removes Record Number of Invasive Lionfish From Florida Keys ...",
+        "summary": "The Reef Environmental Education Foundation (REEF) closed its 17th annual Florida Keys Lionfish Derby & Arts Festival with a record-breaking 2,480 invasive lionfish removed from South Florida reefs over two days.",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Florida",
+            "lat": 27.7567667,
+            "lon": -81.4639835
+        },
+        "manifestation": {
+            "how_it_is_observed": "Record number of invasive lionfish found and removed from reefs.",
+            "key_indicators": [
+                "2,480 invasive lionfish removed",
+                "record-breaking number"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "South Florida reefs",
+                "native marine ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://keysweekly.com/42/derby-removes-record-number-of-invasive-lionfish-from-florida-keys-waters/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological Damage",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The removal of a record-breaking 2,480 invasive lionfish signifies a severe and widespread infestation in South Florida reefs. If left unaddressed, these invasive predators pose a critical threat to native fish populations and the overall health of the marine ecosystem, leading to significant ecological damage and biodiversity loss. Continuous and immediate intervention is essential to control their population and mitigate their destructive impact."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "18048bb8867e86a8e0625128d0904645",
+        "timestamp": "2026-07-23T01:30:26.289292",
+        "title": "'I do feel like a superhero': Diver spears invasive lionfish to ... - MSN",
+        "summary": "A Florida diver's TikTok post is getting \"superhero\" praise after giving viewers a close look at a very direct kind of reef protection: spearing invasive lionfish so they do not keep feeding on ...",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Florida",
+            "lat": 27.7567667,
+            "lon": -81.4639835
+        },
+        "manifestation": {
+            "how_it_is_observed": "Diver spearing invasive lionfish to protect reefs",
+            "key_indicators": [
+                "Invasive species presence",
+                "Reef health",
+                "Native fish populations"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Reef ecosystems",
+                "Native marine life",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.msn.com/en-us/news/technology/i-do-feel-like-a-superhero-diver-spears-invasive-lionfish-to-save-tiny-reef-fish/ar-AA25HI5V"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Invasive Species"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Invasive lionfish pose a significant threat to marine biodiversity by preying on native reef fish, disrupting ecosystems, and outcompeting indigenous species. If left unaddressed, this leads to severe ecological imbalance and potential collapse of local reef populations, requiring ongoing intervention to mitigate."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
