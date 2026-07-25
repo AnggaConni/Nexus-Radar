@@ -7468,5 +7468,123 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "9c8249d8fb1878eb66c5b2ea981256e6",
+        "timestamp": "2026-07-25T01:25:44.993430",
+        "title": "Blocked wildlife corridors force KWS to relocate elephants ...",
+        "summary": "Feb 18, 2026 · Traditional wildlife migratory corridors linking ecosystems such as Mount Kenya and the Aberdares have increasingly been blocked by human settlement, agriculture, fencing and infrastructure.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Kenya",
+            "region": "Central Kenya",
+            "lat": -0.5884528,
+            "lon": 36.9694655
+        },
+        "manifestation": {
+            "how_it_is_observed": "Traditional wildlife migratory corridors are increasingly blocked by human activities, leading to the forced relocation of elephants.",
+            "key_indicators": [
+                "Blocked wildlife corridors",
+                "Human settlement expansion",
+                "Agricultural encroachment",
+                "Fencing",
+                "Infrastructure development",
+                "Forced elephant relocation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Elephants",
+                "Wildlife migratory corridors",
+                "Ecosystem connectivity",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.the-star.co.ke/news/2026-02-18-blocked-wildlife-corridors-force-kws-to-relocate-elephants-from-solio"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological",
+                "Human-Wildlife Conflict",
+                "Habitat Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Blocked wildlife corridors due to human settlement, agriculture, fencing, and infrastructure are causing severe human-wildlife conflict, necessitating elephant relocation. If left unaddressed, this will lead to escalating conflicts, significant biodiversity loss, ecosystem degradation, and potential threats to both human livelihoods and wildlife populations."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "77d636bac1f6c2c153ae15d95dcf937f",
+        "timestamp": "2026-07-25T01:26:35.075551",
+        "title": "Palm Springs residents fight new homes they say would harm ...",
+        "summary": "Dec 8, 2025 · Palm Springs homeowners are organizing to oppose a proposed 98-home development. Residents are concerned the project will block a critical wildlife corridor near the Tahquitz Creek Channel. The ...",
+        "domain_classification": [
+            "Biodiversity",
+            "Water"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "California",
+            "lat": 36.7014631,
+            "lon": -118.755997
+        },
+        "manifestation": {
+            "how_it_is_observed": "Palm Springs homeowners are organizing to oppose a proposed 98-home development.",
+            "key_indicators": [
+                "proposed 98-home development",
+                "threat to wildlife corridor",
+                "Tahquitz Creek Channel"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "wildlife corridor",
+                "local biodiversity",
+                "Tahquitz Creek Channel ecosystem"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.desertsun.com/story/news/environment/2025/12/08/palm-springs-new-homes-wildlife-tahquitz-creek/87611968007/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Environmental Degradation",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The proposed 98-home development threatens to block a critical wildlife corridor near the Tahquitz Creek Channel. If left unaddressed, this will lead to severe habitat fragmentation, significant biodiversity loss, and potential increases in human-wildlife conflict as animals are displaced. The ecological impacts are long-term and potentially irreversible, warranting immediate intervention to prevent this environmental disaster."
+        },
+        "priority_score": 88,
+        "critical_flag": false
     }
 ]
