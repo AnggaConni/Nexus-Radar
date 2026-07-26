@@ -7586,5 +7586,117 @@
         },
         "priority_score": 88,
         "critical_flag": false
+    },
+    {
+        "id": "9b71eebb16fd49d053fbae5897a5afa8",
+        "timestamp": "2026-07-26T01:28:48.826886",
+        "title": "Small sinkhole forming on residential road in Chicopee - YouTube",
+        "summary": "22News went to check out a viewer's report of a potential sinkhole on a residential road in Chicopee on Wednesday.",
+        "domain_classification": [
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Massachusetts",
+            "lat": 42.3788774,
+            "lon": -72.032366
+        },
+        "manifestation": {
+            "how_it_is_observed": "A small sinkhole is forming on a residential road.",
+            "key_indicators": [
+                "small sinkhole",
+                "potential sinkhole"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "residential road",
+                "infrastructure",
+                "public safety",
+                "traffic"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.youtube.com/watch?v=KRLJnwzg4vc"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Infrastructure Failure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A small sinkhole on a residential road presents a high and immediate risk. Sinkholes can expand rapidly, creating severe hazards for vehicles and pedestrians, potentially causing accidents, property damage, and disruption of essential services. Prompt assessment and intervention are critical to prevent escalation and ensure public safety."
+        },
+        "priority_score": 66,
+        "critical_flag": false
+    },
+    {
+        "id": "98b1e8c98ecdb08f0a41203c4b91f505",
+        "timestamp": "2026-07-26T01:29:36.841319",
+        "title": "Small sinkhole forms on downtown Salt Lake City road",
+        "summary": "A small sinkhole formed on a busy road in downtown Salt Lake City, causing a lane in the area to be closed off. The incident was reported around 7 p.m. near Stat.",
+        "domain_classification": [
+            "DRR",
+            "Water"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Salt Lake City, Utah",
+            "lat": 40.7596198,
+            "lon": -111.886797
+        },
+        "manifestation": {
+            "how_it_is_observed": "A small sinkhole formed on a busy road, leading to a lane closure.",
+            "key_indicators": [
+                "Sinkhole formation",
+                "Road lane closure"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Road infrastructure",
+                "Traffic flow",
+                "Public safety"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://kutv.com/news/local/small-sinkhole-forms-on-downtown-salt-lake-city-road-state-street-and-200-south-three-to-four-feet-wide"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Infrastructure failure",
+                "Public safety",
+                "Traffic disruption"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "A small sinkhole on a busy downtown road, even if currently minor, indicates potential underlying infrastructure issues (e.g., pipe bursts, soil erosion). It poses an immediate public safety risk if it expands or leads to vehicle damage, and it causes significant traffic disruption due to lane closures. Immediate investigation and repair are crucial to prevent further collapse and ensure public safety."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
