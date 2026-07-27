@@ -7698,5 +7698,120 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "b459206936a72a6de373818a84557a5c",
+        "timestamp": "2026-07-27T01:46:53.771712",
+        "title": "Why Does My Well Water Smell Like Metal? + How to Fix It",
+        "summary": "The two main causes of well water smelling like metal are excessive amounts of heavy metals or hard water minerals and rusty or corroded pipes. If your water smells like metal, stop drinking it immediately, as continuing to do so may put you at risk of numerous health issues.",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Well water smelling like metal",
+            "key_indicators": [
+                "Excessive amounts of heavy metals or hard water minerals in water",
+                "Rusty or corroded pipes"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Human health",
+                "Water infrastructure (pipes)"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://waterdefense.org/water/well/metal-taste-and-smell-in-water/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Water Contamination",
+                "Health Hazard",
+                "Infrastructure Failure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Well water smelling like metal indicates potential contamination by heavy metals, hard water minerals, or rust from corroded pipes. This poses a significant health risk, necessitating immediate cessation of consumption and intervention to identify and mitigate the source of contamination."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "cd7582c19c77d044c19be847dfb1ce07",
+        "timestamp": "2026-07-27T01:47:38.579283",
+        "title": "Instrument may enable mail-in testing to detect heavy metals in water",
+        "summary": "Lead, arsenic, and other heavy metals are increasingly present in water systems around the world due to human activities, such as pesticide use and, more recently, the inadequate disposal of electronic waste.",
+        "domain_classification": [
+            "Water",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Lead, arsenic, and other heavy metals are increasingly present in water systems due to human activities like pesticide use and inadequate electronic waste disposal.",
+            "key_indicators": [
+                "Lead",
+                "Arsenic",
+                "Heavy metals in water",
+                "Pesticide use",
+                "Electronic waste disposal"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Water systems",
+                "Human health",
+                "Environment"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://phys.org/news/2020-02-instrument-enable-mail-in-heavy-metals.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Public health",
+                "Environmental contamination",
+                "Water quality"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The increasing presence of lead, arsenic, and other heavy metals in water systems worldwide poses a severe and widespread public health risk. These contaminants, stemming from human activities like pesticide use and electronic waste disposal, can lead to serious health issues. While the instrument mentioned aims to improve detection, the underlying problem of heavy metal contamination in water requires immediate and robust intervention to protect populations."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
