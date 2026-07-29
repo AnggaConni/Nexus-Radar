@@ -7813,5 +7813,121 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "3354e04c4efbef4b3b9d80b05b6dbfe0",
+        "timestamp": "2026-07-29T01:22:51.901338",
+        "title": "Local farmers report losses from late spring frost",
+        "summary": "June 1, 2026 - HILLSDALE, N.Y. (NEWS10) — Governor Kathy Hochul is asking for federal aid following an April frost that is costing farms millions in damage. Weeks after the frost, some local farmers are now starting to get an idea how much of their crop is gone.",
+        "domain_classification": [
+            "DRR",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "New York",
+            "lat": 40.7127281,
+            "lon": -74.0060152
+        },
+        "manifestation": {
+            "how_it_is_observed": "Late spring frost causing widespread crop damage and financial losses for farmers.",
+            "key_indicators": [
+                "Millions in damage",
+                "Crop losses",
+                "Request for federal aid"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Local farmers",
+                "Agricultural economy",
+                "Food supply"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.news10.com/news/ny-news/local-farmers-report-losses-from-late-spring-frost/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Agricultural",
+                "Economic",
+                "Food Security"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A late spring frost has caused millions of dollars in crop damage for local farmers, leading to significant economic losses and potential food security concerns. The governor is already seeking federal aid, indicating the immediate need for financial intervention and support to mitigate the disaster's impact on agricultural producers and the regional economy."
+        },
+        "priority_score": 88,
+        "critical_flag": false
+    },
+    {
+        "id": "bffc8388019225d8fc02c6c5d5c8b988",
+        "timestamp": "2026-07-29T01:24:11.996904",
+        "title": "Local Growers Face Heavy Crop Losses After Unusual Spring Frost Events | State College, PA",
+        "summary": "May 22, 2026 - An unusually warm late winter followed by repeated frost and freeze events has left many Centre County growers facing devastating crop losses and an uncertain growing season, with local vineyard and farm owners warning that consumers could soon ...",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Centre County, PA",
+            "lat": 40.9381735,
+            "lon": -77.7865722
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unusually warm late winter followed by repeated frost and freeze events",
+            "key_indicators": [
+                "Devastating crop losses",
+                "Uncertain growing season"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Local growers",
+                "Vineyard and farm owners",
+                "Crops",
+                "Consumers"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.statecollege.com/articles/local-news/local-growers-face-heavy-crop-losses-after-unusual-spring-frost-events/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Agricultural Disaster",
+                "Economic Impact",
+                "Climate Change Impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "An unusual weather pattern of a warm late winter followed by repeated spring frosts has caused devastating crop losses for local growers. This poses a high risk to the local agricultural economy, food supply chains, and potentially consumer prices. Immediate intervention is needed to support affected growers, assess long-term impacts, and develop strategies for future climate resilience."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
