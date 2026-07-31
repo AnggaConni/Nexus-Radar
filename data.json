@@ -7929,5 +7929,118 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "5d3fbf9a1a391ef33bca4c4d1f79cb17",
+        "timestamp": "2026-07-31T01:29:43.866401",
+        "title": "Wildlife corridor - Wikipedia",
+        "summary": "June 29, 2026 - Additionally, corridors can support wildlife population resilience in the context of climate change adaptation, by connecting areas of warmer habitat to cooler habitat. Human settlements by corridors can allow for human-wildlife conflicts to increase, which requires mitigation measures.",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Wildlife corridors support population resilience and adaptation to climate change, but also lead to increased human-wildlife conflicts near human settlements.",
+            "key_indicators": [
+                "Wildlife population resilience",
+                "Human-wildlife conflicts"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Wildlife populations",
+                "Human settlements"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://en.wikipedia.org/wiki/Wildlife_corridor"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Human-wildlife conflict",
+                "Public safety",
+                "Ecological disruption"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "The proximity of human settlements to wildlife corridors significantly increases the risk of human-wildlife conflicts. These conflicts can lead to injuries or fatalities for both humans and animals, property damage (e.g., crops, livestock), and disruptions to both human communities and wildlife populations. The text explicitly states that this situation 'requires mitigation measures,' indicating an existing and ongoing need for intervention to prevent the escalation of these conflicts, which are anticipated to increase if left unaddressed."
+        },
+        "priority_score": 62,
+        "critical_flag": false
+    },
+    {
+        "id": "f4517a6a57cb09b6cbe4f538ccfe66dd",
+        "timestamp": "2026-07-31T01:30:36.437880",
+        "title": "Ritz-Carlton's $5,000-a-night safari lodge threatens critical wildlife corridor, conservationists warn",
+        "summary": "November 28, 2025 - Dapash, executive director of the Institute for Maasai Education, Research and Conservation (MERC), who has a PhD in Sustainability Education from Prescott College in Arizona, alleges in the lawsuit that the 20-suite camp obstructs the crucial migration corridor and is asking the court to restore the land to its original condition. He told NBC News in an interview there had been instances of wildebeest turning back to avoid the camp and that an elephant was seen struggling to find a path across the river after using the location for more than a decade. Female lions with cubs in Masai Mara, Kenya.Henrik Karlsson / Getty Images file · “Attachment to the land and to the wildlife exists up to this very day,” Dapash said, adding that the Maasai had seen populations dwindling.",
+        "domain_classification": [
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Kenya",
+            "region": "Masai Mara",
+            "lat": -1.4881431,
+            "lon": 35.1054095
+        },
+        "manifestation": {
+            "how_it_is_observed": "A 20-suite safari camp obstructs a crucial wildlife migration corridor. Wildebeest have been observed turning back to avoid the camp, and an elephant struggled to find a path across the river. Wildlife populations are dwindling.",
+            "key_indicators": [
+                "Obstruction of critical wildlife migration corridor",
+                "Changes in wildlife migratory behavior (wildebeest turning back, elephant struggling)",
+                "Dwindling wildlife populations"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Wildlife (wildebeest, elephants, lions)",
+                "Ecosystem health and biodiversity",
+                "Wildlife migration patterns",
+                "Indigenous communities (Maasai) and their cultural connection to land and wildlife"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.nbcnews.com/world/africa/ritz-carlton-safari-lodge-threatens-critical-wildlife-corridor-rcna245406"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A luxury safari lodge is obstructing a critical wildlife migration corridor, causing wildebeest to turn back and elephants to struggle in finding paths. This directly threatens biodiversity and the long-term viability of wildlife populations in the Masai Mara, as alleged in a lawsuit by conservationists, indicating a severe and immediate ecological threat."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
