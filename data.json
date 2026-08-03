@@ -8042,5 +8042,63 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "4fa3d62903b70b08688330200d19d62f",
+        "timestamp": "2026-08-03T01:29:05.112646",
+        "title": "How Indigenous Australians rely on subtle changes in the environment to track the seasons - ABC News",
+        "summary": "March 31, 2023 - Noongar elder Richard Walley says the season if Bunuru is the time of flowering gums.(ABC News: Hugh Sando) Wardandi Noongar man and biologist Stephen van Leeuwen was one of the co-authors of the SoE report. He said impacts to Indigenous values were being experienced across the nation.",
+        "domain_classification": [
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Australia",
+            "region": "Western Australia",
+            "lat": -25.2303005,
+            "lon": 121.0187246
+        },
+        "manifestation": {
+            "how_it_is_observed": "Indigenous Australians track seasons by observing subtle changes in the environment, such as the flowering of specific plants like gums.",
+            "key_indicators": [
+                "Flowering gums",
+                "Subtle environmental changes"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Indigenous values",
+                "Traditional ecological knowledge",
+                "Cultural practices",
+                "Environmental understanding"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.abc.net.au/news/2023-03-31/indigenous-australian-seasons-guided-by-nature/100919396"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Cultural loss",
+                "Ecological disruption",
+                "Knowledge erosion"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal is the widespread 'impacts to Indigenous values' due to environmental changes, disrupting their ability to track seasons using traditional ecological knowledge (TEK). If left unaddressed, this leads to severe cultural loss, erosion of invaluable ecological knowledge, and further ecological disruption, undermining Indigenous resilience and connection to land. This represents a significant, long-term cultural and environmental disaster."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
