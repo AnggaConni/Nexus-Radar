@@ -8100,5 +8100,124 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "6592646a1ce0cf060a3fe4cfdee1e92e",
+        "timestamp": "2026-08-05T01:22:28.678839",
+        "title": "The living glacier: Cultural memory, emotional impact, and the right to exist in the Andes | PLOS Climate",
+        "summary": "May 19, 2026 - Glaciers are rapidly retreating worldwide due to anthropogenic climate change, with severe implications not only for ecosystems and water security but also for cultural memory, emotional wellbeing, and environmental justice.",
+        "domain_classification": [
+            "Climate",
+            "Water",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Andes",
+            "lat": 5.6556134,
+            "lon": -75.8776753
+        },
+        "manifestation": {
+            "how_it_is_observed": "Glaciers are rapidly retreating worldwide due to anthropogenic climate change",
+            "key_indicators": [
+                "Glacier retreat",
+                "Anthropogenic climate change"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Ecosystems",
+                "Water security",
+                "Cultural memory",
+                "Emotional wellbeing",
+                "Environmental justice"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://journals.plos.org/climate/article?id=10.1371/journal.pclm.0000932"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Climate Change",
+                "Environmental",
+                "Water Scarcity",
+                "Social"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Rapid glacier retreat due to anthropogenic climate change is causing severe, multi-faceted implications for ecosystems, water security, cultural memory, emotional wellbeing, and environmental justice, demanding immediate and sustained intervention to mitigate widespread disaster risks."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "2e3c761204b088bc30553934821a3abe",
+        "timestamp": "2026-08-05T01:23:16.483435",
+        "title": "Andes Meltdown: New Insights Into Rapidly Retreating Glaciers - Yale E360",
+        "summary": "Using satellite data, scientists are documenting the inexorable melting of South America’s glaciers and ice fields, with Andean glaciers thinning by nearly three feet a year since 2000.",
+        "domain_classification": [
+            "Climate",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Andes, South America",
+            "lat": 43.156382,
+            "lon": -98.54147
+        },
+        "manifestation": {
+            "how_it_is_observed": "Scientists are documenting the inexorable melting of South America’s glaciers and ice fields using satellite data.",
+            "key_indicators": [
+                "Andean glaciers thinning by nearly three feet a year since 2000"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Glaciers",
+                "Ice fields",
+                "Water resources",
+                "Ecosystems",
+                "Human communities"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://e360.yale.edu/features/andes-meltdown-new-insights-into-rapidly-retreating-glaciers"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Climate Change Impact",
+                "Environmental Degradation",
+                "Water Scarcity"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The rapid and inexorable melting of Andean glaciers, thinning by nearly three feet a year since 2000, represents a severe and ongoing climate change impact. This poses significant long-term risks to regional water supplies, ecosystems, and potentially increases the likelihood of associated natural hazards. Immediate intervention is required for mitigation efforts to slow climate change and adaptation strategies to manage the inevitable consequences, such as water resource management for affected communities."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
