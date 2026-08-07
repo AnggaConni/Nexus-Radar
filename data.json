@@ -8219,5 +8219,121 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "747c4add9cc5c84eac3e15512a9b98d7",
+        "timestamp": "2026-08-07T02:00:45.476148",
+        "title": "Tiger entering human settlement captured",
+        "summary": "Tiger, who is learning to hunt alone after separating from its mother, is entering the human settlement as it cannot attack larger prey. The decision on whether to return the tiger to the jungle will be made only after studying his condition.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Nepal",
+            "region": "",
+            "lat": 28.3780464,
+            "lon": 83.9999901
+        },
+        "manifestation": {
+            "how_it_is_observed": "Tiger entering human settlement",
+            "key_indicators": [
+                "Tiger unable to hunt larger prey",
+                "Separated from mother",
+                "Human-wildlife conflict"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Human safety",
+                "Livestock",
+                "Tiger welfare",
+                "Local biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://risingnepaldaily.com/news/43257"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Wildlife-human conflict",
+                "Public safety risk",
+                "Predation risk"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A young tiger, unable to hunt effectively, entering human settlements poses a severe and immediate threat to human life and livestock. This situation represents a critical wildlife-human conflict that requires urgent intervention to ensure public safety and the welfare of the animal. While a study is planned, the immediate presence of a predator necessitates rapid response to prevent potential attacks or harm."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "48f3adf0facc72c243c6c212246724d1",
+        "timestamp": "2026-08-07T02:01:41.728388",
+        "title": "Leopard at Soit’s Boma: A First-Hand Account of Human-Wildlife...",
+        "summary": "Key Factors Contributing to Human-Wildlife Conflict: Population Growth The human population in the Greater Mara Region has increased significantly, putting pressure on land and resources.",
+        "domain_classification": [
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Kenya",
+            "region": "Greater Mara Region",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Human-Wildlife Conflict, exemplified by a leopard encounter at a boma, driven by population growth.",
+            "key_indicators": [
+                "Human population growth",
+                "Pressure on land and resources"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Human population",
+                "Wildlife (e.g., leopards)",
+                "Land",
+                "Natural resources"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://masaimara.ke/leopard-at-soits-boma-a-first-hand-account-of-human-wildlife-conflict-in-the-masai-mara/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Human-Wildlife Conflict",
+                "Ecological Risk",
+                "Socio-economic Risk"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Significant human population growth in the Greater Mara Region is intensifying human-wildlife conflict due to increased pressure on land and resources. This poses a high risk to both human livelihoods and wildlife conservation, with potential for escalating conflict and ecological degradation if left unaddressed. Long-term strategies and immediate mitigation efforts are required."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
