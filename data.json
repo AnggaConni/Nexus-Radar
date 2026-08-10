@@ -8451,5 +8451,119 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "cd56e04b43bd902f1d98fc5df3f95503",
+        "timestamp": "2026-08-10T00:49:02.032150",
+        "title": "Celebrity Cruise Cancels Antigua Stop Due to Unusually High Winds...",
+        "summary": "Unusual wind conditions, attributed to low-pressure systems in the Atlantic, prompted the ship’s captain to avoid St. John’s Harbour. The Antigua Cruise Port confirmed the decision, emphasizing the prevailing strong winds.",
+        "domain_classification": [
+            "Climate",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Antigua",
+            "region": "Caribbean",
+            "lat": 17.1008011,
+            "lon": -61.7969345
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unusually high winds, strong winds, low-pressure systems in the Atlantic",
+            "key_indicators": [
+                "Cruise cancellation",
+                "Disrupted port activities"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Cruise passengers",
+                "Tourism industry",
+                "Port operations"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.nicefmradio.com/celebrity-cruise-cancels-antigua-stop-due-to-unusually-high-winds-port-activities-disrupted-across-the-week/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 5,
+            "risk_type": [
+                "Weather-related",
+                "Economic disruption",
+                "Climate change indicator"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": false,
+            "explanation": "The cancellation due to unusually high winds, attributed to low-pressure systems, signals increasing volatility in weather patterns. While the immediate impact was a minor economic disruption for the port, persistent or intensifying unusual weather events pose a medium-term risk of significant economic losses for tourism-dependent regions, potential safety hazards for maritime operations, and highlight the broader implications of climate change on local weather conditions. This event suggests a need for enhanced climate resilience planning and infrastructure adaptation rather than immediate crisis intervention for this specific event."
+        },
+        "priority_score": 64,
+        "critical_flag": false
+    },
+    {
+        "id": "0026332cff86a98e4514362f379ab7a1",
+        "timestamp": "2026-08-10T00:50:20.606018",
+        "title": "Wind pattern behind California’s drought also struck at ocean food chain",
+        "summary": "He initially looked at data that showed the unusual wind patterns in the region and concluded that the odd pattern had to disrupt the normal transport of nutrients from the north Pacific south to where many animals feed.",
+        "domain_classification": [
+            "Ocean",
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "California, North Pacific",
+            "lat": 34.1620293,
+            "lon": -118.2648756
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unusual wind patterns disrupted the normal transport of nutrients from the North Pacific south.",
+            "key_indicators": [
+                "Unusual wind patterns",
+                "Disrupted nutrient transport"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Ocean food chain",
+                "Marine animals"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://blogs.agu.org/geospace/2015/02/02/wind-pattern-behind-californias-drought-also-struck-ocean-food-chain/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Climatic"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Unusual wind patterns, linked to California's drought, are severely disrupting nutrient transport in the North Pacific, impacting the ocean food chain. This signal indicates significant environmental and ecological risks, necessitating immediate attention to climate change adaptation, mitigation strategies, and ecosystem monitoring."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
