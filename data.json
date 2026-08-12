@@ -8565,5 +8565,119 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "30f298f0db45cc7f418d4f8b78e832ab",
+        "timestamp": "2026-08-12T00:55:38.488177",
+        "title": "Bangkok Post - Murky answer to haze woes",
+        "summary": "And he pointed directly at \"slash and burn farmers\" who illegally use fire to clear their land to prepare for new crops. Both sets of finger-pointing simply avoid the true cause of months of choking haze that cover the region beginning as early as January every year.",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Months of choking haze covering the region annually, caused by slash and burn farming.",
+            "key_indicators": [
+                "Choking haze",
+                "Illegal use of fire by farmers",
+                "Land clearing for new crops"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Public health",
+                "Environment",
+                "Regional air quality"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.bangkokpost.com/opinion/opinion/1376303/murky-answer-to-haze-woes)"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Health",
+                "Social"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The signal indicates a severe, recurring environmental and public health crisis caused by 'slash and burn' practices leading to 'months of choking haze' annually. The 'finger-pointing' suggests a lack of effective governance and accountability, exacerbating the problem. The widespread and prolonged nature of the haze poses significant health risks to the population and severe environmental degradation, demanding immediate and sustained intervention."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "55a4dab53231e67f04ede6c9ef0a575b",
+        "timestamp": "2026-08-12T00:56:23.344389",
+        "title": "REASONS FOR HAZE by Swathi Nair on Prezi",
+        "summary": "Indonesia's farmers use slash-and-burn as a mean to clear the forested area. Why are we facing this haze issue? Slash-and-burn farming: Playing the blame game will not help South-East Asia's haze crisis. We need to figure out how to solve this pressing issue.",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Indonesia",
+            "region": "South-East Asia",
+            "lat": 21.4267603,
+            "lon": 39.8954466
+        },
+        "manifestation": {
+            "how_it_is_observed": "Haze issue caused by slash-and-burn farming to clear forested areas.",
+            "key_indicators": [
+                "haze",
+                "slash-and-burn farming"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "South-East Asia",
+                "forested areas",
+                "air quality"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://prezi.com/guxjg4xl8vxe/reasons-for-haze/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "environmental",
+                "health"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The signal indicates a severe and pressing haze crisis in South-East Asia caused by slash-and-burn farming in Indonesia. This practice leads to significant air pollution, environmental degradation, and poses substantial health risks to the population. The summary explicitly states a need to 'solve this pressing issue,' highlighting the urgency."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
