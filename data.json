@@ -8679,5 +8679,124 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "ce0b2cd0ad37caa6a2fcdc37f43a94d4",
+        "timestamp": "2026-08-13T00:56:56.846610",
+        "title": "As the permafrost melts in the north, forests no longer grow straight.",
+        "summary": "Because permafrost melts, it causes a lot of erosion, says James, who lives in Arctic Village, a small Native American village in northeastern Alaska. A lot of trees can't stand up straight. If the erosion gets worse, everything goes with it.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Alaska",
+            "lat": 64.4459613,
+            "lon": -149.680909
+        },
+        "manifestation": {
+            "how_it_is_observed": "Permafrost melt causing significant erosion and trees unable to stand straight (drunken trees).",
+            "key_indicators": [
+                "Drunken trees",
+                "Erosion"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Forests",
+                "Landscapes",
+                "Infrastructure",
+                "Ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.nationalgeographic.com/science/article/140417-drunken-trees-melting-permafrost-global-warming-science"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Geological",
+                "Climate Change"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Melting permafrost leads to significant ground instability and severe erosion, causing 'drunken trees' and threatening ecosystems and human settlements. The long-term consequences include widespread environmental degradation, potential infrastructure collapse, and further acceleration of climate change through carbon release. The current impacts are already severe and worsening, necessitating immediate and sustained intervention to mitigate local effects and address the root cause of climate change."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "33c29d3251045965e030a5e420191fb1",
+        "timestamp": "2026-08-13T00:57:45.812184",
+        "title": "Melting Ice Just Unearthed An Ancient Wolf Head – And It's A Bad...",
+        "summary": "When people think of climate change melting ice, they tend to think of glaciers and polar bears. And while those are certainly melting, our planet's warming temperatures have led to permafrost melting in regions like Siberia, Alaska and Greenland.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United States",
+            "region": "Alaska, Siberia, Greenland",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Melting ice and permafrost, leading to the unearthing of ancient specimens.",
+            "key_indicators": [
+                "Glacier melt",
+                "Permafrost melt",
+                "Warming temperatures"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Glaciers",
+                "Polar bears",
+                "Permafrost ecosystems",
+                "Ancient biological specimens"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.sciencing.com/melting-ice-just-unearthed-an-ancient-wolf-head-and-its-a-bad-sign-for-us-13719786/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Climate Change",
+                "Environmental",
+                "Public Health"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The melting of permafrost, as indicated by the unearthing of ancient remains, is a critical sign of accelerating climate change. This process poses significant disaster risks, including the release of vast amounts of potent greenhouse gases (e.g., methane) previously trapped in the ice, which further exacerbates global warming. Additionally, there is a serious risk of releasing ancient pathogens or viruses that have been dormant for millennia, potentially leading to new public health crises. The destabilization of permafrost also threatens infrastructure and ecosystems."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
