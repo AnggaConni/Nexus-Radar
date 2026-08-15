@@ -8798,5 +8798,117 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "6820d8dc3acecc21c3be5724d75f432b",
+        "timestamp": "2026-08-15T00:32:33.473261",
+        "title": "Decline in amphibian populations - Wikipedia",
+        "summary": "December 20, 2025 - Other species at Monteverde, including ... also disappeared at the same time. Because these species were located in the pristine Monteverde Cloud Forest Reserve, and these extinctions could not be related to local human activities, they raised particular concern among biologists. Many scientists believe that amphibians serve as \"canaries ...",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Costa Rica",
+            "region": "Central America",
+            "lat": 9.8986938,
+            "lon": -84.0016799
+        },
+        "manifestation": {
+            "how_it_is_observed": "Amphibian species and other species disappeared simultaneously in the Monteverde Cloud Forest Reserve, with extinctions not attributable to local human activities.",
+            "key_indicators": [
+                "species disappearance",
+                "extinctions",
+                "decline in amphibian populations"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "amphibian populations",
+                "other species",
+                "ecosystem health"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://en.wikipedia.org/wiki/Decline_in_amphibian_populations"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological Collapse",
+                "Biodiversity Loss",
+                "Environmental Degradation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The decline and extinction of amphibian populations, even in pristine environments and unrelated to local human activities, indicate a severe ecological crisis. Amphibians serve as 'canaries in the coal mine,' signaling broader environmental degradation and potential ecosystem collapse. The underlying causes require immediate global intervention to prevent further biodiversity loss and maintain critical ecosystem services."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "dbeb913eaca45467373c4aa451da3b80",
+        "timestamp": "2026-08-15T00:33:29.277227",
+        "title": "More Silent Springs: New Study Confirms Amphibian Decline Trends in U.S. | U.S. Geological Survey",
+        "summary": "Habitat loss and the continued spread of the “chytrid” fungus are two factors causing amphibian mortality in the U.S. and worldwide. But locally, each species may be experiencing unique factors for population loss.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "U.S.",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "Amphibian mortality and population loss",
+            "key_indicators": [
+                "Habitat loss",
+                "Chytrid fungus spread",
+                "Species-specific population loss factors"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Amphibian populations",
+                "Ecosystem health",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.usgs.gov/news/more-silent-springs-new-study-confirms-amphibian-decline-trends-us"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological Collapse"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Amphibian populations are experiencing significant decline globally due to widespread habitat loss and the continued spread of the highly lethal chytrid fungus. This represents a critical ecological crisis, as amphibians are vital indicators of environmental health and their decline signals broader ecosystem instability and biodiversity loss. Immediate and multifaceted interventions are required to address these systemic threats."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
