@@ -8910,5 +8910,119 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "1d5385b4c95d3bf0a1e62b2ca66bbfe7",
+        "timestamp": "2026-08-16T00:34:18.645095",
+        "title": "Europe's fruit farmers worry as unseasonal frosts threaten...",
+        "summary": "As Europe endures an unusual cold snap, many fruit farmers are concerned for their summer harvests.READ MORE : https://www.euronews.com/2024/04/24/europes-fr...",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Europe",
+            "lat": 51.0,
+            "lon": 10.0
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unseasonal frosts and an unusual cold snap affecting Europe",
+            "key_indicators": [
+                "Fruit farmers concerned",
+                "Threat to summer harvests"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Fruit farmers",
+                "Summer harvests",
+                "Agricultural economy"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.youtube.com/watch?v=E9MmSnfJnko"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Agricultural"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "Unseasonal frosts and an unusual cold snap across Europe are threatening summer fruit harvests. This poses a significant risk of widespread crop loss for fruit farmers, leading to economic hardship for the agricultural sector and potential impacts on food supply and prices."
+        },
+        "priority_score": 88,
+        "critical_flag": false
+    },
+    {
+        "id": "384bcdb24eedb6985890e0e991515e3f",
+        "timestamp": "2026-08-16T00:35:05.927200",
+        "title": "Unseasonal Frost and Freeze Warnings Across...",
+        "summary": "These conditions are expected to subside by Friday morning. The unseasonal frost and freeze warnings raise concerns about the impact on agriculture and the environment.",
+        "domain_classification": [
+            "Climate",
+            "Water",
+            "Biodiversity",
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unseasonal frost and freeze warnings",
+            "key_indicators": [
+                "Frost",
+                "Freeze warnings"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Agriculture",
+                "Environment",
+                "Crops",
+                "Vegetation"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.nexsouk.com/news/unseasonal-frost-and-freeze-warnings-across-multiple-states-pose-threats-to-crops-and-vegetation"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Agricultural",
+                "Environmental"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "Unseasonal frost and freeze warnings pose immediate threats to agriculture (crops, vegetation) and the environment across multiple states. While conditions are expected to subside, the unseasonal nature and direct impact necessitate immediate protective measures to mitigate potential economic losses and ecological damage."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
