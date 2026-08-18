@@ -9024,5 +9024,126 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "6e82ea8cc78f7a194205775a90df74d1",
+        "timestamp": "2026-08-18T00:31:53.448768",
+        "title": "Scope of Hacks on U.S. Water Supply Widens as Evidence Points to Iran - The New York Times",
+        "summary": "2 weeks ago - While there were no indications that any water supply had been altered or made unsafe to drink, state and local officials throughout the country were on high alert for potential problems in vulnerable computers that are commonly used to monitor and adjust water quality, including chemical-treatment levels and water pressure. Minnesota first publicly reported the attacks, and now Michigan says its systems have also been targeted. The attack has little precedent, experts said, but has long been the stuff of nightmares and sensationalized Hollywood thrillers: an apparent cyberattack by a foreign power during a time of war that could, at least in theory, jeopardize the health and safety of Americans. Officials cautioned that they had not definitively determined that Iran was responsible for the attack and that the investigation was still preliminary. But they said Iran had stepped up cyberattacks since the U.S.",
+        "domain_classification": [
+            "Water",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "U.S.",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "Cyberattacks targeting vulnerable computer systems used to monitor and adjust water quality, chemical-treatment levels, and water pressure in U.S. water supply infrastructure.",
+            "key_indicators": [
+                "Targeted water utility systems in multiple states (Minnesota, Michigan)",
+                "State and local officials on high alert",
+                "Increased cyberattack activity by suspected foreign power"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Water supply",
+                "Water quality",
+                "Chemical-treatment levels",
+                "Water pressure",
+                "Health and safety of Americans"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.nytimes.com/2026/08/01/us/politics/iran-cyberattack-water-systems.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Cyberattack",
+                "Critical Infrastructure Compromise",
+                "Public Health Threat"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Widening cyberattacks by an apparent foreign state actor (Iran) are targeting U.S. water supply systems across multiple states. While no water supply has been altered yet, the attacks target vulnerable computers monitoring water quality and pressure, posing a significant and immediate threat to public health and safety if left unaddressed. This constitutes a critical infrastructure compromise with high potential for catastrophic impact."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "bd373ebeac94816a058d0ff88804a105",
+        "timestamp": "2026-08-18T00:32:42.368653",
+        "title": "Devon dirty water crisis could go on for 10 days: School forced to shut, families warned to boil water and panic buying hits supermarkets as hundreds fall ill with vomiting and diarrhoea amid parasite outbreak in contaminated pipes",
+        "summary": "May 17, 2024 - A school has been forced to shut and people are panic buying water from supermarkets after hundreds of people were struck down by an illness called cryptosporidium. ... South West Water (SWW) yesterday urged people to boil their tap water after ...",
+        "domain_classification": [
+            "Water",
+            "DRR",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United Kingdom",
+            "region": "Devon",
+            "lat": 50.7241405,
+            "lon": -3.6607788
+        },
+        "manifestation": {
+            "how_it_is_observed": "Hundreds of people falling ill with vomiting and diarrhoea due to a cryptosporidium parasite outbreak in contaminated pipes, leading to school closures and panic buying of bottled water.",
+            "key_indicators": [
+                "Cryptosporidium illness outbreak",
+                "School closure",
+                "Boil water advisory",
+                "Panic buying of bottled water"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Public health",
+                "Education",
+                "Water supply infrastructure",
+                "Local economy",
+                "Social stability"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.dailymail.co.uk/news/article-13424617/amp/Schools-Devon-forced-shut-hundreds-contaminated-water.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Public Health",
+                "Infrastructure Failure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A severe public health crisis is unfolding in Devon due to a cryptosporidium parasite outbreak in contaminated water pipes, leading to hundreds falling ill with vomiting and diarrhoea. The crisis has forced a school to shut, prompted families to boil water, and caused panic buying of bottled water. The contamination of the public water supply represents a critical infrastructure failure with widespread and immediate health impacts, demanding urgent intervention to protect the population and restore safe water access."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
