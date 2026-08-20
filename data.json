@@ -9264,5 +9264,121 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "b7c345e5a662efa814552fbeac2d5472",
+        "timestamp": "2026-08-20T00:33:03.056952",
+        "title": "Anaheim water pressure issue affects Disneyland, Angel Stadium and many neighborhoods - CBS Los Angeles",
+        "summary": "Difficulties drawing water from ground wells caused low water pressure at Disneyland, Angel Stadium and many Anaheim neighborhoods on Tuesday. The City of Anaheim said the issues affected the central area of town.",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "California",
+            "lat": 36.7014631,
+            "lon": -118.755997
+        },
+        "manifestation": {
+            "how_it_is_observed": "Low water pressure in central Anaheim, affecting major landmarks and residential areas.",
+            "key_indicators": [
+                "Difficulties drawing water from ground wells",
+                "Impact on Disneyland",
+                "Impact on Angel Stadium",
+                "Impact on many Anaheim neighborhoods"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Water supply",
+                "Public services",
+                "Businesses",
+                "Residential areas",
+                "Recreational facilities"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.cbsnews.com/losangeles/news/anaheim-water-pressure-issue-affects-disneyland-angel-stadium-and-many-neighborhoods/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Water Supply Disruption",
+                "Infrastructure Failure"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal is the 'difficulties drawing water from ground wells,' which caused widespread low water pressure affecting essential services and major public venues (Disneyland, Angel Stadium) as well as many neighborhoods. If this underlying issue with water sourcing and infrastructure is left unaddressed, it poses significant risks including recurrent service disruptions, potential public health concerns (sanitation, drinking water), compromised fire suppression capabilities, and substantial economic impact on businesses and residents. While the immediate event occurred 3 weeks ago, the root cause requires ongoing intervention to prevent future occurrences."
+        },
+        "priority_score": 72,
+        "critical_flag": false
+    },
+    {
+        "id": "82bdc8fe7b12324a2dfb095e858a2a99",
+        "timestamp": "2026-08-20T00:33:52.336522",
+        "title": "New Study Reveals 20 Years of Groundwater Imbalance - IGRAC",
+        "summary": "May 19, 2026 - And with 83% of the monitoring wells declining and an average decline of half a meter per year, the groundwater levels are dropping rapidly. Decades of over-abstraction has now reached levels that are so low, that it even started to affect the groundwater quality. Because with the groundwater level dropping, the pressure that once made the aquifer such a potent source has dropped as well.",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "83% of monitoring wells declining, average decline of half a meter per year, rapid drop in groundwater levels, affecting groundwater quality, decreased aquifer pressure due to over-abstraction.",
+            "key_indicators": [
+                "Declining groundwater levels",
+                "Groundwater quality degradation",
+                "Aquifer pressure reduction"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Groundwater resources",
+                "Water quality",
+                "Aquifer sustainability"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://un-igrac.org/latest/stories/new-study-reveals-20-years-of-groundwater-imbalance/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Water Scarcity",
+                "Environmental Degradation",
+                "Resource Depletion"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Decades of over-abstraction have led to rapidly declining groundwater levels (83% of wells declining at 0.5m/year), which is now critically low and starting to negatively affect groundwater quality and aquifer pressure. This poses a severe and immediate risk to water availability and environmental stability."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
