@@ -9380,5 +9380,120 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "3c691028eeffe6d771387498a4b18d23",
+        "timestamp": "2026-08-21T00:34:35.914579",
+        "title": "Five warning signs that rivers are polluted—even when they look clean",
+        "summary": "April 10, 2026 - Key indicators of river pollution, even when water appears clean, include the presence of sewage fungus, algal blooms, unusual water coloration or murkiness, persistent white foam with chemical odors, and signs of aquatic life distress or absence.",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Key indicators of river pollution, even when water appears clean, are observed.",
+            "key_indicators": [
+                "sewage fungus",
+                "algal blooms",
+                "unusual water coloration or murkiness",
+                "persistent white foam with chemical odors",
+                "signs of aquatic life distress or absence"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "rivers",
+                "water quality",
+                "aquatic life",
+                "ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://phys.org/news/2026-04-rivers-polluted.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental pollution",
+                "Ecosystem collapse",
+                "Public health risk"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal describes critical indicators of hidden river pollution, such as sewage fungus, algal blooms, chemical foam, and aquatic life distress. If these signs are left unaddressed, they will lead to severe environmental degradation, loss of biodiversity, contamination of water resources, and significant public health crises. The potential for widespread and long-term damage is very high, necessitating immediate monitoring and intervention strategies."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "7481ee4053043cbe071b96a8c9c9b05d",
+        "timestamp": "2026-08-21T00:35:25.848778",
+        "title": "Why does the Cape Fear River in Wilmington, NC, look dirty and muddy?",
+        "summary": "April 27, 2026 - The waterway's muddy appearance is caused by heavy sediment from natural erosion and human activities. Dredging the river for shipping has allowed salt water to push farther inland, altering the natural ecosystem.",
+        "domain_classification": [
+            "Water",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "North Carolina",
+            "lat": 35.6729639,
+            "lon": -79.0392919
+        },
+        "manifestation": {
+            "how_it_is_observed": "The waterway looks dirty and muddy",
+            "key_indicators": [
+                "Heavy sediment",
+                "Salt water pushing farther inland"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Natural ecosystem",
+                "Waterway"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.starnewsonline.com/story/news/environment/2026/04/27/why-does-the-cape-fear-river-in-wilmington-nc-look-dirty-and-muddy/89138016007/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Environmental Degradation",
+                "Ecosystem Alteration"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The Cape Fear River is experiencing significant environmental degradation due to heavy sediment from natural erosion and human activities (dredging), causing a muddy appearance and impacting water quality. More critically, dredging has allowed saltwater intrusion to push farther inland, fundamentally altering the natural freshwater ecosystem. This ongoing ecological alteration poses a severe and long-term threat to the river's biodiversity and overall environmental health if left unaddressed."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
