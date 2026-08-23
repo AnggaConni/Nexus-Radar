@@ -9495,5 +9495,123 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "e27cfdbe9107f66e3a232bd8b648276a",
+        "timestamp": "2026-08-23T00:35:06.241247",
+        "title": "About 400 tonnes of industrial waste dumped in Peterlee",
+        "summary": "3 weeks ago - The Environment Agency (EA) said officers were visiting the old Dewhirst site in Peterlee daily to ensure no more waste was fly-tipped. The organisation said it was working with the landowner, who has secured the site, to make sure it did not ...",
+        "domain_classification": [
+            "Water",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United Kingdom",
+            "region": "England",
+            "lat": 52.5310214,
+            "lon": -1.2649062
+        },
+        "manifestation": {
+            "how_it_is_observed": "Approximately 400 tonnes of industrial waste was dumped (fly-tipped) at an old industrial site.",
+            "key_indicators": [
+                "Industrial waste dumping",
+                "Fly-tipping",
+                "Environment Agency intervention"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Local environment",
+                "Soil contamination",
+                "Water sources",
+                "Public health"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.bbc.com/news/articles/c5yr7xvx5zzo"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Environmental Pollution",
+                "Public Health Hazard"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "400 tonnes of industrial waste represents a significant environmental pollution risk to soil and potentially water sources, as well as a public health hazard if toxic materials are present. Although the site is now secured and dumping has ceased, the sheer volume of existing waste requires immediate and comprehensive remediation to prevent long-term adverse impacts and potential disaster."
+        },
+        "priority_score": 88,
+        "critical_flag": false
+    },
+    {
+        "id": "3258ddf013fb732e7b6dcb6e697a462c",
+        "timestamp": "2026-08-23T00:36:12.566602",
+        "title": "The ‘Horror Story’ of Hazardous Waste in a Small Pennsylvania Town - Inside Climate News",
+        "summary": "June 26, 2025 - An EPA investigation confirmed residents’ worst fears about operations at an industrial landfill. What happens next is all too uncertain.",
+        "domain_classification": [
+            "Climate",
+            "DRR",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Pennsylvania",
+            "lat": 40.9699889,
+            "lon": -77.7278831
+        },
+        "manifestation": {
+            "how_it_is_observed": "An EPA investigation confirmed residents’ worst fears about hazardous waste operations at an industrial landfill.",
+            "key_indicators": [
+                "Hazardous waste",
+                "Industrial landfill operations",
+                "EPA investigation",
+                "Confirmed fears"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Residents' health",
+                "Local environment",
+                "Community well-being"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://insideclimatenews.org/news/23022025/hazardous-waste-in-small-pennsylvania-town/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Health",
+                "Regulatory Compliance"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "An EPA investigation has confirmed the presence of hazardous waste at an industrial landfill, validating residents' 'worst fears.' The situation is described as 'all too uncertain,' indicating a significant and ongoing threat to public health and the environment that requires immediate and decisive action to prevent further harm and address the existing contamination."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
