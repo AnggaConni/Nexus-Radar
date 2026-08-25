@@ -9613,5 +9613,117 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "c223a1aed835027216640505284e0d02",
+        "timestamp": "2026-08-25T00:33:40.642851",
+        "title": "Extent and Speed of Lionfish Spread Unprecedented—Invasive Marine Fish May Stress Reefs | U.S. Geological Survey",
+        "summary": "Originally from tropical waters of the Indian and western Pacific Oceans, two species of lionfish, Pterois volitans and Pterois miles, have been documented spreading along the Atlantic coast of the United States and throughout the Caribbean. Their populations in the region are now self-sustaining. It is not yet clear exactly how the new invasive species will affect coral reef ecosystems in this part of the world.",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United States",
+            "region": "Caribbean",
+            "lat": 27.3078592,
+            "lon": -80.2952923
+        },
+        "manifestation": {
+            "how_it_is_observed": "Two species of lionfish (Pterois volitans and Pterois miles) are spreading along the Atlantic coast of the United States and throughout the Caribbean, forming self-sustaining populations.",
+            "key_indicators": [
+                "Unprecedented extent and speed of lionfish spread",
+                "Self-sustaining lionfish populations in non-native waters"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Coral reef ecosystems",
+                "Native marine species"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.usgs.gov/programs/cmhrp/news/extent-and-speed-lionfish-spread-unprecedented-invasive-marine-fish-may-stress"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Invasive Species",
+                "Ecological Damage"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The unprecedented and rapid spread of invasive lionfish, now with self-sustaining populations in the Atlantic and Caribbean, poses a high risk of significant ecological damage to coral reef ecosystems. Although the exact impact is still being studied, the established nature of the invasion necessitates immediate intervention to mitigate further spread and protect vulnerable marine environments."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "c1cd60ee42aa9091c950a7b0bbff8c1a",
+        "timestamp": "2026-08-25T00:34:56.492867",
+        "title": "REEFS AT RISK: Invasive species threatening local ecosystems, FWC needs public help",
+        "summary": "The invasive species is spreading rapidly through our waters and now state officials are calling on the public to help remove them. To help control their numbers, Florida Fish and Wildlife (FWC) created the Lionfish Challenge, encouraging divers ... Published: June 27, 2026",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Florida",
+            "lat": 27.7567667,
+            "lon": -81.4639835
+        },
+        "manifestation": {
+            "how_it_is_observed": "Invasive species spreading rapidly through waters, threatening local ecosystems.",
+            "key_indicators": [
+                "Rapid spread of invasive species",
+                "Threat to local ecosystems",
+                "Public call to action by state officials (FWC)"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Local ecosystems",
+                "Reefs",
+                "Marine life",
+                "Waters"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://cbs12.com/news/local/south-florida-palm-beach-county-marine-life-news-reefs-at-risk-invasive-species-threatening-local-ecosystems-fwc-needs-public-help-fwc-lionfish-program-waters-public-removal-reef-health-fast-reproduction"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "environmental"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Invasive species, specifically lionfish, are spreading rapidly and pose a severe threat to local reef ecosystems. The call for public assistance by FWC indicates the widespread nature and urgency of the problem, requiring immediate and sustained intervention to prevent irreversible ecological damage."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
