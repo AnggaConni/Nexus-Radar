@@ -9725,5 +9725,121 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "d103247b542d42972430a3bc5fa8bbbf",
+        "timestamp": "2026-08-26T00:34:29.466111",
+        "title": "Fisheries in SE Asia Day 9 HANDOUT 9.8 — SOME SIGNS OF OVERFISHING",
+        "summary": "This is not a complete list. A specific area and fishery may have additional signs of · overfishing, often known by the local fisher people.",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "SE Asia",
+            "lat": -8.7287308,
+            "lon": 115.2365646
+        },
+        "manifestation": {
+            "how_it_is_observed": "Signs of overfishing are observed, often known by local fisher people.",
+            "key_indicators": []
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Fisheries",
+                "Marine ecosystems",
+                "Local livelihoods"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://nmssanctuaries.blob.core.windows.net/sanctuaries-prod/media/archive/management/pdfs/fisheries_mod9_ho_9_8.pdf"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Degradation",
+                "Economic Instability",
+                "Food Security Risk"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The explicit mention of 'SOME SIGNS OF OVERFISHING' indicates that the problem is already present. If left unaddressed, overfishing leads to severe depletion of marine resources, threatening biodiversity, disrupting marine ecosystems, and causing long-term economic instability for fishing communities. It also poses a significant risk to food security in regions heavily reliant on fish. Immediate intervention is crucial to implement sustainable fishing practices, protect fish stocks, and ensure the long-term health of marine environments and livelihoods."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "41e0705c6f71eb257c7c0c7f191f0d54",
+        "timestamp": "2026-08-26T00:35:33.870186",
+        "title": "Photos: The crisis of overfishing in Southeast Asia : The Picture Show : NPR",
+        "summary": "April 18, 2026 - Lax regulations on the most destructive types of fishing, particularly demersal trawling and cyanide fishing, the capture of juvenile fish that prevents the replenishment of stocks, the poor oversight of labor laws and the exploitation of workers desperate to earn a living have all contributed to the devastating knock-on effects for communities along coastlines and the potentially irreversible environmental consequences.",
+        "domain_classification": [
+            "Ocean",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Southeast Asia",
+            "lat": 49.1855798,
+            "lon": 16.6155415
+        },
+        "manifestation": {
+            "how_it_is_observed": "Lax regulations on destructive fishing types (demersal trawling, cyanide fishing), capture of juvenile fish, poor oversight of labor laws, and exploitation of workers.",
+            "key_indicators": [
+                "Demersal trawling",
+                "Cyanide fishing",
+                "Capture of juvenile fish",
+                "Poor labor law oversight",
+                "Worker exploitation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Coastal communities",
+                "Fish stocks",
+                "Marine environment",
+                "Workers"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.npr.org/sections/the-picture-show/2026/04/18/nx-s1-5766110/overfishing-in-southeast-asia"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "environmental degradation",
+                "socio-economic crisis",
+                "regulatory failure",
+                "resource depletion"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal indicates a severe crisis of overfishing in Southeast Asia, driven by lax regulations, destructive fishing practices, and the capture of juvenile fish, leading to potentially irreversible environmental consequences and devastating socio-economic impacts on coastal communities due to worker exploitation and resource depletion. Immediate intervention is critical to prevent further ecological collapse and humanitarian distress."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
