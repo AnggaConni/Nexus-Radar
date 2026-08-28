@@ -9954,5 +9954,124 @@
         },
         "priority_score": 70,
         "critical_flag": false
+    },
+    {
+        "id": "370f4ff3550a6946a7c1be7cd42e02ad",
+        "timestamp": "2026-08-28T07:23:36.467689",
+        "title": "Glacial Lake Burst Risk in India; 88 Overflowing Lakes Pose Threat",
+        "summary": "Follow Bhaskar English for latest updates on glacial lake disaster risks across Indian states. Ice and rocks breaking off from a glacier caused a sudden flood in the Bhote Koshi River, wreaking havoc in Nepals Rasuwa district. About a year ago, in July 2025, a glacial lake in Tibet burst in the same area due to rising temperatures, claiming 9 lives.",
+        "domain_classification": [
+            "DRR",
+            "Climate",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "India",
+            "region": "",
+            "lat": 22.3511148,
+            "lon": 78.6677428
+        },
+        "manifestation": {
+            "how_it_is_observed": "Glacial lake bursts and sudden floods caused by ice and rocks breaking off from glaciers.",
+            "key_indicators": [
+                "88 overflowing glacial lakes",
+                "rising temperatures"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "human lives",
+                "infrastructure",
+                "rivers"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.bhaskarenglish.in/originals/news/india-glacial-lakes-risk-nepal-flood-disaster-warning-138845579.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Glacial Lake Outburst Flood (GLOF)"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "88 overflowing glacial lakes in India pose a significant threat. A past glacial lake burst in the same region (Tibet/Nepal) in July 2025 claimed 9 lives, attributed to rising temperatures. The recent flood in Bhote Koshi River caused by ice and rock breaking off a glacier further highlights the immediate and severe danger. Proactive measures are critical to prevent future disasters."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "500d5ccd9432839f3a38a6f42104905e",
+        "timestamp": "2026-08-28T07:24:32.198705",
+        "title": "Nepal flooding: Hundreds dead, missing after glacier collapse - CTV News",
+        "summary": "Aerial footage also showed that a lake had formed and expanded on the China-Nepal border, with authorities warning of a possible dam break.",
+        "domain_classification": [
+            "DRR",
+            "Water",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Nepal, China",
+            "region": "Himalayan region",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Catastrophic flooding and deaths, glacier collapse, formation and expansion of a glacial lake, warning of a potential dam break.",
+            "key_indicators": [
+                "Hundreds dead",
+                "Hundreds missing",
+                "Glacier collapse",
+                "Lake formation and expansion",
+                "Dam break warning",
+                "Catastrophic floods"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Human lives",
+                "Infrastructure",
+                "Communities",
+                "Environment"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.ctvnews.ca/climate-and-environment/article/catastrophic-floods-kill-over-360-in-nepal-and-tibet-with-more-than-1400-missing/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 10,
+            "risk_type": [
+                "Glacial Lake Outburst Flood (GLOF)",
+                "Flooding",
+                "Dam Failure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A glacier collapse has caused catastrophic flooding, leading to hundreds of deaths and disappearances. The formation and expansion of a lake, with authorities warning of a possible dam break, signify an extremely high and immediate risk of further widespread disaster. Urgent intervention is required to address the ongoing crisis and prevent additional catastrophic events."
+        },
+        "priority_score": 100,
+        "critical_flag": false
     }
 ]
