@@ -10073,5 +10073,126 @@
         },
         "priority_score": 100,
         "critical_flag": false
+    },
+    {
+        "id": "96fc716f7d0ba62e356f2ca46f1a99b1",
+        "timestamp": "2026-08-30T02:04:17.560200",
+        "title": "Long periods of dryness in central Brazil with overall good soil ...",
+        "summary": "Oct 23, 2025 · The drought is expected to cause crop losses, water scarcity, and increased fire activity in the Amazon rainforest and Pantanal wetlands.",
+        "domain_classification": [
+            "Climate",
+            "Water",
+            "Biodiversity",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Brazil",
+            "region": "Central Brazil",
+            "lat": -15.8032581,
+            "lon": -47.8854767
+        },
+        "manifestation": {
+            "how_it_is_observed": "Long periods of dryness; drought",
+            "key_indicators": [
+                "crop losses",
+                "water scarcity",
+                "increased fire activity"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "crops",
+                "water resources",
+                "Amazon rainforest",
+                "Pantanal wetlands",
+                "ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.facebook.com/dtnprogressivefarmer/posts/long-periods-of-dryness-in-central-brazil-with-overall-good-soil-moisture-farthe/1252878403548592/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Drought",
+                "Wildfire",
+                "Agricultural",
+                "Environmental"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Long periods of dryness in central Brazil are expected to cause significant crop losses, lead to water scarcity, and increase fire activity in critical biomes like the Amazon rainforest and Pantanal wetlands. These impacts pose a high risk to agriculture, ecosystems, and human populations."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "dea4fd2f18ccf847180e9163ac3c4da6",
+        "timestamp": "2026-08-30T02:05:04.731420",
+        "title": "Over time, the Amazon rainforest has been experiencing higher ...",
+        "summary": "Aug 19, 2026 · Over time, the Amazon rainforest has been experiencing higher temperatures and longer and more intense dry seasons. How do we know? For decades, ...",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Amazon rainforest",
+            "lat": -5.4517351,
+            "lon": -74.3153562
+        },
+        "manifestation": {
+            "how_it_is_observed": "Higher temperatures and longer and more intense dry seasons in the Amazon rainforest.",
+            "key_indicators": [
+                "higher temperatures",
+                "longer dry seasons",
+                "more intense dry seasons"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Amazon rainforest ecosystem",
+                "biodiversity",
+                "global climate regulation"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.facebook.com/missouribotanicalgarden/posts/over-time-the-amazon-rainforest-has-been-experiencing-higher-temperatures-and-lo/1432910272217638/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Climate Change",
+                "Ecological"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The Amazon rainforest experiencing higher temperatures and more intense dry seasons indicates a critical environmental degradation trend. This significantly increases the risk of widespread wildfires, deforestation, biodiversity loss, and potentially reaching an ecological tipping point where the rainforest could transform into a savanna. Such a shift would have catastrophic global climate and ecological consequences, necessitating urgent and sustained intervention to mitigate further damage and protect this vital ecosystem."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
