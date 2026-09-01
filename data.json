@@ -10194,5 +10194,117 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "2bc315a1346b47ab8b1d05aac85d9ace",
+        "timestamp": "2026-09-01T02:21:34.254850",
+        "title": "Battling invasive fungi to save native Hawai’ian trees",
+        "summary": "Once the fungal spores get inside an ‘ōhi‘a, the fungus grows and multiplies. It blocks the vascular system that transports water from ground to crown. After symptoms of infection appear – brown leaves, black staining in wood, fruity odor in cut wood – death comes quickly. Often within a few months. This quick decline is why the resulting disease is called Rapid ‘Ōhi‘a Death. Today, this disease has killed over 1 million ‘ōhi‘a trees.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Hawaii",
+            "lat": 19.5938015,
+            "lon": -155.4283701
+        },
+        "manifestation": {
+            "how_it_is_observed": "Fungal spores infect ‘ōhi‘a trees, multiplying and blocking the vascular system. Symptoms include brown leaves, black staining in wood, and a fruity odor in cut wood, leading to rapid death.",
+            "key_indicators": [
+                "brown leaves",
+                "black staining in wood",
+                "fruity odor in cut wood"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "native ‘ōhi‘a trees",
+                "Hawaiian ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.fs.usda.gov/about-agency/features/battling-invasive-fungi-save-native-hawaiian-trees"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "ecological"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Rapid 'Ōhi'a Death, caused by an invasive fungus, is quickly killing native Hawai'ian 'ōhi'a trees by blocking their vascular system. Over 1 million trees have already died, and the disease's rapid progression poses a severe threat to the native ecosystem, requiring urgent intervention to prevent further widespread destruction."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "13e134509be8c8d88fa58dfdd31c3608",
+        "timestamp": "2026-09-01T02:22:23.517350",
+        "title": "Why Tree-Killing Epidemics Are on the Rise",
+        "summary": "September 25, 2020 - The killer was chestnut blight, a fungus native to China and Japan that was introduced with ornamental Japanese chestnuts in the early 1900s. In susceptible trees like America’s native chestnut, the blight kills live tissue just beneath the ...",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United States",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "Chestnut blight, a fungus, kills live tissue just beneath the bark of susceptible trees, leading to tree-killing epidemics.",
+            "key_indicators": [
+                "chestnut blight",
+                "fungus",
+                "tree-killing epidemics",
+                "kills live tissue"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "trees",
+                "native chestnut species",
+                "forest ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.smithsonianmag.com/science-nature/why-tree-killing-epidemics-are-rise-180975917/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological Disaster",
+                "Biodiversity Loss",
+                "Invasive Species"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The signal indicates a significant and rising threat from tree-killing epidemics, often caused by introduced pathogens like the chestnut blight fungus. Such events lead to widespread tree mortality, severe ecological disruption, and potential extinction of native species. The historical impact of chestnut blight on American chestnuts demonstrates the catastrophic potential. Immediate intervention is crucial to prevent new introductions, manage existing threats, and mitigate the ecological and economic consequences of these epidemics."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
