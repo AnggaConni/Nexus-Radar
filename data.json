@@ -10306,5 +10306,61 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "b48084260c9d0de543bb8680d61ccedf",
+        "timestamp": "2026-09-03T01:48:43.432494",
+        "title": "What are the signs of landslide development? What do I do if a ...",
+        "summary": "Large cracks formed in this yard after a large landslide occurred downslope of a home. Though the home wasn't directly impacted by the landslide, the cracks in the yard are indicators of potential additional movement and increased landslide risk.",
+        "domain_classification": [
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Large cracks formed in a yard after a large landslide occurred downslope of a home.",
+            "key_indicators": [
+                "Large cracks",
+                "Potential additional movement",
+                "Increased landslide risk"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Home",
+                "Property",
+                "Occupants"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.usgs.gov/programs/landslide-hazards/what-are-signs-landslide-development-what-do-i-do-if-a-landslide-occurs"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "landslide",
+                "geological hazard"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A large landslide has already occurred downslope, and new, large cracks in the yard indicate ongoing ground instability and a high potential for additional movement. This significantly increases the landslide risk to the property, necessitating immediate assessment and intervention."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
