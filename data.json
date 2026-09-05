@@ -10362,5 +10362,118 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "7b03ff24d781dc65bae1021db874ec3c",
+        "timestamp": "2026-09-05T01:43:52.512052",
+        "title": "Grinding up fish to feed to fish is ‘absurd’: fears over UN ...",
+        "summary": "1 day ago · Grinding up fish to feed to fish is ‘absurd’: fears over UN aquaculture plan Huge rollout of fish farms could harm ecosystems and threaten vulnerable communities’ food sources, say experts",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "The practice of grinding up fish to feed to farmed fish, driven by a huge rollout of UN aquaculture plans.",
+            "key_indicators": [
+                "Harm to ecosystems",
+                "Threat to vulnerable communities' food sources"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Ecosystems",
+                "Vulnerable communities' food sources"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.theguardian.com/environment/2026/sep/03/un-fish-farms-food-oceans-aquaculture"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "policy_gap"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "environmental",
+                "food security",
+                "resource depletion"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The UN's aquaculture plan, which involves grinding up wild fish to feed farmed fish, is described as 'absurd' and poses significant risks. Experts fear a huge rollout of these fish farms could severely harm ecosystems and threaten the food sources of vulnerable communities, necessitating immediate intervention to reassess the plan."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "76299740b3ab27575bfeab7d024f9d09",
+        "timestamp": "2026-09-05T01:44:41.877750",
+        "title": "Japanese flying squid find spawning habitat but larvae hit ...",
+        "summary": "Japanese flying squid decline has entered a new phase: a Korean government study finds larvae at 7-year lows in the East Sea even where water temperatures remain suitable for spawning. A fishery ...",
+        "domain_classification": [
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "South Korea, Japan",
+            "region": "East Sea",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Decline in Japanese flying squid population, particularly larvae numbers hitting 7-year and record lows, despite suitable water temperatures for spawning.",
+            "key_indicators": [
+                "Squid larvae abundance",
+                "Water temperature suitability for spawning"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Japanese flying squid population",
+                "Marine ecosystem",
+                "Fishery industry"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.msn.com/en-us/news/other/japanese-flying-squid-find-spawning-habitat-but-larvae-hit-record-low-study-shows/ar-AA2bAh1g"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Fishery collapse",
+                "Ecological imbalance",
+                "Economic impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The Japanese flying squid population is facing a critical threat, evidenced by a 7-year low in larval counts despite suitable spawning habitats. This indicates a severe reproductive or early-life stage survival issue, potentially leading to a collapse of this economically vital fishery. The decline could trigger significant ecological imbalances in the marine food web and cause substantial economic hardship for fishing communities and related industries, particularly in East Asia. Immediate intervention is required to identify the underlying causes and implement conservation strategies."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
