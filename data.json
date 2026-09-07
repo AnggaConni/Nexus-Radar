@@ -10475,5 +10475,117 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "51628301d53dd1ab5b5d476530ac00cc",
+        "timestamp": "2026-09-07T01:35:48.474061",
+        "title": "U.S. butterfly populations are severely declining | WSU ...",
+        "summary": "Mar 6, 2025 · Although overall the news is alarming, some butterfly species had increasing populations. Almost a quarter of the species assessed, including the gulf fritillary, were increasing in at least one part of their range, with nine species increasing across their entire range.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "U.S.",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "Overall severe decline in U.S. butterfly populations, with some species showing increases in parts of their range.",
+            "key_indicators": [
+                "Declining butterfly populations",
+                "Increasing populations for some species (e.g., gulf fritillary)"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Butterfly species",
+                "Ecosystem health",
+                "Pollination services"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://news.wsu.edu/press-release/2025/03/06/u-s-butterfly-populations-are-severely-declining/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Ecological",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The severe decline in U.S. butterfly populations is an alarming signal of significant biodiversity loss. Butterflies are crucial pollinators and indicators of ecosystem health. While some species show localized increases, the overall trend poses a high risk to ecological stability, agricultural productivity, and the broader food web, necessitating immediate conservation efforts and habitat preservation strategies."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "c6ed9547589246127bc2a52971837c89",
+        "timestamp": "2026-09-07T01:36:34.945010",
+        "title": "Over One-Fifth of Native North American Pollinators at ...",
+        "summary": "Washington, DC — A pivotal new study led by NatureServe reveals that more than 22% of native pollinators in North America are at an elevated risk of extinction.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "North America",
+            "lat": 51.0000002,
+            "lon": -109.0
+        },
+        "manifestation": {
+            "how_it_is_observed": "More than 22% of native pollinators are at an elevated risk of extinction.",
+            "key_indicators": [
+                "Extinction risk",
+                "Pollinator population decline"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Native pollinators",
+                "Ecosystem health",
+                "Agricultural productivity",
+                "Food security"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.natureserve.org/news-releases/over-one-fifth-native-north-american-pollinators-elevated-risk-extinction"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Agricultural"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Over 22% of native North American pollinators are at an elevated risk of extinction. This represents a high environmental and ecological disaster risk, threatening biodiversity, agricultural productivity, and ecosystem stability. Immediate intervention is crucial to prevent widespread pollinator collapse and its cascading effects on food systems and natural environments."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
