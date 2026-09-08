@@ -10587,5 +10587,121 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "61c630dbb0126c8ea586686b78d796e7",
+        "timestamp": "2026-09-08T01:46:39.405546",
+        "title": "Large fisheries declines linked to compound and extreme ...",
+        "summary": "7 days ago · The increasing frequency and intensity of extreme ocean climate events are causing localized declines in marine life, altering ecosystem ...",
+        "domain_classification": [
+            "Ocean",
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Increasing frequency and intensity of extreme ocean climate events causing localized declines in marine life and altering ecosystems.",
+            "key_indicators": [
+                "Large fisheries declines",
+                "Declines in marine life",
+                "Altering ecosystem"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Fisheries",
+                "Marine life",
+                "Ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.nature.com/articles/s41467-026-77077-z"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Economic",
+                "Food Security"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Large fisheries declines are occurring due to the increasing frequency and intensity of extreme ocean climate events. These events are causing localized declines in marine life and altering ecosystems, posing significant environmental, economic, and food security risks that require urgent attention."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "8d95c22da33515b83b5cf475c2c87480",
+        "timestamp": "2026-09-08T01:47:27.553456",
+        "title": "Ocean water temperatures were well above normal after the ...",
+        "summary": "Jul 22, 2026 · The average sea surface temperature was 53.66 degrees (12 degrees Celsius), more than 3.7 degrees above the 40-year average, the scientists said ...",
+        "domain_classification": [
+            "Ocean",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Ocean water temperatures were well above normal; average sea surface temperature was 53.66 degrees (12 degrees Celsius), more than 3.7 degrees above the 40-year average.",
+            "key_indicators": [
+                "Sea surface temperature",
+                "Temperature anomaly"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Marine ecosystems",
+                "Ocean life",
+                "Coastal environments"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.facebook.com/WGME13/posts/ocean-water-temperatures-were-well-above-normal-after-the-early-july-heat-but-ov/1472929628195658/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Climate Change Impacts",
+                "Marine Ecosystem Disruption",
+                "Extreme Weather"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Ocean water temperatures significantly above the 40-year average (3.7 degrees Celsius higher) indicate a severe marine heatwave. This poses a high risk for increased intensity of extreme weather events (e.g., tropical storms), widespread marine ecosystem damage (e.g., coral bleaching, changes in fish populations), and accelerates long-term climate change impacts. Urgent intervention is needed to mitigate these escalating risks and address the underlying causes of ocean warming."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
