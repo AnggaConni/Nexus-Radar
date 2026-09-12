@@ -110,6 +110,10 @@
       <button onclick="switchTab('resume')" id="nav-resume" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
         <i class="ph-fill ph-chart-polar text-lg"></i> Intel Resume
       </button>
+      <button onclick="switchTab('live')" id="nav-live" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
+        <i class="ph-fill ph-broadcast text-lg"></i> Live EONET
+      </button>
+
     </nav>
 
     <div class="p-4 border-t border-slate-100 shrink-0 flex flex-col gap-2">
@@ -335,6 +339,60 @@
       </div>
 
     </div>
+
+    <!-- ========================================== -->
+      <!-- TAB 4: LIVE EONET MONITOR -->
+      <!-- ========================================== -->
+      <div id="view-live" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
+        
+        <!-- Header Live Tab -->
+        <div class="bg-slate-900 rounded-2xl p-5 sm:p-6 text-white shadow-xl relative overflow-hidden flex justify-between items-center">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-red-500 opacity-20 blur-[80px] rounded-full pointer-events-none"></div>
+          <div class="flex items-center gap-4 relative z-10">
+            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center border border-white/20 backdrop-blur-sm shrink-0">
+              <i class="ph-bold ph-satellite text-2xl text-red-400"></i>
+            </div>
+            <div>
+              <h2 class="font-display font-bold text-xl sm:text-2xl leading-tight text-white flex items-center gap-2">
+                NASA EONET Feed <span class="flex h-3 w-3 relative ml-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span></span>
+              </h2>
+              <p class="text-slate-400 text-xs sm:text-sm mt-1">Real-time Earth Observatory Natural Event Tracker</p>
+            </div>
+          </div>
+          <button onclick="fetchEONETData()" class="relative z-10 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-2">
+            <i class="ph-bold ph-arrows-clockwise"></i> Sync Now
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+          <!-- Peta NASA EONET -->
+          <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm p-2 flex flex-col h-[400px] sm:h-[500px]">
+             <div id="live-map" class="w-full flex-grow rounded-xl bg-slate-100 border border-slate-100 z-10"></div>
+          </div>
+          
+          <!-- Feed List & Chart -->
+          <div class="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
+            <!-- Chart Kategori -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 h-[250px] flex flex-col">
+              <h3 class="font-display font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider mb-2">Active Event Categories</h3>
+              <div id="live-chart-category" class="w-full flex-grow"></div>
+            </div>
+            
+            <!-- List Event -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 flex-grow flex flex-col h-[230px]">
+              <div class="flex justify-between items-center mb-3 border-b border-slate-100 pb-2">
+                <h3 class="font-display font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider">Latest Events</h3>
+                <span id="live-event-count" class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded">0</span>
+              </div>
+              <div id="live-feed-list" class="flex flex-col gap-2 overflow-y-auto pr-2 custom-scrollbar flex-grow">
+                <p class="text-xs text-slate-400 italic text-center mt-10">Waiting for data sync...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
   </main>
 
   <!-- ========================================== -->
@@ -620,6 +678,226 @@
   let map = null, markersLayer = null;
   let currentPage = 1, itemsPerPage = 20; // Default Show 20
   let chartInstances = {};
+
+  // --- STATE UNTUK TAB LIVE ---
+  let liveMap = null;
+  let liveGeoJsonLayer = null;
+  let liveChart = null;
+
+  // Modifikasi fungsi switchTab yang sudah ada untuk mengenali tab 'live'
+  const originalSwitchTab = switchTab; // Menyimpan fungsi lama (jika perlu)
+  switchTab = function(tabId) {
+    ['inventory','map','resume', 'live'].forEach(t => { // Tambahkan 'live' ke array ini
+      const nav = document.getElementById(`nav-${t}`);
+      if(nav) nav.classList.toggle('active', t === tabId);
+      
+      const view = document.getElementById(`view-${t}`);
+      if(view) {
+        if (t === tabId) { view.classList.remove('hidden'); view.classList.add('flex'); }
+        else { view.classList.add('hidden'); view.classList.remove('flex'); }
+      }
+    });
+
+    const titles = {
+      'inventory':['Signal Inventory', 'Real-time latent environmental anomalies.'],
+      'map':['Global Threat Map', 'Geospatial distribution of detected signals.'],
+      'resume':['Intelligence Resume', 'Quarterly synthesis and recommendations.'],
+      'live':['Live NASA EONET', 'Real-time natural event monitoring.']
+    };
+    
+    if(titles[tabId]) {
+      document.getElementById('page-title').innerText = titles[tabId][0];
+      document.getElementById('page-title').nextElementSibling.innerText = titles[tabId][1];
+    }
+
+    // Close sidebar on mobile
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) toggleSidebar();
+
+    // Logic khusus untuk masing-masing tab saat dibuka
+    if (tabId === 'map') {
+      if (!map) { initMap(); drawMapElements(); renderMapCharts(); }
+      setTimeout(() => { if(map) map.invalidateSize(); if(chartInstances.domainMap) chartInstances.domainMap.resize(); }, 150);
+    }
+    if (tabId === 'resume') {
+      const sel = document.getElementById('report-selector');
+      if (sel.options.length > 0) loadReport(sel.value);
+      setTimeout(() => resizeAllCharts(), 150);
+    }
+    if (tabId === 'live') {
+      if (!liveMap) {
+        initLiveMap();
+        fetchEONETData();
+      }
+      setTimeout(() => { 
+        if(liveMap) liveMap.invalidateSize(); 
+        if(liveChart) liveChart.resize(); 
+      }, 150);
+    }
+  };
+
+  // --- INISIALISASI PETA LIVE (MENGGUNAKAN ESRI LIGHT GRAY) ---
+  function initLiveMap() {
+    liveMap = L.map('live-map',{zoomControl:true,scrollWheelZoom:false}).setView([20,0],2);
+    // ESRI Light Gray Base Map (Gratis, No API Key)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+      maxZoom: 16
+    }).addTo(liveMap);
+  }
+
+  // --- HELPER UNTUK KATEGORI NASA ---
+  function getCategoryStyle(categoryTitle) {
+    const cat = categoryTitle.toLowerCase();
+    if(cat.includes('fire')) return { color: '#ef4444', bg: 'bg-red-50 text-red-600', icon: 'ph-fire' }; // Red
+    if(cat.includes('storm') || cat.includes('cyclone')) return { color: '#3b82f6', bg: 'bg-blue-50 text-blue-600', icon: 'ph-cloud-lightning' }; // Blue
+    if(cat.includes('volcano')) return { color: '#f97316', bg: 'bg-orange-50 text-orange-600', icon: 'ph-mountains' }; // Orange
+    if(cat.includes('ice')) return { color: '#0ea5e9', bg: 'bg-sky-50 text-sky-600', icon: 'ph-snowflake' }; // Sky
+    if(cat.includes('earthquake')) return { color: '#8b5cf6', bg: 'bg-purple-50 text-purple-600', icon: 'ph-activity' }; // Purple
+    return { color: '#10b981', bg: 'bg-emerald-50 text-emerald-600', icon: 'ph-warning-circle' }; // Green default
+  }
+
+  // --- AMBIL DATA DARI NASA EONET ---
+  async function fetchEONETData() {
+    document.getElementById('live-feed-list').innerHTML = `<p class="text-xs text-slate-400 italic text-center mt-10"><i class="ph-bold ph-spinner animate-spin text-lg mb-2 block"></i> Syncing with NASA servers...</p>`;
+    
+    try {
+      // Endpoint GeoJSON dari EONET untuk Event yang statusnya masih Open
+      const response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events/geojson?status=open');
+      const data = await response.json();
+      
+      renderLiveMap(data);
+      renderLiveFeed(data);
+      renderLiveChart(data);
+      
+      document.getElementById('live-event-count').innerText = data.features.length;
+    } catch(error) {
+      console.error("Gagal mengambil data EONET:", error);
+      document.getElementById('live-feed-list').innerHTML = `<p class="text-xs text-red-500 italic text-center mt-10">Failed to sync with NASA EONET.</p>`;
+    }
+  }
+
+  // --- RENDER MAP MENGGUNAKAN LEAFLET GEOJSON ---
+  function renderLiveMap(geojsonData) {
+    if(liveGeoJsonLayer) liveMap.removeLayer(liveGeoJsonLayer);
+    
+    liveGeoJsonLayer = L.geoJSON(geojsonData, {
+      pointToLayer: function (feature, latlng) {
+        // Ambil kategori dari properties
+        const catTitle = feature.properties.categories[0]?.title || 'Unknown';
+        const style = getCategoryStyle(catTitle);
+        
+        // Buat Marker kustom
+        const iconHtml = `<div style="background-color: ${style.color};" class="w-4 h-4 rounded-full border-2 border-white shadow-md animate-pulse"></div>`;
+        const customIcon = L.divIcon({ className: '', html: iconHtml, iconSize: [16,16], iconAnchor: [8,8] });
+        
+        return L.marker(latlng, { icon: customIcon });
+      },
+      onEachFeature: function (feature, layer) {
+        const props = feature.properties;
+        const catTitle = props.categories[0]?.title || 'Unknown';
+        const dateObj = new Date(props.date);
+        
+        const popupContent = `
+          <div class="w-48 p-1">
+            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">${catTitle}</p>
+            <h4 class="font-display font-bold text-xs text-slate-800 mb-2 leading-tight">${props.title}</h4>
+            <p class="text-[10px] text-slate-500 flex items-center gap-1 mb-2"><i class="ph-bold ph-calendar"></i> ${dateObj.toLocaleDateString()}</p>
+            <a href="${props.sources[0]?.url}" target="_blank" class="block text-center mt-2 w-full bg-slate-50 border border-slate-200 text-blue-600 text-[10px] font-bold py-1.5 rounded hover:bg-slate-100 transition-colors">SOURCE</a>
+          </div>
+        `;
+        layer.bindPopup(popupContent);
+      }
+    }).addTo(liveMap);
+    
+    // Fit map ke bound data jika ada isinya
+    if (geojsonData.features.length > 0) {
+      liveMap.fitBounds(liveGeoJsonLayer.getBounds(), { padding: [20, 20], maxZoom: 5 });
+    }
+  }
+
+  // --- RENDER FEED LIST ---
+  function renderLiveFeed(geojsonData) {
+    const listCont = document.getElementById('live-feed-list');
+    listCont.innerHTML = '';
+    
+    // Ambil 20 data terbaru
+    const features = geojsonData.features.slice(0, 20);
+    
+    features.forEach(f => {
+      const p = f.properties;
+      const catTitle = p.categories[0]?.title || 'Event';
+      const style = getCategoryStyle(catTitle);
+      const dateStr = new Date(p.date).toLocaleDateString();
+      
+      // Jika event di-klik, peta zoom ke koordinat tersebut
+      let coords = [0,0];
+      if(f.geometry.type === 'Point') coords = [f.geometry.coordinates[1], f.geometry.coordinates[0]];
+      
+      const itemHtml = `
+        <div onclick="liveMap.flyTo([${coords[0]}, ${coords[1]}], 6)" class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-slate-300 cursor-pointer transition-colors flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full ${style.bg} flex items-center justify-center shrink-0">
+            <i class="ph-fill ${style.icon} text-lg"></i>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-slate-800 line-clamp-1" title="${p.title}">${p.title}</h4>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="text-[9px] font-bold uppercase tracking-wider text-slate-500">${catTitle}</span>
+              <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+              <span class="text-[9px] text-slate-400">${dateStr}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      listCont.insertAdjacentHTML('beforeend', itemHtml);
+    });
+  }
+
+  // --- RENDER PIE CHART UNTUK KATEGORI EONET ---
+  function renderLiveChart(geojsonData) {
+    if(!liveChart) liveChart = echarts.init(document.getElementById('live-chart-category'));
+    
+    // Hitung jumlah event per kategori
+    const catCounts = {};
+    geojsonData.features.forEach(f => {
+      const cat = f.properties.categories[0]?.title || 'Other';
+      catCounts[cat] = (catCounts[cat] || 0) + 1;
+    });
+    
+    const chartData = Object.keys(catCounts).map(key => {
+      const style = getCategoryStyle(key);
+      return { 
+        name: key, 
+        value: catCounts[key],
+        itemStyle: { color: style.color }
+      };
+    });
+    
+    liveChart.setOption({
+      tooltip: { trigger: 'item' },
+      series: [
+        {
+          name: 'Events',
+          type: 'pie',
+          radius: ['40%', '75%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 5,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: { show: false },
+          labelLine: { show: false },
+          data: chartData
+        }
+      ]
+    });
+  }
+  
+  // Pastikan chart di-resize jika window berubah
+  window.addEventListener('resize', () => {
+    if(liveChart) liveChart.resize();
+  });
 
   // --- MOBILE SIDEBAR ---
   function toggleSidebar() {
@@ -1093,10 +1371,14 @@ function renderTopStats() {
   });
 
   // --- MAP TAB ---
-  function initMap() {
-    map = L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([20,0],2);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap',subdomains:'abcd',maxZoom:18}).addTo(map);
-  }
+function initMap() {
+  map = L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([20,0],2);
+  
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+    maxZoom: 16
+  }).addTo(map);
+}
   
   function drawMapElements() {
     if(!map) return;
