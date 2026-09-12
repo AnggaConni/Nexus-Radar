@@ -7,19 +7,16 @@
   
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%230ea5e9' d='M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM128,152a48,48,0,1,1,48-48A48.05,48.05,0,0,1,128,152Zm64.12,36.54a80,80,0,0,0-128.24,0A87.91,87.91,0,0,1,40,128a88,88,0,1,1,176,0A87.91,87.91,0,0,1,192.12,188.54Z'/%3E%3C/svg%3E" />
 
-  <!-- Fonts: Space Grotesk for Display, Plus Jakarta Sans for UI -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   
-  <!-- Leaflet Map CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
   
-  <!-- Tailwind, Icons, Echarts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
@@ -52,7 +49,6 @@
     .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01); }
     
-    /* Blueprint Grid Pattern for Cards */
     .bg-grid-pattern {
       background-size: 24px 24px;
       background-image: 
@@ -70,14 +66,11 @@
 
     @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .animate-slide { animation: slideIn 0.4s ease forwards; }
-
+    .fade-up { animation: slideIn 0.35s ease forwards; }
     .modal-backdrop { backdrop-filter: blur(5px); background-color: rgba(15, 23, 42, 0.6); }
-
-    /* Custom scrollbar for carousel */
     .media-carousel::-webkit-scrollbar { height: 6px; }
     .media-carousel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-    /* Efek Glowing EONET */
     .pulse-eonet { border-radius: 50%; animation: pulse-ring 2s infinite; }
     @keyframes pulse-ring {
        0% { transform: scale(0.9); box-shadow: 0 0 0 0 var(--pulse-color); }
@@ -86,7 +79,18 @@
     }
     .track-line { stroke-dasharray: 5; animation: dash 20s linear infinite; }
     @keyframes dash { to { stroke-dashoffset: 1000; } }
-
+    
+    .pulse-quake {
+        border-radius: 50%;
+        animation: pulse-quake 1.5s infinite;
+        box-shadow: 0 0 0 rgba(239, 68, 68, 0.6);
+    }
+    @keyframes pulse-quake {
+        0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+    .thumb-fallback-hidden { display: none !important; }
   </style>
 </head>
 <body class="flex h-screen overflow-hidden">
@@ -106,7 +110,6 @@
           <p class="text-[10px] uppercase tracking-widest text-slate-400 mt-1 font-bold">Signal Engine</p>
         </div>
       </div>
-      <!-- Close button for mobile -->
       <button onclick="toggleSidebar()" class="lg:hidden text-slate-400 hover:text-slate-800"><i class="ph-bold ph-x text-xl"></i></button>
     </div>
 
@@ -122,9 +125,8 @@
         <i class="ph-fill ph-chart-polar text-lg"></i> Intel Resume
       </button>
       <button onclick="switchTab('live')" id="nav-live" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
-        <i class="ph-fill ph-broadcast text-lg"></i> Live EONET
+        <i class="ph-fill ph-broadcast text-lg"></i> Global Threats
       </button>
-
     </nav>
 
     <div class="p-4 border-t border-slate-100 shrink-0 flex flex-col gap-2">
@@ -132,7 +134,7 @@
         <i class="ph-fill ph-question text-base"></i> How to Use
       </button>
       <div class="text-center mt-2">
-        <p class="text-[9px] text-slate-400 font-medium">Nexus Radar v2.0 &copy; 2026</p>
+        <p class="text-[9px] text-slate-400 font-medium">Nexus Radar v2.2 &copy; 2026</p>
       </div>
     </div>
   </aside>
@@ -141,9 +143,8 @@
   <main class="flex-1 flex flex-col h-screen overflow-y-auto relative bg-slate-50 w-full">
     
     <!-- Top Header -->
-    <header class="h-20 glass-panel sticky top-0 z-10 flex items-center justify-between px-4 sm:px-8 shrink-0">
+    <header class="h-20 glass-panel sticky top-0 z-20 flex items-center justify-between px-4 sm:px-8 shrink-0">
       <div class="flex items-center gap-3 sm:gap-4">
-        <!-- Hamburger Menu Button (Mobile) -->
         <button onclick="toggleSidebar()" class="lg:hidden w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-xl text-slate-600 shadow-sm hover:bg-slate-50">
           <i class="ph-bold ph-list text-lg"></i>
         </button>
@@ -153,9 +154,7 @@
         </div>
       </div>
       
-
       <div class="flex gap-2 sm:gap-4">
-        
         <div class="hidden md:flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
           <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 shrink-0">
             <i class="ph-fill ph-radar text-sm sm:text-base"></i>
@@ -165,7 +164,6 @@
             <p class="font-display font-bold text-base sm:text-lg text-slate-800 leading-none mt-0 sm:mt-1" id="top-stat-total">0</p>
           </div>
         </div>
-
         <div class="hidden sm:flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
           <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 shrink-0">
             <i class="ph-fill ph-fire text-sm sm:text-base"></i>
@@ -175,7 +173,6 @@
             <p class="font-display font-bold text-base sm:text-lg text-slate-800 leading-none mt-0 sm:mt-1" id="top-stat-highrisk">0</p>
           </div>
         </div>
-
         <div class="hidden sm:flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
           <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-purple-50 flex items-center justify-center text-purple-500 shrink-0">
             <i class="ph-fill ph-lightning text-sm sm:text-base"></i>
@@ -185,7 +182,6 @@
             <p class="font-display font-bold text-base sm:text-lg text-slate-800 leading-none mt-0 sm:mt-1" id="top-stat-action">0</p>
           </div>
         </div>
-
         <div class="flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm">
           <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-red-50 flex items-center justify-center text-red-500 shrink-0">
             <i class="ph-fill ph-warning-octagon text-sm sm:text-base"></i>
@@ -195,14 +191,28 @@
             <p class="font-display font-bold text-base sm:text-lg text-slate-800 leading-none mt-0 sm:mt-1" id="top-stat-critical">0</p>
           </div>
         </div>
-
       </div>
-
     </header>
 
+    <!-- DATA FRESHNESS / EXTERNAL FEEDS BANNER -->
+    <div class="sticky top-20 z-[15] w-full bg-white/95 backdrop-blur-sm border-b border-slate-200 px-4 sm:px-8 py-2 flex flex-wrap items-center justify-between gap-2 shrink-0">
+      <div class="flex items-center gap-2">
+        <span id="freshness-dot" class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+        <span class="text-[11px] sm:text-xs font-semibold text-slate-600" id="freshness-text">Loading data sync status...</span>
+      </div>
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <span class="hidden md:inline text-[10px] text-slate-400 font-bold uppercase mr-1">External Feeds:</span>
+        <span class="px-2 py-0.5 bg-slate-50 border border-slate-200 rounded text-[9px] sm:text-[10px] text-slate-500 font-bold">NASA EONET</span>
+        <span class="px-2 py-0.5 bg-slate-50 border border-slate-200 rounded text-[9px] sm:text-[10px] text-slate-500 font-bold">USGS</span>
+        <span class="px-2 py-0.5 bg-amber-50 border border-amber-200 rounded text-[9px] sm:text-[10px] text-amber-600 font-bold">GDACS</span>
+        <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-200 rounded text-[9px] sm:text-[10px] text-emerald-600 font-bold">ReliefWeb</span>
+        <button onclick="location.reload()" class="ml-1 text-nexus-main hover:text-nexus-dark font-bold flex items-center gap-1 text-[10px] sm:text-xs px-2 py-1 rounded-lg hover:bg-nexus-light transition-colors">
+          <i class="ph-bold ph-arrows-clockwise"></i> Refresh
+        </button>
+      </div>
+    </div>
+
     <div class="p-4 sm:p-8 w-full max-w-7xl mx-auto flex flex-col gap-6">
-
-
 
       <!-- ========================================== -->
       <!-- TAB 1: INVENTORY (GRID) -->
@@ -218,12 +228,17 @@
             <select id="filter-domain" class="bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 sm:py-2.5 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-nexus-main cursor-pointer min-w-[140px]">
               <option value="all">All Domains</option>
             </select>
+            <select id="filter-intensity" class="bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 sm:py-2.5 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-nexus-main cursor-pointer min-w-[140px]">
+              <option value="all">All Intensities</option>
+              <option value="strong">Strong Signal</option>
+              <option value="moderate">Moderate Signal</option>
+              <option value="weak">Weak Signal</option>
+            </select>
             <select id="filter-sort" class="bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 sm:py-2.5 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-nexus-main cursor-pointer min-w-[150px]">
               <option value="priority">Highest Threat</option>
               <option value="newest">Latest Detected</option>
               <option value="oldest">Oldest Detected</option>
             </select>
-            <!-- Pagination Limit Option -->
             <select id="filter-per-page" class="bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 sm:py-2.5 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-nexus-main cursor-pointer min-w-[130px]">
               <option value="20">Show 20</option>
               <option value="50">Show 50</option>
@@ -240,6 +255,17 @@
           <div class="flex gap-4 mt-1 text-[10px] font-bold text-slate-500" id="escalation-legend"></div>
         </div>
 
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+          <div class="flex flex-wrap justify-between items-center mb-3 gap-2">
+            <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest"><i class="ph-bold ph-chart-line-up text-nexus-main"></i> Detection Trend (Filtered)</h4>
+            <div class="flex gap-2">
+              <button onclick="exportData('json')" class="text-[10px] font-bold px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 flex items-center gap-1 text-slate-600"><i class="ph-bold ph-file-json"></i> JSON</button>
+              <button onclick="exportData('csv')" class="text-[10px] font-bold px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 flex items-center gap-1 text-slate-600"><i class="ph-bold ph-file-csv"></i> CSV</button>
+            </div>
+          </div>
+          <div id="chart-trend" class="w-full h-[180px]"></div>
+        </div>
+
         <div id="inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
         
         <div id="pagination-container" class="flex items-center justify-between bg-white border border-slate-200 p-3 rounded-xl shadow-sm hidden">
@@ -252,7 +278,6 @@
       <!-- TAB 2: GLOBAL MAP -->
       <!-- ========================================== -->
       <div id="view-map" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
-        
         <div class="w-full bg-white rounded-2xl border border-slate-200 shadow-sm p-2 relative h-[350px] sm:h-[500px] flex flex-col">
           <div class="absolute top-4 sm:top-6 left-4 sm:left-6 z-[400] bg-white/90 backdrop-blur-md border border-slate-200 rounded-xl p-3 sm:p-4 shadow-lg pointer-events-none">
             <h3 class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Geospatial Distribution</h3>
@@ -260,7 +285,6 @@
           </div>
           <div id="map" class="w-full flex-grow rounded-xl bg-slate-100 border border-slate-100"></div>
         </div>
-
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <div class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm">
             <h3 class="font-display font-bold text-slate-800 mb-4 flex items-center gap-2 text-sm sm:text-base"><i class="ph-fill ph-intersect-three text-nexus-main"></i> Domain Matrix</h3>
@@ -271,27 +295,27 @@
             <div id="root-cause-container" class="flex-grow flex flex-col gap-4 overflow-y-auto"></div>
           </div>
         </div>
-
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm">
+          <h3 class="font-display font-bold text-slate-800 mb-4 flex items-center gap-2 text-sm sm:text-base"><i class="ph-fill ph-map-trifold text-emerald-500"></i> Top Hotspot Countries <span class="text-[10px] font-normal text-slate-400 normal-case">(computed live from current filter)</span></h3>
+          <div id="chart-hotspot" class="w-full h-[220px]"></div>
+        </div>
       </div>
 
       <!-- ========================================== -->
       <!-- TAB 3: INTEL RESUME -->
       <!-- ========================================== -->
       <div id="view-resume" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
-        
         <div class="bg-slate-900 rounded-2xl p-5 sm:p-8 text-white shadow-xl relative overflow-hidden flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6">
           <div class="absolute top-0 right-0 w-64 h-64 bg-nexus-main opacity-20 blur-[80px] rounded-full pointer-events-none"></div>
-          
           <div class="flex items-center gap-4 relative z-10">
             <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 rounded-xl flex items-center justify-center border border-white/20 backdrop-blur-sm shrink-0">
               <i class="ph-fill ph-brain text-2xl sm:text-3xl text-nexus-light"></i>
             </div>
             <div>
               <h2 class="font-display font-bold text-xl sm:text-2xl leading-tight text-white">AI Intelligence Synthesis</h2>
-              <p class="text-slate-400 text-xs sm:text-sm mt-1">Periodic global risk assessment generated by AI.</p>
+              <p class="text-slate-400 text-xs sm:text-sm mt-1">Periodic global risk assessment, auto-enriched with live dataset statistics.</p>
             </div>
           </div>
-
           <div class="relative z-10 w-full sm:w-auto flex flex-col mt-2 sm:mt-0">
             <label class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Select Period</label>
             <select id="report-selector" onchange="loadReport(this.value)" class="bg-slate-800 border border-slate-700 text-white text-sm font-semibold rounded-xl px-4 py-3 outline-none focus:border-nexus-main cursor-pointer shadow-inner w-full sm:min-w-[200px]"></select>
@@ -308,6 +332,19 @@
           <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 lg:col-span-2">
             <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-4 text-xs sm:text-sm uppercase tracking-wider">Domain Threats</h3>
             <div id="resume-cat-chart" class="h-[200px] sm:h-[220px] w-full"></div>
+            <div id="resume-domain-patterns" class="mt-4 flex flex-col gap-2 text-[11px] sm:text-xs text-slate-600 border-t border-slate-100 pt-3"></div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+          <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-4 text-xs sm:text-sm uppercase tracking-wider">Geographic Threat Assessment</h3>
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-sm text-left whitespace-nowrap">
+              <thead class="bg-slate-50 text-slate-500 text-[10px] uppercase font-bold tracking-wider">
+                <tr><th class="px-4 py-3">Region</th><th class="px-4 py-3">Dominant Issue</th><th class="px-4 py-3 text-right">Threat Level</th></tr>
+              </thead>
+              <tbody id="resume-geo-threats" class="divide-y divide-slate-100"></tbody>
+            </table>
           </div>
         </div>
 
@@ -346,194 +383,206 @@
             <h3 class="font-display font-bold text-lg sm:text-xl mb-4 sm:mb-6 flex items-center gap-2"><i class="ph-fill ph-lightbulb text-yellow-400"></i> Strategic Recommendations</h3>
             <div id="resume-recommendations" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
         </div>
-
       </div>
 
-    </div>
-
-    <!-- ========================================== -->
-      <!-- TAB 4: LIVE EONET MONITOR -->
+      <!-- ========================================== -->
+      <!-- TAB 4: GLOBAL THREAT MONITOR (NASA + USGS + GDACS) -->
       <!-- ========================================== -->
       <div id="view-live" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
         
-        <!-- Header Live Tab (Fixed for Mobile & Icons) -->
         <div class="bg-slate-900 rounded-2xl p-4 sm:p-6 text-white shadow-xl relative overflow-hidden flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div class="absolute top-0 right-0 w-64 h-64 bg-red-500 opacity-20 blur-[80px] rounded-full pointer-events-none"></div>
           
           <div class="flex items-center gap-3 sm:gap-4 relative z-10">
-  <div
-    class="w-10 h-10 sm:w-12 sm:h-12
-           bg-white/[0.07]
-           rounded-xl
-           flex items-center justify-center
-           border border-white/15
-           shadow-inner
-           shrink-0"
-  >
-    <!-- NASA EONET / Earth Observation Icon -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="w-6 h-6 sm:w-7 sm:h-7 text-red-400"
-      viewBox="0 0 256 256"
-      fill="none"
-      aria-hidden="true"
-    >
-      <!-- Earth -->
-      <circle
-        cx="128"
-        cy="128"
-        r="72"
-        stroke="currentColor"
-        stroke-width="10"
-      />
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-xl flex items-center justify-center border border-white/20 backdrop-blur-sm shrink-0">
+              
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6 sm:w-7 sm:h-7 text-red-400"
+                    viewBox="0 0 256 256"
+                    fill="none"
+                    aria-hidden="true"
+                    >
+                    <!-- Earth -->
+                    <circle
+                        cx="128"
+                        cy="128"
+                        r="72"
+                        stroke="currentColor"
+                        stroke-width="10"
+                    />
 
-      <!-- Longitude -->
-      <path
-        d="M128 56
-           C102 76 92 101 92 128
-           C92 155 102 180 128 200"
-        stroke="currentColor"
-        stroke-width="7"
-        stroke-linecap="round"
-      />
+                    <!-- Longitude -->
+                    <path
+                        d="M128 56
+                        C102 76 92 101 92 128
+                        C92 155 102 180 128 200"
+                        stroke="currentColor"
+                        stroke-width="7"
+                        stroke-linecap="round"
+                    />
 
-      <path
-        d="M128 56
-           C154 76 164 101 164 128
-           C164 155 154 180 128 200"
-        stroke="currentColor"
-        stroke-width="7"
-        stroke-linecap="round"
-      />
+                    <path
+                        d="M128 56
+                        C154 76 164 101 164 128
+                        C164 155 154 180 128 200"
+                        stroke="currentColor"
+                        stroke-width="7"
+                        stroke-linecap="round"
+                    />
 
-      <!-- Latitude -->
-      <path
-        d="M60 108
-           C82 120 105 125 128 125
-           C151 125 174 120 196 108"
-        stroke="currentColor"
-        stroke-width="7"
-        stroke-linecap="round"
-        opacity=".9"
-      />
+                    <!-- Latitude -->
+                    <path
+                        d="M60 108
+                        C82 120 105 125 128 125
+                        C151 125 174 120 196 108"
+                        stroke="currentColor"
+                        stroke-width="7"
+                        stroke-linecap="round"
+                        opacity=".9"
+                    />
 
-      <path
-        d="M60 148
-           C82 136 105 131 128 131
-           C151 131 174 136 196 148"
-        stroke="currentColor"
-        stroke-width="7"
-        stroke-linecap="round"
-        opacity=".9"
-      />
+                    <path
+                        d="M60 148
+                        C82 136 105 131 128 131
+                        C151 131 174 136 196 148"
+                        stroke="currentColor"
+                        stroke-width="7"
+                        stroke-linecap="round"
+                        opacity=".9"
+                    />
 
-      <!-- Orbital ring -->
-      <ellipse
-        cx="128"
-        cy="128"
-        rx="103"
-        ry="46"
-        transform="rotate(-28 128 128)"
-        stroke="currentColor"
-        stroke-width="7"
-        stroke-linecap="round"
-        opacity=".55"
-      />
+                    <!-- Orbital ring -->
+                    <ellipse
+                        cx="128"
+                        cy="128"
+                        rx="103"
+                        ry="46"
+                        transform="rotate(-28 128 128)"
+                        stroke="currentColor"
+                        stroke-width="7"
+                        stroke-linecap="round"
+                        opacity=".55"
+                    />
 
-      <!-- Observation / satellite node -->
-      <circle
-        cx="196"
-        cy="78"
-        r="11"
-        fill="currentColor"
-      />
+                    <!-- Observation / satellite node -->
+                    <circle
+                        cx="196"
+                        cy="78"
+                        r="11"
+                        fill="currentColor"
+                    />
 
-      <!-- Live signal -->
-      <path
-        d="M205 59
-           C214 64 221 71 225 80"
-        stroke="currentColor"
-        stroke-width="6"
-        stroke-linecap="round"
-        opacity=".75"
-      />
+                    <!-- Live signal -->
+                    <path
+                        d="M205 59
+                        C214 64 221 71 225 80"
+                        stroke="currentColor"
+                        stroke-width="6"
+                        stroke-linecap="round"
+                        opacity=".75"
+                    />
 
-      <path
-        d="M212 46
-           C226 54 237 66 243 81"
-        stroke="currentColor"
-        stroke-width="6"
-        stroke-linecap="round"
-        opacity=".4"
-      />
+                    <path
+                        d="M212 46
+                        C226 54 237 66 243 81"
+                        stroke="currentColor"
+                        stroke-width="6"
+                        stroke-linecap="round"
+                        opacity=".4"
+                    />
 
-      <!-- Detected event -->
-      <circle
-        cx="82"
-        cy="97"
-        r="7"
-        fill="currentColor"
-      />
+                    <!-- Detected event -->
+                    <circle
+                        cx="82"
+                        cy="97"
+                        r="7"
+                        fill="currentColor"
+                    />
     </svg>
-  </div>
 
-  <div>
-    <h2
-      class="font-display font-bold text-lg sm:text-2xl leading-tight text-white flex items-center gap-2"
-    >
-      NASA EONET Feed
+            </div>
+            <div>
+              <h2 class="font-display font-bold text-lg sm:text-2xl leading-tight text-white flex items-center gap-2">
+                Global Threat Monitor
+                <span class="flex h-2.5 w-2.5 relative ml-1 sm:ml-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                </span>
+              </h2>
+              <p class="text-slate-400 text-[10px] sm:text-sm mt-0.5 sm:mt-1">Synchronized with NASA EONET, USGS Earthquakes &amp; GDACS Alerts</p>
+            </div>
+          </div>
 
-      <span class="flex h-2.5 w-2.5 relative ml-1 sm:ml-2">
-        <span
-          class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"
-        ></span>
-        <span
-          class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"
-        ></span>
-      </span>
-    </h2>
-
-    <p class="text-slate-400 text-[10px] sm:text-sm mt-0.5 sm:mt-1">
-      Real-time Natural Event Tracker
-    </p>
-  </div>
-</div>
-
-          <!-- Tombol Sync jadi full-width di mobile -->
-          <button onclick="fetchEONETData()" class="relative z-10 w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center justify-center gap-2">
-            <i class="ph-bold ph-arrows-clockwise text-sm"></i> Sync Now
+          <button onclick="fetchLiveFeeds()" class="relative z-10 w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center justify-center gap-2">
+            <i class="ph-bold ph-arrows-clockwise text-sm"></i> Sync Telemetry
           </button>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-          <!-- Peta NASA EONET -->
-          <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm p-2 flex flex-col h-[350px] sm:h-[500px]">
+          
+          <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm p-2 flex flex-col h-[400px] sm:h-[550px] relative">
+             <div class="absolute top-4 left-4 z-[400] pointer-events-none flex flex-col gap-2">
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200 px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-2">
+                   <span class="w-3 h-3 rounded-full bg-red-500 pulse-quake block"></span>
+                   <span class="text-[10px] font-bold text-slate-700 uppercase">USGS Seismic (M4.5+)</span>
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200 px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-2">
+                   <span class="w-3 h-3 rounded-full bg-blue-500 block border border-white"></span>
+                   <span class="text-[10px] font-bold text-slate-700 uppercase">NASA Atmos/Biosphere</span>
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200 px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-2">
+                   <span class="w-3 h-3 bg-amber-500 block border border-white" style="transform:rotate(45deg);"></span>
+                   <span class="text-[10px] font-bold text-slate-700 uppercase">GDACS Official Alerts</span>
+                </div>
+             </div>
+             
              <div id="live-map" class="w-full flex-grow rounded-xl bg-slate-100 border border-slate-100 z-10"></div>
           </div>
           
-          <!-- Feed List & Chart -->
           <div class="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
-            <!-- Chart Kategori -->
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 h-[200px] sm:h-[250px] flex flex-col">
-              <h3 class="font-display font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider mb-2">Active Categories</h3>
-              <div id="live-chart-category" class="w-full flex-grow"></div>
+            
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 shrink-0">
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1"><i class="ph-fill ph-activity text-red-500"></i> Significant Quakes</p>
+                <p class="font-display font-black text-2xl text-slate-800" id="stat-quakes">0</p>
+              </div>
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1"><i class="ph-fill ph-cloud-lightning text-blue-500"></i> Active Storms</p>
+                <p class="font-display font-black text-2xl text-slate-800" id="stat-storms">0</p>
+              </div>
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1"><i class="ph-fill ph-fire text-orange-500"></i> Wildfires</p>
+                <p class="font-display font-black text-2xl text-slate-800" id="stat-fires">0</p>
+              </div>
+              <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1"><i class="ph-fill ph-mountains text-purple-500"></i> Volcanoes</p>
+                <p class="font-display font-black text-2xl text-slate-800" id="stat-volcanoes">0</p>
+              </div>
+              <div class="col-span-2 bg-white rounded-2xl border border-slate-200 p-4 shadow-sm flex items-center justify-between">
+                <div>
+                  <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1"><i class="ph-fill ph-warning-diamond text-amber-500"></i> GDACS Official Alerts</p>
+                  <p class="font-display font-black text-2xl text-slate-800" id="stat-gdacs">0</p>
+                </div>
+                <i class="ph-fill ph-shield-warning text-4xl text-amber-100"></i>
+              </div>
             </div>
             
-            <!-- List Event -->
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 flex-grow flex flex-col min-h-[250px] sm:h-[230px]">
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 flex-grow flex flex-col min-h-[300px] h-[300px]">
               <div class="flex justify-between items-center mb-3 border-b border-slate-100 pb-2 shrink-0">
-                <h3 class="font-display font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider">Latest Events</h3>
+                <h3 class="font-display font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider">Unified Intel Feed</h3>
                 <span id="live-event-count" class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded">0</span>
               </div>
               <div id="live-feed-list" class="flex flex-col gap-2 overflow-y-auto pr-2 custom-scrollbar flex-grow">
-                <p class="text-xs text-slate-400 italic text-center mt-10">Waiting for data sync...</p>
+                <p class="text-xs text-slate-400 italic text-center mt-10">Waiting for telemetry sync...</p>
               </div>
             </div>
+
           </div>
         </div>
-
       </div>
 
+    </div>
   </main>
 
   <!-- ========================================== -->
@@ -542,7 +591,6 @@
   
   <div id="item-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden modal-backdrop p-3 sm:p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-3xl w-full max-w-5xl max-h-[95vh] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300 shadow-2xl" id="modal-content-wrapper">
-      
       <div class="p-5 sm:p-8 border-b border-slate-100 bg-slate-50 shrink-0 flex justify-between items-start relative overflow-hidden">
         <div id="modal-alert-strip" class="absolute top-0 left-0 bottom-0 w-2 hidden bg-red-500"></div>
         <div class="pl-1 sm:pl-2">
@@ -552,16 +600,9 @@
         </div>
         <button onclick="closeModal()" class="text-slate-400 hover:text-slate-800 bg-white border border-slate-200 hover:border-slate-400 transition-all p-2 rounded-xl shadow-sm shrink-0 absolute right-4 sm:right-8 top-4 sm:top-8"><i class="ph-bold ph-x text-xl"></i></button>
       </div>
-      
       <div class="p-5 sm:p-8 overflow-y-auto flex-grow bg-white">
-        
-        <!-- Media Carousel: Image + YouTube -->
-        <div id="modal-media-carousel" class="media-carousel flex gap-4 overflow-x-auto pb-4 mb-6 hidden snap-x items-center">
-            <!-- Content loaded via JS -->
-        </div>
-
+        <div id="modal-media-carousel" class="media-carousel flex gap-4 overflow-x-auto pb-4 mb-6 hidden snap-x items-center"></div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-          
           <div class="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
             <div id="modal-risk-box" class="bg-white rounded-2xl p-5 sm:p-6 border shadow-sm">
               <h4 class="font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-3 flex items-center gap-2"><i class="ph-fill ph-warning-octagon text-lg"></i> Threat Score</h4>
@@ -571,8 +612,8 @@
               </div>
               <p class="text-[10px] font-bold uppercase mb-4 flex flex-wrap gap-1" id="modal-risk-types"></p>
               <p class="text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3" id="modal-risk-desc"></p>
+              <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-slate-100" id="modal-risk-extra"></div>
             </div>
-            
             <div class="bg-slate-50 rounded-2xl p-5 sm:p-6 border border-slate-100">
               <h4 class="font-bold text-[10px] uppercase tracking-widest text-slate-400 mb-4">Escalation Matrix</h4>
               <div class="space-y-4">
@@ -587,13 +628,11 @@
               </div>
             </div>
           </div>
-          
           <div class="lg:col-span-2 flex flex-col gap-5 sm:gap-6">
             <div>
               <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 mb-2">Executive Summary</h4>
               <p class="text-sm sm:text-[15px] text-slate-700 leading-relaxed" id="modal-summary"></p>
             </div>
-            
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div class="bg-blue-50/50 p-4 sm:p-5 rounded-2xl border border-blue-100">
                 <h5 class="font-bold text-[10px] uppercase tracking-widest text-blue-600 mb-2 sm:mb-3 flex items-center gap-2"><i class="ph-bold ph-tree-structure text-sm"></i> Root Cause</h5>
@@ -604,7 +643,6 @@
                 <div id="modal-affected" class="flex flex-wrap gap-2"></div>
               </div>
             </div>
-
             <div>
               <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 mb-3 mt-2">Observation & Manifestation</h4>
               <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
@@ -617,10 +655,15 @@
                 </div>
               </div>
             </div>
-
             <div id="modal-sources-section" class="mt-2 hidden">
               <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 mb-3">Verified Sources</h4>
               <div id="modal-sources-list" class="flex flex-col gap-2"></div>
+            </div>
+            <div class="mt-2">
+              <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 mb-3 flex items-center gap-2"><i class="ph-fill ph-globe-stand text-emerald-500"></i> Cross-Reference Intelligence <span class="text-[9px] font-bold uppercase text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">via ReliefWeb API</span></h4>
+              <div id="modal-external-list" class="flex flex-col gap-2">
+                <p class="text-xs text-slate-400 italic">Open a signal to query related humanitarian reports.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -637,7 +680,6 @@
         <button onclick="closeGuideModal()" class="text-slate-400 hover:text-slate-800 bg-white border border-slate-200 rounded-xl p-2 transition-all"><i class="ph-bold ph-x text-lg"></i></button>
       </div>
       <div class="p-5 sm:p-8 overflow-y-auto flex-grow text-xs sm:text-sm text-slate-600 leading-relaxed space-y-5 sm:space-y-6">
-        
         <div class="bg-nexus-light p-4 sm:p-5 rounded-2xl border border-blue-100 flex items-start gap-4">
           <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 text-white rounded-full flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm"><i class="ph-bold ph-radar"></i></div>
           <div>
@@ -645,15 +687,22 @@
             <p>An autonomous Open-Source Intelligence (OSINT) platform focused on detecting <strong>Latent Signals</strong>—early warnings of environmental and societal systemic vulnerabilities <em>before</em> they escalate into confirmed disasters.</p>
           </div>
         </div>
-
         <div>
           <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">The AI Discovery Pipeline</h4>
           <div class="space-y-3">
             <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs shrink-0">1</div><p><b>Validation:</b> AI ignores past disasters; exclusively looks for creeping anomalies.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs shrink-0">2</div><p><b>Extraction:</b> Structures text into Domains, Affected Elements, and Urgency metrics.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs shrink-0">3</div><p><b>Threat Assessment:</b> Evaluates potential casualty/catastrophe risk (1-10).</p></div>
+            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs shrink-0">2</div><p><b>Extraction:</b> Structures text into Domains, Affected Elements, Signal Intensity, and Urgency metrics.</p></div>
+            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs shrink-0">3</div><p><b>Threat Assessment:</b> Evaluates potential casualty/catastrophe risk (1-10) and severity level.</p></div>
             <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-teal-100 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0">4</div><p><b>Root Cause Analysis:</b> Determines if the issue is natural, anthropogenic, or systemic.</p></div>
             <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0">5</div><p><b>Algorithmic Synthesis:</b> Applies Priority Scoring and Critical Flags.</p></div>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">Live External Intelligence</h4>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><i class="ph-fill ph-globe-hemisphere-west text-blue-500 text-lg shrink-0"></i><p><b>NASA EONET & USGS:</b> Real-time natural events and seismic activity, free public APIs.</p></div>
+            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><i class="ph-fill ph-warning-diamond text-amber-500 text-lg shrink-0"></i><p><b>GDACS:</b> Official UN-affiliated disaster alert levels (Green/Orange/Red).</p></div>
+            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><i class="ph-fill ph-file-text text-emerald-500 text-lg shrink-0"></i><p><b>ReliefWeb:</b> Cross-referenced humanitarian reports matched by country, shown inside each signal modal.</p></div>
           </div>
         </div>
       </div>
@@ -664,8 +713,6 @@
   <!-- JAVASCRIPT LOGIC -->
   <!-- ========================================== -->
   <script>
-  
-  // Coordinates dictionary for fallback if map data lacks lat/lon
   const countryCoordinates = {
     "vietnam": { lat: 14.0583, lon: 108.2772 },
     "india": { lat: 20.5937, lon: 78.9629 },
@@ -678,429 +725,55 @@
     "global": { lat: 20, lon: 0 }
   };
 
-  // --- SAMPLE DATA FALLBACK ---
   const FALLBACK_JSON = [
     {
       "id": "13476c61b30eee73ae9a17711e26c469",
       "timestamp": "2026-04-15T18:17:45.473282",
       "title": "Mesophotic Coral Ecosystems Losing Thermal Refugia Status",
-      "sources": [
-        "https://www.noaa.gov/news-release/noaa-confirms-4th-global-coral-bleaching-event",
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-      ],
-      "image_url": "https://images.unsplash.com/photo-1546500840-ae38253aba9b?q=80&w=600&auto=format&fit=crop",
-      "summary": "Mesophotic coral reefs at depths of 30m to 150m, historically considered 'thermal refugia' from surface heatwaves, are now experiencing deep-water thermal stress. Observations in the Egyptian Red Sea reveal an inversion of traditional bleaching patterns.",
-      "domain_classification": ["Ocean", "Climate", "Biodiversity"],
+      "sources": ["https://www.noaa.gov/news-release/noaa-confirms-4th-global-coral-bleaching-event", "https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+      "signal_intensity": "strong",
+      "summary": "Mesophotic coral reefs at depths of 30m to 150m, historically considered 'thermal refugia' from surface heatwaves, are now experiencing deep-water thermal stress.",
+      "domain_classification": ["Ocean", "Climate"],
       "location": {"country": "Egypt", "region": "Red Sea", "lat": 26.8206, "lon": 30.8025},
-      "manifestation": {
-        "how_it_is_observed": "Deep water acoustic and diving surveys.",
-        "key_indicators": ["Bleaching observed below 30 meters", "Thermocline penetration by surface heat"]
-      },
-      "potential_impact": {"threat_level": "high", "affected_elements": ["Marine Biodiversity", "Fisheries", "Seed Populations"]},
+      "manifestation": { "how_it_is_observed": "Deep water acoustic and diving surveys.", "key_indicators": ["Bleaching observed below 30 meters"] },
+      "potential_impact": {"threat_level": "high", "affected_elements": ["Marine Biodiversity"]},
       "escalation": {"speed": "medium", "urgency": "high"},
       "root_cause_analysis": {"root_cause": ["anthropogenic"]},
-      "risk_assessment": {
-        "risk_score": 8, 
-        "risk_type": ["Ecological"], 
-        "explanation": "If deeper corals bleach, the primary natural mechanism for reef repopulation (spawning from depth) will collapse, making ecosystem recovery impossible."
-      },
+      "risk_assessment": { "risk_score": 8, "risk_type": ["Ecological"], "severity_level": "high", "needs_immediate_intervention": true, "explanation": "If deeper corals bleach, the primary natural mechanism for reef repopulation will collapse." },
       "priority_score": 85,
       "critical_flag": true
-    },
-    {
-      "id": "e8307b9736872517ae9a17711e26c469",
-      "timestamp": "2026-04-16T09:30:00.000000",
-      "title": "AOD Creep Warning: Latent Biomass Burning Surge",
-      "sources": ["https://earthobservatory.nasa.gov/", "https://youtu.be/jNQXAC9IVRw"],
-      "summary": "Aerosol Optical Depth (AOD) values are creeping upwards from 0.1 toward 0.5 in rural basins, serving as a critical early warning signal for impending large-scale transboundary haze events.",
-      "domain_classification": ["Climate", "Social/Behavioral"],
-      "location": {"country": "Indonesia", "region": "Sumatra/Kalimantan", "lat": -0.7893, "lon": 113.9213},
-      "manifestation": {
-        "how_it_is_observed": "Satellite monitoring detecting fine particulates before ground-level AQI fully degrades.",
-        "key_indicators": ["AOD values rising steadily", "Atmospheric particulate loading"]
-      },
-      "potential_impact": {"threat_level": "medium", "affected_elements": ["Public health", "Regional air quality", "Downwind urban populations"]},
-      "escalation": {"speed": "medium", "urgency": "medium"},
-      "root_cause_analysis": {"root_cause": ["anthropogenic"]},
-      "risk_assessment": {
-        "risk_score": 7, 
-        "risk_type": ["Environmental", "Public Health"], 
-        "explanation": "AOD creep serves as a critical early warning. Without intervention, increased particulate load from slash-and-burn will inevitably trigger severe public health crises in neighboring cities."
-      },
-      "priority_score": 62,
-      "critical_flag": false
-    },
-    {
-      "id": "899405a111223344ae9a17711e26c469",
-      "timestamp": "2026-04-14T14:20:00.000000",
-      "title": "Seafloor Deepening Triggering Anomalous Tidal Flooding",
-      "sources": [],
-      "summary": "The physical collapse of degraded coral reef frameworks has led to measurable seafloor widening and deepening. This altered bathymetry is allowing massive tidal surges to reach the coast without any associated storm activity.",
-      "domain_classification": ["DRR", "Ocean"],
-      "location": {"country": "Global", "region": "Low-lying coastal zones", "lat": 20.0, "lon": 0.0},
-      "manifestation": {
-        "how_it_is_observed": "Bathymetric surveys mapping nearshore depth changes paired with tide gauge data.",
-        "key_indicators": ["Increased tidal amplitude at shore", "Loss of reef friction coefficient"]
-      },
-      "potential_impact": {"threat_level": "high", "affected_elements": ["Coastal Infrastructure", "Human Settlements"]},
-      "escalation": {"speed": "slow", "urgency": "high"},
-      "root_cause_analysis": {"root_cause": ["anthropogenic", "systemic"]},
-      "risk_assessment": {
-        "risk_score": 9, 
-        "risk_type": ["Disaster", "Economic"], 
-        "explanation": "Directly impacts coastal habitation by eroding the natural breakwater. 'Sunny day flooding' will force rapid and unplanned retreat."
-      },
-      "priority_score": 92,
-      "critical_flag": true
     }
   ];
 
-  // --- SAMPLE RESUME FALLBACK ---
-  const FALLBACK_RESUME = [
-    {
-      "report_metadata": {
-        "report_id": "nexus-current",
-        "generated_at": "2026-04-16T10:00:00.000000",
-        "period": "Q2 2026",
-        "total_signals_analyzed": 3
-      },
-      "global_summary": {
-        "total_signals": 3,
-        "high_urgency_percentage": 66.7,
-        "anthropogenic_percentage": 100.0
-      },
-      "domain_insights": [
-        { "domain": "Ocean", "count": 2, "key_pattern": "Thermal refugia across depth are collapsing simultaneously." },
-        { "domain": "Climate", "count": 2, "key_pattern": "Aerosol creeping indicates severe transboundary haze risks." },
-        { "domain": "DRR", "count": 1, "key_pattern": "Physical reef degradation directly amplifying coastal flooding." },
-        { "domain": "Social/Behavioral", "count": 1, "key_pattern": "Agricultural land management escalating particulate loads." }
-      ],
-      "geographic_threats": [
-        { "region": "Red Sea", "dominant_issue": "Deep-water (mesophotic) thermal stress", "threat_level": "high" },
-        { "region": "Southeast Asia", "dominant_issue": "AOD creeping and latent haze", "threat_level": "medium" }
-      ],
-      "risk_analysis": {
-        "high_risk_cases": 2,
-        "critical_cases": 2,
-        "top_threats": []
-      },
-      "critical_signals": [
-        { "title": "Mesophotic Coral Ecosystems Losing Thermal Refugia Status", "country": "Egypt", "reason_for_urgency": "Irreversible loss of biodiversity seedbanks at depth." },
-        { "title": "Seafloor Deepening Triggering Anomalous Tidal Flooding", "country": "Global", "reason_for_urgency": "Immediate threat to coastal settlements without storm warnings." }
-      ],
-      "intervention_opportunities": [
-        { "type": "Policy", "target": "Redefine Marine Protected Areas (MPAs) to include mesophotic zones.", "priority_level": "High" },
-        { "type": "Monitoring", "target": "Early intervention tracking for AOD slash-and-burn patterns.", "priority_level": "Medium" }
-      ],
-      "root_cause_insights": {
-        "most_common_cause": "Anthropogenic Climate Change",
-        "observation": "Human-induced warming and land mismanagement have reached a threshold where traditional environmental buffers are failing."
-      },
-      "recommendations": [
-        "Redefine Marine Protected Areas (MPAs) to include mesophotic zones specifically as high-risk areas.",
-        "Implement high-latitude coral monitoring programs to track the collapse of temperate refugia.",
-        "Re-evaluate coastal defense engineering to account for degraded reef friction.",
-        "Develop preemptive strike policies for agricultural burning based on AOD creeping indicators."
-      ],
-      "charts": {
-        "risk_distribution": [
-          { "level": "High", "count": 2 },
-          { "level": "Medium", "count": 1 },
-          { "level": "Low", "count": 0 }
-        ]
-      }
-    }
-  ];
+  const FALLBACK_RESUME = [{
+      "report_metadata": { "report_id": "nexus-current", "generated_at": "2026-04-16T10:00:00.000000", "period": "Q2 2026", "total_signals_analyzed": 1 },
+      "global_summary": { "total_signals": 1, "high_urgency_percentage": 100.0, "anthropogenic_percentage": 100.0 },
+      "domain_insights": [{ "domain": "Ocean", "count": 1, "key_pattern": "Thermal refugia are collapsing." }],
+      "geographic_threats": [{ "region": "Red Sea", "dominant_issue": "Deep-water thermal stress", "threat_level": "high" }],
+      "risk_analysis": { "high_risk_cases": 1, "critical_cases": 1, "top_threats": [] },
+      "critical_signals": [{ "title": "Mesophotic Coral Ecosystems Losing Thermal Refugia Status", "country": "Egypt", "reason_for_urgency": "Irreversible loss of biodiversity." }],
+      "intervention_opportunities": [{ "type": "Policy", "target": "Redefine Marine Protected Areas.", "priority_level": "High" }],
+      "root_cause_insights": { "most_common_cause": "Anthropogenic Climate Change", "observation": "Warming reached threshold." },
+      "recommendations": ["Redefine MPAs to include mesophotic zones."],
+      "charts": { "risk_distribution": [{ "level": "High", "count": 1 }] }
+  }];
 
-  // STATE
+  // --- STATE DATA ---
   let globalData = [];
   let filteredData = [];
   let globalResume = [];
   let map = null, markersLayer = null;
-  let currentPage = 1, itemsPerPage = 20; // Default Show 20
+  let currentPage = 1, itemsPerPage = 20; 
   let chartInstances = {};
+  const reliefWebCache = {};
 
-  // --- STATE UNTUK TAB LIVE ---
+  // --- STATE UNTUK TAB LIVE (NASA + USGS + GDACS) ---
   let liveMap = null;
-  let liveGeoJsonLayer = null;
-  let liveChart = null;
-
-  // Modifikasi fungsi switchTab yang sudah ada untuk mengenali tab 'live'
-  const originalSwitchTab = switchTab; // Menyimpan fungsi lama (jika perlu)
-  switchTab = function(tabId) {
-    ['inventory','map','resume', 'live'].forEach(t => { // Tambahkan 'live' ke array ini
-      const nav = document.getElementById(`nav-${t}`);
-      if(nav) nav.classList.toggle('active', t === tabId);
-      
-      const view = document.getElementById(`view-${t}`);
-      if(view) {
-        if (t === tabId) { view.classList.remove('hidden'); view.classList.add('flex'); }
-        else { view.classList.add('hidden'); view.classList.remove('flex'); }
-      }
-    });
-
-    const titles = {
-      'inventory':['Signal Inventory', 'Real-time latent environmental anomalies.'],
-      'map':['Global Threat Map', 'Geospatial distribution of detected signals.'],
-      'resume':['Intelligence Resume', 'Quarterly synthesis and recommendations.'],
-      'live':['Live NASA EONET', 'Real-time natural event monitoring.']
-    };
-    
-    if(titles[tabId]) {
-      document.getElementById('page-title').innerText = titles[tabId][0];
-      document.getElementById('page-title').nextElementSibling.innerText = titles[tabId][1];
-    }
-
-    // Close sidebar on mobile
-    const sidebar = document.getElementById('sidebar');
-    if (!sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) toggleSidebar();
-
-    // Logic khusus untuk masing-masing tab saat dibuka
-    if (tabId === 'map') {
-      if (!map) { initMap(); drawMapElements(); renderMapCharts(); }
-      setTimeout(() => { if(map) map.invalidateSize(); if(chartInstances.domainMap) chartInstances.domainMap.resize(); }, 150);
-    }
-    if (tabId === 'resume') {
-      const sel = document.getElementById('report-selector');
-      if (sel.options.length > 0) loadReport(sel.value);
-      setTimeout(() => resizeAllCharts(), 150);
-    }
-    if (tabId === 'live') {
-      if (!liveMap) {
-        initLiveMap();
-        fetchEONETData();
-      }
-      setTimeout(() => { 
-        if(liveMap) liveMap.invalidateSize(); 
-        if(liveChart) liveChart.resize(); 
-      }, 150);
-    }
-  };
-
-  // --- INISIALISASI PETA LIVE (MENGGUNAKAN ESRI LIGHT GRAY) ---
-  function initLiveMap() {
-    liveMap = L.map('live-map',{zoomControl:true,scrollWheelZoom:false}).setView([20,0],2);
-    // ESRI Light Gray Base Map (Gratis, No API Key)
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-      maxZoom: 16
-    }).addTo(liveMap);
-  }
-
-  // --- HELPER UNTUK KATEGORI NASA ---
-  function getCategoryStyle(categoryTitle) {
-    const cat = categoryTitle.toLowerCase();
-    if(cat.includes('fire')) return { color: '#ef4444', bg: 'bg-red-50 text-red-600', icon: 'ph-fire' }; // Red
-    if(cat.includes('storm') || cat.includes('cyclone')) return { color: '#3b82f6', bg: 'bg-blue-50 text-blue-600', icon: 'ph-cloud-lightning' }; // Blue
-    if(cat.includes('volcano')) return { color: '#f97316', bg: 'bg-orange-50 text-orange-600', icon: 'ph-mountains' }; // Orange
-    if(cat.includes('ice')) return { color: '#0ea5e9', bg: 'bg-sky-50 text-sky-600', icon: 'ph-snowflake' }; // Sky
-    if(cat.includes('earthquake')) return { color: '#8b5cf6', bg: 'bg-purple-50 text-purple-600', icon: 'ph-activity' }; // Purple
-    return { color: '#10b981', bg: 'bg-emerald-50 text-emerald-600', icon: 'ph-warning-circle' }; // Green default
-  }
-
-  // Tambahkan variabel layer cluster untuk EONET di atas bersama variabel map lainnya
-  let liveClusterLayer = null;
-
-  // --- AMBIL DATA DARI NASA EONET (LIMIT 400 AGAR TIDAK FREEZE) ---
-  async function fetchEONETData() {
-    document.getElementById('live-feed-list').innerHTML = `<p class="text-xs text-slate-400 italic text-center mt-10"><i class="ph-bold ph-spinner animate-spin text-lg mb-2 block"></i> Syncing with NASA...</p>`;
-    
-    try {
-      // PERUBAHAN: Menambahkan &limit=400 agar browser tidak meledak membaca 7000 data
-      const response = await fetch('https://eonet.gsfc.nasa.gov/api/v3/events/geojson?status=open&limit=400');
-      const data = await response.json();
-      
-      renderLiveMap(data);
-      renderLiveFeed(data);
-      renderLiveChart(data);
-      
-      document.getElementById('live-event-count').innerText = data.features.length;
-    } catch(error) {
-      console.error("Gagal mengambil data EONET:", error);
-      document.getElementById('live-feed-list').innerHTML = `<p class="text-xs text-red-500 italic text-center mt-10">Failed to sync with NASA EONET.</p>`;
-    }
-  }
-
-  // Variabel untuk menyimpan marker agar bisa dipanggil dari Sidebar
   let liveMarkersById = {};
+  let liveClusterLayer = null;
   let liveLinesLayer = null;
+  let usgsLayer = null;
 
-  // --- RENDER MAP MENGGUNAKAN LEAFLET CLUSTER & POLYLINE (ADVANCED) ---
-  function renderLiveMap(geojsonData) {
-    if(liveGeoJsonLayer) liveMap.removeLayer(liveGeoJsonLayer);
-    if(liveClusterLayer) liveMap.removeLayer(liveClusterLayer);
-    if(liveLinesLayer) liveMap.removeLayer(liveLinesLayer);
-    
-    liveMarkersById = {}; // Reset
-
-    liveClusterLayer = L.markerClusterGroup({
-      chunkedLoading: true, maxClusterRadius: 40,
-      iconCreateFunction: c => L.divIcon({ html: `<div class="bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center font-display font-bold shadow-lg border-2 border-slate-500">${c.getChildCount()}</div>`, className: '', iconSize: [40,40] })
-    });
-
-    liveLinesLayer = L.layerGroup().addTo(liveMap);
-    const bounds = [];
-
-    // Kita parsing manual agar bisa menggambar Track/Garis lintasan badai
-    geojsonData.features.forEach(feature => {
-        const props = feature.properties || {};
-        const eventId = props.id;
-        const categories = props.categories || [];
-        const catTitle = categories.length > 0 ? categories[0].title : 'Unknown';
-        const style = getCategoryStyle(catTitle);
-        
-        let coords = feature.geometry?.coordinates;
-        if (!coords) return;
-
-        let latestCoord = null;
-
-        // Jika NASA memberikan banyak titik (misal: lintasan badai)
-        if (Array.isArray(coords[0])) {
-            // Ambil semua titik untuk dijadikan garis (lintasan sejarah)
-            const latlngs = coords.map(c => [c[1], c[0]]);
-            L.polyline(latlngs, { color: style.color, weight: 2, opacity: 0.5, className: 'track-line' }).addTo(liveLinesLayer);
-            
-            // Titik terakhir adalah lokasi badai SAAT INI
-            latestCoord = [coords[coords.length - 1][1], coords[coords.length - 1][0]];
-        } else {
-            // Jika cuma 1 titik (misal: gunung meletus)
-            latestCoord = [coords[1], coords[0]];
-        }
-
-        bounds.push(latestCoord);
-
-        // Buat Ikon Glowing
-        const iconHtml = `<div class="pulse-eonet" style="background-color: ${style.color}; width: 14px; height: 14px; border: 2px solid white; --pulse-color: ${style.color}80;"></div>`;
-        const customIcon = L.divIcon({ className: '', html: iconHtml, iconSize: [14,14], iconAnchor: [7,7] });
-        
-        // Buat Tombol Google News pengganti Source NASA yang rusak
-        const searchUrl = `https://www.google.com/search?tbm=nws&q=${encodeURIComponent(props.title)}`;
-        const dateObj = props.date ? new Date(props.date) : new Date();
-        
-        const popupContent = `
-          <div class="w-48 p-1">
-            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">${catTitle}</p>
-            <h4 class="font-display font-bold text-xs text-slate-800 mb-2 leading-tight">${props.title || 'Unknown Event'}</h4>
-            <p class="text-[10px] text-slate-500 flex items-center gap-1 mb-2"><i class="ph-bold ph-calendar"></i> ${dateObj.toLocaleDateString()}</p>
-            <a href="${searchUrl}" target="_blank" class="block text-center mt-2 w-full bg-blue-50 border border-blue-200 text-blue-600 hover:bg-blue-600 hover:text-white text-[10px] font-bold py-1.5 rounded transition-colors flex items-center justify-center gap-1"><i class="ph-bold ph-magnifying-glass"></i> SEARCH NEWS</a>
-          </div>
-        `;
-
-        const marker = L.marker(latestCoord, { icon: customIcon }).bindPopup(popupContent);
-        liveMarkersById[eventId] = marker; // Simpan ke memory
-        liveClusterLayer.addLayer(marker);
-    });
-
-    liveMap.addLayer(liveClusterLayer);
-    if (bounds.length > 0) liveMap.fitBounds(bounds, { padding: [20, 20], maxZoom: 5 });
-  }
-
-  // --- FUNGSI KLIK DARI SIDEBAR ---
-  function focusLiveEvent(eventId, lat, lng) {
-      liveMap.flyTo([lat, lng], 6, { duration: 1.5 });
-      
-      // Tunggu animasi terbang selesai, lalu buka popupnya
-      setTimeout(() => {
-          const marker = liveMarkersById[eventId];
-          if(marker) {
-              // Jika marker tersembunyi di dalam cluster, otomatis pecah clusternya
-              liveClusterLayer.zoomToShowLayer(marker, () => {
-                  marker.openPopup();
-              });
-          }
-      }, 1500);
-  }
-
-  // --- RENDER FEED LIST ---
-  function renderLiveFeed(geojsonData) {
-    const listCont = document.getElementById('live-feed-list');
-    listCont.innerHTML = '';
-    
-    if (!geojsonData.features || geojsonData.features.length === 0) {
-       listCont.innerHTML = `<p class="text-xs text-slate-400 italic text-center mt-10">No active events right now.</p>`; return;
-    }
-
-    const features = geojsonData.features.slice(0, 20);
-    features.forEach(f => {
-      const p = f.properties || {};
-      const eventId = p.id;
-      const categories = p.categories || [];
-      const catTitle = categories.length > 0 ? categories[0].title : 'Event';
-      const style = getCategoryStyle(catTitle);
-      const dateStr = p.date ? new Date(p.date).toLocaleDateString() : '-';
-      
-      let coords = f.geometry?.coordinates;
-      let lat = 0, lng = 0;
-      if (coords) {
-          if (Array.isArray(coords[0])) { lat = coords[coords.length-1][1]; lng = coords[coords.length-1][0]; } // Ambil ujung track
-          else { lat = coords[1]; lng = coords[0]; }
-      }
-      
-      // Perhatikan onclick sekarang memanggil focusLiveEvent
-      const itemHtml = `
-        <div onclick="focusLiveEvent('${eventId}', ${lat}, ${lng})" class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-nexus-main cursor-pointer transition-colors flex items-start gap-3">
-          <div class="w-8 h-8 rounded-full ${style.bg} flex items-center justify-center shrink-0">
-            <i class="ph-fill ${style.icon} text-lg"></i>
-          </div>
-          <div>
-            <h4 class="text-xs font-bold text-slate-800 line-clamp-1" title="${p.title || 'Event'}">${p.title || 'Unnamed Event'}</h4>
-            <div class="flex items-center gap-2 mt-1">
-              <span class="text-[9px] font-bold uppercase tracking-wider text-slate-500">${catTitle}</span>
-              <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-              <span class="text-[9px] text-slate-400">${dateStr}</span>
-            </div>
-          </div>
-        </div>
-      `;
-      listCont.insertAdjacentHTML('beforeend', itemHtml);
-    });
-  }
-
-  // --- RENDER PIE CHART (VERSI AMAN) ---
-  function renderLiveChart(geojsonData) {
-    if(!liveChart) liveChart = echarts.init(document.getElementById('live-chart-category'));
-    
-    const catCounts = {};
-    if (geojsonData.features) {
-      geojsonData.features.forEach(f => {
-        const categories = f.properties?.categories || [];
-        const cat = categories.length > 0 ? categories[0].title : 'Other';
-        catCounts[cat] = (catCounts[cat] || 0) + 1;
-      });
-    }
-    
-    const chartData = Object.keys(catCounts).map(key => {
-      const style = getCategoryStyle(key);
-      return { 
-        name: key, 
-        value: catCounts[key],
-        itemStyle: { color: style.color }
-      };
-    });
-    
-    liveChart.setOption({
-      tooltip: { trigger: 'item' },
-      series: [
-        {
-          name: 'Events',
-          type: 'pie',
-          radius: ['40%', '75%'],
-          avoidLabelOverlap: false,
-          itemStyle: { borderRadius: 5, borderColor: '#fff', borderWidth: 2 },
-          label: { show: false },
-          labelLine: { show: false },
-          data: chartData.length > 0 ? chartData : [{ name: 'No Data', value: 1, itemStyle: { color: '#e2e8f0' } }]
-        }
-      ]
-    });
-  }
-  
-  // Pastikan chart di-resize jika window berubah
-  window.addEventListener('resize', () => {
-    if(liveChart) liveChart.resize();
-  });
-
-  // --- MOBILE SIDEBAR ---
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebar-overlay');
@@ -1108,54 +781,102 @@
     overlay.classList.toggle('hidden');
   }
 
-  // --- INIT DATA ---
   async function init() {
-    
-    // 1. Fetch Data.json
     try {
       const res = await fetch('data.json');
       if (res.ok) {
         const raw = await res.json();
-        if (Array.isArray(raw) && raw.length > 0 && Array.isArray(raw[0].domain_classification)) {
-          globalData = raw;
-          console.log("Loaded actual data.json");
-        } else {
-          console.warn("data.json format is invalid or old. Using Fallback.");
-          globalData = FALLBACK_JSON;
-        }
-      } else { throw new Error("Fetch failed"); }
-    } catch(e) { 
-      console.warn("Failed to load data.json (CORS/Offline). Using robust fallback samples.", e);
-      globalData = FALLBACK_JSON; 
-    }
+        if (Array.isArray(raw) && raw.length > 0) globalData = raw; else globalData = FALLBACK_JSON;
+      } else throw new Error("Fetch failed");
+    } catch(e) { globalData = FALLBACK_JSON; }
 
-    // 2. Fetch Resume.json
     try {
       const res = await fetch('resume.json');
       if (res.ok) {
         const raw = await res.json();
-        if (Array.isArray(raw) && raw.length > 0 && typeof raw[0].global_summary === 'object') {
-          globalResume = raw;
-          console.log("Loaded actual resume.json");
-        } else { globalResume = FALLBACK_RESUME; }
-      } else { throw new Error("Fetch failed"); }
-    } catch(e) { 
-      console.warn("Failed to load resume.json. Using fallback.");
-      globalResume = FALLBACK_RESUME; 
-    }
+        if (Array.isArray(raw) && raw.length > 0) globalResume = raw; else globalResume = FALLBACK_RESUME;
+      } else throw new Error("Fetch failed");
+    } catch(e) { globalResume = FALLBACK_RESUME; }
 
     globalData.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
     
     renderTopStats();
     renderMiniCharts();
+    updateFreshnessBanner();
     setupFilters(); 
     applyFilters();
     populateReportSelector();
   }
 
-  // --- UI CONTROLS ---
+  // --- UTILITIES: TIME & INTENSITY ---
+  function timeAgo(dateStr) {
+    const diffMs = Date.now() - new Date(dateStr).getTime();
+    const mins = Math.floor(diffMs / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    const days = Math.floor(hrs / 24);
+    return `${days}d ago`;
+  }
+
+  function updateFreshnessBanner() {
+    const dot = document.getElementById('freshness-dot'), txt = document.getElementById('freshness-text');
+    if (globalData.length === 0) { txt.innerText = 'No signal data available.'; dot.className = 'w-2 h-2 rounded-full bg-slate-400'; return; }
+    const latest = globalData.reduce((max, i) => new Date(i.timestamp) > new Date(max) ? i.timestamp : max, globalData[0].timestamp);
+    const diffH = (Date.now() - new Date(latest).getTime()) / 3600000;
+    txt.innerHTML = `Latest signal detected <b class="text-slate-800">${timeAgo(latest)}</b> &bull; <b class="text-slate-800">${globalData.length}</b> total records tracked`;
+    dot.className = `w-2 h-2 rounded-full shrink-0 ${diffH < 24 ? 'bg-emerald-500' : diffH < 72 ? 'bg-amber-500' : 'bg-red-500'}`;
+  }
+
+  function getIntensityMeta(level) {
+    level = String(level || 'unknown').toLowerCase();
+    if (level === 'strong') return { label: 'STRONG SIGNAL', cls: 'bg-red-100 text-red-700 border-red-200', dot: 'bg-red-500' };
+    if (level === 'moderate') return { label: 'MODERATE SIGNAL', cls: 'bg-amber-100 text-amber-700 border-amber-200', dot: 'bg-amber-500' };
+    if (level === 'weak') return { label: 'WEAK SIGNAL', cls: 'bg-slate-100 text-slate-600 border-slate-200', dot: 'bg-slate-400' };
+    return { label: 'UNCLASSIFIED', cls: 'bg-slate-100 text-slate-500 border-slate-200', dot: 'bg-slate-300' };
+  }
+
+  function getThemedImageUrl(item) {
+    const domainMap = { ocean:'ocean,sea', climate:'climate,storm', drr:'disaster,earthquake', water:'river,drought', biodiversity:'wildlife,forest', social:'industry,factory' };
+    const mainDomain = (Array.isArray(item.domain_classification) && item.domain_classification[0]) ? String(item.domain_classification[0]).toLowerCase() : 'nature';
+    let key = 'nature,environment';
+    for (const k in domainMap) { if (mainDomain.includes(k)) { key = domainMap[k]; break; } }
+    let lockSeed = 0;
+    const idStr = String(item.id || item.title || '0');
+    for (let i = 0; i < idStr.length; i++) lockSeed = (lockSeed + idStr.charCodeAt(i) * (i+1)) % 5000;
+    return `https://loremflickr.com/400/300/${key}/all?lock=${lockSeed}`;
+  }
+
+  // --- EXPORT FUNCTIONS ---
+  function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+  }
+
+  function exportData(format) {
+    if (filteredData.length === 0) { alert('No data to export with current filters.'); return; }
+    if (format === 'json') {
+      const blob = new Blob([JSON.stringify(filteredData, null, 2)], { type: 'application/json' });
+      downloadBlob(blob, `nexus_radar_signals_${Date.now()}.json`);
+    } else if (format === 'csv') {
+      const headers = ['ID','Title','Country','Region','Domain','SignalIntensity','RiskScore','PriorityScore','Urgency','Timestamp','PrimarySource'];
+      const rows = filteredData.map(i => [
+        i.id || '', `"${String(i.title || '').replace(/"/g,'""')}"`, i.location?.country || '', i.location?.region || '',
+        (Array.isArray(i.domain_classification) ? i.domain_classification.join('|') : ''), i.signal_intensity || '',
+        i.risk_assessment?.risk_score ?? '', i.priority_score ?? '', i.escalation?.urgency || '', i.timestamp || '',
+        (Array.isArray(i.sources) && i.sources[0]) ? i.sources[0] : ''
+      ]);
+      const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      downloadBlob(blob, `nexus_radar_signals_${Date.now()}.csv`);
+    }
+  }
+
+  // --- TAB SWITCHER ---
   function switchTab(tabId) {
-    ['inventory','map','resume'].forEach(t => {
+    ['inventory','map','resume','live'].forEach(t => {
       document.getElementById(`nav-${t}`).classList.toggle('active', t === tabId);
       const view = document.getElementById(`view-${t}`);
       if (t === tabId) { view.classList.remove('hidden'); view.classList.add('flex'); }
@@ -1165,68 +886,57 @@
     const titles = {
       'inventory':['Signal Inventory', 'Real-time latent environmental anomalies.'],
       'map':['Global Threat Map', 'Geospatial distribution of detected signals.'],
-      'resume':['Intelligence Resume', 'Quarterly synthesis and recommendations.']
+      'resume':['Intelligence Resume', 'Quarterly synthesis and recommendations.'],
+      'live':['Global Threat Monitor', 'Synchronized with NASA EONET, USGS & GDACS.']
     };
     document.getElementById('page-title').innerText = titles[tabId][0];
     document.getElementById('page-title').nextElementSibling.innerText = titles[tabId][1];
 
-    // Close sidebar on mobile
-    const sidebar = document.getElementById('sidebar');
-    if (!sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
+    if (window.innerWidth < 1024 && !document.getElementById('sidebar').classList.contains('-translate-x-full')) {
       toggleSidebar();
     }
 
     if (tabId === 'map') {
       if (!map) { initMap(); drawMapElements(); renderMapCharts(); }
-      setTimeout(() => { if(map) map.invalidateSize(); if(chartInstances.domainMap) chartInstances.domainMap.resize(); }, 150);
+      setTimeout(() => { if(map) map.invalidateSize(); if(chartInstances.domainMap) chartInstances.domainMap.resize(); if(chartInstances.hotspot) chartInstances.hotspot.resize(); }, 150);
     }
     if (tabId === 'resume') {
       const sel = document.getElementById('report-selector');
       if (sel.options.length > 0) loadReport(sel.value);
       setTimeout(() => resizeAllCharts(), 150);
     }
+    if (tabId === 'live') {
+      if (!liveMap) { initLiveMap(); fetchLiveFeeds(); }
+      setTimeout(() => { if(liveMap) liveMap.invalidateSize(); }, 150);
+    }
   }
 
-function renderTopStats() {
-    // Menghitung Data
+  function renderTopStats() {
     const total = globalData.length;
     const highRisk = globalData.filter(i => i.risk_assessment && parseInt(i.risk_assessment.risk_score) >= 8).length;
     const actNow = globalData.filter(i => i.risk_assessment && i.risk_assessment.needs_immediate_intervention === true).length;
     const critical = globalData.filter(i => i.critical_flag === true).length;
     
-    // Menampilkan ke HTML Header
-    const elTotal = document.getElementById('top-stat-total');
-    const elHighRisk = document.getElementById('top-stat-highrisk');
-    const elAction = document.getElementById('top-stat-action');
-    const elCritical = document.getElementById('top-stat-critical');
-    
-    if (elTotal) elTotal.innerText = total;
-    if (elHighRisk) elHighRisk.innerText = highRisk;
-    if (elAction) elAction.innerText = actNow;
-    if (elCritical) elCritical.innerText = critical;
+    if (document.getElementById('top-stat-total')) document.getElementById('top-stat-total').innerText = total;
+    if (document.getElementById('top-stat-highrisk')) document.getElementById('top-stat-highrisk').innerText = highRisk;
+    if (document.getElementById('top-stat-action')) document.getElementById('top-stat-action').innerText = actNow;
+    if (document.getElementById('top-stat-critical')) document.getElementById('top-stat-critical').innerText = critical;
   }
 
   function renderMiniCharts() {
-    // Hitung jumlah kecepatan eskalasi
     const fast = globalData.filter(i => i.escalation?.speed === 'fast').length;
     const medium = globalData.filter(i => i.escalation?.speed === 'medium').length;
     const slow = globalData.filter(i => i.escalation?.speed === 'slow').length;
     const total = fast + medium + slow;
+    if (total === 0) return;
 
-    if (total === 0) return; // Mencegah error jika data kosong
+    const fastPct = (fast / total) * 100, medPct = (medium / total) * 100, slowPct = (slow / total) * 100;
 
-    // Hitung persentase lebar bar
-    const fastPct = (fast / total) * 100;
-    const medPct = (medium / total) * 100;
-    const slowPct = (slow / total) * 100;
-
-    // Render ke dalam HTML Mini Chart
     document.getElementById('escalation-bar').innerHTML = `
       <div style="width: ${fastPct}%" class="bg-red-500 hover:opacity-80 transition-opacity" title="Fast: ${fast}"></div>
       <div style="width: ${medPct}%" class="bg-orange-400 hover:opacity-80 transition-opacity" title="Medium: ${medium}"></div>
       <div style="width: ${slowPct}%" class="bg-emerald-400 hover:opacity-80 transition-opacity" title="Slow: ${slow}"></div>
     `;
-
     document.getElementById('escalation-legend').innerHTML = `
       <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-red-500"></span> Fast (${fast})</div>
       <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-400"></span> Medium (${medium})</div>
@@ -1234,66 +944,47 @@ function renderTopStats() {
     `;
   }
 
-  // --- TAB INVENTORY (GRID & PAGINATION) ---
   function setupFilters() {
     const selDomain = document.getElementById('filter-domain');
     const domains = [...new Set(globalData.flatMap(i => Array.isArray(i.domain_classification) ? i.domain_classification : []))].sort();
-    
     domains.forEach(d => selDomain.add(new Option(d, d)));
 
-    ['filter-domain', 'filter-sort'].forEach(id => 
-      document.getElementById(id).addEventListener('change', () => { currentPage=1; applyFilters(); })
+    ['filter-domain', 'filter-intensity', 'filter-sort', 'filter-per-page'].forEach(id => 
+      document.getElementById(id).addEventListener('change', (e) => { 
+        if(id === 'filter-per-page') itemsPerPage = parseInt(e.target.value);
+        currentPage=1; applyFilters(); 
+      })
     );
-
-    // Specific listener for Items Per Page
-    document.getElementById('filter-per-page').addEventListener('change', (e) => {
-      itemsPerPage = parseInt(e.target.value);
-      currentPage = 1;
-      renderGrid();
-    });
-
     document.getElementById('filter-search').addEventListener('input', () => { currentPage=1; applyFilters(); });
   }
 
   function applyFilters() {
     const term = document.getElementById('filter-search').value.toLowerCase();
     const domain = document.getElementById('filter-domain').value;
+    const intensity = document.getElementById('filter-intensity').value;
     const sort = document.getElementById('filter-sort').value;
 
     let res = [...globalData];
-    
-    if (term) {
-      res = res.filter(i => 
-        (i.title && i.title.toLowerCase().includes(term)) || 
-        (i.summary && i.summary.toLowerCase().includes(term))
-      );
-    }
-    
-    if (domain !== 'all') {
-      res = res.filter(i => Array.isArray(i.domain_classification) && i.domain_classification.includes(domain));
-    }
+    if (term) res = res.filter(i => (i.title && i.title.toLowerCase().includes(term)) || (i.summary && i.summary.toLowerCase().includes(term)));
+    if (domain !== 'all') res = res.filter(i => Array.isArray(i.domain_classification) && i.domain_classification.includes(domain));
+    if (intensity !== 'all') res = res.filter(i => String(i.signal_intensity || '').toLowerCase() === intensity);
 
     if(sort === 'newest') res.sort((a,b) => new Date(b.timestamp)-new Date(a.timestamp));
     if(sort === 'oldest') res.sort((a,b) => new Date(a.timestamp)-new Date(b.timestamp));
     if(sort === 'priority') res.sort((a,b) => (parseInt(b.priority_score)||0)-(parseInt(a.priority_score)||0));
     
-    filteredData = res;
-    renderGrid();
+    filteredData = res; renderGrid(); renderTrendChart();
     if(map) { drawMapElements(); renderMapCharts(); }
   }
 
-  // Mapping Domain to Visual Styles (Colors & Icons) for Cards
   function getDomainStyle(d) {
     if(!d) return { bgClass: 'bg-orange-500', icon: 'ph-radar' };
     d = String(d).toLowerCase();
-    
     if(d.includes('biodiversity') || d.includes('ecology')) return { bgClass: 'bg-green-500', icon: 'ph-leaf' };
     if(d.includes('ocean') || d.includes('water')) return { bgClass: 'bg-blue-500', icon: 'ph-waves' };
     if(d.includes('climate') || d.includes('air')) return { bgClass: 'bg-sky-500', icon: 'ph-cloud-warning' };
     if(d.includes('drr') || d.includes('disaster')) return { bgClass: 'bg-red-500', icon: 'ph-shield-warning' };
     if(d.includes('social') || d.includes('behavioral')) return { bgClass: 'bg-purple-500', icon: 'ph-users' };
-    
-    // Default fallback
     return { bgClass: 'bg-orange-500', icon: 'ph-radar' };
   }
 
@@ -1303,8 +994,7 @@ function renderTopStats() {
     
     if (filteredData.length === 0) {
       grid.innerHTML = `<div class="col-span-full text-center text-slate-400 py-16 bg-white rounded-2xl border border-slate-200 shadow-sm"><i class="ph-fill ph-empty text-5xl mb-3 text-slate-300"></i><p>No signals found matching your search.</p></div>`;
-      document.getElementById('pagination-container').classList.add('hidden');
-      return;
+      document.getElementById('pagination-container').classList.add('hidden'); return;
     }
 
     const totalPages = Math.ceil(filteredData.length / itemsPerPage);
@@ -1316,89 +1006,61 @@ function renderTopStats() {
       const domainsArr = Array.isArray(item.domain_classification) ? item.domain_classification : ['General'];
       const mainDomain = domainsArr.length > 0 ? domainsArr[0] : 'General';
       const secondaryDomains = domainsArr.length > 1 ? ` &bull; ${domainsArr.slice(1).join(', ')}` : '';
-      
       const domainStyle = getDomainStyle(mainDomain);
+      const intMeta = getIntensityMeta(item.signal_intensity);
+      const thumbUrl = getThemedImageUrl(item);
+      
       const pScore = parseInt(item.priority_score) || 0;
       const riskScore = item.risk_assessment ? (parseInt(item.risk_assessment.risk_score) || 0) : 0;
-      
-      // Progress Bar Colors
-      let pColorBg = 'bg-emerald-500';
-      if (pScore >= 80) pColorBg = 'bg-red-500';
-      else if (pScore >= 50) pColorBg = 'bg-orange-500';
-
-      let rColorBg = 'bg-emerald-500';
-      if (riskScore >= 8) rColorBg = 'bg-red-500';
-      else if (riskScore >= 5) rColorBg = 'bg-orange-500';
-
-      const urgencyObj = item.escalation || {};
-      const urgencyText = (urgencyObj.urgency || 'Unknown').toUpperCase();
+      let pColorBg = pScore >= 80 ? 'bg-red-500' : (pScore >= 50 ? 'bg-orange-500' : 'bg-emerald-500');
+      let rColorBg = riskScore >= 8 ? 'bg-red-500' : (riskScore >= 5 ? 'bg-orange-500' : 'bg-emerald-500');
+      const urgencyText = (item.escalation?.urgency || 'Unknown').toUpperCase();
 
       const card = document.createElement('div');
       card.className = `bg-white rounded-2xl border border-slate-200 shadow-sm card-hover cursor-pointer flex flex-col fade-up overflow-hidden`;
       card.style.animationDelay = `${(index % itemsPerPage) * 40}ms`;
       card.onclick = () => openModal(item.id);
 
-      const countryStr = (item.location && item.location.country) ? item.location.country : 'Global';
-      const regionStr = (item.location && item.location.region) ? item.location.region : '-';
-
-      // Re-designed card structure based on reference image
       card.innerHTML = `
-        <!-- Colored Header with Grid Pattern -->
-        <div class="${domainStyle.bgClass} relative h-40 shrink-0 p-4 sm:p-5 flex flex-col justify-between overflow-hidden">
+        <div class="${domainStyle.bgClass} relative h-40 shrink-0 flex flex-col justify-between overflow-hidden">
+            <img src="${thumbUrl}" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-30" onerror="this.classList.add('thumb-fallback-hidden')">
             <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
-            
-            <!-- Top Tags -->
-            <div class="relative z-10 flex justify-between items-start">
+            <div class="relative z-10 flex justify-between items-start p-4 sm:p-5">
                 <span class="bg-white text-slate-800 text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase tracking-wider">${urgencyText}</span>
-                ${isCritical ? '<span class="bg-red-600 text-white text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase flex items-center gap-1"><i class="ph-fill ph-warning-octagon"></i> CRITICAL</span>' : '<span class="bg-[#fcd34d] text-yellow-900 text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase flex items-center gap-1"><i class="ph-fill ph-diamonds-four"></i> GEM</span>'}
+                ${isCritical ? '<span class="bg-red-600 text-white text-[9px] font-bold px-2.5 py-1 rounded shadow-sm uppercase flex items-center gap-1"><i class="ph-fill ph-warning-octagon"></i> CRITICAL</span>' : ''}
             </div>
-
-            <!-- Center Icon -->
             <div class="relative z-10 flex-grow flex items-center justify-center pt-2">
                 <i class="ph-fill ${domainStyle.icon} text-6xl text-white opacity-95 drop-shadow-md"></i>
             </div>
+            <div class="relative z-10 px-4 sm:px-5 pb-3">
+              <span class="${intMeta.cls} text-[9px] font-bold px-2 py-1 rounded border flex items-center gap-1 w-fit"><span class="w-1.5 h-1.5 rounded-full ${intMeta.dot}"></span>${intMeta.label}</span>
+            </div>
         </div>
-
-        <!-- White Body Content -->
         <div class="p-4 sm:p-5 flex flex-col flex-grow bg-white">
             <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-2 line-clamp-1">${mainDomain}${secondaryDomains}</p>
             <h3 class="font-display font-bold text-lg text-slate-900 leading-snug line-clamp-2 mb-2 group-hover:text-nexus-main">${item.title}</h3>
-            <p class="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 mb-3"><i class="ph-bold ph-map-pin"></i> ${countryStr} <span class="text-slate-400 font-normal truncate">(${regionStr})</span></p>
+            <p class="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 mb-3"><i class="ph-bold ph-map-pin"></i> ${item.location?.country || 'Global'} <span class="text-slate-400 font-normal truncate">(${item.location?.region || '-'})</span></p>
             <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed mb-4">${item.summary || '-'}</p>
-            
-            <!-- Progress Bars (Footer) -->
             <div class="mt-auto space-y-3 pt-3 border-t border-slate-100">
                 <div>
-                    <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                        <span>Priority Index</span><span>${pScore} / 100</span>
-                    </div>
-                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                        <div class="h-full ${pColorBg} rounded-full" style="width: ${pScore}%"></div>
-                    </div>
+                    <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1"><span>Priority Index</span><span>${pScore} / 100</span></div>
+                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="h-full ${pColorBg} rounded-full" style="width: ${pScore}%"></div></div>
                 </div>
                 <div>
-                    <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                        <span>Risk Level</span><span>${riskScore} / 10</span>
-                    </div>
-                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                        <div class="h-full ${rColorBg} rounded-full" style="width: ${riskScore * 10}%"></div>
-                    </div>
+                    <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1"><span>Risk Level</span><span>${riskScore} / 10</span></div>
+                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="h-full ${rColorBg} rounded-full" style="width: ${riskScore * 10}%"></div></div>
                 </div>
+                <p class="text-[10px] text-slate-400 font-medium pt-1 flex items-center gap-1"><i class="ph-bold ph-clock"></i> Detected ${timeAgo(item.timestamp)}</p>
             </div>
         </div>`;
       grid.appendChild(card);
     });
-
     renderPagination(filteredData.length);
   }
 
   function renderPagination(total) {
     const cont = document.getElementById('pagination-container');
-    if (total <= itemsPerPage && currentPage === 1) { 
-      // Option to hide pagination if not needed
-    }
     cont.classList.remove('hidden');
-    
     const totalPages = Math.ceil(total / itemsPerPage) || 1;
     const start = (currentPage-1)*itemsPerPage+1, end = Math.min(currentPage*itemsPerPage, total);
     
@@ -1409,153 +1071,148 @@ function renderTopStats() {
       <button onclick="changePage(1)" ${currentPage===totalPages?'disabled':''} class="p-2 rounded-lg ${currentPage===totalPages?'text-slate-300':'text-slate-600 hover:bg-slate-100 transition-colors shadow-sm border border-slate-200 bg-white ml-1'}">Next <i class="ph-bold ph-caret-right"></i></button>`;
   }
   
-  function changePage(dir) { 
-    currentPage += dir; 
-    renderGrid(); 
-    // Scroll to top of grid
-    document.getElementById('view-inventory').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  function changePage(dir) { currentPage += dir; renderGrid(); document.getElementById('view-inventory').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 
-  // --- YOUTUBE PARSER ---
   function extractYouTubeID(url) {
     const regExp = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})/;
-    const match = url.match(regExp);
-    return (match && match[1]) ? match[1] : null;
+    const match = url.match(regExp); return (match && match[1]) ? match[1] : null;
   }
 
-  // --- MODALS ---
   function openModal(id) {
-    const item = globalData.find(i => i.id === id);
-    if (!item) return;
-
-    const urgObj = item.escalation || {};
-    const urg = (urgObj.urgency || 'UNKNOWN').toUpperCase();
+    const item = globalData.find(i => i.id === id); if (!item) return;
+    const urg = (item.escalation?.urgency || 'UNKNOWN').toUpperCase();
+    const intMeta = getIntensityMeta(item.signal_intensity);
     let bHtml = `<span class="bg-slate-100 text-slate-600 text-[9px] sm:text-[10px] font-bold px-2 py-1.5 rounded border border-slate-200">URGENCY: ${urg}</span>`;
+    bHtml += `<span class="${intMeta.cls} text-[9px] sm:text-[10px] font-bold px-2 py-1.5 rounded border flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full ${intMeta.dot}"></span>${intMeta.label}</span>`;
     if(item.critical_flag) bHtml += `<span class="bg-red-100 text-red-700 text-[9px] sm:text-[10px] font-bold px-2 py-1.5 rounded border border-red-200"><i class="ph-fill ph-warning-octagon"></i> CRITICAL THREAT</span>`;
     document.getElementById('modal-badges').innerHTML = bHtml;
     
     document.getElementById('modal-title').innerText = item.title || 'Untitled';
-    const locStr = (item.location && item.location.country) ? item.location.country : 'Global';
-    const regStr = (item.location && item.location.region) ? item.location.region : '-';
-    document.getElementById('modal-location').innerText = `${locStr} (${regStr})`;
+    document.getElementById('modal-location').innerText = `${item.location?.country || 'Global'} (${item.location?.region || '-'})`;
     
     const strip = document.getElementById('modal-alert-strip');
-    if(item.critical_flag) { strip.classList.remove('hidden'); strip.classList.add('alert-strip'); } else { strip.classList.add('hidden'); }
+    if(item.critical_flag) { strip.classList.remove('hidden'); } else { strip.classList.add('hidden'); }
 
-    const risk = item.risk_assessment || {};
-    const rs = parseInt(risk.risk_score) || 0;
+    const rs = parseInt(item.risk_assessment?.risk_score) || 0;
     document.getElementById('modal-risk-score').innerText = rs;
     document.getElementById('modal-risk-score').className = `text-5xl sm:text-6xl font-display font-black leading-none ${rs >= 8 ? 'text-red-600' : (rs >= 5 ? 'text-orange-500' : 'text-emerald-500')}`;
     
-    const riskTypes = Array.isArray(risk.risk_type) ? risk.risk_type : [];
+    const riskTypes = Array.isArray(item.risk_assessment?.risk_type) ? item.risk_assessment.risk_type : [];
     document.getElementById('modal-risk-types').innerHTML = riskTypes.map(t=>`<span class="bg-slate-100 text-slate-600 px-2 py-1 rounded shadow-sm border border-slate-200">${t}</span>`).join('');
-    document.getElementById('modal-risk-desc').innerText = risk.explanation || 'No detailed assessment provided.';
-    const rBox = document.getElementById('modal-risk-box');
-    rBox.className = `bg-white rounded-2xl p-5 sm:p-6 border shadow-sm ${rs >= 8 ? 'border-red-200 bg-red-50/50' : 'border-slate-200'}`;
+    document.getElementById('modal-risk-desc').innerText = item.risk_assessment?.explanation || 'No detailed assessment provided.';
+    document.getElementById('modal-risk-box').className = `bg-white rounded-2xl p-5 sm:p-6 border shadow-sm ${rs >= 8 ? 'border-red-200 bg-red-50/50' : 'border-slate-200'}`;
 
-    const impactObj = item.potential_impact || {};
-    const threatLvl = (impactObj.threat_level || 'low').toLowerCase();
-    const urgLvl = (urgObj.urgency || 'low').toLowerCase();
+    const sev = item.risk_assessment?.severity_level;
+    const needsInt = item.risk_assessment?.needs_immediate_intervention;
+    let extraHtml = '';
+    if (sev) {
+      const sevCls = sev==='high' ? 'bg-red-50 text-red-600 border-red-200' : (sev==='medium' ? 'bg-orange-50 text-orange-600 border-orange-200' : 'bg-emerald-50 text-emerald-600 border-emerald-200');
+      extraHtml += `<span class="text-[9px] font-bold px-2 py-1.5 rounded border uppercase ${sevCls}">Severity: ${sev}</span>`;
+    }
+    if (needsInt !== undefined) {
+      extraHtml += `<span class="text-[9px] font-bold px-2 py-1.5 rounded border uppercase ${needsInt ? 'bg-red-600 text-white border-red-600' : 'bg-slate-50 text-slate-500 border-slate-200'}">${needsInt ? '⚡ Immediate Action Required' : 'No Immediate Action Needed'}</span>`;
+    }
+    document.getElementById('modal-risk-extra').innerHTML = extraHtml;
+
+    const threatLvl = (item.potential_impact?.threat_level || 'low').toLowerCase();
+    const urgLvl = (item.escalation?.urgency || 'low').toLowerCase();
+    const pctMap = { 'high': '100%', 'medium': '50%', 'low': '20%' };
+    const colorMap = { 'high': 'bg-red-500', 'medium': 'bg-orange-400', 'low': 'bg-emerald-400' };
     
-    const getLvlName = (l) => l==='high'?'High':(l==='medium'?'Medium':'Low');
-    const pctMap = { 'high': '100%', 'medium': '50%', 'low': '20%', 'tinggi': '100%', 'menengah': '50%', 'rendah': '20%' };
-    const colorMap = { 'high': 'bg-red-500', 'medium': 'bg-orange-400', 'low': 'bg-emerald-400', 'tinggi': 'bg-red-500', 'menengah': 'bg-orange-400', 'rendah': 'bg-emerald-400' };
-    
-    document.getElementById('modal-urgency-txt').innerText = getLvlName(urgLvl);
+    document.getElementById('modal-urgency-txt').innerText = urgLvl === 'high' ? 'High' : (urgLvl === 'medium' ? 'Medium' : 'Low');
     document.getElementById('modal-urgency-bar').style.width = pctMap[urgLvl] || '0%';
     document.getElementById('modal-urgency-bar').className = `h-full rounded-full ${colorMap[urgLvl] || 'bg-slate-400'}`;
     
-    document.getElementById('modal-impact-txt').innerText = getLvlName(threatLvl);
+    document.getElementById('modal-impact-txt').innerText = threatLvl === 'high' ? 'High' : (threatLvl === 'medium' ? 'Medium' : 'Low');
     document.getElementById('modal-impact-bar').style.width = pctMap[threatLvl] || '0%';
     document.getElementById('modal-impact-bar').className = `h-full rounded-full ${colorMap[threatLvl] || 'bg-slate-400'}`;
 
     document.getElementById('modal-summary').innerText = item.summary || '-';
     
-    const rootObj = item.root_cause_analysis || {};
-    const roots = Array.isArray(rootObj.root_cause) ? rootObj.root_cause : [];
+    const roots = Array.isArray(item.root_cause_analysis?.root_cause) ? item.root_cause_analysis.root_cause : [];
     document.getElementById('modal-origin').innerHTML = roots.length ? roots.map(o=>`<span class="bg-white text-blue-700 text-[10px] font-bold px-2 py-1 rounded capitalize border border-blue-200 shadow-sm">${String(o).replace(/_/g,' ')}</span>`).join('') : '<span class="text-xs text-slate-400">Unknown</span>';
     
-    const elements = Array.isArray(impactObj.affected_elements) ? impactObj.affected_elements : [];
+    const elements = Array.isArray(item.potential_impact?.affected_elements) ? item.potential_impact.affected_elements : [];
     document.getElementById('modal-affected').innerHTML = elements.length ? elements.map(e=>`<span class="bg-white text-indigo-700 text-[10px] font-bold px-2 py-1 rounded capitalize border border-indigo-200 shadow-sm">${e}</span>`).join('') : '<span class="text-xs text-slate-400">Unknown</span>';
 
-    const maniObj = item.manifestation || {};
-    document.getElementById('modal-how-works').innerText = maniObj.how_it_is_observed || '-';
+    document.getElementById('modal-how-works').innerText = item.manifestation?.how_it_is_observed || '-';
     
-    const indicators = Array.isArray(maniObj.key_indicators) ? maniObj.key_indicators : [];
+    const indicators = Array.isArray(item.manifestation?.key_indicators) ? item.manifestation.key_indicators : [];
     document.getElementById('modal-indicators').innerHTML = indicators.length ? indicators.map(i=>`<li class="flex items-start gap-2 text-xs sm:text-sm text-slate-600"><i class="ph-bold ph-caret-right text-nexus-main mt-1"></i> <span>${i}</span></li>`).join('') : '<li class="text-slate-400 italic text-sm">No specific indicators recorded.</li>';
 
-    // --- Media Carousel (YouTube / Image) ---
-    const mediaContainer = document.getElementById('modal-media-carousel');
-    mediaContainer.innerHTML = '';
+    const mediaContainer = document.getElementById('modal-media-carousel'); mediaContainer.innerHTML = '';
     let hasMedia = false;
 
-    // Insert Image URL if present
     if (item.image_url) {
       hasMedia = true;
-      mediaContainer.innerHTML += `
-        <div class="shrink-0 snap-start">
-           <img src="${item.image_url}" alt="Illustration" class="h-48 w-[280px] sm:w-[350px] object-cover rounded-xl border border-slate-200 shadow-sm" onerror="this.style.display='none'">
-        </div>
-      `;
+      mediaContainer.innerHTML += `<div class="shrink-0 snap-start"><img src="${item.image_url}" class="h-48 w-[280px] sm:w-[350px] object-cover rounded-xl border border-slate-200 shadow-sm" onerror="this.style.display='none'"></div>`;
     }
 
-    // Source Links identification
     const srcSec = document.getElementById('modal-sources-section');
-    const srcList = document.getElementById('modal-sources-list');
-    srcList.innerHTML = '';
+    const srcList = document.getElementById('modal-sources-list'); srcList.innerHTML = '';
     const sources = Array.isArray(item.sources) ? item.sources : [];
     let hasTextSources = false;
 
     if (sources.length > 0) {
-        sources.forEach(url => {
-            const u = String(url);
-            const ytId = extractYouTubeID(u);
-            
+        sources.forEach(u => {
+            const ytId = extractYouTubeID(String(u));
             if (ytId) {
-                // Render Embedded YouTube Video in Carousel
                 hasMedia = true;
-                mediaContainer.innerHTML += `
-                  <div class="shrink-0 snap-start">
-                    <iframe class="h-48 w-[280px] sm:w-[350px] rounded-xl border border-slate-200 shadow-sm" src="https://www.youtube.com/embed/${ytId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                  </div>
-                `;
+                mediaContainer.innerHTML += `<div class="shrink-0 snap-start"><iframe class="h-48 w-[280px] sm:w-[350px] rounded-xl border border-slate-200 shadow-sm" src="https://www.youtube.com/embed/${ytId}" frameborder="0" allowfullscreen></iframe></div>`;
             } else {
-                // Render standard text links
                 hasTextSources = true;
-                srcList.innerHTML += `<a href="${u}" target="_blank" class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-nexus-main hover:bg-nexus-light transition-colors text-xs sm:text-sm text-blue-600 truncate"><i class="ph-fill ph-link-simple text-lg shrink-0"></i><span class="truncate underline">${u}</span></a>`;
+                srcList.innerHTML += `<a href="${u}" target="_blank" class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-nexus-main text-xs sm:text-sm text-blue-600 truncate"><i class="ph-fill ph-link-simple text-lg shrink-0"></i><span class="truncate underline">${u}</span></a>`;
             }
         });
     }
 
-    // Toggle Carousel View
-    if (hasMedia) {
-        mediaContainer.classList.remove('hidden');
-    } else {
-        mediaContainer.classList.add('hidden');
-    }
+    if (hasMedia) mediaContainer.classList.remove('hidden'); else mediaContainer.classList.add('hidden');
+    if (hasTextSources) srcSec.classList.remove('hidden'); else srcSec.classList.add('hidden');
 
-    // Toggle Text Sources View
-    if (hasTextSources) {
-        srcSec.classList.remove('hidden');
-    } else {
-        srcSec.classList.add('hidden');
-    }
+    fetchExternalCrossReference(item.location?.country);
 
-    const modal = document.getElementById('item-modal');
-    const wrapper = document.getElementById('modal-content-wrapper');
+    const modal = document.getElementById('item-modal'), wrapper = document.getElementById('modal-content-wrapper');
     modal.classList.remove('hidden'); void modal.offsetWidth; 
     modal.classList.remove('opacity-0'); wrapper.classList.remove('scale-95');
+  }
+
+  // --- FREE API #3: RELIEFWEB CROSS-REFERENCE (no API key required) ---
+  async function fetchExternalCrossReference(country) {
+    const listEl = document.getElementById('modal-external-list');
+    if (!country || String(country).toLowerCase() === 'unknown' || String(country).toLowerCase() === 'global') {
+      listEl.innerHTML = '<p class="text-xs text-slate-400 italic">No specific country available to cross-reference.</p>';
+      return;
+    }
+    listEl.innerHTML = '<p class="text-xs text-slate-400 italic flex items-center gap-2"><i class="ph-bold ph-spinner animate-spin"></i> Querying ReliefWeb humanitarian archives...</p>';
+    try {
+      if (!reliefWebCache[country]) {
+        const url = `https://api.reliefweb.int/v1/reports?appname=nexusradar&query[value]=${encodeURIComponent(country)}&limit=4&sort[]=date:desc&fields[include][]=title&fields[include][]=url_alias`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('bad response');
+        const json = await res.json();
+        reliefWebCache[country] = (json.data || []).map(d => ({
+          title: d.fields?.title || 'Untitled Report',
+          url: d.fields?.url_alias || 'https://reliefweb.int'
+        }));
+      }
+      const reports = reliefWebCache[country];
+      if (reports.length === 0) {
+        listEl.innerHTML = '<p class="text-xs text-slate-400 italic">No related humanitarian reports found on ReliefWeb for this country.</p>';
+        return;
+      }
+      listEl.innerHTML = reports.map(r => `
+        <a href="${r.url}" target="_blank" class="flex items-center gap-3 p-3 rounded-xl bg-emerald-50/50 border border-emerald-100 hover:border-emerald-300 text-xs sm:text-sm text-emerald-700 transition-colors">
+          <i class="ph-fill ph-file-text text-lg shrink-0"></i><span class="truncate underline">${r.title}</span>
+        </a>`).join('');
+    } catch (e) {
+      listEl.innerHTML = '<p class="text-xs text-red-400 italic">Cross-reference service unavailable right now (network/CORS restriction).</p>';
+    }
   }
 
   function closeModal() {
     const m = document.getElementById('item-modal'), w = document.getElementById('modal-content-wrapper');
     m.classList.add('opacity-0'); w.classList.add('scale-95'); 
-    
-    // Stop YouTube video playback by clearing innerHTML
-    setTimeout(() => {
-        m.classList.add('hidden');
-        document.getElementById('modal-media-carousel').innerHTML = '';
-    }, 300);
+    setTimeout(() => { m.classList.add('hidden'); document.getElementById('modal-media-carousel').innerHTML = ''; }, 300);
   }
   
   function openGuideModal() {
@@ -1566,25 +1223,20 @@ function renderTopStats() {
     const m = document.getElementById('guide-modal'), w = document.getElementById('guide-modal-wrapper');
     m.classList.add('opacity-0'); w.classList.add('scale-95'); setTimeout(() => m.classList.add('hidden'), 300);
   }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') { closeModal(); closeGuideModal(); } });
 
-  document.addEventListener('keydown', e => {
-    if(e.key==='Escape') { closeModal(); closeGuideModal(); }
-  });
-
-  // --- MAP TAB ---
-function initMap() {
-  map = L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([20,0],2);
-  
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-    maxZoom: 16
-  }).addTo(map);
-}
+  // --- TAB 2: INVENTORY MAP ---
+    function initMap() {
+    map = L.map('map',{zoomControl:false,scrollWheelZoom:false}).setView([20,0],2);
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ', maxZoom: 16
+    }).addTo(map);
+  }
   
   function drawMapElements() {
     if(!map) return;
     if(markersLayer) { map.removeLayer(markersLayer); markersLayer=null; }
-    
     document.getElementById('map-signal-count').innerText = `${filteredData.length} Signals`;
     
     markersLayer = L.markerClusterGroup({
@@ -1593,25 +1245,16 @@ function initMap() {
     });
     
     filteredData.forEach(item => {
-      let lat = item.location && item.location.lat !== null ? parseFloat(item.location.lat) : null;
-      let lon = item.location && item.location.lon !== null ? parseFloat(item.location.lon) : null;
-      
-      // Fallback Logic
+      let lat = item.location?.lat !== null ? parseFloat(item.location.lat) : null;
+      let lon = item.location?.lon !== null ? parseFloat(item.location.lon) : null;
       if (isNaN(lat) || isNaN(lon) || lat === null || lon === null) {
-         const countryStr = item.location && item.location.country ? String(item.location.country).toLowerCase().trim() : "";
-         if (countryCoordinates[countryStr]) {
-            lat = countryCoordinates[countryStr].lat;
-            lon = countryCoordinates[countryStr].lon;
-         } else {
-            lat = (Math.random() - 0.5) * 40; 
-            lon = (Math.random() - 0.5) * 100;
-         }
+         const countryStr = item.location?.country ? String(item.location.country).toLowerCase().trim() : "";
+         if (countryCoordinates[countryStr]) { lat = countryCoordinates[countryStr].lat; lon = countryCoordinates[countryStr].lon; } 
+         else { lat = (Math.random() - 0.5) * 40; lon = (Math.random() - 0.5) * 100; }
       }
-      
       const isCritical = item.critical_flag === true;
-      const htmlIcon = isCritical ? '<div class="pulse-marker"></div>' : '<div class="marker-main" style="background:#0ea5e9; border-radius:50%; animation:none; border:2px solid white; width:14px; height:14px;"></div>';
+      const htmlIcon = isCritical ? '<div class="pulse-marker"></div>' : '<div class="marker-main" style="background:#0ea5e9; border-radius:50%; border:2px solid white; width:14px; height:14px;"></div>';
       const icon = L.divIcon({className:'', html: htmlIcon, iconSize:[20,20], iconAnchor:[10,10]});
-      
       const dom = (Array.isArray(item.domain_classification) && item.domain_classification.length > 0) ? item.domain_classification[0] : 'General';
       L.marker([lat,lon],{icon}).bindPopup(`
         <div class="w-56 p-1">
@@ -1631,7 +1274,7 @@ function initMap() {
       const domains = {}; const roots = {};
       filteredData.forEach(i => {
           if(Array.isArray(i.domain_classification)) i.domain_classification.forEach(c => domains[c]=(domains[c]||0)+1);
-          if(i.root_cause_analysis && Array.isArray(i.root_cause_analysis.root_cause)) i.root_cause_analysis.root_cause.forEach(r => roots[r]=(roots[r]||0)+1);
+          if(Array.isArray(i.root_cause_analysis?.root_cause)) i.root_cause_analysis.root_cause.forEach(r => roots[r]=(roots[r]||0)+1);
       });
 
       const domArr = Object.entries(domains).sort((a,b)=>b[1]-a[1]).slice(0,6);
@@ -1658,34 +1301,130 @@ function initMap() {
         rootCont.innerHTML = rootArr.map(r => {
           const cleanName = String(r[0]).replace(/_/g,' ').replace(/\b\w/g, l => l.toUpperCase());
           const pct = (r[1]/maxRoot)*100;
-          return `
-            <div>
-              <div class="flex justify-between text-[10px] sm:text-[11px] font-bold text-slate-700 mb-1.5"><span class="truncate pr-2">${cleanName}</span><span>${r[1]}</span></div>
-              <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden"><div class="h-full rounded-full bg-indigo-500" style="width:${pct}%"></div></div>
-            </div>`;
+          return `<div><div class="flex justify-between text-[10px] sm:text-[11px] font-bold text-slate-700 mb-1.5"><span class="truncate pr-2">${cleanName}</span><span>${r[1]}</span></div><div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden"><div class="h-full rounded-full bg-indigo-500" style="width:${pct}%"></div></div></div>`;
         }).join('');
       } else { rootCont.innerHTML = '<p class="text-sm text-slate-400 italic">No data.</p>'; }
+
+      renderHotspotChart();
     } catch(e) { console.warn('Chart Map render error:', e); }
   }
 
-  // --- RESUME TAB ---
+  function renderHotspotChart() {
+    if (!chartInstances.hotspot) chartInstances.hotspot = echarts.init(document.getElementById('chart-hotspot'));
+    const byCountry = {};
+    filteredData.forEach(i => { const c = i.location?.country || 'Unknown'; byCountry[c] = (byCountry[c] || 0) + 1; });
+    const arr = Object.entries(byCountry).sort((a,b) => b[1] - a[1]).slice(0, 8).reverse();
+    if (arr.length === 0) { chartInstances.hotspot.showLoading({ text: 'No Data', showSpinner: false }); return; }
+    chartInstances.hotspot.hideLoading();
+    chartInstances.hotspot.setOption({
+      grid: { top: 10, bottom: 20, left: 10, right: 30, containLabel: true },
+      xAxis: { type: 'value', splitLine: { lineStyle: { type: 'dashed', color: '#e2e8f0' } } },
+      yAxis: { type: 'category', data: arr.map(a => a[0]), axisLabel: { fontSize: 10, fontWeight: 'bold', color: '#475569' } },
+      series: [{ type: 'bar', data: arr.map(a => a[1]), barWidth: '55%', itemStyle: { color: '#10b981', borderRadius: [0,4,4,0] }, label: { show: true, position: 'right', fontWeight: 'bold', color: '#1e293b' } }]
+    });
+  }
+
+  function renderTrendChart() {
+    if (!chartInstances.trend) chartInstances.trend = echarts.init(document.getElementById('chart-trend'));
+    const byDate = {};
+    filteredData.forEach(i => {
+      const d = new Date(i.timestamp);
+      if (isNaN(d.getTime())) return;
+      const key = d.toISOString().slice(0,10);
+      byDate[key] = (byDate[key] || 0) + 1;
+    });
+    const sortedDates = Object.keys(byDate).sort();
+    if (sortedDates.length === 0) { chartInstances.trend.showLoading({ text: 'No Data', showSpinner: false }); return; }
+    chartInstances.trend.hideLoading();
+    chartInstances.trend.setOption({
+      grid: { top: 15, bottom: 30, left: 30, right: 15, containLabel: true },
+      tooltip: { trigger: 'axis' },
+      xAxis: { type: 'category', data: sortedDates, axisLabel: { fontSize: 9, color: '#94a3b8', rotate: 30 }, axisLine: { lineStyle: { color: '#e2e8f0' } } },
+      yAxis: { type: 'value', splitLine: { lineStyle: { type: 'dashed', color: '#f1f5f9' } }, axisLabel: { fontSize: 9, color: '#94a3b8' } },
+      series: [{ type: 'line', data: sortedDates.map(d => byDate[d]), smooth: true, symbol: 'circle', symbolSize: 6, lineStyle: { color: '#0ea5e9', width: 3 }, itemStyle: { color: '#0ea5e9' }, areaStyle: { color: 'rgba(14,165,233,0.12)' } }]
+    });
+  }
+
   function populateReportSelector() {
-    const sel = document.getElementById('report-selector');
-    sel.innerHTML = '';
+    const sel = document.getElementById('report-selector'); sel.innerHTML = '';
     globalResume.forEach((r, i) => {
       const isCur = r.report_metadata?.report_id === 'gsi-current' || r.report_metadata?.report_id === 'nexus-current';
-      const per = r.report_metadata?.period || `Report ${i+1}`;
-      sel.add(new Option(`${isCur ? '⭐ LATEST: ' : ''}${per}`, i));
+      sel.add(new Option(`${isCur ? '⭐ LATEST: ' : ''}${r.report_metadata?.period || `Report ${i+1}`}`, i));
       if(isCur) { sel.value = i; loadReport(i); }
     });
     if(globalResume.length > 0 && !sel.value) { sel.value = 0; loadReport(0); }
   }
 
+  // --- CLIENT-SIDE FALLBACK SYNTHESIS ---
+  // Fills gaps whenever the AI-generated resume.json is missing fields
+  // (e.g. because the report-generation prompt in the Python pipeline
+  // doesn't request them), by computing equivalent insights directly
+  // from the raw data.json signals.
+  function computeFallbackResumeFields(r) {
+    const data = globalData;
+    if (!r.charts) r.charts = {};
+    if (!Array.isArray(r.charts.risk_distribution) || r.charts.risk_distribution.length === 0) {
+      let hi=0, med=0, lo=0;
+      data.forEach(i => { const s = parseInt(i.risk_assessment?.risk_score) || 0; if (s>=8) hi++; else if (s>=5) med++; else lo++; });
+      r.charts.risk_distribution = [ {level:'High', count:hi}, {level:'Medium', count:med}, {level:'Low', count:lo} ];
+    }
+    if (!Array.isArray(r.critical_signals) || r.critical_signals.length === 0) {
+      r.critical_signals = [...data].filter(i => i.critical_flag || (parseInt(i.risk_assessment?.risk_score)||0) >= 8)
+        .sort((a,b) => (b.priority_score||0)-(a.priority_score||0)).slice(0,5)
+        .map(i => ({ title: i.title, country: i.location?.country || 'Unknown', reason_for_urgency: i.risk_assessment?.explanation || 'Elevated risk score with critical escalation indicators.' }));
+    }
+    if (!Array.isArray(r.intervention_opportunities) || r.intervention_opportunities.length === 0) {
+      const seen = new Set(); const list = [];
+      [...data].sort((a,b) => (b.priority_score||0)-(a.priority_score||0)).forEach(i => {
+        const rt = Array.isArray(i.risk_assessment?.risk_type) ? i.risk_assessment.risk_type[0] : null;
+        if (rt && !seen.has(rt) && list.length < 6) {
+          seen.add(rt);
+          list.push({ type: rt, target: i.title, priority_level: (i.priority_score||0)>=70?'High':((i.priority_score||0)>=40?'Medium':'Low') });
+        }
+      });
+      r.intervention_opportunities = list;
+    }
+    if (!r.root_cause_insights || !r.root_cause_insights.most_common_cause) {
+      const counts = {};
+      data.forEach(i => (i.root_cause_analysis?.root_cause||[]).forEach(c => counts[c]=(counts[c]||0)+1));
+      const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+      r.root_cause_insights = {
+        most_common_cause: sorted.length ? String(sorted[0][0]).replace(/_/g,' ') : 'Unknown',
+        observation: sorted.length ? `Across ${data.length} tracked signals, "${String(sorted[0][0]).replace(/_/g,' ')}" is the most frequently identified root cause, present in ${sorted[0][1]} case(s).` : 'Insufficient data volume for root cause synthesis.'
+      };
+    }
+    if (!Array.isArray(r.recommendations) || r.recommendations.length === 0) {
+      const domainCounts = data.reduce((acc,i) => { (i.domain_classification||[]).forEach(d => acc[d]=(acc[d]||0)+1); return acc; }, {});
+      const topDomains = Object.entries(domainCounts).sort((a,b)=>b[1]-a[1]).slice(0,3);
+      r.recommendations = topDomains.map(d => `Prioritize monitoring and rapid-response resources for the "${d[0]}" domain, which accounts for ${d[1]} active latent signal(s) in the current dataset.`);
+      if (r.recommendations.length === 0) r.recommendations = ['Continue systematic monitoring; insufficient signal volume for targeted recommendations.'];
+    }
+    if (!Array.isArray(r.geographic_threats) || r.geographic_threats.length === 0) {
+      const byCountry = {};
+      data.forEach(i => {
+        const c = i.location?.country || 'Unknown';
+        if (!byCountry[c]) byCountry[c] = { count:0, riskSum:0, issues:{} };
+        byCountry[c].count++; byCountry[c].riskSum += (parseInt(i.risk_assessment?.risk_score)||0);
+        const dom = (i.domain_classification||[])[0] || 'General';
+        byCountry[c].issues[dom] = (byCountry[c].issues[dom]||0)+1;
+      });
+      r.geographic_threats = Object.entries(byCountry).map(([country, v]) => {
+        const avgRisk = v.riskSum / v.count;
+        const dominant = Object.entries(v.issues).sort((a,b)=>b[1]-a[1])[0];
+        return { region: country, dominant_issue: dominant ? dominant[0] : 'General', threat_level: avgRisk>=7?'high':(avgRisk>=4?'medium':'low') };
+      }).sort((a,b) => { const order={high:3,medium:2,low:1}; return order[b.threat_level]-order[a.threat_level]; }).slice(0,8);
+    }
+    if (Array.isArray(r.domain_insights)) {
+      r.domain_insights.forEach(d => { if (!d.key_pattern) d.key_pattern = 'Pattern synthesis unavailable for this domain in the current report cycle.'; });
+    }
+    return r;
+  }
+
   function loadReport(idx) {
     try {
-      const r = globalResume[idx]; if(!r) return;
-      const meta = r.report_metadata||{}; const gs = r.global_summary||{}; 
-      const ra = r.risk_analysis||{}; const ki = r.root_cause_insights||{}; const ch = r.charts||{};
+      let r = globalResume[idx]; if(!r) return;
+      r = computeFallbackResumeFields(r);
+      const meta = r.report_metadata||{}, gs = r.global_summary||{}, ra = r.risk_analysis||{}, ki = r.root_cause_insights||{}, ch = r.charts||{};
 
       document.getElementById('resume-meta').innerHTML = `
         <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col gap-1"><p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">Analysis Period</p><p class="font-display font-bold text-lg sm:text-xl text-slate-900">${meta.period||'-'}</p></div>
@@ -1695,8 +1434,7 @@ function initMap() {
       `;
 
       if(!chartInstances.donut) chartInstances.donut = echarts.init(document.getElementById('resume-donut-chart'));
-      const urgData =[{name:'High Urgency', value:gs.high_urgency_percentage||0, itemStyle:{color:'#f97316'}}, {name:'Standard', value:100-(gs.high_urgency_percentage||0), itemStyle:{color:'#cbd5e1'}}];
-      chartInstances.donut.setOption({ series:[{type:'pie', radius:['40%','75%'], data:urgData, label:{show:false}, itemStyle:{borderColor:'#fff', borderWidth:2}}] });
+      chartInstances.donut.setOption({ series:[{type:'pie', radius:['40%','75%'], data:[{name:'High Urgency', value:gs.high_urgency_percentage||0, itemStyle:{color:'#f97316'}}, {name:'Standard', value:100-(gs.high_urgency_percentage||0), itemStyle:{color:'#cbd5e1'}}], label:{show:false}, itemStyle:{borderColor:'#fff', borderWidth:2}}] });
 
       if(!chartInstances.cat) chartInstances.cat = echarts.init(document.getElementById('resume-cat-chart'));
       const domInsights = Array.isArray(r.domain_insights) ? r.domain_insights : [];
@@ -1706,6 +1444,12 @@ function initMap() {
         yAxis: {type:'category', data:domInsights.map(d=>d.domain), axisLabel:{fontSize:10, fontWeight:'bold', color:'#475569'}},
         series:[{ type:'bar', data:domInsights.map(d=>d.count), barWidth:'50%', itemStyle: {color:'#0ea5e9', borderRadius:[0,4,4,0]}, label: {show:true, position:'right', fontWeight:'bold', color:'#1e293b'} }]
       });
+      document.getElementById('resume-domain-patterns').innerHTML = domInsights.map(d => `<div class="flex gap-2 items-start"><i class="ph-fill ph-caret-right text-nexus-main mt-0.5 text-xs"></i><p><b class="text-slate-800">${d.domain}:</b> ${d.key_pattern}</p></div>`).join('') || '<p class="text-slate-400 italic">No domain pattern data.</p>';
+
+      document.getElementById('resume-geo-threats').innerHTML = (r.geographic_threats||[]).map(g => {
+        const tColor = g.threat_level==='high' ? 'text-red-600 bg-red-50' : (g.threat_level==='medium' ? 'text-orange-600 bg-orange-50' : 'text-emerald-600 bg-emerald-50');
+        return `<tr><td class="px-4 py-3 text-xs font-bold text-slate-700">${g.region}</td><td class="px-4 py-3 text-xs text-slate-600 capitalize">${g.dominant_issue}</td><td class="px-4 py-3 text-right"><span class="text-[9px] font-bold px-2 py-1 rounded uppercase ${tColor}">${g.threat_level}</span></td></tr>`;
+      }).join('') || '<tr><td colspan="3" class="px-4 py-3 text-xs text-slate-400 italic">No geographic data available.</td></tr>';
 
       document.getElementById('resume-risk-stats').innerHTML = `
         <div class="bg-red-50 border border-red-100 rounded-xl p-3 sm:p-4 text-center"><p class="text-2xl sm:text-3xl font-display font-black text-red-600">${ra.high_risk_cases||0}</p><p class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-red-400 mt-1">High Risk</p></div>
@@ -1713,69 +1457,259 @@ function initMap() {
       `;
       
       if(!chartInstances.risk) chartInstances.risk = echarts.init(document.getElementById('resume-risk-chart'));
-      const rDist = Array.isArray(ch.risk_distribution) ? ch.risk_distribution : []; 
-      const rColors = {High:'#ef4444', Medium:'#f97316', Low:'#10b981', Tinggi:'#ef4444', Menengah:'#f97316', Rendah:'#10b981'};
-      
+      const rColors = {High:'#ef4444', Medium:'#f97316', Low:'#10b981'};
       chartInstances.risk.setOption({
         grid:{top:20, bottom:20, left:0, right:0, containLabel:true},
-        xAxis:{type:'category', data:rDist.map(d=>d.level), axisLabel:{fontWeight:'bold', color:'#64748b'}, axisTick:{show:false}},
+        xAxis:{type:'category', data:(ch.risk_distribution||[]).map(d=>d.level), axisLabel:{fontWeight:'bold', color:'#64748b'}, axisTick:{show:false}},
         yAxis:{type:'value', splitLine:{lineStyle:{type:'dashed', color:'#e2e8f0'}}, axisLabel:{fontSize:10, color:'#94a3b8'}},
-        series:[{
-          type: 'bar', 
-          data: rDist.map(d => ({ 
-            value: d.count, 
-            itemStyle: { 
-              color: rColors[d.level] || '#3b82f6', 
-              borderRadius: [4, 4, 0, 0] 
-            } 
-          })), 
-          barWidth:'40%', 
-          label:{show:true, position:'top', fontWeight:'bold', color:'#1e293b'}
-        }]
+        series:[{ type: 'bar', data: (ch.risk_distribution||[]).map(d => ({ value: d.count, itemStyle: { color: rColors[d.level] || '#3b82f6', borderRadius: [4, 4, 0, 0] } })), barWidth:'40%', label:{show:true, position:'top', fontWeight:'bold', color:'#1e293b'} }]
       });
 
       if(!chartInstances.root) chartInstances.root = echarts.init(document.getElementById('resume-root-chart'));
-      const rootPie =[{name: ki.most_common_cause?String(ki.most_common_cause).replace(/_/g,' '):'Anthropogenic', value:gs.anthropogenic_percentage||70}, {name:'Other', value:100-(gs.anthropogenic_percentage||70)}];
       chartInstances.root.setOption({
-        color:['#14b8a6', '#cbd5e1'], series:[{type:'pie', radius:['40%','70%'], center:['50%','50%'], data:rootPie, label:{show:false}, itemStyle:{borderColor:'#fff', borderWidth:2}}]
+        color:['#14b8a6', '#cbd5e1'], series:[{type:'pie', radius:['40%','70%'], center:['50%','50%'], data:[{name: ki.most_common_cause?String(ki.most_common_cause).replace(/_/g,' '):'Anthropogenic', value:gs.anthropogenic_percentage||70}, {name:'Other', value:100-(gs.anthropogenic_percentage||70)}], label:{show:false}, itemStyle:{borderColor:'#fff', borderWidth:2}}]
       });
       document.getElementById('resume-knowledge-insight').innerHTML = `<b class="text-slate-800 font-display">AI Observation:</b> ${ki.observation||'-'}`;
 
-      const sigArr = Array.isArray(r.critical_signals) ? r.critical_signals : [];
-      document.getElementById('resume-gems').innerHTML = sigArr.map(s => `
+      document.getElementById('resume-gems').innerHTML = (Array.isArray(r.critical_signals)?r.critical_signals:[]).map(s => `
         <div class="p-3 sm:p-4 rounded-xl bg-red-50/50 border border-red-100 flex gap-3 sm:gap-4 items-start">
           <i class="ph-fill ph-warning-circle text-xl sm:text-2xl text-red-500 shrink-0 mt-0.5"></i>
           <div><p class="font-display font-bold text-xs sm:text-sm text-slate-900">${s.title}</p><p class="text-[8px] sm:text-[9px] font-bold uppercase tracking-widest text-red-500 mt-1 mb-1">${s.country}</p><p class="text-[11px] sm:text-xs text-slate-600 leading-relaxed">${s.reason_for_urgency}</p></div>
         </div>
-      `).join('') || '<p class="text-sm text-slate-400">No critical signals highlighted in this period.</p>';
+      `).join('') || '<p class="text-sm text-slate-400">No critical signals highlighted.</p>';
 
-      const intArr = Array.isArray(r.intervention_opportunities) ? r.intervention_opportunities : [];
-      document.getElementById('resume-interventions').innerHTML = intArr.map(i => {
-        const pc = (i.priority_level==='High' || i.priority_level==='Tinggi')?'text-red-600 bg-red-50':((i.priority_level==='Medium' || i.priority_level==='Menengah')?'text-orange-600 bg-orange-50':'text-emerald-600 bg-emerald-50');
+      document.getElementById('resume-interventions').innerHTML = (Array.isArray(r.intervention_opportunities)?r.intervention_opportunities:[]).map(i => {
+        const pc = (i.priority_level==='High')?'text-red-600 bg-red-50':((i.priority_level==='Medium')?'text-orange-600 bg-orange-50':'text-emerald-600 bg-emerald-50');
         return `<tr><td class="px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-xs font-bold text-slate-700 capitalize whitespace-normal min-w-[80px]">${i.type}</td><td class="px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-xs text-slate-600 whitespace-normal min-w-[150px]">${i.target}</td><td class="px-3 sm:px-4 py-2 sm:py-3 text-right"><span class="text-[8px] sm:text-[9px] font-bold px-2 py-1 rounded uppercase ${pc}">${i.priority_level || 'N/A'}</span></td></tr>`;
       }).join('') || '<tr><td colspan="3" class="px-4 py-3 text-xs text-slate-400 italic">No targets identified.</td></tr>';
 
-      const recArr = Array.isArray(r.recommendations) ? r.recommendations : [];
-      document.getElementById('resume-recommendations').innerHTML = recArr.map((rec, i) => `
+      document.getElementById('resume-recommendations').innerHTML = (Array.isArray(r.recommendations)?r.recommendations:[]).map((rec, i) => `
         <div class="flex gap-3 sm:gap-4 items-start bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4">
           <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-nexus-main/30 text-nexus-light flex items-center justify-center font-bold text-[10px] sm:text-xs shrink-0">${i+1}</div>
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${rec}</p>
         </div>
       `).join('') || '<p class="text-sm text-slate-400 italic">No recommendations.</p>';
-    } catch(e) { 
-      console.warn('Error loading report:', e); 
+    } catch(e) { console.warn('Resume render error:', e); }
+  }
+
+  // --- TAB 4: LIVE THREAT MONITOR (NASA + USGS + GDACS) ---
+    function initLiveMap() {
+    liveMap = L.map('live-map',{zoomControl:false,scrollWheelZoom:false}).setView([20,0],2);
+    L.control.zoom({ position: 'bottomright' }).addTo(liveMap);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ', maxZoom: 16
+    }).addTo(liveMap);
+  }
+
+  function getLiveCategoryStyle(cat) {
+    cat = String(cat).toLowerCase();
+    if(cat.includes('fire')) return { color: '#f97316', bg: 'bg-orange-50 text-orange-600', icon: 'ph-fire' };
+    if(cat.includes('storm') || cat.includes('cyclone')) return { color: '#3b82f6', bg: 'bg-blue-50 text-blue-600', icon: 'ph-cloud-lightning' };
+    if(cat.includes('volcano')) return { color: '#a855f7', bg: 'bg-purple-50 text-purple-600', icon: 'ph-mountains' };
+    if(cat.includes('ice')) return { color: '#0ea5e9', bg: 'bg-sky-50 text-sky-600', icon: 'ph-snowflake' };
+    return { color: '#10b981', bg: 'bg-emerald-50 text-emerald-600', icon: 'ph-warning-circle' };
+  }
+
+  async function fetchLiveFeeds() {
+    const listCont = document.getElementById('live-feed-list');
+    listCont.innerHTML = `<p class="text-xs text-slate-400 italic text-center mt-10"><i class="ph-bold ph-spinner animate-spin text-lg mb-2 block"></i> Intercepting global telemetry...</p>`;
+    
+    const [nasaRes, usgsRes, gdacsRes] = await Promise.all([
+      fetch('https://eonet.gsfc.nasa.gov/api/v3/events/geojson?status=open&limit=300').catch(()=>null),
+      fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson').catch(()=>null),
+      fetch('https://www.gdacs.org/gdacsapi/api/events/geteventlist/EVENTS4APP').catch(()=>null)
+    ]);
+
+    let nasaData = { features: [] }, usgsData = { features: [] }, gdacsData = { features: [] };
+    try { if (nasaRes && nasaRes.ok) nasaData = await nasaRes.json(); } catch(e) { console.warn('NASA parse failed', e); }
+    try { if (usgsRes && usgsRes.ok) usgsData = await usgsRes.json(); } catch(e) { console.warn('USGS parse failed', e); }
+    try { if (gdacsRes && gdacsRes.ok) gdacsData = await gdacsRes.json(); } catch(e) { console.warn('GDACS unavailable (likely CORS) — skipping.', e); }
+
+    let unifiedData = [];
+    let stats = { quakes: 0, storms: 0, fires: 0, volcanoes: 0, gdacs: 0 };
+
+    if (usgsData.features) {
+        usgsData.features.forEach(f => {
+            const p = f.properties;
+            const coords = f.geometry.coordinates;
+            const mag = parseFloat(p.mag);
+            stats.quakes++;
+            unifiedData.push({
+                id: f.id, source: 'usgs', title: `M ${mag.toFixed(1)} - ${p.place}`, category: 'Earthquake',
+                date: new Date(p.time), lat: coords[1], lng: coords[0], mag: mag, url: p.url,
+                style: { color: '#ef4444', bg: 'bg-red-50 text-red-600', icon: 'ph-activity' }
+            });
+        });
     }
+
+    if (nasaData.features) {
+        nasaData.features.forEach(f => {
+            const p = f.properties || {};
+            const catTitle = p.categories && p.categories.length > 0 ? p.categories[0].title : 'Event';
+            
+            if(catTitle.toLowerCase().includes('storm')) stats.storms++;
+            if(catTitle.toLowerCase().includes('fire')) stats.fires++;
+            if(catTitle.toLowerCase().includes('volcano')) stats.volcanoes++;
+
+            let coords = f.geometry?.coordinates;
+            let lat = 0, lng = 0, isTrack = false, trackCoords = [];
+            if (coords) {
+                if (Array.isArray(coords[0])) {
+                    lat = coords[coords.length-1][1]; lng = coords[coords.length-1][0];
+                    isTrack = true; trackCoords = coords.map(c => [c[1], c[0]]);
+                } else { lat = coords[1]; lng = coords[0]; }
+            }
+            unifiedData.push({
+                id: p.id, source: 'nasa', title: p.title || 'Unnamed Event', category: catTitle,
+                date: new Date(p.date), lat: lat, lng: lng, isTrack: isTrack, trackCoords: trackCoords,
+                url: `https://www.google.com/search?tbm=nws&q=${encodeURIComponent(p.title)}`,
+                style: getLiveCategoryStyle(catTitle)
+            });
+        });
+    }
+
+    // Parse GDACS (Global Disaster Alert and Coordination System) — free, no API key
+    try {
+      const gdacsList = Array.isArray(gdacsData) ? gdacsData : (gdacsData.features || gdacsData.events || []);
+      gdacsList.forEach(f => {
+        const p = f.properties || f;
+        const geom = f.geometry || {};
+        let coords = geom.coordinates || (p.longitude != null ? [p.longitude, p.latitude] : null);
+        if (!coords || coords[0] == null || coords[1] == null) return;
+        stats.gdacs++;
+        const alertLevel = String(p.alertlevel || p.episodealertlevel || 'green').toLowerCase();
+        const colorMap = { red: '#dc2626', orange: '#f97316', green: '#22c55e' };
+        unifiedData.push({
+          id: `gdacs-${p.eventid || p.eventtype || Math.random().toString(36).slice(2)}`,
+          source: 'gdacs',
+          title: p.name || p.eventname || p.title || 'GDACS Disaster Alert',
+          category: `${p.eventtype || 'Disaster'} · ${alertLevel.toUpperCase()} ALERT`,
+          date: new Date(p.fromdate || p.pubdate || Date.now()),
+          lat: coords[1], lng: coords[0],
+          url: (p.url && p.url.report) || p.url || 'https://www.gdacs.org',
+          style: { color: colorMap[alertLevel] || '#f59e0b', bg: 'bg-amber-50 text-amber-700', icon: 'ph-warning-diamond' }
+        });
+      });
+    } catch(e) { console.warn('GDACS processing skipped:', e); }
+
+    document.getElementById('stat-quakes').innerText = stats.quakes;
+    document.getElementById('stat-storms').innerText = stats.storms;
+    document.getElementById('stat-fires').innerText = stats.fires;
+    document.getElementById('stat-volcanoes').innerText = stats.volcanoes;
+    document.getElementById('stat-gdacs').innerText = stats.gdacs;
+    document.getElementById('live-event-count').innerText = unifiedData.length;
+
+    unifiedData.sort((a,b) => b.date - a.date);
+    renderUnifiedMap(unifiedData);
+    renderUnifiedFeedList(unifiedData);
+  }
+
+  function renderUnifiedMap(dataList) {
+    if(liveClusterLayer) liveMap.removeLayer(liveClusterLayer);
+    if(liveLinesLayer) liveMap.removeLayer(liveLinesLayer);
+    if(usgsLayer) liveMap.removeLayer(usgsLayer);
+    
+    liveMarkersById = {};
+    liveLinesLayer = L.layerGroup().addTo(liveMap);
+    usgsLayer = L.layerGroup().addTo(liveMap);
+
+    liveClusterLayer = L.markerClusterGroup({
+      chunkedLoading: true, maxClusterRadius: 40,
+      iconCreateFunction: c => L.divIcon({ html: `<div class="bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center font-display font-bold shadow-lg border-2 border-slate-500">${c.getChildCount()}</div>`, className: '', iconSize: [40,40] })
+    });
+
+    const bounds = [];
+    dataList.forEach(item => {
+        if((item.lat === 0 && item.lng === 0) || item.lat === undefined) return;
+        bounds.push([item.lat, item.lng]);
+
+        const popupHtml = `
+          <div class="w-48 p-1">
+            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">${item.category}</p>
+            <h4 class="font-display font-bold text-xs text-slate-800 mb-2 leading-tight">${item.title}</h4>
+            <p class="text-[10px] text-slate-500 flex items-center gap-1 mb-3"><i class="ph-bold ph-clock"></i> ${item.date.toLocaleString()}</p>
+            <a href="${item.url}" target="_blank" class="block text-center w-full bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-800 hover:text-white hover:border-slate-800 text-[10px] font-bold py-1.5 rounded transition-colors uppercase">${item.source === 'nasa' ? 'Search News' : 'View Details'}</a>
+          </div>
+        `;
+
+        if (item.source === 'usgs') {
+            const radius = Math.max(item.mag * 2, 8); 
+            const htmlIcon = `<div class="pulse-quake bg-red-600 border border-white" style="width:${radius}px; height:${radius}px;"></div>`;
+            const customIcon = L.divIcon({ className:'', html: htmlIcon, iconSize:[radius,radius], iconAnchor:[radius/2,radius/2] });
+            const marker = L.marker([item.lat, item.lng], {icon: customIcon}).bindPopup(popupHtml);
+            liveMarkersById[item.id] = marker;
+            usgsLayer.addLayer(marker);
+        } else if (item.source === 'gdacs') {
+            const iconHtml = `<div style="width:16px;height:16px; background:${item.style.color}; transform:rotate(45deg); border:2px solid white; box-shadow:0 0 6px ${item.style.color}80;"></div>`;
+            const customIcon = L.divIcon({ className: '', html: iconHtml, iconSize: [16,16], iconAnchor: [8,8] });
+            const marker = L.marker([item.lat, item.lng], { icon: customIcon }).bindPopup(popupHtml);
+            liveMarkersById[item.id] = marker;
+            liveClusterLayer.addLayer(marker);
+        } else {
+            if(item.isTrack) L.polyline(item.trackCoords, { color: item.style.color, weight: 2, opacity: 0.5, className: 'track-line' }).addTo(liveLinesLayer);
+            const iconHtml = `<div class="pulse-eonet" style="background-color: ${item.style.color}; width: 14px; height: 14px; border: 2px solid white; --pulse-color: ${item.style.color}80;"></div>`;
+            const customIcon = L.divIcon({ className: '', html: iconHtml, iconSize: [14,14], iconAnchor: [7,7] });
+            const marker = L.marker([item.lat, item.lng], { icon: customIcon }).bindPopup(popupHtml);
+            liveMarkersById[item.id] = marker;
+            liveClusterLayer.addLayer(marker);
+        }
+    });
+
+    liveMap.addLayer(liveClusterLayer);
+    if (bounds.length > 0) liveMap.fitBounds(bounds, { padding: [20, 20], maxZoom: 5 });
+  }
+
+  function focusLiveEvent(eventId, source, lat, lng) {
+      liveMap.flyTo([lat, lng], (source === 'usgs' ? 7 : 6), { duration: 1.5 });
+      setTimeout(() => {
+          const marker = liveMarkersById[eventId];
+          if(marker) {
+              if (source === 'nasa' || source === 'gdacs') liveClusterLayer.zoomToShowLayer(marker, () => marker.openPopup());
+              else marker.openPopup(); 
+          }
+      }, 1500);
+  }
+
+  function renderUnifiedFeedList(dataList) {
+    const listCont = document.getElementById('live-feed-list'); listCont.innerHTML = '';
+    const displayList = dataList.slice(0, 50);
+    
+    if (displayList.length === 0) {
+      listCont.innerHTML = '<p class="text-xs text-slate-400 italic text-center mt-10">No active events retrieved. Some feeds may be temporarily unavailable.</p>';
+      return;
+    }
+
+    displayList.forEach(item => {
+      const timeStr = item.date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), dateStr = item.date.toLocaleDateString();
+      const sourceTag = item.source === 'gdacs' ? '<span class="text-[8px] font-black uppercase text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">GDACS</span>' : (item.source === 'usgs' ? '<span class="text-[8px] font-black uppercase text-red-600 bg-red-50 px-1.5 py-0.5 rounded">USGS</span>' : '<span class="text-[8px] font-black uppercase text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">NASA</span>');
+      const itemHtml = `
+        <div onclick="focusLiveEvent('${item.id}', '${item.source}', ${item.lat}, ${item.lng})" class="p-3 bg-white rounded-xl border border-slate-200 hover:border-slate-400 cursor-pointer shadow-sm hover:shadow transition-all flex items-start gap-3 relative overflow-hidden shrink-0">
+          ${item.source === 'usgs' && item.mag >= 6.0 ? `<div class="absolute top-0 right-0 bg-red-600 text-white text-[8px] font-bold px-2 py-0.5 rounded-bl-lg">MAJOR</div>` : ''}
+          <div class="w-8 h-8 rounded-lg ${item.style.bg} flex items-center justify-center shrink-0">
+            <i class="ph-fill ${item.style.icon} text-lg"></i>
+          </div>
+          <div class="flex-grow min-w-0">
+            <div class="flex items-center gap-1.5 mb-1">${sourceTag}</div>
+            <h4 class="text-xs font-bold text-slate-800 truncate" title="${item.title}">${item.title}</h4>
+            <div class="flex flex-wrap items-center gap-2 mt-1">
+              <span class="text-[9px] font-bold uppercase tracking-wider text-slate-500">${item.category}</span>
+              <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+              <span class="text-[9px] text-slate-400">${dateStr} &bull; ${timeStr}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      listCont.insertAdjacentHTML('beforeend', itemHtml);
+    });
   }
 
   function resizeAllCharts() {
     if(chartInstances.domainMap) chartInstances.domainMap.resize();
-    ['donut','cat','risk','root'].forEach(c => { 
-      if(chartInstances[c]) chartInstances[c].resize(); 
-    });
+    if(chartInstances.hotspot) chartInstances.hotspot.resize();
+    if(chartInstances.trend) chartInstances.trend.resize();
+    ['donut','cat','risk','root'].forEach(c => { if(chartInstances[c]) chartInstances[c].resize(); });
   }
-
   window.addEventListener('resize', resizeAllCharts);
-
   window.onload = init;
   </script>
 </body>
