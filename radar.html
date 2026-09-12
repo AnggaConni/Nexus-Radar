@@ -1176,38 +1176,85 @@
     modal.classList.remove('opacity-0'); wrapper.classList.remove('scale-95');
   }
 
-  // --- FREE API #3: RELIEFWEB CROSS-REFERENCE (no API key required) ---
-  async function fetchExternalCrossReference(country) {
+  // --- RELIEFWEB V2: HUMANITARIAN CROSS-REFERENCE ---
+async function fetchExternalCrossReference(country) {
     const listEl = document.getElementById('modal-external-list');
-    if (!country || String(country).toLowerCase() === 'unknown' || String(country).toLowerCase() === 'global') {
-      listEl.innerHTML = '<p class="text-xs text-slate-400 italic">No specific country available to cross-reference.</p>';
-      return;
-    }
-    listEl.innerHTML = '<p class="text-xs text-slate-400 italic flex items-center gap-2"><i class="ph-bold ph-spinner animate-spin"></i> Querying ReliefWeb humanitarian archives...</p>';
-    try {
-      if (!reliefWebCache[country]) {
-        const url = `https://api.reliefweb.int/v1/reports?appname=nexusradar&query[value]=${encodeURIComponent(country)}&limit=4&sort[]=date:desc&fields[include][]=title&fields[include][]=url_alias`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error('bad response');
-        const json = await res.json();
-        reliefWebCache[country] = (json.data || []).map(d => ({
-          title: d.fields?.title || 'Untitled Report',
-          url: d.fields?.url_alias || 'https://reliefweb.int'
-        }));
-      }
-      const reports = reliefWebCache[country];
-      if (reports.length === 0) {
-        listEl.innerHTML = '<p class="text-xs text-slate-400 italic">No related humanitarian reports found on ReliefWeb for this country.</p>';
+
+    if (
+        !country ||
+        String(country).toLowerCase() === 'unknown' ||
+        String(country).toLowerCase() === 'global'
+    ) {
+        listEl.innerHTML =
+            '<p class="text-xs text-slate-400 italic">No specific country available to cross-reference.</p>';
         return;
-      }
-      listEl.innerHTML = reports.map(r => `
-        <a href="${r.url}" target="_blank" class="flex items-center gap-3 p-3 rounded-xl bg-emerald-50/50 border border-emerald-100 hover:border-emerald-300 text-xs sm:text-sm text-emerald-700 transition-colors">
-          <i class="ph-fill ph-file-text text-lg shrink-0"></i><span class="truncate underline">${r.title}</span>
-        </a>`).join('');
-    } catch (e) {
-      listEl.innerHTML = '<p class="text-xs text-red-400 italic">Cross-reference service unavailable right now (network/CORS restriction).</p>';
     }
-  }
+
+    listEl.innerHTML =
+        '<p class="text-xs text-slate-400 italic flex items-center gap-2">' +
+        '<i class="ph-bold ph-spinner animate-spin"></i>' +
+        ' Querying ReliefWeb humanitarian archives...' +
+        '</p>';
+
+    try {
+        if (!reliefWebCache[country]) {
+
+            const url =
+                `https://api.reliefweb.int/v2/reports` +
+                `?appname=nexusradar` +
+                `&query[value]=${encodeURIComponent(country)}` +
+                `&limit=4` +
+                `&sort[]=date:desc` +
+                `&fields[include][]=title` +
+                `&fields[include][]=url`;
+
+            const res = await fetch(url);
+
+            if (!res.ok) {
+                throw new Error(`ReliefWeb HTTP ${res.status}`);
+            }
+
+            const json = await res.json();
+
+            reliefWebCache[country] = (json.data || []).map(d => ({
+                title: d.fields?.title || 'Untitled Report',
+                url: d.fields?.url || d.href || 'https://reliefweb.int'
+            }));
+        }
+
+        const reports = reliefWebCache[country];
+
+        if (!reports.length) {
+            listEl.innerHTML =
+                '<p class="text-xs text-slate-400 italic">' +
+                'No related humanitarian reports found on ReliefWeb for this country.' +
+                '</p>';
+            return;
+        }
+
+        listEl.innerHTML = reports.map(r => `
+            <a href="${r.url}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="flex items-center gap-3 p-3 rounded-xl bg-emerald-50/50 border border-emerald-100 hover:border-emerald-300 text-xs sm:text-sm text-emerald-700 transition-colors">
+
+                <i class="ph-fill ph-file-text text-lg shrink-0"></i>
+
+                <span class="truncate underline">${r.title}</span>
+
+            </a>
+        `).join('');
+
+    } catch (e) {
+
+        console.error('ReliefWeb API error:', e);
+
+        listEl.innerHTML =
+            '<p class="text-xs text-red-400 italic">' +
+            'ReliefWeb humanitarian cross-reference is currently unavailable.' +
+            '</p>';
+    }
+}
 
   function closeModal() {
     const m = document.getElementById('item-modal'), w = document.getElementById('modal-content-wrapper');
