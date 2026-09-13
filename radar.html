@@ -92,26 +92,20 @@
     }
     .thumb-fallback-hidden { display: none !important; }
 
-    /* FORESIGHT ANIMATIONS */
+/* FORESIGHT ANIMATIONS */
     .foresight-zone {
-      stroke-dasharray: 6 6;
-      animation: radar-spin 10s linear infinite;
-      transform-origin: center;
+      animation: pulse-ring-map 2s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate;
     }
-    @keyframes radar-spin {
-      100% { stroke-dashoffset: 100; }
+    @keyframes pulse-ring-map {
+      0% { fill-opacity: 0.1; stroke-opacity: 0.8; }
+      100% { fill-opacity: 0.25; stroke-opacity: 0.2; }
     }
     .cone-predict {
-      fill: url(#cone-gradient);
       animation: pulse-opacity 2s infinite alternate;
     }
     @keyframes pulse-opacity {
-      0% { fill-opacity: 0.1; }
-      100% { fill-opacity: 0.4; }
-    }
-    .foresight-node:hover {
-      filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.8));
-      cursor: pointer;
+      0% { fill-opacity: 0.15; }
+      100% { fill-opacity: 0.35; }
     }
 
   </style>
@@ -1978,8 +1972,23 @@ function processForesight(dataList) {
     const insightId = `quake-${q.id || index}`;
     const timeLabel = daysSince < 1 ? `${Math.round(daysSince*24)}h ago` : `${Math.round(daysSince)}d ago`;
 
+    // 1. Visual Episentrum (Titik Pusat)
+    L.circleMarker([q.lat, q.lng], {
+      radius: 4, color: '#ef4444', weight: 2, fillColor: '#ffffff', fillOpacity: 1
+    }).addTo(foresightLayer);
+
+    // 2. Garis Radar Konsentris (Inner & Middle Rings)
+    L.circle([q.lat, q.lng], { 
+      radius: radiusMeters * 0.33, color: '#ef4444', weight: 1.5, fillOpacity: 0, dashArray: '4, 6', opacity: 0.6 
+    }).addTo(foresightLayer);
+    
+    L.circle([q.lat, q.lng], { 
+      radius: radiusMeters * 0.66, color: '#ef4444', weight: 1, fillOpacity: 0, dashArray: '4, 8', opacity: 0.4 
+    }).addTo(foresightLayer);
+
+    // 3. Zona Risiko Utama (Outer Animated Circle)
     const layer = L.circle([q.lat, q.lng], {
-      radius: radiusMeters, color: '#ef4444', weight: 1.5,
+      radius: radiusMeters, color: '#ef4444', weight: 2,
       fillColor: '#ef4444', fillOpacity: 0.15, className: 'foresight-zone'
     }).bindPopup(`<b>Aftershock Risk Zone</b><br>Mainshock M${q.mag.toFixed(1)}, ${timeLabel}<br>Probability M${targetMag.toFixed(1)}+: ${probability}%<br><span class="text-[10px] text-slate-400">Heuristic model (Reasenberg-Jones), not an official forecast.</span>`)
       .addTo(foresightLayer);
@@ -2000,6 +2009,7 @@ function processForesight(dataList) {
       const { projected, confidence, coneSpreadDeg, avgBearing, avgDist, last } = projectStorm(s.trackCoords);
       const insightId = `storm-${s.id || sIndex}`;
 
+      // 1. Polygon Cone Merah/Pink (Area sebaran)
       const conePolygon = [
         last,
         projectPoint(last[0], last[1], avgBearing - coneSpreadDeg, avgDist),
@@ -2007,14 +2017,24 @@ function processForesight(dataList) {
       ];
 
       const cone = L.polygon(conePolygon, {
-        color: '#3b82f6', weight: 1, dashArray: '4,4',
-        fillColor: '#3b82f6', fillOpacity: 0.2, className: 'cone-predict'
-      }).bindPopup(`<b>Track Projection</b><br>${s.title}<br>Estimated Heading: ${Math.round(avgBearing)}°<br>Confidence: ${confidence}%<br><span class="text-[10px] text-slate-400">Linear extrapolation from last point; not an official NHC forecast.</span>`)
+        color: '#f43f5e', weight: 0, 
+        fillColor: '#f43f5e', fillOpacity: 0.2, className: 'cone-predict'
+      }).bindPopup(`<b>Track Projection</b><br>${s.title}<br>Estimated Heading: ${Math.round(avgBearing)}°<br>Confidence: ${confidence}%<br><span class="text-[10px] text-slate-400">Linear extrapolation from last point; not an official forecast.</span>`)
         .addTo(foresightLayer);
-      L.polyline([last, projected], { color: '#eab308', weight: 2, dashArray: '5,5' }).addTo(foresightLayer);
+        
+      // 2. Garis Lintasan Kuning Tegas (Yellow Trajectory Line)
+      L.polyline([last, projected], { 
+        color: '#eab308', weight: 3, dashArray: '6, 6', opacity: 1 
+      }).addTo(foresightLayer);
+      
+      // 3. Titik Akhir Proyeksi (Target Dot)
+      L.circleMarker(projected, {
+        radius: 4, color: '#eab308', weight: 2, fillColor: '#ffffff', fillOpacity: 1
+      }).addTo(foresightLayer);
 
       foresightLayersById[insightId] = cone;
       mapBounds.push(last);
+      mapBounds.push(projected); // Ensure map zoom includes the projected point
 
       foresightInsights.push({
         id: insightId, type: 'storm', title: `Projected Track ${s.category}`,
@@ -2025,7 +2045,7 @@ function processForesight(dataList) {
     } catch(e) { console.warn('Skipped storm projection, invalid track data:', s.title, e); }
   });
 
-  if (mapBounds.length > 0) foresightMap.fitBounds(mapBounds, { padding: [30, 30], maxZoom: 5 });
+  if (mapBounds.length > 0) foresightMap.fitBounds(mapBounds, { padding: [40, 40], maxZoom: 6 });
   renderForesightList(); renderForesightSummaryChart();
 }
 
