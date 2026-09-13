@@ -91,6 +91,29 @@
         100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
     }
     .thumb-fallback-hidden { display: none !important; }
+
+    /* FORESIGHT ANIMATIONS */
+    .foresight-zone {
+      stroke-dasharray: 6 6;
+      animation: radar-spin 10s linear infinite;
+      transform-origin: center;
+    }
+    @keyframes radar-spin {
+      100% { stroke-dashoffset: 100; }
+    }
+    .cone-predict {
+      fill: url(#cone-gradient);
+      animation: pulse-opacity 2s infinite alternate;
+    }
+    @keyframes pulse-opacity {
+      0% { fill-opacity: 0.1; }
+      100% { fill-opacity: 0.4; }
+    }
+    .foresight-node:hover {
+      filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.8));
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body class="flex h-screen overflow-hidden">
@@ -126,6 +149,9 @@
       </button>
       <button onclick="switchTab('live')" id="nav-live" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
         <i class="ph-fill ph-broadcast text-lg"></i> Global Threats
+      </button>
+      <button onclick="switchTab('foresight')" id="nav-foresight" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
+        <i class="ph-fill ph-binoculars text-lg"></i> Global Foresight
       </button>
     </nav>
 
@@ -582,6 +608,69 @@
         </div>
       </div>
 
+      <!-- ========================================== -->
+      <!-- TAB 5: GLOBAL FORESIGHT (PREDICTIVE ENGINE) -->
+      <!-- ========================================== -->
+      <div id="view-foresight" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
+        
+        <div class="bg-indigo-950 rounded-2xl p-4 sm:p-6 text-white shadow-xl relative overflow-hidden flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-50"></div>
+          <div class="absolute top-0 left-0 w-64 h-64 bg-indigo-500 opacity-20 blur-[80px] rounded-full pointer-events-none"></div>
+          
+          <div class="flex items-center gap-4 relative z-10">
+            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center border border-white/20 backdrop-blur-sm shrink-0 text-indigo-400">
+              <i class="ph-fill ph-target text-3xl"></i>
+            </div>
+            <div>
+              <h2 class="font-display font-bold text-lg sm:text-2xl leading-tight text-white flex items-center gap-2">
+                AI Predictive Foresight
+                <span class="bg-indigo-500 text-white text-[9px] px-2 py-0.5 rounded-full uppercase font-bold tracking-widest animate-pulse">Beta</span>
+              </h2>
+              <p class="text-indigo-200 text-[10px] sm:text-sm mt-0.5">Memproyeksikan risiko gempa susulan & lintasan badai berdasarkan data real-time.</p>
+              <p class="text-indigo-300/60 text-[9px] sm:text-xs mt-1 italic">Model heuristik internal — bukan prakiraan resmi BMKG, USGS, atau NHC.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+          
+          <!-- MAP AREA -->
+          <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm p-2 flex flex-col h-[450px] sm:h-[600px] relative">
+            <div class="absolute top-4 left-4 z-[400] bg-white/90 backdrop-blur-md border border-slate-200 p-3 rounded-xl shadow-lg pointer-events-none">
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Legend Proyeksi</h3>
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border border-red-500 bg-red-500/20"></div><span class="text-[10px] font-bold text-slate-700">Zona Gempa Susulan</span></div>
+                <div class="flex items-center gap-2"><div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[12px] border-b-blue-500/40"></div><span class="text-[10px] font-bold text-slate-700">Proyeksi Lintasan Badai</span></div>
+                <div class="flex items-center gap-2"><div class="w-4 h-0.5 border-t-2 border-dashed border-yellow-500"></div><span class="text-[10px] font-bold text-slate-700">Arah Proyeksi</span></div>
+              </div>
+            </div>
+            <div id="foresight-map" class="w-full flex-grow rounded-xl bg-slate-100 border border-slate-100 z-10"></div>
+          </div>
+          
+          <!-- INTERACTIVE SVG PANEL & LIST -->
+          <div class="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
+            <!-- Interactive SVG Abstract Engine -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 h-[200px] flex flex-col">
+            <h3 class="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-2">Top 5 Sinyal Berdasarkan Keyakinan</h3>
+            <div id="foresight-summary-chart" class="w-full flex-grow"></div>
+          </div>
+
+            <!-- Insight List -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 flex-grow flex flex-col h-[380px]">
+              <div class="flex justify-between items-center mb-3 border-b border-slate-100 pb-2">
+                <h3 class="font-display font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider">Predictive Insights</h3>
+                <span id="foresight-count" class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-1 rounded">0 Predictions</span>
+              </div>
+              <div id="foresight-list" class="flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar flex-grow">
+                <p class="text-xs text-slate-400 italic text-center mt-10">Menghitung proyeksi...</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
     </div>
   </main>
 
@@ -876,21 +965,30 @@
 
   // --- TAB SWITCHER ---
   function switchTab(tabId) {
-    ['inventory','map','resume','live'].forEach(t => {
-      document.getElementById(`nav-${t}`).classList.toggle('active', t === tabId);
+    // Tambahkan 'foresight' ke dalam array
+    ['inventory','map','resume','live', 'foresight'].forEach(t => {
+      const navBtn = document.getElementById(`nav-${t}`);
+      if(navBtn) navBtn.classList.toggle('active', t === tabId);
+      
       const view = document.getElementById(`view-${t}`);
-      if (t === tabId) { view.classList.remove('hidden'); view.classList.add('flex'); }
-      else { view.classList.add('hidden'); view.classList.remove('flex'); }
+      if(view) {
+        if (t === tabId) { view.classList.remove('hidden'); view.classList.add('flex'); }
+        else { view.classList.add('hidden'); view.classList.remove('flex'); }
+      }
     });
 
     const titles = {
       'inventory':['Signal Inventory', 'Real-time latent environmental anomalies.'],
       'map':['Global Threat Map', 'Geospatial distribution of detected signals.'],
       'resume':['Intelligence Resume', 'Quarterly synthesis and recommendations.'],
-      'live':['Global Threat Monitor', 'Synchronized with NASA EONET, USGS & GDACS.']
+      'live':['Global Threat Monitor', 'Synchronized with NASA EONET, USGS & GDACS.'],
+      'foresight':['Global Foresight', 'Predictive heuristic engine using historical vector data.'] // <-- Baris baru
     };
-    document.getElementById('page-title').innerText = titles[tabId][0];
-    document.getElementById('page-title').nextElementSibling.innerText = titles[tabId][1];
+    
+    if(titles[tabId]) {
+        document.getElementById('page-title').innerText = titles[tabId][0];
+        document.getElementById('page-title').nextElementSibling.innerText = titles[tabId][1];
+    }
 
     if (window.innerWidth < 1024 && !document.getElementById('sidebar').classList.contains('-translate-x-full')) {
       toggleSidebar();
@@ -909,6 +1007,14 @@
       if (!liveMap) { initLiveMap(); fetchLiveFeeds(); }
       setTimeout(() => { if(liveMap) liveMap.invalidateSize(); }, 150);
     }
+      if (tabId === 'foresight') {
+    if (!foresightMap) { 
+       initForesightMap(); 
+       // Opsional: jika tab dibuka tapi data live blm di fetch
+       if(document.getElementById('live-event-count').innerText === "0") fetchLiveFeeds(); 
+    }
+    setTimeout(() => { if(foresightMap) foresightMap.invalidateSize(); }, 150);
+  }
   }
 
   function renderTopStats() {
@@ -1649,6 +1755,7 @@ async function fetchExternalCrossReference(country) {
     unifiedData.sort((a,b) => b.date - a.date);
     renderUnifiedMap(unifiedData);
     renderUnifiedFeedList(unifiedData);
+    processForesight(unifiedData);
   }
 
   function renderUnifiedMap(dataList) {
@@ -1754,10 +1861,222 @@ async function fetchExternalCrossReference(country) {
     if(chartInstances.domainMap) chartInstances.domainMap.resize();
     if(chartInstances.hotspot) chartInstances.hotspot.resize();
     if(chartInstances.trend) chartInstances.trend.resize();
-    ['donut','cat','risk','root'].forEach(c => { if(chartInstances[c]) chartInstances[c].resize(); });
+    ['donut','cat','risk','root','foresightSummary'].forEach(c => { if(chartInstances[c]) chartInstances[c].resize(); });
   }
   window.addEventListener('resize', resizeAllCharts);
   window.onload = init;
+
+  // --- STATE FORESIGHT ---
+let foresightMap = null;
+let foresightLayer = null;
+let foresightInsights = [];
+let foresightLayersById = {};
+
+function initForesightMap() {
+  if (foresightMap) return;
+  foresightMap = L.map('foresight-map', {zoomControl:false, scrollWheelZoom:false}).setView([20,0], 2);
+  L.control.zoom({ position: 'bottomright' }).addTo(foresightMap);
+  // Gunakan ESRI Map persis seperti tab lainnya
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ', maxZoom: 16
+  }).addTo(foresightMap);
+  foresightLayer = L.featureGroup().addTo(foresightMap);
+}
+
+
+function calcAftershockProbability(mainMag, targetMag, daysSinceMainshock) {
+  const a = -1.67, b = 0.91, p = 1.08; // Reasenberg-Jones, generic California
+  const t = Math.max(daysSinceMainshock, 0.02);
+  const expectedCount = Math.pow(10, a + b * (mainMag - targetMag) - p * Math.log10(t));
+  return Math.round(Math.min(1 - Math.exp(-expectedCount), 0.99) * 100);
+}
+
+function aftershockRadiusMeters(mag) {
+  return Math.pow(10, 0.5 * mag - 1.8) * 1000; // relasi empiris Utsu (1961)
+}
+
+const toRad = d => d * Math.PI / 180, toDeg = r => r * 180 / Math.PI;
+
+function calcBearing(lat1, lon1, lat2, lon2) {
+  const y = Math.sin(toRad(lon2-lon1)) * Math.cos(toRad(lat2));
+  const x = Math.cos(toRad(lat1))*Math.sin(toRad(lat2)) -
+            Math.sin(toRad(lat1))*Math.cos(toRad(lat2))*Math.cos(toRad(lon2-lon1));
+  return (toDeg(Math.atan2(y, x)) + 360) % 360;
+}
+
+function projectPoint(lat, lon, bearingDeg, distanceKm) {
+  const R = 6371, brng = toRad(bearingDeg), lat1 = toRad(lat), lon1 = toRad(lon);
+  const lat2 = Math.asin(Math.sin(lat1)*Math.cos(distanceKm/R) + Math.cos(lat1)*Math.sin(distanceKm/R)*Math.cos(brng));
+  const lon2 = lon1 + Math.atan2(Math.sin(brng)*Math.sin(distanceKm/R)*Math.cos(lat1), Math.cos(distanceKm/R)-Math.sin(lat1)*Math.sin(lat2));
+  return [toDeg(lat2), ((toDeg(lon2)+540)%360)-180];
+}
+
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const R = 6371, dLat = toRad(lat2-lat1), dLon = toRad(lon2-lon1);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+function projectStorm(trackCoords) {
+  const n = Math.min(4, trackCoords.length);
+  const recent = trackCoords.slice(-n);
+  const bearings = [], distances = [];
+  for (let i = 1; i < recent.length; i++) {
+    bearings.push(calcBearing(recent[i-1][0], recent[i-1][1], recent[i][0], recent[i][1]));
+    distances.push(haversineKm(recent[i-1][0], recent[i-1][1], recent[i][0], recent[i][1]));
+  }
+  // circular mean — hindari salah arah saat lintasan melewati 0°/360° (badai ke utara)
+  const sumSin = bearings.reduce((s,b)=>s+Math.sin(toRad(b)),0);
+  const sumCos = bearings.reduce((s,b)=>s+Math.cos(toRad(b)),0);
+  const avgBearing = (toDeg(Math.atan2(sumSin, sumCos)) + 360) % 360;
+
+  const angDiff = (a,b) => { const d = Math.abs(a-b) % 360; return d > 180 ? 360-d : d; };
+  const bearingSpread = bearings.length > 1 ? Math.max(...bearings.map(b => angDiff(b, avgBearing))) * 2 : 15;
+
+  const avgDist = distances.reduce((a,b)=>a+b,0) / distances.length;
+  const last = recent[recent.length-1];
+  const projected = projectPoint(last[0], last[1], avgBearing, avgDist);
+  const confidence = Math.max(25, Math.round(90 - bearingSpread - (5 - n) * 8));
+  const coneSpreadDeg = 8 + bearingSpread * 0.5;
+  return { projected, confidence, coneSpreadDeg, avgBearing, avgDist, last };
+}
+
+function processForesight(dataList) {
+  if (!foresightLayer) return;
+  foresightLayer.clearLayers();
+  foresightInsights = [];
+  foresightLayersById = {};
+
+  const svgNodes = document.getElementById('svg-nodes');
+  const svgLines = document.getElementById('svg-connections');
+  svgNodes.innerHTML = ''; svgLines.innerHTML = '';
+
+  const mapBounds = [];
+  const quakes = dataList.filter(d => d.source === 'usgs' && d.mag >= 5.0);
+  const storms = dataList.filter(d => d.source === 'nasa' && d.isTrack && d.trackCoords.length >= 2);
+
+  quakes.forEach((q, index) => {
+    const daysSince = Math.max((Date.now() - q.date.getTime()) / 86400000, 0.02);
+    const targetMag = Math.max(q.mag - 1.2, 3.0);
+    const probability = calcAftershockProbability(q.mag, targetMag, daysSince);
+    const radiusMeters = aftershockRadiusMeters(q.mag);
+    const insightId = `quake-${q.id || index}`;
+    const timeLabel = daysSince < 1 ? `${Math.round(daysSince*24)} jam` : `${Math.round(daysSince)} hari`;
+
+    const layer = L.circle([q.lat, q.lng], {
+      radius: radiusMeters, color: '#ef4444', weight: 1.5,
+      fillColor: '#ef4444', fillOpacity: 0.15, className: 'foresight-zone'
+    }).bindPopup(`<b>Zona Risiko Aftershock</b><br>Mainshock M${q.mag.toFixed(1)}, ${timeLabel} lalu<br>Probabilitas M${targetMag.toFixed(1)}+: ${probability}%<br><span class="text-[10px] text-slate-400">Model heuristik (Reasenberg-Jones), bukan prakiraan resmi.</span>`)
+      .addTo(foresightLayer);
+
+    foresightLayersById[insightId] = layer;
+    mapBounds.push([q.lat, q.lng]);
+
+    foresightInsights.push({
+      id: insightId, type: 'quake', title: `Risiko Aftershock M${targetMag.toFixed(1)}+`,
+      location: q.title.split(' - ')[1] || q.title, prob: probability,
+      color: '#ef4444', icon: 'ph-waves', lat: q.lat, lng: q.lng,
+      meta: `Mainshock M${q.mag.toFixed(1)} · ${timeLabel} lalu`
+    });
+
+    if (index < 6) {
+      const x = 20 + index * 30;
+      svgNodes.innerHTML += `<circle cx="${x}" cy="50" r="${Math.max(3, q.mag)}" fill="#ef4444" class="foresight-node" filter="url(#glow)"><title>${q.title}: ${probability}%</title></circle>`;
+      if (index > 0) svgLines.innerHTML += `<path d="M ${x-30} 50 L ${x} 50" fill="none" stroke="url(#line-grad)" stroke-width="1.5" stroke-dasharray="2 2" />`;
+    }
+  });
+
+  storms.forEach((s, sIndex) => {
+    const { projected, confidence, coneSpreadDeg, avgBearing, avgDist, last } = projectStorm(s.trackCoords);
+    const insightId = `storm-${s.id || sIndex}`;
+
+    const conePolygon = [
+      last,
+      projectPoint(last[0], last[1], avgBearing - coneSpreadDeg, avgDist),
+      projectPoint(last[0], last[1], avgBearing + coneSpreadDeg, avgDist)
+    ];
+
+    const cone = L.polygon(conePolygon, {
+      color: '#3b82f6', weight: 1, dashArray: '4,4',
+      fillColor: '#3b82f6', fillOpacity: 0.2, className: 'cone-predict'
+    }).bindPopup(`<b>Proyeksi Lintasan</b><br>${s.title}<br>Estimasi arah: ${Math.round(avgBearing)}°<br>Keyakinan: ${confidence}%<br><span class="text-[10px] text-slate-400">Ekstrapolasi linier dari titik terakhir, bukan prakiraan resmi NHC.</span>`)
+      .addTo(foresightLayer);
+    L.polyline([last, projected], { color: '#eab308', weight: 2, dashArray: '5,5' }).addTo(foresightLayer);
+
+    foresightLayersById[insightId] = cone;
+    mapBounds.push(last);
+
+    foresightInsights.push({
+      id: insightId, type: 'storm', title: `Proyeksi Arah ${s.category}`,
+      location: s.title, prob: confidence, color: '#3b82f6', icon: 'ph-wind',
+      lat: projected[0], lng: projected[1],
+      meta: `Arah ~${Math.round(avgBearing)}° · ${Math.round(avgDist)} km/interval`
+    });
+  });
+
+  if (mapBounds.length > 0) foresightMap.fitBounds(mapBounds, { padding: [30, 30], maxZoom: 5 });
+  renderForesightList(); renderForesightSummaryChart();
+}
+
+function renderForesightSummaryChart() {
+  if (!chartInstances.foresightSummary) chartInstances.foresightSummary = echarts.init(document.getElementById('foresight-summary-chart'));
+  const top5 = [...foresightInsights].sort((a,b)=>b.prob-a.prob).slice(0,5).reverse();
+  if (top5.length === 0) { chartInstances.foresightSummary.showLoading({ text:'Belum ada data', showSpinner:false }); return; }
+  chartInstances.foresightSummary.hideLoading();
+  chartInstances.foresightSummary.setOption({
+    grid: { top: 5, bottom: 5, left: 10, right: 30, containLabel: true },
+    xAxis: { type: 'value', max: 100, axisLabel: { formatter: '{value}%', fontSize: 9 }, splitLine: { lineStyle: { type: 'dashed', color: '#e2e8f0' } } },
+    yAxis: { type: 'category', data: top5.map(i => i.title.length > 22 ? i.title.slice(0,22)+'…' : i.title), axisLabel: { fontSize: 9, fontWeight: 'bold', color: '#475569' } },
+    series: [{
+      type: 'bar', barWidth: '55%',
+      data: top5.map(i => ({ value: i.prob, itemStyle: { color: i.color, borderRadius: [0,4,4,0] } })),
+      label: { show: true, position: 'right', fontWeight: 'bold', color: '#1e293b', formatter: '{c}%' }
+    }]
+  });
+}
+
+function renderForesightList() {
+  const listEl = document.getElementById('foresight-list');
+  document.getElementById('foresight-count').innerText = `${foresightInsights.length} Proyeksi`;
+
+  if (foresightInsights.length === 0) {
+    listEl.innerHTML = '<p class="text-xs text-slate-400 italic text-center mt-10">Data tidak cukup untuk membangun proyeksi.</p>';
+    return;
+  }
+
+  const quakeInsights = foresightInsights.filter(i => i.type === 'quake').sort((a,b)=>b.prob-a.prob);
+  const stormInsights = foresightInsights.filter(i => i.type === 'storm').sort((a,b)=>b.prob-a.prob);
+
+  const renderCard = item => `
+    <div onclick="focusForesightItem('${item.id}', ${item.lat}, ${item.lng})" class="bg-slate-50 border border-slate-100 p-3 rounded-xl hover:border-slate-300 hover:shadow-sm cursor-pointer transition-all group">
+      <div class="flex justify-between items-start mb-1">
+        <div class="flex items-center gap-2">
+          <i class="ph-fill ${item.icon} text-lg" style="color:${item.color}"></i>
+          <h4 class="text-xs font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">${item.title}</h4>
+        </div>
+        <span class="text-[10px] font-black px-1.5 py-0.5 rounded text-white shrink-0" style="background-color:${item.color}">${item.prob}%</span>
+      </div>
+      <p class="text-[10px] text-slate-500 line-clamp-1 flex items-center gap-1"><i class="ph-bold ph-map-pin"></i> ${item.location}</p>
+      <p class="text-[9px] text-slate-400 mt-0.5">${item.meta}</p>
+      <div class="mt-2 w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+        <div class="h-full rounded-full" style="width:${item.prob}%; background-color:${item.color}"></div>
+      </div>
+    </div>`;
+
+  let html = '';
+  if (quakeInsights.length) html += `<p class="text-[9px] font-bold uppercase tracking-widest text-red-400 mt-1 mb-1">Risiko Gempa Susulan</p>` + quakeInsights.map(renderCard).join('');
+  if (stormInsights.length) html += `<p class="text-[9px] font-bold uppercase tracking-widest text-blue-400 mt-3 mb-1">Proyeksi Lintasan Badai</p>` + stormInsights.map(renderCard).join('');
+  listEl.innerHTML = html;
+}
+
+function focusForesightItem(id, lat, lng) {
+  foresightMap.flyTo([lat, lng], 6, { duration: 1.2 });
+  setTimeout(() => {
+    const layer = foresightLayersById[id];
+    if (layer) layer.openPopup();
+  }, 1300);
+}
+
   </script>
 </body>
 </html>
