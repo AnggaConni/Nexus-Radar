@@ -608,7 +608,7 @@
         </div>
       </div>
 
-      <!-- ========================================== -->
+<!-- ========================================== -->
       <!-- TAB 5: GLOBAL FORESIGHT (PREDICTIVE ENGINE) -->
       <!-- ========================================== -->
       <div id="view-foresight" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
@@ -626,8 +626,8 @@
                 AI Predictive Foresight
                 <span class="bg-indigo-500 text-white text-[9px] px-2 py-0.5 rounded-full uppercase font-bold tracking-widest animate-pulse">Beta</span>
               </h2>
-              <p class="text-indigo-200 text-[10px] sm:text-sm mt-0.5">Memproyeksikan risiko gempa susulan & lintasan badai berdasarkan data real-time.</p>
-              <p class="text-indigo-300/60 text-[9px] sm:text-xs mt-1 italic">Model heuristik internal — bukan prakiraan resmi BMKG, USGS, atau NHC.</p>
+              <p class="text-indigo-200 text-[10px] sm:text-sm mt-0.5">Projecting aftershock risks & storm trajectories based on real-time telemetry.</p>
+              <p class="text-indigo-300/60 text-[9px] sm:text-xs mt-1 italic">Internal heuristic model — not an official forecast from BMKG, USGS, or NHC.</p>
             </div>
           </div>
         </div>
@@ -637,40 +637,39 @@
           <!-- MAP AREA -->
           <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm p-2 flex flex-col h-[450px] sm:h-[600px] relative">
             <div class="absolute top-4 left-4 z-[400] bg-white/90 backdrop-blur-md border border-slate-200 p-3 rounded-xl shadow-lg pointer-events-none">
-              <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Legend Proyeksi</h3>
+              <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Projection Legend</h3>
               <div class="flex flex-col gap-2">
-                <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border border-red-500 bg-red-500/20"></div><span class="text-[10px] font-bold text-slate-700">Zona Gempa Susulan</span></div>
-                <div class="flex items-center gap-2"><div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[12px] border-b-blue-500/40"></div><span class="text-[10px] font-bold text-slate-700">Proyeksi Lintasan Badai</span></div>
-                <div class="flex items-center gap-2"><div class="w-4 h-0.5 border-t-2 border-dashed border-yellow-500"></div><span class="text-[10px] font-bold text-slate-700">Arah Proyeksi</span></div>
+                <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full border border-red-500 bg-red-500/20"></div><span class="text-[10px] font-bold text-slate-700">Aftershock Risk Zone</span></div>
+                <div class="flex items-center gap-2"><div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[12px] border-b-blue-500/40"></div><span class="text-[10px] font-bold text-slate-700">Projected Storm Track</span></div>
+                <div class="flex items-center gap-2"><div class="w-4 h-0.5 border-t-2 border-dashed border-yellow-500"></div><span class="text-[10px] font-bold text-slate-700">Projection Vector</span></div>
               </div>
             </div>
             <div id="foresight-map" class="w-full flex-grow rounded-xl bg-slate-100 border border-slate-100 z-10"></div>
           </div>
           
-         <!-- INTERACTIVE SVG PANEL & LIST -->
+          <!-- INTERACTIVE PANEL & LIST -->
           <div class="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
             
-            <!-- WIDGET BARU (MENGGANTIKAN CHART YANG KOSONG) -->
+            <!-- TOP THREAT WIDGET -->
             <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 h-[200px] flex flex-col relative overflow-hidden group">
               <!-- Background decoration -->
               <div id="foresight-widget-glow" class="absolute -right-6 -top-6 w-32 h-32 bg-slate-100 rounded-full blur-2xl transition-colors duration-700 pointer-events-none"></div>
               
-              <h3 class="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-3 relative z-10">Puncak Ancaman Kritis</h3>
+              <h3 class="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-3 relative z-10">Peak Critical Threat</h3>
               
               <div id="foresight-top-threat" class="flex-grow flex flex-col justify-center relative z-10">
-                <!-- Konten akan di-inject oleh JavaScript -->
-                <p class="text-xs text-slate-400 italic text-center mt-4">Memindai ancaman tertinggi...</p>
+                <p class="text-xs text-slate-400 italic text-center mt-4">Scanning highest threats...</p>
               </div>
             </div>
 
-            <!-- INSIGHT LIST (TETAP DIPERTAHANKAN) -->
+            <!-- INSIGHT LIST -->
             <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 flex-grow flex flex-col h-[380px]">
               <div class="flex justify-between items-center mb-3 border-b border-slate-100 pb-2">
                 <h3 class="font-display font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider">Predictive Insights</h3>
                 <span id="foresight-count" class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-1 rounded">0 Predictions</span>
               </div>
               <div id="foresight-list" class="flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar flex-grow">
-                <p class="text-xs text-slate-400 italic text-center mt-10">Menghitung proyeksi...</p>
+                <p class="text-xs text-slate-400 italic text-center mt-10">Calculating projections...</p>
               </div>
             </div>
           </div>
@@ -1967,10 +1966,6 @@ function processForesight(dataList) {
   foresightInsights = [];
   foresightLayersById = {};
 
-  // const svgNodes = document.getElementById('svg-nodes');
-  // const svgLines = document.getElementById('svg-connections');
-  // svgNodes.innerHTML = ''; svgLines.innerHTML = '';
-
   const mapBounds = [];
   const quakes = dataList.filter(d => d.source === 'usgs' && d.mag >= 5.0);
   const storms = dataList.filter(d => d.source === 'nasa' && d.isTrack && d.trackCoords.length >= 2);
@@ -1981,60 +1976,54 @@ function processForesight(dataList) {
     const probability = calcAftershockProbability(q.mag, targetMag, daysSince);
     const radiusMeters = aftershockRadiusMeters(q.mag);
     const insightId = `quake-${q.id || index}`;
-    const timeLabel = daysSince < 1 ? `${Math.round(daysSince*24)} jam` : `${Math.round(daysSince)} hari`;
+    const timeLabel = daysSince < 1 ? `${Math.round(daysSince*24)}h ago` : `${Math.round(daysSince)}d ago`;
 
     const layer = L.circle([q.lat, q.lng], {
       radius: radiusMeters, color: '#ef4444', weight: 1.5,
       fillColor: '#ef4444', fillOpacity: 0.15, className: 'foresight-zone'
-    }).bindPopup(`<b>Zona Risiko Aftershock</b><br>Mainshock M${q.mag.toFixed(1)}, ${timeLabel} lalu<br>Probabilitas M${targetMag.toFixed(1)}+: ${probability}%<br><span class="text-[10px] text-slate-400">Model heuristik (Reasenberg-Jones), bukan prakiraan resmi.</span>`)
+    }).bindPopup(`<b>Aftershock Risk Zone</b><br>Mainshock M${q.mag.toFixed(1)}, ${timeLabel}<br>Probability M${targetMag.toFixed(1)}+: ${probability}%<br><span class="text-[10px] text-slate-400">Heuristic model (Reasenberg-Jones), not an official forecast.</span>`)
       .addTo(foresightLayer);
 
     foresightLayersById[insightId] = layer;
     mapBounds.push([q.lat, q.lng]);
 
     foresightInsights.push({
-      id: insightId, type: 'quake', title: `Risiko Aftershock M${targetMag.toFixed(1)}+`,
+      id: insightId, type: 'quake', title: `Aftershock Risk M${targetMag.toFixed(1)}+`,
       location: q.title.split(' - ')[1] || q.title, prob: probability,
       color: '#ef4444', icon: 'ph-waves', lat: q.lat, lng: q.lng,
-      meta: `Mainshock M${q.mag.toFixed(1)} · ${timeLabel} lalu`
+      meta: `Mainshock M${q.mag.toFixed(1)} · ${timeLabel}`
     });
-
-    //  if (index < 6) {
-    //  const x = 20 + index * 30;
-    //  svgNodes.innerHTML += `<circle cx="${x}" cy="50" r="${Math.max(3, q.mag)}" fill="#ef4444" class="foresight-node" filter="url(#glow)"><title>${q.title}: ${probability}%</title></circle>`;
-    //  if (index > 0) svgLines.innerHTML += `<path d="M ${x-30} 50 L ${x} 50" fill="none" stroke="url(#line-grad)" stroke-width="1.5" stroke-dasharray="2 2" />`;
-    // }
   });
 
-storms.forEach((s, sIndex) => {
-  try {
-    const { projected, confidence, coneSpreadDeg, avgBearing, avgDist, last } = projectStorm(s.trackCoords);
-    const insightId = `storm-${s.id || sIndex}`;
+  storms.forEach((s, sIndex) => {
+    try {
+      const { projected, confidence, coneSpreadDeg, avgBearing, avgDist, last } = projectStorm(s.trackCoords);
+      const insightId = `storm-${s.id || sIndex}`;
 
-    const conePolygon = [
-      last,
-      projectPoint(last[0], last[1], avgBearing - coneSpreadDeg, avgDist),
-      projectPoint(last[0], last[1], avgBearing + coneSpreadDeg, avgDist)
-    ];
+      const conePolygon = [
+        last,
+        projectPoint(last[0], last[1], avgBearing - coneSpreadDeg, avgDist),
+        projectPoint(last[0], last[1], avgBearing + coneSpreadDeg, avgDist)
+      ];
 
-    const cone = L.polygon(conePolygon, {
-      color: '#3b82f6', weight: 1, dashArray: '4,4',
-      fillColor: '#3b82f6', fillOpacity: 0.2, className: 'cone-predict'
-    }).bindPopup(`<b>Proyeksi Lintasan</b><br>${s.title}<br>Estimasi arah: ${Math.round(avgBearing)}°<br>Keyakinan: ${confidence}%<br><span class="text-[10px] text-slate-400">Ekstrapolasi linier dari titik terakhir, bukan prakiraan resmi NHC.</span>`)
-      .addTo(foresightLayer);
-    L.polyline([last, projected], { color: '#eab308', weight: 2, dashArray: '5,5' }).addTo(foresightLayer);
+      const cone = L.polygon(conePolygon, {
+        color: '#3b82f6', weight: 1, dashArray: '4,4',
+        fillColor: '#3b82f6', fillOpacity: 0.2, className: 'cone-predict'
+      }).bindPopup(`<b>Track Projection</b><br>${s.title}<br>Estimated Heading: ${Math.round(avgBearing)}°<br>Confidence: ${confidence}%<br><span class="text-[10px] text-slate-400">Linear extrapolation from last point; not an official NHC forecast.</span>`)
+        .addTo(foresightLayer);
+      L.polyline([last, projected], { color: '#eab308', weight: 2, dashArray: '5,5' }).addTo(foresightLayer);
 
-    foresightLayersById[insightId] = cone;
-    mapBounds.push(last);
+      foresightLayersById[insightId] = cone;
+      mapBounds.push(last);
 
-    foresightInsights.push({
-      id: insightId, type: 'storm', title: `Proyeksi Arah ${s.category}`,
-      location: s.title, prob: confidence, color: '#3b82f6', icon: 'ph-wind',
-      lat: projected[0], lng: projected[1],
-      meta: `Arah ~${Math.round(avgBearing)}° · ${Math.round(avgDist)} km/interval`
-    });
-  } catch(e) { console.warn('Lewati proyeksi badai, data track tidak valid:', s.title, e); }
-});
+      foresightInsights.push({
+        id: insightId, type: 'storm', title: `Projected Track ${s.category}`,
+        location: s.title, prob: confidence, color: '#3b82f6', icon: 'ph-wind',
+        lat: projected[0], lng: projected[1],
+        meta: `Heading ~${Math.round(avgBearing)}° · ${Math.round(avgDist)} km/interval`
+      });
+    } catch(e) { console.warn('Skipped storm projection, invalid track data:', s.title, e); }
+  });
 
   if (mapBounds.length > 0) foresightMap.fitBounds(mapBounds, { padding: [30, 30], maxZoom: 5 });
   renderForesightList(); renderForesightSummaryChart();
@@ -2046,15 +2035,13 @@ function renderForesightSummaryChart() {
   if (!container) return;
 
   if (foresightInsights.length === 0) {
-    container.innerHTML = '<p class="text-xs text-slate-400 italic text-center mt-4">Belum ada sinyal proyeksi terdeteksi.</p>';
+    container.innerHTML = '<p class="text-xs text-slate-400 italic text-center mt-4">No projection signals detected yet.</p>';
     if (glow) glow.className = 'absolute -right-6 -top-6 w-32 h-32 bg-slate-100 rounded-full blur-2xl transition-colors duration-700 pointer-events-none';
     return;
   }
 
-  // Ambil ancaman dengan persentase keyakinan paling tinggi
   const topThreat = [...foresightInsights].sort((a, b) => b.prob - a.prob)[0];
 
-  // Tentukan warna peringatan berdasarkan level keyakinan
   const isCritical = topThreat.prob >= 75;
   const isWarning = topThreat.prob >= 50;
   
@@ -2072,10 +2059,8 @@ function renderForesightSummaryChart() {
     glowBg = 'bg-orange-100';
   }
 
-  // Update efek glow background
   if (glow) glow.className = `absolute -right-6 -top-6 w-32 h-32 ${glowBg} rounded-full blur-2xl transition-colors duration-700 pointer-events-none`;
 
-  // Inject UI ke dalam container
   container.innerHTML = `
     <div class="flex items-center gap-3 mb-2">
       <div class="relative flex h-4 w-4 shrink-0">
@@ -2089,17 +2074,17 @@ function renderForesightSummaryChart() {
     <p class="text-xs text-slate-500 mt-1 line-clamp-1"><i class="ph-bold ph-map-pin"></i> ${topThreat.location}</p>
     
     <button onclick="focusForesightItem('${topThreat.id}', ${topThreat.lat}, ${topThreat.lng})" class="mt-auto w-full bg-slate-50 border border-slate-200 hover:bg-slate-800 hover:text-white hover:border-slate-800 text-slate-600 text-[10px] font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-2 group">
-      <i class="ph-bold ph-crosshair group-hover:animate-spin-slow"></i> Lacak Pusat Ancaman
+      <i class="ph-bold ph-crosshair group-hover:animate-spin-slow"></i> Track Threat Epicenter
     </button>
   `;
 }
 
 function renderForesightList() {
   const listEl = document.getElementById('foresight-list');
-  document.getElementById('foresight-count').innerText = `${foresightInsights.length} Proyeksi`;
+  document.getElementById('foresight-count').innerText = `${foresightInsights.length} Predictions`;
 
   if (foresightInsights.length === 0) {
-    listEl.innerHTML = '<p class="text-xs text-slate-400 italic text-center mt-10">Data tidak cukup untuk membangun proyeksi.</p>';
+    listEl.innerHTML = '<p class="text-xs text-slate-400 italic text-center mt-10">Insufficient telemetry to build projections.</p>';
     return;
   }
 
@@ -2123,8 +2108,8 @@ function renderForesightList() {
     </div>`;
 
   let html = '';
-  if (quakeInsights.length) html += `<p class="text-[9px] font-bold uppercase tracking-widest text-red-400 mt-1 mb-1">Risiko Gempa Susulan</p>` + quakeInsights.map(renderCard).join('');
-  if (stormInsights.length) html += `<p class="text-[9px] font-bold uppercase tracking-widest text-blue-400 mt-3 mb-1">Proyeksi Lintasan Badai</p>` + stormInsights.map(renderCard).join('');
+  if (quakeInsights.length) html += `<p class="text-[9px] font-bold uppercase tracking-widest text-red-400 mt-1 mb-1">Aftershock Risk</p>` + quakeInsights.map(renderCard).join('');
+  if (stormInsights.length) html += `<p class="text-[9px] font-bold uppercase tracking-widest text-blue-400 mt-3 mb-1">Projected Storm Tracks</p>` + stormInsights.map(renderCard).join('');
   listEl.innerHTML = html;
 }
 
