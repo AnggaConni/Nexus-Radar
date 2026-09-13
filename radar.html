@@ -647,15 +647,23 @@
             <div id="foresight-map" class="w-full flex-grow rounded-xl bg-slate-100 border border-slate-100 z-10"></div>
           </div>
           
-          <!-- INTERACTIVE SVG PANEL & LIST -->
+         <!-- INTERACTIVE SVG PANEL & LIST -->
           <div class="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
-            <!-- Interactive SVG Abstract Engine -->
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 h-[200px] flex flex-col">
-            <h3 class="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-2">Top 5 Sinyal Berdasarkan Keyakinan</h3>
-            <div id="foresight-summary-chart" class="w-full flex-grow"></div>
-          </div>
+            
+            <!-- WIDGET BARU (MENGGANTIKAN CHART YANG KOSONG) -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 h-[200px] flex flex-col relative overflow-hidden group">
+              <!-- Background decoration -->
+              <div id="foresight-widget-glow" class="absolute -right-6 -top-6 w-32 h-32 bg-slate-100 rounded-full blur-2xl transition-colors duration-700 pointer-events-none"></div>
+              
+              <h3 class="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-3 relative z-10">Puncak Ancaman Kritis</h3>
+              
+              <div id="foresight-top-threat" class="flex-grow flex flex-col justify-center relative z-10">
+                <!-- Konten akan di-inject oleh JavaScript -->
+                <p class="text-xs text-slate-400 italic text-center mt-4">Memindai ancaman tertinggi...</p>
+              </div>
+            </div>
 
-            <!-- Insight List -->
+            <!-- INSIGHT LIST (TETAP DIPERTAHANKAN) -->
             <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 flex-grow flex flex-col h-[380px]">
               <div class="flex justify-between items-center mb-3 border-b border-slate-100 pb-2">
                 <h3 class="font-display font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider">Predictive Insights</h3>
@@ -862,6 +870,7 @@
   let liveClusterLayer = null;
   let liveLinesLayer = null;
   let usgsLayer = null;
+  let liveUnifiedData = [];
 
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
@@ -1007,14 +1016,23 @@
       if (!liveMap) { initLiveMap(); fetchLiveFeeds(); }
       setTimeout(() => { if(liveMap) liveMap.invalidateSize(); }, 150);
     }
-      if (tabId === 'foresight') {
+    if (tabId === 'foresight') {
     if (!foresightMap) { 
        initForesightMap(); 
-       // Opsional: jika tab dibuka tapi data live blm di fetch
-       if(document.getElementById('live-event-count').innerText === "0") fetchLiveFeeds(); 
-    }
-    setTimeout(() => { if(foresightMap) foresightMap.invalidateSize(); }, 150);
-  }
+       }
+        
+        // --- UBAH BAGIAN INI ---
+        // Jika data sudah diambil sebelumnya, proses ulang. Jika belum, fetch dari awal.
+        if (typeof liveUnifiedData !== 'undefined' && liveUnifiedData.length > 0) {
+           processForesight(liveUnifiedData);
+        } else if (document.getElementById('live-event-count').innerText === "0") {
+           fetchLiveFeeds(); 
+        }
+        // -----------------------
+
+        setTimeout(() => { if(foresightMap) foresightMap.invalidateSize(); }, 150);
+      }
+
   }
 
   function renderTopStats() {
@@ -1753,6 +1771,7 @@ async function fetchExternalCrossReference(country) {
     document.getElementById('live-event-count').innerText = unifiedData.length;
 
     unifiedData.sort((a,b) => b.date - a.date);
+    liveUnifiedData = unifiedData;
     renderUnifiedMap(unifiedData);
     renderUnifiedFeedList(unifiedData);
     processForesight(unifiedData);
@@ -1948,9 +1967,9 @@ function processForesight(dataList) {
   foresightInsights = [];
   foresightLayersById = {};
 
-  const svgNodes = document.getElementById('svg-nodes');
-  const svgLines = document.getElementById('svg-connections');
-  svgNodes.innerHTML = ''; svgLines.innerHTML = '';
+  // const svgNodes = document.getElementById('svg-nodes');
+  // const svgLines = document.getElementById('svg-connections');
+  // svgNodes.innerHTML = ''; svgLines.innerHTML = '';
 
   const mapBounds = [];
   const quakes = dataList.filter(d => d.source === 'usgs' && d.mag >= 5.0);
@@ -1980,11 +1999,11 @@ function processForesight(dataList) {
       meta: `Mainshock M${q.mag.toFixed(1)} · ${timeLabel} lalu`
     });
 
-    if (index < 6) {
-      const x = 20 + index * 30;
-      svgNodes.innerHTML += `<circle cx="${x}" cy="50" r="${Math.max(3, q.mag)}" fill="#ef4444" class="foresight-node" filter="url(#glow)"><title>${q.title}: ${probability}%</title></circle>`;
-      if (index > 0) svgLines.innerHTML += `<path d="M ${x-30} 50 L ${x} 50" fill="none" stroke="url(#line-grad)" stroke-width="1.5" stroke-dasharray="2 2" />`;
-    }
+    //  if (index < 6) {
+    //  const x = 20 + index * 30;
+    //  svgNodes.innerHTML += `<circle cx="${x}" cy="50" r="${Math.max(3, q.mag)}" fill="#ef4444" class="foresight-node" filter="url(#glow)"><title>${q.title}: ${probability}%</title></circle>`;
+    //  if (index > 0) svgLines.innerHTML += `<path d="M ${x-30} 50 L ${x} 50" fill="none" stroke="url(#line-grad)" stroke-width="1.5" stroke-dasharray="2 2" />`;
+    // }
   });
 
 storms.forEach((s, sIndex) => {
@@ -2022,20 +2041,57 @@ storms.forEach((s, sIndex) => {
 }
 
 function renderForesightSummaryChart() {
-  if (!chartInstances.foresightSummary) chartInstances.foresightSummary = echarts.init(document.getElementById('foresight-summary-chart'));
-  const top5 = [...foresightInsights].sort((a,b)=>b.prob-a.prob).slice(0,5).reverse();
-  if (top5.length === 0) { chartInstances.foresightSummary.showLoading({ text:'Belum ada data', showSpinner:false }); return; }
-  chartInstances.foresightSummary.hideLoading();
-  chartInstances.foresightSummary.setOption({
-    grid: { top: 5, bottom: 5, left: 10, right: 30, containLabel: true },
-    xAxis: { type: 'value', max: 100, axisLabel: { formatter: '{value}%', fontSize: 9 }, splitLine: { lineStyle: { type: 'dashed', color: '#e2e8f0' } } },
-    yAxis: { type: 'category', data: top5.map(i => i.title.length > 22 ? i.title.slice(0,22)+'…' : i.title), axisLabel: { fontSize: 9, fontWeight: 'bold', color: '#475569' } },
-    series: [{
-      type: 'bar', barWidth: '55%',
-      data: top5.map(i => ({ value: i.prob, itemStyle: { color: i.color, borderRadius: [0,4,4,0] } })),
-      label: { show: true, position: 'right', fontWeight: 'bold', color: '#1e293b', formatter: '{c}%' }
-    }]
-  });
+  const container = document.getElementById('foresight-top-threat');
+  const glow = document.getElementById('foresight-widget-glow');
+  if (!container) return;
+
+  if (foresightInsights.length === 0) {
+    container.innerHTML = '<p class="text-xs text-slate-400 italic text-center mt-4">Belum ada sinyal proyeksi terdeteksi.</p>';
+    if (glow) glow.className = 'absolute -right-6 -top-6 w-32 h-32 bg-slate-100 rounded-full blur-2xl transition-colors duration-700 pointer-events-none';
+    return;
+  }
+
+  // Ambil ancaman dengan persentase keyakinan paling tinggi
+  const topThreat = [...foresightInsights].sort((a, b) => b.prob - a.prob)[0];
+
+  // Tentukan warna peringatan berdasarkan level keyakinan
+  const isCritical = topThreat.prob >= 75;
+  const isWarning = topThreat.prob >= 50;
+  
+  let colorText = 'text-emerald-500';
+  let colorBg = 'bg-emerald-500';
+  let glowBg = 'bg-emerald-50';
+
+  if (isCritical) {
+    colorText = 'text-red-600';
+    colorBg = 'bg-red-500';
+    glowBg = 'bg-red-100';
+  } else if (isWarning) {
+    colorText = 'text-orange-500';
+    colorBg = 'bg-orange-500';
+    glowBg = 'bg-orange-100';
+  }
+
+  // Update efek glow background
+  if (glow) glow.className = `absolute -right-6 -top-6 w-32 h-32 ${glowBg} rounded-full blur-2xl transition-colors duration-700 pointer-events-none`;
+
+  // Inject UI ke dalam container
+  container.innerHTML = `
+    <div class="flex items-center gap-3 mb-2">
+      <div class="relative flex h-4 w-4 shrink-0">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full ${colorBg} opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-4 w-4 ${colorBg}"></span>
+      </div>
+      <span class="font-display font-black text-4xl ${colorText} leading-none">${topThreat.prob}%</span>
+    </div>
+    
+    <h4 class="font-bold text-sm text-slate-800 line-clamp-1 mt-1">${topThreat.title}</h4>
+    <p class="text-xs text-slate-500 mt-1 line-clamp-1"><i class="ph-bold ph-map-pin"></i> ${topThreat.location}</p>
+    
+    <button onclick="focusForesightItem('${topThreat.id}', ${topThreat.lat}, ${topThreat.lng})" class="mt-auto w-full bg-slate-50 border border-slate-200 hover:bg-slate-800 hover:text-white hover:border-slate-800 text-slate-600 text-[10px] font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-2 group">
+      <i class="ph-bold ph-crosshair group-hover:animate-spin-slow"></i> Lacak Pusat Ancaman
+    </button>
+  `;
 }
 
 function renderForesightList() {
