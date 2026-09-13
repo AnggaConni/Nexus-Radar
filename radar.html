@@ -1906,7 +1906,8 @@ function calcBearing(lat1, lon1, lat2, lon2) {
 
 function projectPoint(lat, lon, bearingDeg, distanceKm) {
   const R = 6371, brng = toRad(bearingDeg), lat1 = toRad(lat), lon1 = toRad(lon);
-  const lat2 = Math.asin(Math.sin(lat1)*Math.cos(distanceKm/R) + Math.cos(lat1)*Math.sin(distanceKm/R)*Math.cos(brng));
+  const sinLat2 = Math.max(-1, Math.min(1, Math.sin(lat1)*Math.cos(distanceKm/R) + Math.cos(lat1)*Math.sin(distanceKm/R)*Math.cos(brng)));
+  const lat2 = Math.asin(sinLat2);
   const lon2 = lon1 + Math.atan2(Math.sin(brng)*Math.sin(distanceKm/R)*Math.cos(lat1), Math.cos(distanceKm/R)-Math.sin(lat1)*Math.sin(lat2));
   return [toDeg(lat2), ((toDeg(lon2)+540)%360)-180];
 }
@@ -1986,7 +1987,8 @@ function processForesight(dataList) {
     }
   });
 
-  storms.forEach((s, sIndex) => {
+storms.forEach((s, sIndex) => {
+  try {
     const { projected, confidence, coneSpreadDeg, avgBearing, avgDist, last } = projectStorm(s.trackCoords);
     const insightId = `storm-${s.id || sIndex}`;
 
@@ -2012,7 +2014,8 @@ function processForesight(dataList) {
       lat: projected[0], lng: projected[1],
       meta: `Arah ~${Math.round(avgBearing)}° · ${Math.round(avgDist)} km/interval`
     });
-  });
+  } catch(e) { console.warn('Lewati proyeksi badai, data track tidak valid:', s.title, e); }
+});
 
   if (mapBounds.length > 0) foresightMap.fitBounds(mapBounds, { padding: [30, 30], maxZoom: 5 });
   renderForesightList(); renderForesightSummaryChart();
