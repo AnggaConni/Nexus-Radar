@@ -10703,5 +10703,122 @@
         },
         "priority_score": 92,
         "critical_flag": false
+    },
+    {
+        "id": "47a55711a7389e2f3a6b771affee5aa0",
+        "timestamp": "2026-09-17T02:06:53.989076",
+        "title": "Extreme weather is drying up Europe’s rivers in a crisis so dire it can be seen from space | CNN",
+        "summary": "August 5, 2026 - Relentless heat and a dearth of rain is having a punishing effect on some of Europe’s most vital rivers, which have tumbled to record lows in place, threatening energy production, shipping and tourism.",
+        "domain_classification": [
+            "Climate",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Europe",
+            "lat": 51.0,
+            "lon": 10.0
+        },
+        "manifestation": {
+            "how_it_is_observed": "Rivers are drying up due to relentless heat and lack of rain, reaching record low levels.",
+            "key_indicators": [
+                "record low river levels",
+                "visible from space"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "energy production",
+                "shipping",
+                "tourism",
+                "river ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.cnn.com/2026/08/05/climate/europe-rivers-record-lows-satellite-space-rhine-danube"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Climate Change",
+                "Environmental",
+                "Economic",
+                "Infrastructure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Relentless heat and lack of rain have caused Europe's vital rivers to reach record low levels, a crisis visible from space. This directly threatens energy production, shipping, and tourism across the continent, indicating a severe and immediate risk requiring urgent intervention."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "059642cbfb7304b7e330c416957fa60d",
+        "timestamp": "2026-09-17T02:07:46.731560",
+        "title": "A drought-stricken Southeastern Colorado river is drying up",
+        "summary": "August 13, 2026 - The Cucharas River runs dry before it gets to the town La Veta, threatening farming, recreation and everyday life in the region.",
+        "domain_classification": [
+            "Water",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Southeastern Colorado",
+            "lat": 38.0630283,
+            "lon": -102.6186646
+        },
+        "manifestation": {
+            "how_it_is_observed": "The Cucharas River runs dry before it gets to the town La Veta",
+            "key_indicators": [
+                "River drying up",
+                "Drought"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Farming",
+                "Recreation",
+                "Local community life"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.cpr.org/2026/08/13/la-veta-drought-cucharas-river/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "drought",
+                "water scarcity",
+                "agricultural impact",
+                "environmental degradation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The Cucharas River is completely drying up before reaching La Veta due to drought conditions. This poses an immediate and severe threat to local farming, recreational activities, and the daily water supply for the community, indicating a critical water scarcity issue with significant environmental and economic consequences."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
