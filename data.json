@@ -10820,5 +10820,61 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "ac516291c8c9ba0c775331b35f4f47f7",
+        "timestamp": "2026-09-19T01:58:56.617971",
+        "title": "Goose River turns red amid low water, low oxygen levels",
+        "summary": "CALEDONIA, N.D. (Valley News Live) - The North Dakota Department of Environmental Quality says low water levels and low oxygen are likely to blame for an unusual red discoloration on the Goose River, as testing continues. Published: 9 hours ago",
+        "domain_classification": [
+            "Water"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "North Dakota",
+            "lat": 47.6201461,
+            "lon": -100.540737
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unusual red discoloration on the Goose River",
+            "key_indicators": [
+                "low water levels",
+                "low oxygen levels",
+                "red discoloration"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Goose River ecosystem",
+                "aquatic life"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.valleynewslive.com/2026/09/18/goose-river-turns-red-amid-low-water-low-oxygen-levels/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Ecological",
+                "Water Quality"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The unusual red discoloration, combined with critically low water and oxygen levels in the Goose River, indicates severe environmental distress. This poses an immediate and high risk to aquatic ecosystems, potentially leading to widespread fish kills and ecological damage. While testing is ongoing, the identified conditions warrant urgent investigation and intervention to prevent further degradation and assess potential public health implications if toxins are involved."
+        },
+        "priority_score": 66,
+        "critical_flag": false
     }
 ]
