@@ -10876,5 +10876,105 @@
         },
         "priority_score": 66,
         "critical_flag": false
+    },
+    {
+        "id": "10283066695dc6e2051c34d907e114b1",
+        "timestamp": "2026-09-21T02:05:04.334433",
+        "title": "Permafrost melt could cost $261 billion in infrastructure damages, study suggests",
+        "summary": "Global warming patterns are causing permafrost to melt. This melting releases previously stored greenhouse gases. It can also lead to significant infrastructure damage for communities built on permafrost that rely on its structural integrity.",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Global warming causes permafrost to melt, leading to the release of stored greenhouse gases and significant infrastructure damage.",
+            "key_indicators": [
+                "infrastructure damages",
+                "greenhouse gas release"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "infrastructure",
+                "communities",
+                "global climate"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://phys.org/news/2026-09-permafrost-billion-infrastructure.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Infrastructure Damage",
+                "Environmental",
+                "Climate Change"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The melting of permafrost presents a severe and multifaceted risk. The projected $261 billion in infrastructure damages highlights a significant economic and societal threat to communities built on permafrost. Furthermore, the release of previously stored greenhouse gases exacerbates global warming, creating a dangerous feedback loop with long-term environmental consequences. Given the ongoing nature of global warming patterns and the scale of potential impact, immediate intervention is crucial to mitigate both the direct infrastructure risks and the broader climate change implications."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "ce0a129d8edfcdc4faa5ad3fdda16fbe",
+        "timestamp": "2026-09-21T02:13:17.575470",
+        "title": "Permafrost Melt Could Cost $261 Billion in Infrastructure Damages - UConn Today",
+        "summary": "3 weeks ago - When taking a building’s three-dimensionality into consideration, the researchers estimate that permafrost melt will cost $261 billion by the middle of the 21st century.",
+        "domain_classification": [
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Permafrost melt leading to infrastructure damage.",
+            "key_indicators": [
+                "Estimated cost of infrastructure damage ($261 billion)"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Infrastructure",
+                "Buildings"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://today.uconn.edu/2026/09/permafrost-melt-could-cost-261-billion-in-infrastructure-damages/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": []
+        },
+        "risk_assessment": {},
+        "priority_score": 64,
+        "critical_flag": false
     }
 ]
