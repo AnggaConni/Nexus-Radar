@@ -10976,5 +10976,119 @@
         "risk_assessment": {},
         "priority_score": 64,
         "critical_flag": false
+    },
+    {
+        "id": "0d6804d269cf92fbe86f37f7282c2cfc",
+        "timestamp": "2026-09-22T02:09:55.894228",
+        "title": "Tsunami Warning Signs: Natural Alerts Before a Tsunami Hits",
+        "summary": "Unusual sea-level fluctuations: a noticeable rapid rise or fall in coastal waters is a sign that there may be a tsunami approaching. If you see the water recede quickly and unexpectedly from a beach exposing the ocean floor (the so-called drawback) ...",
+        "domain_classification": [
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unusual sea-level fluctuations, including a rapid rise or fall in coastal waters, and water receding quickly and unexpectedly from a beach exposing the ocean floor (drawback).",
+            "key_indicators": [
+                "rapid rise in coastal waters",
+                "rapid fall in coastal waters",
+                "water recedes quickly from beach",
+                "ocean floor exposed (drawback)"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "coastal communities",
+                "human lives",
+                "infrastructure",
+                "marine ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.sms-tsunami-warning.com/pages/tsunami-warning-signs"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 10,
+            "risk_type": [
+                "Tsunami"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal describes natural warning signs of an imminent tsunami, such as unusual sea-level fluctuations and rapid drawback. If these critical natural alerts are left unaddressed (i.e., ignored), it will lead to catastrophic loss of life and property due to a tsunami striking without any protective measures being taken. Immediate intervention (evacuation, seeking higher ground) is absolutely essential upon observing these signs."
+        },
+        "priority_score": 100,
+        "critical_flag": false
+    },
+    {
+        "id": "4d34d661dc84923be89925d1453a2504",
+        "timestamp": "2026-09-22T02:10:54.539895",
+        "title": "Natural Tsunami Warnings | Redwood Coast Tsunami Work Group",
+        "summary": "The shaking could be weak or strong ... is a sign to move away from the beach. The ocean receding unusually far - This is a sign that the water will rush back in much faster and higher than you expect....",
+        "domain_classification": [
+            "DRR",
+            "Ocean"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Ground shaking (weak or strong) and unusual ocean recession (water moving away from the beach unusually far).",
+            "key_indicators": [
+                "Ground shaking",
+                "Unusual ocean recession"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Coastal communities",
+                "Infrastructure",
+                "Human life"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://rctwg.humboldt.edu/warnings/natural"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Natural Disaster",
+                "Public Safety",
+                "Awareness Gap"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The text highlights critical natural warning signs for tsunamis (strong shaking, unusually receding ocean). If the public is not adequately informed about these signs or fails to act upon them, the potential for catastrophic loss of life and property during a tsunami event is extremely high. Continuous public education and preparedness initiatives are vital to ensure immediate and appropriate response when these natural signals occur, thereby mitigating disaster risks."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
