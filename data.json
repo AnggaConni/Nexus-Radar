@@ -11090,5 +11090,122 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "5fd10d4b553d08173977ad19e1f8bca3",
+        "timestamp": "2026-09-24T01:56:12.327663",
+        "title": "Fishing News and Regulations: Quotas, Policies, and Regional Laws – Maritime Education",
+        "summary": "Countries like Senegal and Ghana face severe challenges from foreign fleets engaging in IUU fishing. Despite national quotas, weak enforcement allows overfishing, harming artisanal fishers.",
+        "domain_classification": [
+            "Ocean",
+            "Social/Behavioral",
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Senegal, Ghana",
+            "region": "",
+            "lat": 12.6268217,
+            "lon": -8.0350331
+        },
+        "manifestation": {
+            "how_it_is_observed": "Foreign fleets engaging in IUU fishing, weak enforcement allowing overfishing despite national quotas.",
+            "key_indicators": [
+                "IUU fishing",
+                "overfishing",
+                "harm to artisanal fishers"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "artisanal fishers",
+                "fish stocks",
+                "marine ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://maritimeducation.com/fishing-news-and-regulations-quotas-policies-and-regional-laws/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Socio-economic"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The severe challenges posed by foreign fleets engaging in IUU fishing, coupled with weak enforcement of national quotas, lead to significant overfishing. This directly harms the livelihoods of artisanal fishers in countries like Senegal and Ghana, threatening food security, economic stability, and marine ecosystem health. The ongoing depletion of fish stocks represents a critical socio-economic and environmental disaster in progress, requiring urgent intervention to protect communities and marine resources."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "779f068df7396ed1db9ce7853e06070f",
+        "timestamp": "2026-09-24T01:57:24.956827",
+        "title": "How Trump’s regulatory freeze is disrupting the US fishing industry | Reuters",
+        "summary": "March 24, 2025 - President Donald Trump's declaration of a 60-day freeze on regulations has created chaos and uncertainty for some Atlantic fishing fleets that look to NOAA to set quotas for the catch and open the season. Chris Chagnon and John Ainsworth unload fluke and flounder from the commercial fishing boat Hope and Sydney in Point Judith, Rhode Island.",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "United States",
+            "region": "North America",
+            "lat": 36.1979526,
+            "lon": -94.5268355
+        },
+        "manifestation": {
+            "how_it_is_observed": "A 60-day regulatory freeze is causing chaos and uncertainty for Atlantic fishing fleets, disrupting the process of setting catch quotas and opening fishing seasons.",
+            "key_indicators": [
+                "60-day regulatory freeze",
+                "Disruption in NOAA's quota setting",
+                "Uncertainty regarding fishing season opening"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "US fishing industry",
+                "Atlantic fishing fleets",
+                "Fishermen's livelihoods",
+                "Marine resource management"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.reuters.com/world/us/how-trumps-regulatory-freeze-is-disrupting-us-fishing-industry-2025-03-23/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Economic",
+                "Regulatory",
+                "Social"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "A 60-day regulatory freeze has created immediate chaos and uncertainty for the US Atlantic fishing industry, disrupting NOAA's ability to set catch quotas and open seasons. This poses a significant economic risk to fishing fleets and communities, threatening livelihoods and potentially impacting seafood supply chains. Prompt intervention is needed to clarify regulations and prevent prolonged economic damage and potential overfishing or underfishing due to lack of clear guidance."
+        },
+        "priority_score": 62,
+        "critical_flag": false
     }
 ]
