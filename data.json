@@ -11207,5 +11207,122 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "cad6f7de1b673eb01d769ac240601465",
+        "timestamp": "2026-09-26T02:19:54.362478",
+        "title": "The dried-out subdivisions of Phoenix - High Country News",
+        "summary": "A groundwater crisis halted the construction of thousands of homes and pitted affordability against environmental concerns.",
+        "domain_classification": [
+            "Water",
+            "Climate",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Arizona",
+            "lat": 34.395342,
+            "lon": -111.763275
+        },
+        "manifestation": {
+            "how_it_is_observed": "Construction of thousands of homes has been halted due to a groundwater crisis, leading to a conflict between housing affordability and environmental protection.",
+            "key_indicators": [
+                "groundwater crisis",
+                "halted housing construction",
+                "dried-out subdivisions"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "housing development",
+                "water supply",
+                "environmental sustainability",
+                "economic affordability"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.hcn.org/issues/57-10/the-dried-out-subdivisions-of-phoenix/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "water scarcity",
+                "environmental degradation",
+                "economic impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "A severe groundwater crisis in Phoenix has halted the construction of thousands of homes, indicating critical water scarcity. This situation creates significant economic disruption, environmental degradation, and a direct conflict between housing affordability and ecological sustainability, requiring urgent intervention to prevent further long-term disaster."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "ce512ebdf978e4d522342d120cd22dd3",
+        "timestamp": "2026-09-26T02:20:45.961141",
+        "title": "ABC15 helps homeowners get to the bottom of sinking ground problems",
+        "summary": "Concerned residents in several new home communities in the Phoenix area are dealing with holes in the ground and sinking spots that appeared after this year's monsoon rains.",
+        "domain_classification": [
+            "DRR",
+            "Water"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Arizona",
+            "lat": 34.395342,
+            "lon": -111.763275
+        },
+        "manifestation": {
+            "how_it_is_observed": "Holes in the ground and sinking spots appeared in new home communities after monsoon rains.",
+            "key_indicators": [
+                "holes in the ground",
+                "sinking spots"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "homeowners",
+                "residential property",
+                "community infrastructure"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.abc15.com/news/local-news/investigations/abc15-helps-homeowners-get-to-the-bottom-of-sinking-ground-problems"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Geological instability",
+                "Structural damage",
+                "Property damage"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "Sinking ground and holes appearing in new home communities after monsoon rains indicate potential geological instability, possibly due to soil composition, compaction issues, or drainage problems. This poses a significant risk of structural damage to homes, disruption of utilities, and safety hazards for residents. Immediate investigation and remediation are crucial to prevent further property damage and ensure resident safety."
+        },
+        "priority_score": 88,
+        "critical_flag": false
     }
 ]
