@@ -11324,5 +11324,103 @@
         },
         "priority_score": 88,
         "critical_flag": false
+    },
+    {
+        "id": "08fd12937beb2633ba910666a0b0a7c4",
+        "timestamp": "2026-09-28T02:22:12.907304",
+        "title": "America's Wildlife Is Running Out of Room to Move. Congress Just ...",
+        "summary": "Learn about the Wildlife Corridors and Habitat Connectivity Conservation Act and how it connects essential habitats across public lands to help animals.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "Wildlife is running out of room to move due to fragmented habitats, impacting animal movement and survival.",
+            "key_indicators": [
+                "Habitat fragmentation",
+                "Reduced wildlife movement",
+                "Threats to animal populations"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Wildlife populations",
+                "Ecosystem health",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://defenders.org/blog/2026/04/americas-wildlife-running-out-of-room-move-congress-just-introduced-fix"
+        ],
+        "root_cause_analysis": {
+            "root_cause": []
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal indicates severe habitat fragmentation and loss of connectivity for wildlife. If left unaddressed, this poses a high risk of widespread biodiversity loss, increased species extinction rates, reduced genetic diversity, and potential ecosystem collapse. It can also lead to increased human-wildlife conflicts as animals are forced into smaller, isolated areas, impacting ecosystem services and overall environmental health."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "fcd777073b3f7aa911a6e9dea9acc0b8",
+        "timestamp": "2026-09-28T02:32:47.044575",
+        "title": "What the battle over the Northern Corridor means for Washington County",
+        "summary": "The Northern Corridor, including associated construction and eventual traffic, would run through critical habitat for the desert tortoise in the reserve, according to the Fish and Wildlife Service.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Washington County",
+            "lat": 30.2226352,
+            "lon": -96.3936114
+        },
+        "manifestation": {
+            "how_it_is_observed": "A proposed Northern Corridor, with construction and traffic, is planned to run through critical habitat for the desert tortoise.",
+            "key_indicators": [
+                "Northern Corridor construction",
+                "traffic",
+                "critical habitat disruption"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "desert tortoise",
+                "critical habitat",
+                "reserve ecosystem"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.sltrib.com/news/environment/2026/02/15/what-battle-over-northern-corridor/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": []
+        },
+        "risk_assessment": {},
+        "priority_score": 64,
+        "critical_flag": false
     }
 ]
