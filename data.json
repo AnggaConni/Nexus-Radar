@@ -11422,5 +11422,123 @@
         "risk_assessment": {},
         "priority_score": 64,
         "critical_flag": false
+    },
+    {
+        "id": "39feaad20c37431354237d141ec1b11f",
+        "timestamp": "2026-09-29T03:02:24.173345",
+        "title": "What are the signs of landslide development? What do I do if a landslide occurs? | U.S. Geological Survey",
+        "summary": "Report the landslide immediately to your local authorities. ... USGS geologists deployed to Santa Barbara County to support a geohazard assessment of the Montecito area · New cracks, bulges, or other deformation in the ground, roadways, or other surfaces.",
+        "domain_classification": [
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Santa Barbara County, Montecito area",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "New cracks, bulges, or other deformation in the ground, roadways, or other surfaces.",
+            "key_indicators": [
+                "New cracks",
+                "Bulges",
+                "Deformation in ground",
+                "Deformation in roadways",
+                "Deformation in other surfaces"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Ground",
+                "Roadways",
+                "Infrastructure",
+                "Property",
+                "Human safety"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.usgs.gov/programs/landslide-hazards/what-are-signs-landslide-development-what-do-i-do-if-a-landslide-occurs"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "geological_hazard",
+                "landslide"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The signal describes critical signs of landslide development (new cracks, bulges, deformation) and explicitly advises immediate reporting to local authorities. Landslides are high-severity geological hazards with potential for catastrophic impacts on life and infrastructure, requiring urgent intervention."
+        },
+        "priority_score": 96,
+        "critical_flag": false
+    },
+    {
+        "id": "2a3e5ade4f13817208242c9002c56f5e",
+        "timestamp": "2026-09-29T03:03:37.041861",
+        "title": "What are the early warning signs of a landslide - Avacam",
+        "summary": "June 19, 2026 - The cracking and popping sounds come from rock and soil fracturing under stress. The rumbling can indicate internal water movement or the early stages of debris mobilisation. Research following the 2025 Alaska landslide identified small, repeating ...",
+        "domain_classification": [
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Cracking and popping sounds from rock and soil fracturing under stress. Rumbling indicating internal water movement or early stages of debris mobilisation.",
+            "key_indicators": [
+                "cracking and popping sounds",
+                "rumbling",
+                "rock and soil fracturing",
+                "internal water movement",
+                "debris mobilisation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "human life",
+                "infrastructure",
+                "property",
+                "environment"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://avacam.io/en/what-are-the-early-warning-signs-of-a-landslide/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Geological Hazard"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal describes critical early warning signs of a landslide, including cracking/popping sounds from fracturing rock and soil, and rumbling indicating internal water movement or debris mobilization. If these specific precursors are observed and left unaddressed, there is an extremely high risk of a catastrophic landslide event, leading to significant loss of life, property destruction, and infrastructure damage. Immediate intervention, such as detailed assessment, evacuation, or stabilization efforts, is absolutely crucial to mitigate disaster."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
