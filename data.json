@@ -11540,5 +11540,123 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "e806195e9bc0ebffbd175696ef817807",
+        "timestamp": "2026-10-01T02:49:00.286388",
+        "title": "Deep Dive: Invasive Species in a Changing American Landscape",
+        "summary": "In others, environmental changes help them grow faster or stick around longer. For example, longer growing seasons allow established invasive pests to emerge earlier in the spring and persist longer into the fall, allowing them to outcompete native species and spread further.",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "Environmental changes, such as longer growing seasons, enable invasive pests to grow faster, emerge earlier, and persist longer, outcompeting native species.",
+            "key_indicators": [
+                "longer growing seasons",
+                "earlier emergence of invasive pests",
+                "longer persistence of invasive pests",
+                "outcompetition of native species",
+                "spread of invasive species"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "native species",
+                "ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.usgs.gov/programs/climate-adaptation-science-centers/science/deep-dive-invasive-species-a-changing-american"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Ecological Disaster",
+                "Biodiversity Loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Climate change, specifically longer growing seasons, is enabling invasive species to emerge earlier and persist longer, allowing them to outcompete native species and spread further. This poses a significant and escalating threat to ecosystem stability and biodiversity."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "9b5dae64132d1e4a6d66805644eea3d9",
+        "timestamp": "2026-10-01T02:49:53.006623",
+        "title": "Invasive Species | News | U.S. Fish & Wildlife Service",
+        "summary": "Invasive species are non-native plants, animals and other living organisms that thrive in areas where they don't naturally live and cause (or are likely to cause) economic or environmental harm, or harm to human, animal or plant health. Invasive species degrade, change or displace native habitats, compete with native wildlife, and are major threats to biodiversity.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Non-native plants, animals, and other living organisms thrive in areas where they don't naturally live, degrading, changing, or displacing native habitats and competing with native wildlife.",
+            "key_indicators": [
+                "Non-native species establishment",
+                "Habitat degradation or displacement",
+                "Competition with native wildlife"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Economic systems",
+                "Environmental health",
+                "Human health",
+                "Animal health",
+                "Plant health",
+                "Native habitats",
+                "Native wildlife",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.fws.gov/program/invasive-species/news"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Invasive Species"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Invasive species are non-native organisms causing significant economic and environmental harm, degrading habitats, competing with native wildlife, and posing major threats to biodiversity and health. Their widespread and severe impacts necessitate immediate intervention to mitigate long-term damage."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
