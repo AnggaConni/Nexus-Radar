@@ -11658,5 +11658,133 @@
         },
         "priority_score": 96,
         "critical_flag": false
+    },
+    {
+        "id": "0230c6807d93c49d67bc54007e3e88e4",
+        "timestamp": "2026-10-02T02:52:23.013857",
+        "title": "Invasive Species",
+        "summary": "Invasive species are non-native plants, animals and other living organisms that thrive in areas where they don't naturally live and cause (or are likely to cause) economic or environmental harm, or harm to human, animal or plant health. Invasive species degrade, change or displace native habitats, compete with native wildlife, and are major threats to biodiversity.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United States",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "Non-native plants, animals, and other organisms thriving in new environments, degrading or displacing native habitats, and competing with native wildlife.",
+            "key_indicators": [
+                "Presence of non-native species",
+                "Habitat degradation",
+                "Displacement of native habitats",
+                "Competition with native wildlife"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Economic systems",
+                "Environment",
+                "Human health",
+                "Animal health",
+                "Plant health",
+                "Native habitats",
+                "Native wildlife",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.fws.gov/program/invasive-species/news"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "environmental",
+                "economic",
+                "health"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Invasive species are non-native organisms that cause significant economic and environmental harm, as well as harm to human, animal, or plant health. They degrade and displace native habitats, compete with native wildlife, and are identified as major threats to biodiversity. If left unaddressed, their spread and impact will continue to worsen, leading to irreversible ecological and economic damage."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "07ec12048b6d2304e3fa1ba66a4ab3f6",
+        "timestamp": "2026-10-02T02:53:11.721081",
+        "title": "Invasive species spreading faster than expected across U.S. woodlands",
+        "summary": "Invasive species are one of the toughest challenges facing U.S. woodlands today. These non‑native plants, insects, and pathogens move into forests where native trees and undergrowth haven't evolved defenses against them. Once established, they rapidly outcompete local species, alter soil chemistry, change wildfire behavior, and disrupt wildlife habitat. What's worse is that people ...",
+        "domain_classification": [
+            "Biodiversity",
+            "Climate",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United States",
+            "region": "",
+            "lat": 39.7837304,
+            "lon": -100.445882
+        },
+        "manifestation": {
+            "how_it_is_observed": "Non-native plants, insects, and pathogens are moving into forests, rapidly outcompeting local species, altering soil chemistry, changing wildfire behavior, and disrupting wildlife habitat.",
+            "key_indicators": [
+                "Spread of non-native plants, insects, and pathogens",
+                "Outcompetition of native species",
+                "Altered soil chemistry",
+                "Changed wildfire behavior",
+                "Disrupted wildlife habitat"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "U.S. woodlands",
+                "Native trees",
+                "Undergrowth",
+                "Local species",
+                "Soil chemistry",
+                "Wildfire behavior",
+                "Wildlife habitat"
+            ]
+        },
+        "escalation": {
+            "speed": "fast",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://wildernessmarksman.com/invasive-species-spreading-faster-than-expected-across-u-s-woodlands/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological Degradation",
+                "Biodiversity Loss",
+                "Environmental"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Invasive species are rapidly spreading across U.S. woodlands, posing one of the toughest challenges. They outcompete native species, alter soil chemistry, change wildfire behavior, and disrupt wildlife habitats. The accelerated spread indicates a severe and escalating ecological and environmental threat requiring urgent intervention to prevent further widespread damage and biodiversity loss."
+        },
+        "priority_score": 96,
+        "critical_flag": false
     }
 ]
