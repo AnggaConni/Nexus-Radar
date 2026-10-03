@@ -449,7 +449,114 @@ def _extract_gemini_429_details(response):
                     quota_ids.append(str(child))
                 else:
                     collect_quota_ids(child)
-        elif# 2-STAGE PIPELINE (LATENT SIGNAL DISCOVERY)
+        elif isinstance(value, list):
+            for child in value:
+                collect_quota_ids(child)
+
+    collect_quota_ids(details)
+
+    combined = " ".join([message, status] + quota_ids).lower()
+
+    daily_quota = any(token in combined for token in (
+        "perday",
+        "per_day",
+        "daily",
+        "generate_requests_per_day",
+        "requests_per_day"
+    ))
+
+    if retry_after is None:
+        import re
+        match = re.search(r"retry in\s+(\d+(?:\.\d+)?)s", message, re.IGNORECASE)
+        if match:
+            try:
+                retry_after = float(match.group(1))
+            except ValueError:
+                retry_after = None
+
+    return {
+        "daily_quota": daily_quota,
+        "message": message,
+        "status": status,
+        "quota_ids": quota_ids,
+        "retry_after": retry_after
+    }
+
+
+def call_gemini_with_retry(api_key, prompt, system_instruction, retries=4, **kwargs):
+    """
+    Call Gemini with bounded exponential backoff + jitter.
+
+    Temporary 429s are retried with a delay. Daily/project quota exhaustion
+    raises GeminiQuotaExhaustedError so the current crawler run stops instead
+    of repeatedly hammering a quota that cannot recover within the run.
+    """
+    for attempt in range(retries):
+        # Small spacing between sequential Gemini calls reduces burstiness.
+        time.sleep(1.5)
+
+        try:
+            result = call_gemini(api_key, prompt, system_instruction, **kwargs)
+            if result:
+                return result
+
+        except requests.exceptions.HTTPError as e:
+            status_code = e.response.status_code if getattr(e, "response", None) is not None else 500
+
+            if status_code == 429:
+                details = _extract_gemini_429_details(e.response)
+
+                if details["daily_quota"]:
+                    log.error(
+                        "🛑 [429] Gemini daily/project quota exhausted. "
+                        f"quota_ids={details['quota_ids'] or 'unknown'}"
+                    )
+                    raise GeminiQuotaExhaustedError(
+                        details["message"] or "Gemini quota exhausted"
+                    )
+
+                if details["retry_after"] is not None:
+                    backoff = max(1.0, min(details["retry_after"], 120.0))
+                    backoff += random.uniform(
+                        0.0,
+                        min(3.0, backoff * 0.15)
+                    )
+                else:
+                    base = min(60.0, 5.0 * (2 ** attempt))
+                    backoff = base + random.uniform(
+                        0.0,
+                        min(5.0, base * 0.25)
+                    )
+
+                log.warning(
+                    f"⚠️ [429] Gemini temporary rate limit. "
+                    f"Sleeping {backoff:.1f}s... "
+                    f"(Attempt {attempt + 1}/{retries})"
+                )
+                time.sleep(backoff)
+                continue
+
+            if status_code in [400, 403, 404]:
+                log.error(f"Fatal API Error {status_code}: {e}")
+                break
+
+            log.error(f"HTTP Error {status_code}: {e}")
+
+        except Exception as e:
+            log.error(f"Unexpected Request Error: {e}")
+
+        if attempt < retries - 1:
+            backoff = min(30.0, 2.0 ** attempt) + random.uniform(0.0, 1.0)
+            log.warning(
+                f"⚠️ Gemini call failed. Retrying in {backoff:.1f}s... "
+                f"(Attempt {attempt + 1}/{retries})"
+            )
+            time.sleep(backoff)
+
+    return None
+
+
+# 2-STAGE PIPELINE (LATENT SIGNAL DISCOVERY)
 # =====================================================================
 
 def pass_1_validate_extract(api_key, raw_content):
