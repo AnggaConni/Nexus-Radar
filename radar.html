@@ -121,6 +121,21 @@
     .signal-pathway-dot.intervention { fill:#8b5cf6; }
     .signal-pathway-legend-pill { display:inline-flex; align-items:center; gap:6px; border:1px solid #e2e8f0; background:#fff; border-radius:999px; padding:6px 10px; font-size:10px; font-weight:800; color:#475569; }
     .signal-pathway-evidence-card { transition:transform .2s ease, box-shadow .2s ease; }
+    /* Keep pathway dropdown options readable across browsers. */
+    #signal-pathway-domain {
+      color: #ffffff;
+      background-color: rgba(255,255,255,.12);
+      color-scheme: dark;
+    }
+    #signal-pathway-domain option {
+      color: #0f172a !important;
+      background-color: #ffffff !important;
+    }
+    #signal-pathway-domain option:checked,
+    #signal-pathway-domain option:hover {
+      color: #ffffff !important;
+      background-color: #2563eb !important;
+    }
     .signal-pathway-evidence-card:hover { transform:translateY(-1px); box-shadow:0 8px 20px rgba(15,23,42,.08); }
 
 /* FORESIGHT ANIMATIONS */
@@ -397,8 +412,8 @@
           <span id="signal-pathway-scope" class="ml-auto text-[10px] text-slate-400 font-bold uppercase tracking-widest"></span>
         </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1.65fr)_minmax(320px,0.8fr)] gap-5">
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="flex flex-col gap-5">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden w-full">
             <div class="p-4 border-b border-slate-100 flex items-center justify-between gap-3">
               <div>
                 <h3 class="font-display font-bold text-slate-800">Cascade Map</h3>
@@ -426,7 +441,7 @@
             </div>
           </div>
 
-          <aside id="signal-pathway-detail" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden min-h-[560px]">
+          <aside id="signal-pathway-detail" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden w-full min-h-[560px]">
             <div class="p-6 text-center text-slate-400">Select a pathway node.</div>
           </aside>
         </div>
