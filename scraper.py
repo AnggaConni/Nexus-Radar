@@ -1,8 +1,8 @@
 """
 =======================================================================
   LATENT SIGNAL RADAR v2.2 — Global Early Warning Engine
-  AI Engine : Google Gemini 2.5 Flash (Free Tier Optimized)
-  Crawler   : DuckDuckGo Search (100% Free Python Wrapper)
+  AI Engine : Google Gemini 2.5 Flash (2-stage analysis)
+  Crawler   : TinyFish Search + DuckDuckGo (parallel discovery)
   Mode      : Multi-Schedule Tracker (Data = 1 Day, Resume = 3 Months)
   Feature   : Pre-crisis Detection, Environmental & Societal Systems
 =======================================================================
@@ -414,34 +414,179 @@ def call_gemini(api_key, prompt, system_instruction, expect_json=True):
         log.error(f"Gemini Data Parse Error: {e}")
         return None
 
-def call_gemini_with_retry(api_key, prompt, system_instruction, retries=4, **kwargs):
-    for attempt in range(retries):
-        try:
-            time.sleep(5) # Jeda aman 5 detik
-            result = call_gemini(api_key, prompt, system_instruction, **kwargs)
-            if result: return result
-            
-        except requests.exceptions.HTTPError as e:
-            status_code = e.response.status_code if hasattr(e, 'response') else 500
-            
-            if status_code == 429:
-                wait_time = 45 # Tidur 45 detik jika kena Rate Limit Google
-                log.warning(f"⚠️ [429] Rate Limit Hit. Sleeping {wait_time}s... (Attempt {attempt+1}/{retries})")
-                time.sleep(wait_time)
-                continue
-                
-            if status_code in [400, 403, 404]: 
-                log.error(f"Fatal API Error {status_code}: {e}")
+class GeminiQuotaExhaustedError(RuntimeError):
+    """Raised when Gemini reports a quota that should not be retried during this run."""
+
+
+def _extract_gemini_429_details(response):
+    """
+    Inspect a Gemini 429 response and determine whether it looks like a
+    temporary request-rate limit or a non-retryable daily/project quota.
+    """
+    retry_after = None
+    try:
+        retry_after = float(response.headers.get("Retry-After", ""))
+    except (TypeError, ValueError):
+        retry_after = None
+
+    payload = {}
+    try:
+        payload = response.json()
+    except (ValueError, TypeError):
+        pass
+
+    error = payload.get("error", {}) if isinstance(payload, dict) else {}
+    message = str(error.get("message", "") or "")
+    status = str(error.get("status", "") or "")
+    details = error.get("details", []) or []
+
+    quota_ids = []
+
+    def collect_quota_ids(value):
+        if isinstance(value, dict):
+            for key, child in value.items():
+                if key.lower() == "quotaid":
+                    quota_ids.append(str(child))
+                else:
+                    collect_quota_ids(child)
+        elif# 2-STAGE PIPELINE (LATENT SIGNAL DISCOVERY)
+# =====================================================================
+
+def pass_1_validate_extract(api_key, raw_content):
+    """
+    Stage 1 combines validation + structured extraction into one Gemini call.
+    This cuts the validation/extraction request pair down to a single call.
+    """
+    sys_prompt = """Determine whether the following web/news snippet represents a real-world LATENT SIGNAL (early warning, anomaly, or creeping environmental/societal degradation), then extract the structured signal only when it qualifies.
+
+CRITICAL RULES:
+- Must be a problem, risk, anomaly, degradation, or creeping change (NOT a solution).
+- Must NOT be a finalized historical disaster; focus on early signs and emerging conditions.
+- If it is not a latent signal, set is_signal=false and return an empty signal object.
+- CLASSIFICATION MUST USE ONLY: [DRR, Ocean, Climate, Water, Biodiversity, Social/Behavioral].
+
+Return EXACTLY:
+{
+  "is_signal": true,
+  "confidence": 0.0,
+  "signal": {
+    "title": "",
+    "summary": "",
+    "domain_classification": [],
+    "signal_intensity": "weak | moderate | strong",
+    "location": {"country": "", "region": ""},
+    "manifestation": {
+      "how_it_is_observed": "",
+      "key_indicators": []
+    },
+    "potential_impact": {
+      "threat_level": "low | medium | high",
+      "affected_elements": []
+    },
+    "escalation": {
+      "speed": "slow | medium | fast",
+      "urgency": "low | medium | high"
+    }
+  }
+}"""
+    result = call_gemini_with_retry(
+        api_key,
+        raw_content,
+        sys_prompt,
+        expect_json=True
+    )
+
+    if not result:
+        return {
+            "is_signal": False,
+            "confidence": 0,
+            "signal": {}
+        }
+
+    result.setdefault("is_signal", False)
+    result.setdefault("confidence", 0)
+    result.setdefault("signal", {})
+    return result
+
+
+def pass_2_assess(api_key, raw_content):
+    """
+    Stage 2 combines risk assessment + root-cause lineage into one Gemini call.
+    """
+    sys_prompt = """Analyze this latent signal and assess potential disaster/systemic risks if left unaddressed, then determine its underlying root cause.
+
+Root-cause options:
+[anthropogenic, systemic_failure, natural_anomaly, policy_gap, behavioral_neglect]
+
+Return EXACTLY:
+{
+  "risk_assessment": {
+    "risk_score": <int 1-10>,
+    "risk_type": ["type1"],
+    "severity_level": "low|medium|high",
+    "needs_immediate_intervention": true,
+    "explanation": ""
+  },
+  "root_cause_analysis": {
+    "root_cause": ["cause1"]
+  }
+}"""
+    result = call_gemini_with_retry(
+        api_key,
+        raw_content,
+        sys_prompt,
+        expect_json=True
+    )
+
+    if not result:
+        return {
+            "risk_assessment": {},
+            "root_cause_analysis": {"root_cause": []}
+        }
+
+    result.setdefault("risk_assessment", {})
+    result.setdefault("root_cause_analysis", {"root_cause": []})
+    return result
+
+
+def calculate_advanced_metrics(data):
+    try:
+        threat_map = {"high": 10, "medium": 6, "low": 2, "unknown": 0}
+        urgency_map = {"high": 10, "medium": 5, "low": 2, "unknown": 0}
+        
+        threat_val = threat_map.get(str(data.get("potential_impact", {}).get("threat_level", "")).lower(), 0)
+        urgency_val = urgency_map.get(str(data.get("escalation", {}).get("urgency", "")).lower(), 0)
+        risk_val = data.get("risk_assessment", {}).get("risk_score", 1)
+
+        priority_score = int(((threat_val * 0.4) + (risk_val * 0.4) + (urgency_val * 0.2)) * 10)
+        data["priority_score"] = min(100, max(0, priority_score))
+
+        has_critical = any(k in t.lower() for t in data.get("risk_assessment", {}).get("risk_type",[]) for k in["fatal", "extinction", "catastrophe"])
+        data["critical_flag"] = bool(risk_val >= 8 and has_critical)
+        return data
+    except Exception:
+        return data
+
+
+r(f"Fatal API Error {status_code}: {e}")
                 break
-                
+
             log.error(f"HTTP Error {status_code}: {e}")
-            
+
         except Exception as e:
             log.error(f"Unexpected Request Error: {e}")
-            
-        time.sleep(2 ** attempt)
-        
+
+        # Non-429 transient failures use a modest exponential backoff.
+        if attempt < retries - 1:
+            backoff = min(30.0, 2.0 ** attempt) + random.uniform(0.0, 1.0)
+            log.warning(
+                f"⚠️ Gemini call failed. Retrying in {backoff:.1f}s... "
+                f"(Attempt {attempt + 1}/{retries})"
+            )
+            time.sleep(backoff)
+
     return None
+
 
 # =====================================================================
 # 4-LAYER PIPELINE (LATENT SIGNAL DISCOVERY)
@@ -694,7 +839,6 @@ def run_discovery_pipeline(api_key, database, max_items=2):
     keyword = random.choice(KEYWORDS)
     log.info(f"🚀 Initiating radar ping for: '{keyword}'")
 
-    # 1. PYTHON MENCARI DATA DI WEB
     raw_web_data = get_real_world_signals(keyword, max_results=5)
     
     if not raw_web_data:
@@ -703,64 +847,91 @@ def run_discovery_pipeline(api_key, database, max_items=2):
 
     success_count = 0
 
-    # 2. GEMINI MENGANALISA DATA
     for item in raw_web_data:
-        if success_count >= max_items: break
+        if success_count >= max_items:
+            break
 
-        # Gabungkan judul dan deskripsi dari web
-        raw_text = f"Title: {item['title']}\nSummary: {item['snippet']}\nURL: {item['url']}"
-        discovered_url = clean_url(item['url'])
+        raw_text = (
+            f"Title: {item.get('title', '')}\n"
+            f"Summary: {item.get('snippet', '')}\n"
+            f"URL: {item.get('url', '')}"
+        )
+        discovered_url = clean_url(item.get("url", ""))
 
-        # Cek apakah artikel ini membicarakan Sinyal Laten
-        validation = pass_1_validate(api_key, raw_text)
-        if not validation.get("is_signal") or validation.get("confidence", 0) < 0.6:
-            continue
+        try:
+            # Stage 1: validation + extraction in ONE Gemini request.
+            stage_1 = pass_1_validate_extract(api_key, raw_text)
 
-        base_data = pass_2_extract(api_key, raw_text)
-        if not base_data or not base_data.get("title"):
-            continue
+            if not stage_1.get("is_signal") or float(stage_1.get("confidence", 0)) < 0.6:
+                continue
 
-        normalized_title = normalize_title(base_data["title"])
-        country = base_data.get("location", {}).get("country", "unknown").lower()
-        unique_string = f"{normalized_title}-{country}"
-        title_hash = hashlib.md5(unique_string.encode('utf-8')).hexdigest()
+            base_data = stage_1.get("signal") or {}
+            if not base_data.get("title"):
+                continue
 
-        # Cegah duplikasi data
-        if any(db_item.get("id") == title_hash for db_item in database):
-            continue
+            normalized_title = normalize_title(base_data["title"])
+            country = str(
+                base_data.get("location", {}).get("country", "unknown")
+            ).lower()
+            unique_string = f"{normalized_title}-{country}"
+            title_hash = hashlib.md5(unique_string.encode("utf-8")).hexdigest()
 
-        risk_data = pass_3_risk(api_key, raw_text)
-        lineage_data = pass_4_lineage(api_key, raw_text)
+            if any(db_item.get("id") == title_hash for db_item in database):
+                continue
 
-        final_item = {
-            "id": title_hash, 
-            "timestamp": datetime.now().isoformat(),
-            **base_data,
-            "sources": [discovered_url] if discovered_url else [],
-            "root_cause_analysis": lineage_data if lineage_data else {"root_cause":[]},
-            "risk_assessment": risk_data if risk_data else {}
-        }
+            # Stage 2: risk + root-cause analysis in ONE Gemini request.
+            stage_2 = pass_2_assess(api_key, raw_text)
 
-        # Dapatkan Lat/Lon untuk Map
-        loc_str = f"{final_item.get('location', {}).get('region', '')}, {country}".strip(", ")
-        lat, lon = get_coordinates(loc_str)
-        final_item["location"]["lat"] = lat
-        final_item["location"]["lon"] = lon
+            risk_data = stage_2.get("risk_assessment") or {}
+            lineage_data = stage_2.get("root_cause_analysis") or {"root_cause": []}
 
-        final_item = calculate_advanced_metrics(final_item)
+            final_item = {
+                "id": title_hash,
+                "timestamp": datetime.now().isoformat(),
+                **base_data,
+                "sources": [discovered_url] if discovered_url else [],
+                "root_cause_analysis": lineage_data,
+                "risk_assessment": risk_data
+            }
 
-        taxonomy = load_json_file(PATHWAY_FILE, {"version": "1.0", "domains": {}})
-        final_item["pathway_matches"] = classify_signal_pathway(final_item, taxonomy)
+            loc_str = (
+                f"{final_item.get('location', {}).get('region', '')}, "
+                f"{country}"
+            ).strip(", ")
+            lat, lon = get_coordinates(loc_str)
+            final_item["location"]["lat"] = lat
+            final_item["location"]["lon"] = lon
 
-        database.append(final_item)
-        success_count += 1
-        
-        log.info(f"🚨 Signal Detected: {final_item['title']} ({final_item.get('domain_classification')})")
-        log.info("⏳ Throttling API calls... waiting 15 seconds.")
-        time.sleep(15)
+            final_item = calculate_advanced_metrics(final_item)
+
+            taxonomy = load_json_file(
+                PATHWAY_FILE,
+                {"version": "1.0", "domains": {}}
+            )
+            final_item["pathway_matches"] = classify_signal_pathway(
+                final_item,
+                taxonomy
+            )
+
+            database.append(final_item)
+            success_count += 1
+
+            log.info(
+                f"🚨 Signal Detected: {final_item['title']} "
+                f"({final_item.get('domain_classification')})"
+            )
+            log.info("⏳ Throttling API calls... waiting 15 seconds.")
+            time.sleep(15)
+
+        except GeminiQuotaExhaustedError:
+            # Stop the whole crawl cleanly. Retrying more candidates against a
+            # daily/project quota would only create more failed requests.
+            log.error("🛑 Gemini quota exhausted. Stopping this crawler run.")
+            break
 
     return success_count
-    
+
+
 def build_policy_signal_brief(database, pathway_taxonomy):
     """Build a deterministic, auditable strategic brief from the current signal dataset."""
     domains = {}
