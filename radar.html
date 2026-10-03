@@ -2397,7 +2397,7 @@ async function fetchExternalCrossReference(country) {
   }
 
   function wrapSignalPathwayText(value, maxChars = 19, maxLines = 2) {
-    const words = String(value || '').trim().split(/s+/).filter(Boolean);
+    const words = String(value || '').trim().split(/\s+/).filter(Boolean);
     if (!words.length) return [''];
     const lines = [];
     let line = '';
