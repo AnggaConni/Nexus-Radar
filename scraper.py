@@ -16,6 +16,7 @@ import hashlib
 import time
 import unicodedata
 from datetime import datetime, timedelta
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import urlparse, parse_qs
 import requests
 from ddgs import DDGS  # ✅ Tambahan baru untuk pencarian web gratis
@@ -201,30 +202,178 @@ def get_current_quarter():
     return f"Q{quarter} {now.year}"
 
 # ✅ NEW: FUNGSI PENCARIAN WEB (GRATIS VIA DUCKDUCKGO)
-def get_real_world_signals(keyword, max_results=5):
-    search_results = []
-    log.info(f"🌐 Searching web for real-world news: '{keyword}'")
+def search_ddgs(query, max_results=5):
+    """Search the web with DuckDuckGo. Failure is isolated from other providers."""
+    results = []
+
     try:
+        log.info(f"🦆 DDGS search: '{query}'")
         with DDGS() as ddgs:
-            # PERBAIKAN: Hanya gunakan keyword asli ditambah kata "news", agar hasil pencarian tidak kosong
-            query = f"{keyword} news"
-            results = ddgs.text(query, max_results=max_results)
-            
-            # Jika hasil list tidak kosong
-            if results:
-                for r in results:
-                    search_results.append({
+            raw_results = ddgs.text(query, max_results=max_results)
+
+            if raw_results:
+                for r in raw_results:
+                    results.append({
                         "title": r.get("title", ""),
                         "snippet": r.get("body", ""),
                         "url": r.get("href", "")
                     })
-            else:
-                log.warning(f"⚠️ Pencarian '{query}' tidak menemukan artikel. Coba sederhanakan keyword di pengaturan.")
-                
+
+        log.info(f"🦆 DDGS returned {len(results)} results")
+
     except Exception as e:
-        log.error(f"❌ Web Search error: {e}")
-    
-    return search_results
+        log.error(f"❌ DDGS search error: {e}")
+
+    return results
+
+
+def search_tinyfish(query, max_results=5):
+    """
+    Search the live web through TinyFish Search.
+
+    TinyFish is optional: when TINYFISH_API_KEY is missing or the API fails,
+    this function returns an empty list so DDGS can continue normally.
+    """
+    results = []
+    api_key = os.environ.get("TINYFISH_API_KEY", "").strip()
+
+    if not api_key:
+        log.info("🐟 TinyFish disabled: TINYFISH_API_KEY not configured")
+        return results
+
+    try:
+        log.info(f"🐟 TinyFish search: '{query}'")
+
+        response = requests.get(
+            "https://api.search.tinyfish.ai",
+            params={
+                "query": query,
+                "page": 0
+            },
+            headers={
+                "X-API-Key": api_key,
+                "Accept": "application/json"
+            },
+            timeout=30
+        )
+        response.raise_for_status()
+
+        data = response.json()
+
+        for r in data.get("results", [])[:max_results]:
+            if not isinstance(r, dict):
+                continue
+
+            results.append({
+                "title": r.get("title", ""),
+                "snippet": r.get("snippet", ""),
+                "url": r.get("url", "")
+            })
+
+        log.info(f"🐟 TinyFish returned {len(results)} results")
+
+    except requests.exceptions.RequestException as e:
+        log.warning(f"⚠️ TinyFish unavailable; continuing with DDGS: {e}")
+
+    except (ValueError, TypeError, KeyError) as e:
+        log.warning(f"⚠️ TinyFish returned unexpected data; continuing with DDGS: {e}")
+
+    except Exception as e:
+        # Never allow an optional search provider to stop the radar.
+        log.warning(f"⚠️ TinyFish search error; continuing with DDGS: {e}")
+
+    return results
+
+
+def _dedupe_search_results(results):
+    """Deduplicate by canonical URL, falling back to title when URL is absent."""
+    deduped = []
+    seen = set()
+
+    for item in results:
+        if not item:
+            continue
+
+        url = clean_url(item.get("url", ""))
+        title = normalize_title(item.get("title", ""))
+
+        if url:
+            key = f"url:{url.lower()}"
+        elif title:
+            key = f"title:{title}"
+        else:
+            continue
+
+        if key in seen:
+            continue
+
+        seen.add(key)
+
+        item["url"] = url
+        deduped.append(item)
+
+    return deduped
+
+
+def get_real_world_signals(keyword, max_results=5):
+    """
+    Multi-engine discovery layer.
+
+    TinyFish and DDGS run in parallel. Their results are interleaved so one
+    provider cannot completely dominate the candidate set. If one provider
+    fails, the other provider's results are still returned. If both fail,
+    the existing pipeline simply receives an empty list.
+    """
+    query = f"{keyword} news"
+    log.info(f"🌐 Parallel web discovery: '{query}'")
+
+    provider_results = {
+        "tinyfish": [],
+        "ddgs": []
+    }
+
+    # Run both search providers concurrently. This adds resilience without
+    # adding a serial TinyFish -> DDGS delay.
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        futures = {
+            executor.submit(search_tinyfish, query, max_results): "tinyfish",
+            executor.submit(search_ddgs, query, max_results): "ddgs"
+        }
+
+        for future in as_completed(futures):
+            provider = futures[future]
+
+            try:
+                provider_results[provider] = future.result()
+            except Exception as e:
+                log.warning(f"⚠️ {provider} worker failed: {e}")
+                provider_results[provider] = []
+
+    # Interleave providers to increase source diversity.
+    merged = []
+    for i in range(max_results):
+        for provider in ("tinyfish", "ddgs"):
+            items = provider_results.get(provider, [])
+            if i < len(items):
+                item = dict(items[i])
+                item["search_provider"] = provider
+                merged.append(item)
+
+    merged = _dedupe_search_results(merged)
+    merged = merged[:max_results]
+
+    tinyfish_count = len(provider_results.get("tinyfish", []))
+    ddgs_count = len(provider_results.get("ddgs", []))
+
+    log.info(
+        f"🔎 Discovery complete: TinyFish={tinyfish_count}, "
+        f"DDGS={ddgs_count}, unique candidates={len(merged)}"
+    )
+
+    if not merged:
+        log.warning("⚠️ No raw signals found from either search provider.")
+
+    return merged
 
 # =====================================================================
 # CORE AI ENGINE (GEMINI 1.5 FLASH)
