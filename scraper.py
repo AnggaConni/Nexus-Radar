@@ -765,6 +765,10 @@ def classify_signal_pathway(item, taxonomy):
             # for most downstream nodes.
             if domain_id == "cross_system_cascade":
                 domain_hit = bool(domain_values)
+                if domain_hit and node.get("kind") == "signal" and node.get("id") == "latent_signal":
+                    score = 1.0
+                    evidence.append("signal_validation")
+                    exact = True
             else:
                 domain_hit = (
                     normalize_pathway_text(domain_id.replace("_", " ")) in domain_values
