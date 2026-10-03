@@ -57,15 +57,26 @@ The project is designed to be lightweight, serverless, and easily deployable.
 nexus-radar/
 ├── .github/workflows/
 │   └── main.yml          # GitHub Actions automation script (Cron Job)
-├── scraper.py            # Python Core Engine (Gemini AI integration)
+├── scraper.py            # Python Core Engine (Gemini AI + Signal Pathway mapping)
+├── pathways.json         # Controlled Signal Pathway taxonomy
 ├── index.html            # Landing Page (SEO Friendly)
 ├── radar.html            # Signal Inventory & Dashboard App
 ├── info.html             # Educational Domain Analytics Visualizer
-├── data.json             # Automated Append-Only Signal Database
-└── resume.json           # Automated Quarterly Synthesis Reports
+├── data.json             # Automated Append-Only Signal Database + pathway_matches
+└── resume.json           # Automated Periodic Synthesis Reports
 ```
 
 ---
+
+## 🧭 Signal Pathway
+
+Nexus Radar now includes a **Signal Pathway** layer that traces detected latent signals through a controlled taxonomy:
+
+`Latent Signal → System Stress → Critical Resource Pressure → Downstream Impact → Systemic Vulnerability → Intervention Window`
+
+Each record can carry a `pathway_matches` array with the pathway node, match type, confidence and evidence basis. **Evidence-linked** mappings are supported by explicit record fields such as domain classification, manifestation, potential impact or risk; **heuristic** mappings are based on weaker narrative signals and should be reviewed.
+
+The pathway taxonomy is stored separately in `pathways.json`, so the visual system can evolve without changing the core six-domain signal schema.
 
 ## 💻 Example Output Data
 
