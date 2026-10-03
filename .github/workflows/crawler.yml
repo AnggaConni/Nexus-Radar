@@ -43,6 +43,7 @@ jobs:
       - name: Run Intelligent Scheduler & AI
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
           GEMINI_MODEL: "gemini-2.5-flash" 
           RUN_TYPE: ${{ github.event.inputs.run_type || 'auto' }}
           DATA_INTERVAL_DAYS: 1
