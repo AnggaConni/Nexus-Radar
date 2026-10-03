@@ -761,45 +761,281 @@ def run_discovery_pipeline(api_key, database, max_items=2):
 
     return success_count
     
+def build_policy_signal_brief(database, pathway_taxonomy):
+    """Build a deterministic, auditable strategic brief from the current signal dataset."""
+    domains = {}
+    root_causes = {}
+    pathway_counts = {}
+    pathway_gaps = []
+    function_flags = {
+        "science_policy_nexus": 0,
+        "foresight_anticipation": 0,
+        "early_warning_drr": 0,
+        "climate_resilience": 0,
+        "water_ecosystem_resilience": 0,
+        "capacity_knowledge": 0,
+        "inclusion_social_resilience": 0,
+        "digital_ai_governance": 0
+    }
+
+    def text_blob(item):
+        manifestation = item.get("manifestation") or {}
+        impact = item.get("potential_impact") or {}
+        risk = item.get("risk_assessment") or {}
+        root = item.get("root_cause_analysis") or {}
+
+        return normalize_pathway_text(" ".join([
+            str(item.get("title", "")),
+            str(item.get("summary", "")),
+            " ".join(item.get("domain_classification", []) or []),
+            str(manifestation.get("how_it_is_observed", "")),
+            " ".join(manifestation.get("key_indicators", []) or []),
+            " ".join(impact.get("affected_elements", []) or []),
+            str(risk.get("explanation", "")),
+            " ".join(risk.get("risk_type", []) or []),
+            " ".join(root.get("root_cause", []) or [])
+        ]))
+
+    for item in database:
+        blob = text_blob(item)
+
+        for domain in item.get("domain_classification", []) or []:
+            d = str(domain)
+            domains[d] = domains.get(d, 0) + 1
+
+        for root in (item.get("root_cause_analysis", {}).get("root_cause", []) or []):
+            root = str(root)
+            root_causes[root] = root_causes.get(root, 0) + 1
+
+        matches = item.get("pathway_matches", []) or []
+        for match in matches:
+            key = (match.get("domain_id"), match.get("node_id"))
+            pathway_counts[key] = pathway_counts.get(key, 0) + 1
+
+        if any(k in blob for k in ("policy", "governance", "institution", "decision", "regulation", "science policy", "evidence-based")):
+            function_flags["science_policy_nexus"] += 1
+
+        if any(k in blob for k in ("early warning", "anticipat", "foresight", "future", "trend", "emerging", "long term", "scenario")):
+            function_flags["foresight_anticipation"] += 1
+
+        if any(k in blob for k in ("disaster risk", "hazard", "warning", "preparedness", "resilience", "evacuation", "vulnerability")):
+            function_flags["early_warning_drr"] += 1
+
+        if any(k in blob for k in ("climate", "drought", "heat", "flood", "adaptation", "warming", "temperature")):
+            function_flags["climate_resilience"] += 1
+
+        if any(k in blob for k in ("water", "groundwater", "river", "aquifer", "ecosystem", "biodiversity", "habitat", "reef")):
+            function_flags["water_ecosystem_resilience"] += 1
+
+        if any(k in blob for k in ("capacity", "training", "knowledge", "monitoring", "data", "science", "research")):
+            function_flags["capacity_knowledge"] += 1
+
+        if any(k in blob for k in ("community", "youth", "gender", "inclusion", "inequality", "disability", "livelihood", "migration", "social")):
+            function_flags["inclusion_social_resilience"] += 1
+
+        if any(k in blob for k in ("ai", "algorithm", "digital", "data governance", "technology", "platform", "cyber")):
+            function_flags["digital_ai_governance"] += 1
+
+    pathway_nodes = []
+    for domain_id, domain in (pathway_taxonomy.get("domains", {}) if isinstance(pathway_taxonomy, dict) else {}).items():
+        for node in domain.get("nodes", []) or []:
+            count = pathway_counts.get((domain_id, node.get("id")), 0)
+            pathway_nodes.append({
+                "domain_id": domain_id,
+                "domain": domain.get("label", domain_id),
+                "node_id": node.get("id"),
+                "node": node.get("label", node.get("id")),
+                "stage": node.get("stage", ""),
+                "mapped_records": count
+            })
+            if count == 0 and node.get("kind") != "intervention":
+                pathway_gaps.append({
+                    "domain": domain.get("label", domain_id),
+                    "node": node.get("label", node.get("id")),
+                    "stage": node.get("stage", "")
+                })
+
+    pathway_nodes.sort(key=lambda x: (-x["mapped_records"], x["domain"], x["node"]))
+    pathway_gaps = pathway_gaps[:12]
+
+    function_rows = [
+        {"id": "science_policy_nexus", "label": "Science–Policy Nexus", "description": "Signals relevant to evidence-informed policy, governance or institutional decision-making.", "signal_count": function_flags["science_policy_nexus"]},
+        {"id": "foresight_anticipation", "label": "Foresight & Anticipation", "description": "Signals that may benefit from horizon scanning, trend monitoring and longer-term anticipation.", "signal_count": function_flags["foresight_anticipation"]},
+        {"id": "early_warning_drr", "label": "Early Warning & Resilience", "description": "Signals related to hazard precursors, preparedness, vulnerability and resilience.", "signal_count": function_flags["early_warning_drr"]},
+        {"id": "climate_resilience", "label": "Climate Resilience", "description": "Signals connected to climate disruption, adaptation and resilience.", "signal_count": function_flags["climate_resilience"]},
+        {"id": "water_ecosystem_resilience", "label": "Water & Ecosystem Resilience", "description": "Signals affecting water systems, ecosystems, biodiversity and natural-resource functions.", "signal_count": function_flags["water_ecosystem_resilience"]},
+        {"id": "capacity_knowledge", "label": "Knowledge & Capacity", "description": "Signals where evidence, monitoring, scientific capacity or knowledge generation are material.", "signal_count": function_flags["capacity_knowledge"]},
+        {"id": "inclusion_social_resilience", "label": "Inclusion & Social Resilience", "description": "Signals with community, livelihood, youth, equity or social-resilience dimensions.", "signal_count": function_flags["inclusion_social_resilience"]},
+        {"id": "digital_ai_governance", "label": "Digital & AI Governance", "description": "Signals involving digital transformation, AI, technology or data governance.", "signal_count": function_flags["digital_ai_governance"]}
+    ]
+
+    return {
+        "strategic_functions": sorted(function_rows, key=lambda x: -x["signal_count"]),
+        "pathway_coverage": pathway_nodes[:16],
+        "evidence_gaps": pathway_gaps,
+        "domain_distribution": [
+            {"domain": k, "count": v}
+            for k, v in sorted(domains.items(), key=lambda x: (-x[1], x[0]))
+        ],
+        "root_cause_distribution": [
+            {"cause": k, "count": v}
+            for k, v in sorted(root_causes.items(), key=lambda x: (-x[1], x[0]))
+        ]
+    }
+
+
 def generate_intelligence_report(api_key, database):
     if not database:
         log.warning("Database is empty. Skipping report generation.")
         return
 
-    log.info("📊 Generating Latent Signal Intelligence Report...")
+    log.info("📊 Generating Strategic Latent Signal Intelligence Resume...")
     quarter = get_current_quarter()
-    db_string = json.dumps(database, ensure_ascii=False)
 
-    sys_prompt = """You are an elite AI Intelligence Analyst generating a global report on Latent Environmental & Societal Signals.
-OUTPUT FORMAT (STRICT JSON ONLY):
+    pathway_taxonomy = load_json_file(PATHWAY_FILE, {"version": "1.0", "domains": {}})
+    strategic_brief = build_policy_signal_brief(database, pathway_taxonomy)
+
+    sys_prompt = """
+You are an elite strategic intelligence analyst preparing a periodic resume of latent environmental and societal signals.
+
+Your task is not to produce a generic risk summary. Produce an evidence-linked strategic brief that helps decision-makers understand:
+1. What signals are accumulating.
+2. Which systems and domains are under pressure.
+3. Which pathway stages have evidence and where gaps remain.
+4. Which strategic functions may be relevant: science-policy nexus, foresight/anticipation, early warning and resilience, climate resilience, water/ecosystem resilience, knowledge/capacity, inclusion/social resilience, digital/AI governance.
+5. What policy-relevant implications can be explored without asserting that a specific policy is required.
+6. Which interventions, monitoring actions, research needs, partnerships or capacity measures could be explored.
+7. How new evidence should feed back into future monitoring.
+
+Use only the supplied dataset and strategic brief. Treat interpretations as analytical, not established facts.
+Do not claim causality unless the dataset explicitly supports it.
+Do not claim implementation, institutional commitment or policy adoption unless explicitly supported.
+Keep recommendations phrased as options or areas for consideration.
+
+Return STRICT JSON ONLY:
 {
-  "report_metadata": { "report_id": "gsi-current", "generated_at": "", "period": "", "total_signals_analyzed": 0 },
-  "global_summary": { "total_signals": 0, "high_urgency_percentage": 0, "anthropogenic_percentage": 0 },
-  "domain_insights":[ { "domain": "", "count": 0, "key_pattern": "" } ],
-  "geographic_threats":[ { "region": "", "dominant_issue": "", "threat_level": "low|medium|high" } ],
-  "risk_analysis": { "high_risk_cases": 0, "critical_cases": 0, "top_threats": [], "emerging_risks":[] }
-}"""
+  "report_metadata": {
+    "report_id": "nexus-current",
+    "generated_at": "",
+    "period": "",
+    "total_signals_analyzed": 0,
+    "schema_version": "3.0"
+  },
+  "global_summary": {
+    "total_signals": 0,
+    "high_urgency_percentage": 0,
+    "high_risk_percentage": 0,
+    "critical_percentage": 0,
+    "anthropogenic_percentage": 0
+  },
+  "domain_insights": [
+    {"domain": "", "count": 0, "key_pattern": ""}
+  ],
+  "geographic_threats": [
+    {"region": "", "dominant_issue": "", "threat_level": "low|medium|high"}
+  ],
+  "risk_analysis": {
+    "high_risk_cases": 0,
+    "critical_cases": 0,
+    "top_threats": [],
+    "emerging_risks": []
+  },
+  "strategic_functions": [
+    {"id": "", "label": "", "signal_count": 0, "why_it_matters": ""}
+  ],
+  "pathway_analysis": {
+    "covered_nodes": [],
+    "evidence_gaps": [],
+    "cascade_observations": []
+  },
+  "policy_relevance": [
+    {"issue": "", "evidence_basis": "", "relevance": "", "confidence": "low|medium|high"}
+  ],
+  "capacity_and_knowledge": [
+    {"need": "", "evidence_basis": "", "possible_response": ""}
+  ],
+  "cross_cutting_considerations": [
+    {"theme": "Africa|SIDS|Youth|Gender|Inclusion|Communities|Other", "observation": "", "evidence_basis": ""}
+  ],
+  "intervention_opportunities": [
+    {"type": "monitoring|research|capacity|data|partnership|preparedness|governance", "target": "", "priority_level": "low|medium|high", "justification": ""}
+  ],
+  "recommendations": [""],
+  "feedback_loop": [
+    {"indicator": "", "trigger": "", "response": ""}
+  ]
+}
 
-    prompt = f"Analyze this dataset and generate the report.\n\nDATASET:\n{db_string}"
-    new_report = call_gemini_with_retry(api_key, prompt, sys_prompt, expect_json=True)
+Rules:
+- No invented statistics.
+- Use empty arrays where evidence is insufficient.
+- A pathway gap means "no mapped evidence in this dataset", not "the problem does not exist".
+- Strategic functions are analytical lenses, not mandates.
+- Cross-cutting themes should only be included when the dataset supports them.
+- Keep recommendations concise and evidence-linked.
+"""
+
+    prompt = (
+        "STRATEGIC BRIEF SNAPSHOT:\n"
+        + json.dumps(strategic_brief, ensure_ascii=False)
+        + "\n\nFULL SIGNAL DATASET:\n"
+        + json.dumps(database, ensure_ascii=False)
+    )
+
+    new_report = call_gemini_with_retry(
+        api_key,
+        prompt,
+        sys_prompt,
+        expect_json=True
+    )
 
     if new_report:
-        new_report["report_metadata"]["total_signals_analyzed"] = len(database)
-        new_report["report_metadata"]["generated_at"] = datetime.now().isoformat()
-        new_report["report_metadata"]["period"] = quarter
-        new_report["report_metadata"]["report_id"] = "gsi-current"
-        
-        resume_db = load_json_file(RESUME_FILE,[])
+        total = len(database)
+        high_urgency = sum(1 for x in database if str(x.get("escalation", {}).get("urgency", "")).lower() == "high")
+        high_risk = sum(1 for x in database if (x.get("risk_assessment", {}).get("risk_score", 0) or 0) >= 8)
+        critical = sum(1 for x in database if x.get("critical_flag") is True)
+        anthropogenic = sum(
+            1 for x in database
+            if "anthropogenic" in [str(c).lower() for c in (x.get("root_cause_analysis", {}).get("root_cause", []) or [])]
+        )
+
+        report_metadata = new_report.setdefault("report_metadata", {})
+        report_metadata["total_signals_analyzed"] = total
+        report_metadata["generated_at"] = datetime.now().isoformat()
+        report_metadata["period"] = quarter
+        report_metadata["report_id"] = "nexus-current"
+        report_metadata["schema_version"] = "3.0"
+
+        global_summary = new_report.setdefault("global_summary", {})
+        global_summary["total_signals"] = total
+        global_summary["high_urgency_percentage"] = round((high_urgency / total) * 100, 2) if total else 0
+        global_summary["high_risk_percentage"] = round((high_risk / total) * 100, 2) if total else 0
+        global_summary["critical_percentage"] = round((critical / total) * 100, 2) if total else 0
+        global_summary["anthropogenic_percentage"] = round((anthropogenic / total) * 100, 2) if total else 0
+
+        new_report["strategic_functions"] = new_report.get("strategic_functions") or strategic_brief["strategic_functions"]
+        new_report["pathway_analysis"] = new_report.get("pathway_analysis") or {
+            "covered_nodes": strategic_brief["pathway_coverage"],
+            "evidence_gaps": strategic_brief["evidence_gaps"],
+            "cascade_observations": []
+        }
+
+        # Preserve deterministic coverage statistics alongside AI narrative.
+        new_report["strategic_snapshot"] = strategic_brief
+
+        resume_db = load_json_file(RESUME_FILE, [])
+        if not isinstance(resume_db, list):
+            resume_db = []
+
         for report in resume_db:
             if isinstance(report, dict):
-                report.setdefault("report_metadata", {})["report_id"] = "gsi-older"
+                report.setdefault("report_metadata", {})["report_id"] = "nexus-older"
 
         resume_db.append(new_report)
         save_json_file(RESUME_FILE, resume_db)
-        log.info(f"✅ Resume successfully generated.")
+        log.info("✅ Strategic Nexus Resume successfully generated.")
     else:
-        log.error("Failed to generate intelligence report.")
-
+        log.error("Failed to generate strategic intelligence resume.")
 
 # =====================================================================
 # MAIN SCHEDULER & EXECUTION CONTROLLER
