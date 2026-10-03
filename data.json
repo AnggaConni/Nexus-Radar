@@ -11899,5 +11899,123 @@
         },
         "priority_score": 62,
         "critical_flag": false
+    },
+    {
+        "id": "c5e622556d49a33b8c40a230f13d805d",
+        "timestamp": "2026-10-03T11:07:24.814374",
+        "title": "Estuaries around the world expected to become saltier in ...",
+        "summary": "Right now, saltwater can reach up to 35 kilometers inland during extreme events. Once every ten years, it may push up to 40 kilometers. But our ...",
+        "domain_classification": [
+            "Water",
+            "Ocean",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Saltwater intrusion reaching further inland into estuaries during extreme events, with projections of increased salinization over decades.",
+            "key_indicators": [
+                "Inland reach of saltwater",
+                "Salinity levels in estuaries",
+                "Frequency and intensity of extreme saltwater intrusion events"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Estuarine ecosystems",
+                "Freshwater availability for coastal communities",
+                "Coastal agriculture",
+                "Biodiversity in estuaries"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://phys.org/news/2025-04-estuaries-world-saltier-decades.html"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental",
+                "Hydrological"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Increased salinization of estuaries globally, with saltwater intrusion extending significantly further inland (up to 40 km during extreme events), poses a high risk to freshwater availability, agricultural productivity, and estuarine ecosystems. While the full impact unfolds over decades, immediate intervention through monitoring, research, and adaptation strategies is critical to mitigate long-term environmental and socio-economic disasters."
+        },
+        "priority_score": 92,
+        "critical_flag": false
+    },
+    {
+        "id": "0cb4ec30340e27b1114acca5ae6e30b8",
+        "timestamp": "2026-10-03T11:10:00.628244",
+        "title": "Declining Groundwater Pressure Moves Saltwater Further Inland than ...",
+        "summary": "Briefing A new NASA-led assessment reveals that the distance saltwater travels inland depends more on falling freshwater recharge levels than on sea level rise. While rising oceans expand the global reach of salinity, the physical weakness of underground freshwater allows seawater to push inland by as much as 1,200 meters.",
+        "domain_classification": [
+            "Water",
+            "Climate"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Saltwater travels further inland, seawater pushes inland due to declining groundwater pressure and rising sea levels.",
+            "key_indicators": [
+                "falling freshwater recharge levels",
+                "sea level rise",
+                "salinity",
+                "physical weakness of underground freshwater"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "freshwater resources",
+                "coastal ecosystems",
+                "human populations"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://news.sustainability-directory.com/climate/declining-groundwater-pressure-moves-saltwater-further-inland-than-rising-seas/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Saltwater Intrusion",
+                "Water Scarcity",
+                "Environmental Degradation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Declining groundwater pressure, driven by falling freshwater recharge levels, is causing significant saltwater intrusion, pushing seawater inland by as much as 1,200 meters. This poses a severe and immediate threat to freshwater resources and ecosystems, requiring urgent intervention to address the underlying causes of reduced freshwater recharge."
+        },
+        "priority_score": 92,
+        "critical_flag": false
     }
 ]
