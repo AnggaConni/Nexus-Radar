@@ -528,6 +528,35 @@
             <h3 class="font-display font-bold text-lg sm:text-xl mb-4 sm:mb-6 flex items-center gap-2"><i class="ph-fill ph-lightbulb text-yellow-400"></i> Strategic Recommendations</h3>
             <div id="resume-recommendations" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
         </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+            <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-2 text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+              <i class="ph-fill ph-compass text-nexus-main"></i> Strategic Functions
+            </h3>
+            <p class="text-[10px] text-slate-400 mb-4">Analytical lenses showing where the current signal set may be relevant to science-policy, foresight, resilience, capacity and inclusion.</p>
+            <div id="resume-strategic-functions" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+            <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-2 text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+              <i class="ph-fill ph-git-branch text-indigo-500"></i> Pathway Coverage & Evidence Gaps
+            </h3>
+            <p class="text-[10px] text-slate-400 mb-4">Coverage is based on the current mapped signal evidence. An evidence gap does not mean absence in reality.</p>
+            <div id="resume-pathway-coverage" class="space-y-2"></div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+          <h3 class="font-display font-bold text-slate-800 border-b border-slate-100 pb-3 mb-2 text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i class="ph-fill ph-scales text-emerald-500"></i> Policy Relevance & Capacity Needs
+          </h3>
+          <p class="text-[10px] text-slate-400 mb-4">Analytical implications and possible support areas derived from observed signals; not policy decisions.</p>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div id="resume-policy-relevance" class="space-y-2"></div>
+            <div id="resume-capacity-knowledge" class="space-y-2"></div>
+          </div>
+        </div>
       </div>
 
       <!-- ========================================== -->
@@ -1797,6 +1826,77 @@ async function fetchExternalCrossReference(country) {
         const pc = (i.priority_level==='High')?'text-red-600 bg-red-50':((i.priority_level==='Medium')?'text-orange-600 bg-orange-50':'text-emerald-600 bg-emerald-50');
         return `<tr><td class="px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-xs font-bold text-slate-700 capitalize whitespace-normal min-w-[80px]">${i.type}</td><td class="px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-xs text-slate-600 whitespace-normal min-w-[150px]">${i.target}</td><td class="px-3 sm:px-4 py-2 sm:py-3 text-right"><span class="text-[8px] sm:text-[9px] font-bold px-2 py-1 rounded uppercase ${pc}">${i.priority_level || 'N/A'}</span></td></tr>`;
       }).join('') || '<tr><td colspan="3" class="px-4 py-3 text-xs text-slate-400 italic">No targets identified.</td></tr>';
+
+
+      const strategicFunctions = Array.isArray(r.strategic_functions) ? r.strategic_functions : [];
+      document.getElementById('resume-strategic-functions').innerHTML = strategicFunctions.slice(0,8).map((f, idx) => {
+        const count = Number(f.signal_count || 0);
+        const pct = globalData.length ? Math.min(100, (count / globalData.length) * 100) : 0;
+        return `
+          <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-3">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <p class="text-[11px] font-black text-slate-800">${escapeHtmlResume(f.label || f.id || '')}</p>
+                <p class="text-[9px] text-slate-500 mt-1 leading-relaxed">${escapeHtmlResume(f.why_it_matters || f.description || '')}</p>
+              </div>
+              <span class="text-[10px] font-black text-nexus-main shrink-0">${count}</span>
+            </div>
+            <div class="mt-2 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+              <div class="h-full bg-nexus-main rounded-full" style="width:${pct}%"></div>
+            </div>
+          </div>`;
+      }).join('') || '<p class="text-xs text-slate-400 italic">No strategic-function synthesis available.</p>';
+
+      const pathwayAnalysis = r.pathway_analysis || {};
+      const covered = Array.isArray(pathwayAnalysis.covered_nodes) ? pathwayAnalysis.covered_nodes : [];
+      const gaps = Array.isArray(pathwayAnalysis.evidence_gaps) ? pathwayAnalysis.evidence_gaps : [];
+
+      const coverageRows = covered.slice(0,8).map(n => {
+        const mapped = Number(n.mapped_records || 0);
+        return `
+          <div class="flex items-center gap-3 p-2.5 rounded-xl border border-slate-100 bg-slate-50/60">
+            <div class="w-2.5 h-2.5 rounded-full ${mapped > 0 ? 'bg-emerald-500' : 'bg-slate-300'} shrink-0"></div>
+            <div class="min-w-0 flex-1">
+              <p class="text-[10px] font-bold text-slate-700 truncate">${escapeHtmlResume(n.node || '')}</p>
+              <p class="text-[8px] text-slate-400">${escapeHtmlResume(n.domain || '')} · ${escapeHtmlResume(n.stage || '')}</p>
+            </div>
+            <span class="text-[9px] font-black text-slate-500">${mapped}</span>
+          </div>`;
+      }).join('');
+
+      const gapRows = gaps.slice(0,5).map(g =>
+        `<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-amber-50 border border-amber-100 text-[8px] font-bold text-amber-700">
+          <i class="ph-fill ph-warning"></i>${escapeHtmlResume(g.node || '')}
+        </span>`
+      ).join('');
+
+      document.getElementById('resume-pathway-coverage').innerHTML =
+        (coverageRows || '<p class="text-xs text-slate-400 italic">No pathway coverage data available.</p>') +
+        (gapRows ? `<div class="pt-3 mt-3 border-t border-slate-100"><p class="text-[8px] font-black uppercase tracking-widest text-slate-400 mb-2">Evidence Gaps</p><div class="flex flex-wrap gap-1.5">${gapRows}</div></div>` : '');
+
+      const policyRelevance = Array.isArray(r.policy_relevance) ? r.policy_relevance : [];
+      const capacityNeeds = Array.isArray(r.capacity_and_knowledge) ? r.capacity_and_knowledge : [];
+
+      document.getElementById('resume-policy-relevance').innerHTML =
+        policyRelevance.slice(0,6).map(x => `
+          <div class="border border-blue-100 bg-blue-50/50 rounded-xl p-3">
+            <div class="flex items-start justify-between gap-2">
+              <p class="text-[11px] font-bold text-blue-900">${escapeHtmlResume(x.issue || '')}</p>
+              <span class="text-[8px] font-black uppercase text-blue-600">${escapeHtmlResume(x.confidence || '')}</span>
+            </div>
+            <p class="text-[9px] text-slate-600 mt-1 leading-relaxed">${escapeHtmlResume(x.relevance || '')}</p>
+            <p class="text-[8px] text-slate-400 mt-2">${escapeHtmlResume(x.evidence_basis || '')}</p>
+          </div>`).join('') ||
+        '<p class="text-xs text-slate-400 italic">No policy-relevance synthesis available.</p>';
+
+      document.getElementById('resume-capacity-knowledge').innerHTML =
+        capacityNeeds.slice(0,6).map(x => `
+          <div class="border border-emerald-100 bg-emerald-50/50 rounded-xl p-3">
+            <p class="text-[11px] font-bold text-emerald-900">${escapeHtmlResume(x.need || '')}</p>
+            <p class="text-[9px] text-slate-600 mt-1 leading-relaxed">${escapeHtmlResume(x.possible_response || '')}</p>
+            <p class="text-[8px] text-slate-400 mt-2">${escapeHtmlResume(x.evidence_basis || '')}</p>
+          </div>`).join('') ||
+        '<p class="text-xs text-slate-400 italic">No capacity or knowledge needs identified.</p>';
 
       document.getElementById('resume-recommendations').innerHTML = (Array.isArray(r.recommendations)?r.recommendations:[]).map((rec, i) => `
         <div class="flex gap-3 sm:gap-4 items-start bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4">
