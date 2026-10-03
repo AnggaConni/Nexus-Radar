@@ -27,7 +27,7 @@ Nexus Radar runs on a fully automated **5-Layer AI Pipeline** powered by Google 
 
 ```mermaid
 graph TD
-    A[🌍 Global Web / OSINT] -->|Raw Data via Google Search| B(🔍 Pass 1: Validation)
+    A[🌍 Global Web / OSINT] -->|TinyFish + DDGS parallel search| B(🔍 Pass 1: Validation)
     B -->|Is it a latent anomaly?| C(📦 Pass 2: Extraction)
     C -->|Extract Domains & Links| D(⚠️ Pass 3: Threat Assessment)
     D -->|Calculate Risk 1-10| E(🧬 Pass 4: Root Cause)
@@ -109,7 +109,7 @@ You can easily tweak the engine's behavior by modifying the environment variable
 | `RESUME_INTERVAL_DAYS` | `90` | How often the AI generates a new Synthesis Report. |
 | `MAX_ITEMS_PER_RUN` | `2` | Maximum number of new signals to append to the database per run. |
 | `GEMINI_MODEL` | `gemini-3-flash-preview` | The specific Gemini LLM model to use for inference. |
-| `RUN_TYPE` | `auto` | Accepts `force_data`, `force_resume`, or `force_both` for manual trigger. |
+| `RUN_TYPE` | `auto` | Accepts `force_data`, `force_resume`, or `force_both` for manual trigger. |\n| `TINYFISH_API_KEY` | *(optional)* | Enables TinyFish Search. DDGS remains the automatic fallback if TinyFish is unavailable. |
 
 ---
 
@@ -128,6 +128,7 @@ Get a free API key from [Google AI Studio (Gemini)](https://aistudio.google.com/
 2. Click **New repository secret**.
 3. Name: `GEMINI_API_KEY`
 4. Secret: *(Paste your Google Gemini API Key here)*
+5. Optional: add another secret named `TINYFISH_API_KEY` to enable TinyFish Search. If it is absent or the TinyFish request fails, DDGS continues automatically.
 
 ### 4. Enable GitHub Pages
 1. Go to **Settings** > **Pages**.
