@@ -915,40 +915,227 @@
     </div>
   </div>
 
+
   <div id="guide-modal" class="fixed inset-0 z-[110] flex items-center justify-center hidden modal-backdrop p-3 sm:p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300 shadow-2xl" id="guide-modal-wrapper">
-      <div class="flex justify-between items-center p-5 sm:p-6 border-b border-slate-100 bg-slate-50">
-        <h3 class="font-display font-bold text-lg sm:text-xl text-slate-900 flex items-center gap-3">
-          <i class="ph-fill ph-book-open-text text-nexus-main"></i> Engine Methodology
-        </h3>
-        <button onclick="closeGuideModal()" class="text-slate-400 hover:text-slate-800 bg-white border border-slate-200 rounded-xl p-2 transition-all"><i class="ph-bold ph-x text-lg"></i></button>
-      </div>
-      <div class="p-5 sm:p-8 overflow-y-auto flex-grow text-xs sm:text-sm text-slate-600 leading-relaxed space-y-5 sm:space-y-6">
-        <div class="bg-nexus-light p-4 sm:p-5 rounded-2xl border border-blue-100 flex items-start gap-4">
-          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 text-white rounded-full flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm"><i class="ph-bold ph-radar"></i></div>
+    <div class="bg-white rounded-3xl w-full max-w-4xl max-h-[92vh] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300 shadow-2xl" id="guide-modal-wrapper">
+      <div class="flex justify-between items-center p-5 sm:p-6 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-blue-50">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-nexus-main text-white flex items-center justify-center shadow-sm">
+            <i class="ph-fill ph-book-open-text text-xl"></i>
+          </div>
           <div>
-            <h4 class="font-bold text-slate-900 mb-1">What is Nexus Radar?</h4>
-            <p>An autonomous Open-Source Intelligence (OSINT) platform focused on detecting <strong>Latent Signals</strong>—early warnings of environmental and societal systemic vulnerabilities <em>before</em> they escalate into confirmed disasters.</p>
+            <h3 class="font-display font-bold text-lg sm:text-xl text-slate-900">How to Use Nexus Radar</h3>
+            <p class="text-[10px] sm:text-xs text-slate-500 mt-0.5">A practical guide to reading signals, pathways and intelligence outputs.</p>
           </div>
         </div>
+        <button onclick="closeGuideModal()" class="text-slate-400 hover:text-slate-800 bg-white border border-slate-200 rounded-xl p-2 transition-all">
+          <i class="ph-bold ph-x text-lg"></i>
+        </button>
+      </div>
+
+      <div class="p-5 sm:p-8 overflow-y-auto flex-grow text-xs sm:text-sm text-slate-600 leading-relaxed space-y-6">
+
+        <div class="bg-gradient-to-r from-nexus-light to-white p-4 sm:p-5 rounded-2xl border border-blue-100">
+          <div class="flex items-start gap-4">
+            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-nexus-main text-white rounded-full flex items-center justify-center text-lg shrink-0 shadow-sm">
+              <i class="ph-bold ph-radar"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900 mb-1">What is Nexus Radar?</h4>
+              <p>
+                Nexus Radar is an OSINT-oriented early-warning and horizon-scanning interface for identifying
+                <strong>latent signals</strong>: anomalies, creeping changes, emerging pressures and other weak indications
+                that may matter before a situation becomes a confirmed crisis.
+              </p>
+              <p class="mt-2 text-[11px] text-slate-500">
+                A detected signal is <strong>not a prediction</strong>, proof of causality, or proof that a downstream outcome will occur.
+                Use the evidence, pathway context and source material together.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div>
-          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">The AI Discovery Pipeline</h4>
-          <div class="space-y-3">
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs shrink-0">1</div><p><b>Validation:</b> AI ignores past disasters; exclusively looks for creeping anomalies.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs shrink-0">2</div><p><b>Extraction:</b> Structures text into Domains, Affected Elements, Signal Intensity, and Urgency metrics.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs shrink-0">3</div><p><b>Threat Assessment:</b> Evaluates potential casualty/catastrophe risk (1-10) and severity level.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-teal-100 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0">4</div><p><b>Root Cause Analysis:</b> Determines if the issue is natural, anthropogenic, or systemic.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><div class="w-6 h-6 rounded bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0">5</div><p><b>Algorithmic Synthesis:</b> Applies Priority Scoring and Critical Flags.</p></div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">1. Start with Signal Inventory</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <p class="font-bold text-slate-800 mb-1">Search</p>
+              <p>Use the search box to find signals by title, summary or indexed content.</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <p class="font-bold text-slate-800 mb-1">Filter by Domain</p>
+              <p>Use DRR, Ocean, Climate, Water, Biodiversity or Social/Behavioral to narrow the signal set.</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <p class="font-bold text-slate-800 mb-1">Filter by Intensity</p>
+              <p><strong>Strong</strong>, <strong>Moderate</strong> and <strong>Weak</strong> indicate the current signal-intensity classification.</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <p class="font-bold text-slate-800 mb-1">Sort</p>
+              <p>Use <strong>Highest Threat</strong> to inspect priority first, or switch to newest/oldest for temporal exploration.</p>
+            </div>
+          </div>
+          <div class="mt-3 bg-blue-50 border border-blue-100 rounded-xl p-4">
+            <p class="font-bold text-blue-900 mb-1">Tip: read the whole signal card</p>
+            <p class="text-blue-900/75">A high-risk score is only one dimension. Check urgency, escalation speed, manifestation, affected elements, root cause and source links before drawing conclusions.</p>
           </div>
         </div>
+
         <div>
-          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">Live External Intelligence</h4>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">2. Open a Signal</h4>
           <div class="space-y-3">
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><i class="ph-fill ph-globe-hemisphere-west text-blue-500 text-lg shrink-0"></i><p><b>NASA EONET & USGS:</b> Real-time natural events and seismic activity, free public APIs.</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><i class="ph-fill ph-warning-diamond text-amber-500 text-lg shrink-0"></i><p><b>GDACS:</b> Official UN-affiliated disaster alert levels (Green/Orange/Red).</p></div>
-            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100"><i class="ph-fill ph-file-text text-emerald-500 text-lg shrink-0"></i><p><b>ReliefWeb:</b> Cross-referenced humanitarian reports matched by country, shown inside each signal modal.</p></div>
+            <div class="flex gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <div class="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-nexus-main shrink-0">A</div>
+              <div><p class="font-bold text-slate-800">Read the observation</p><p class="mt-1">Look at how the phenomenon was observed and which indicators are reported.</p></div>
+            </div>
+            <div class="flex gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <div class="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-nexus-main shrink-0">B</div>
+              <div><p class="font-bold text-slate-800">Check escalation</p><p class="mt-1">Escalation is represented as <strong>slow / medium / fast</strong>, while urgency is <strong>low / medium / high</strong>.</p></div>
+            </div>
+            <div class="flex gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <div class="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-nexus-main shrink-0">C</div>
+              <div><p class="font-bold text-slate-800">Check the evidence</p><p class="mt-1">Use the original source links and any cross-reference material before treating an interpretation as established fact.</p></div>
+            </div>
+            <div class="flex gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <div class="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-nexus-main shrink-0">D</div>
+              <div><p class="font-bold text-slate-800">Check the root cause</p><p class="mt-1">Root-cause labels are analytical classifications such as anthropogenic, systemic failure, natural anomaly, policy gap or behavioral neglect.</p></div>
+            </div>
           </div>
         </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">3. Understand the Signal Pathway</h4>
+          <div class="bg-slate-900 rounded-2xl p-4 sm:p-5 text-white">
+            <div class="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs font-bold">
+              <span class="px-2.5 py-1.5 rounded-lg bg-white/10">Latent Signal</span>
+              <i class="ph-bold ph-arrow-right text-white/40"></i>
+              <span class="px-2.5 py-1.5 rounded-lg bg-white/10">System Stress</span>
+              <i class="ph-bold ph-arrow-right text-white/40"></i>
+              <span class="px-2.5 py-1.5 rounded-lg bg-white/10">Escalation / Impact</span>
+              <i class="ph-bold ph-arrow-right text-white/40"></i>
+              <span class="px-2.5 py-1.5 rounded-lg bg-violet-500/30 border border-violet-400/30">Intervention Window</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+            <div class="bg-white border border-slate-200 p-4 rounded-xl">
+              <p class="font-bold text-slate-800">Choose a thematic pathway</p>
+              <p class="mt-1">Use the dropdown to inspect Water, Ocean & Coastal, Climate & Ecosystem, Biodiversity, Disaster Risk, Social & Behavioral, Technology & Digital, Governance & Institutional, Livelihood & Food, or the Cross-System Cascade.</p>
+            </div>
+            <div class="bg-white border border-slate-200 p-4 rounded-xl">
+              <p class="font-bold text-slate-800">Use current Inventory filters</p>
+              <p class="mt-1">When enabled, the pathway counts reflect the currently filtered inventory rather than the entire dataset. Disable it to inspect the full signal corpus.</p>
+            </div>
+            <div class="bg-white border border-slate-200 p-4 rounded-xl">
+              <p class="font-bold text-slate-800">Click a node</p>
+              <p class="mt-1">The right-hand detail panel shows mapped signals, upstream context and downstream pathway nodes.</p>
+            </div>
+            <div class="bg-white border border-slate-200 p-4 rounded-xl">
+              <p class="font-bold text-slate-800">Pan and zoom</p>
+              <p class="mt-1">Drag the canvas to explore the pathway and use the + / − / reset controls when a pathway becomes difficult to read.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">4. Read the Pathway Evidence Correctly</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="p-4 rounded-xl border border-emerald-100 bg-emerald-50">
+              <div class="flex items-center gap-2 font-bold text-emerald-800"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Evidence-linked</div>
+              <p class="mt-2 text-emerald-900/75">The mapping is supported by explicit evidence fields such as manifestation, potential impact or validated signal classification.</p>
+            </div>
+            <div class="p-4 rounded-xl border border-amber-100 bg-amber-50">
+              <div class="flex items-center gap-2 font-bold text-amber-800"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Heuristic</div>
+              <p class="mt-2 text-amber-900/75">The mapping is inferred from language, keywords or context. Treat it as an analytical cue for review, not as established evidence.</p>
+            </div>
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+              <div class="flex items-center gap-2 font-bold text-slate-700"><span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span> Evidence gap</div>
+              <p class="mt-2 text-slate-600">No signal is currently mapped to that node in the selected dataset. This is not proof that the phenomenon is absent.</p>
+            </div>
+          </div>
+          <div class="mt-3 p-4 rounded-xl border border-violet-100 bg-violet-50">
+            <div class="flex items-center gap-2 font-bold text-violet-800"><span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span> Intervention point</div>
+            <p class="mt-2 text-violet-900/75">This is a potential leverage point in the analytical pathway—such as monitoring, preparedness, capacity or governance support. It is not a command to act.</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">5. Understand the 10 Thematic Pathways</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Cross-System Cascade</b><span class="block text-slate-500 mt-1">Shows how pressure may propagate across connected environmental, resource, livelihood, social and institutional systems.</span></div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Water System</b><span class="block text-slate-500 mt-1">Water quantity, quality, access and dependent-system pressures.</span></div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Ocean & Coastal System</b><span class="block text-slate-500 mt-1">Marine habitat, fisheries, coastal services and community effects.</span></div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Climate & Ecosystem System</b><span class="block text-slate-500 mt-1">Climate anomalies, ecological response, resource shifts and production/livelihood pressure.</span></div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Biodiversity System</b><span class="block text-slate-500 mt-1">Species, populations, ecosystem functions and ecosystem-service exposure.</span></div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Disaster Risk System</b><span class="block text-slate-500 mt-1">Precursors, hazard escalation, exposure, cascading disruption and response pressure.</span></div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Social & Behavioral System</b><span class="block text-slate-500 mt-1">Behavioral shifts, resource-use pressure, community effects, governance pressure and cohesion risk.</span></div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Technology & Digital Transformation</b><span class="block text-slate-500 mt-1">Technology signals, digital dependency, data/algorithmic risk, disruption and digital inclusion.</span></div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Governance & Institutional System</b><span class="block text-slate-500 mt-1">Policy gaps, implementation friction, institutional strain and service resilience.</span></div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100"><b>Livelihood & Food System</b><span class="block text-slate-500 mt-1">Production stress, food supply pressure, livelihood disruption and household/community effects.</span></div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">6. Read the Intel Resume</h4>
+          <div class="space-y-3">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100"><b>Global Summary:</b> overall signal volume, urgency, high-risk and critical proportions.</div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100"><b>Domain Insights:</b> recurring patterns across signal domains and geographic clusters.</div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100"><b>Strategic Functions:</b> analytical lenses showing where the current evidence may matter for science-policy, foresight, resilience, capacity, inclusion or digital governance.</div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100"><b>Pathway Coverage:</b> which pathway nodes have mapped evidence and where the dataset currently has evidence gaps.</div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100"><b>Policy Relevance & Capacity:</b> possible implications and support areas derived from the evidence, not predetermined policy decisions.</div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">7. Use Global Map, Global Threats & Global Foresight</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <p class="font-bold text-slate-800">Global Map</p>
+              <p class="mt-1">Explore the geographic distribution of filtered signals and inspect clusters by location.</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <p class="font-bold text-slate-800">Global Threats</p>
+              <p class="mt-1">View live external event feeds and use them as contextual cross-reference alongside the curated signal inventory.</p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <p class="font-bold text-slate-800">Global Foresight</p>
+              <p class="mt-1">Explore the platform's exploratory forward-looking visualization. Treat it as a heuristic aid, not a deterministic forecast.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">8. Understand the AI + Search Architecture</h4>
+          <div class="bg-slate-900 rounded-2xl p-4 sm:p-5 text-white">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+              <div class="rounded-xl bg-white/5 border border-white/10 p-3">
+                <p class="text-sm font-black">SEARCH</p>
+                <p class="text-[10px] text-white/65 mt-1">TinyFish + DuckDuckGo discover candidate web sources in parallel.</p>
+              </div>
+              <div class="rounded-xl bg-white/5 border border-white/10 p-3">
+                <p class="text-sm font-black">ANALYZE</p>
+                <p class="text-[10px] text-white/65 mt-1">Gemini validates/extracts, then assesses risk and root cause.</p>
+              </div>
+              <div class="rounded-xl bg-white/5 border border-white/10 p-3">
+                <p class="text-sm font-black">MAP</p>
+                <p class="text-[10px] text-white/65 mt-1">Python computes metrics and maps evidence onto controlled Signal Pathways.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-100 pt-5">
+          <h4 class="font-bold text-slate-900 mb-2 uppercase tracking-wider text-xs">Best Practice for Interpretation</h4>
+          <p>
+            Use Nexus Radar as a <strong>signal discovery and sense-making tool</strong>. Start from the original evidence,
+            inspect the signal's manifestation and source, compare related signals, then use pathway and resume views
+            to identify patterns, gaps and areas for further investigation.
+          </p>
+          <p class="mt-2 text-slate-500">
+            The strongest use is not asking “What will happen?” but asking “What is changing, where is the evidence,
+            how could systems be connected, and what should we investigate next?”
+          </p>
+        </div>
+
       </div>
     </div>
   </div>
