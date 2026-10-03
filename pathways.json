@@ -1,0 +1,1383 @@
+{
+  "version": "1.0",
+  "concept": "Signal Pathway",
+  "description": "Controlled pathways for tracing latent signals from early manifestation through system stress, escalation, consequences and potential intervention windows.",
+  "legend": {
+    "evidence_linked": "Mapping supported by explicit domain, manifestation, impact or risk evidence in the record.",
+    "heuristic": "Mapping suggested by title/summary/root-cause language and should be reviewed.",
+    "no_observation": "No sufficient evidence is currently mapped to this node; this does not mean the node is absent in reality."
+  },
+  "domains": {
+    "cross_system_cascade": {
+      "label": "Cross-System Cascade",
+      "description": "A generic cascade showing how a localized latent signal can propagate from environmental or societal stress into systemic vulnerability.",
+      "color": "#0ea5e9",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "latent_signal": [
+            180,
+            190
+          ],
+          "ecosystem_stress": [
+            410,
+            190
+          ],
+          "critical_resource_pressure": [
+            650,
+            190
+          ],
+          "livelihood_disruption": [
+            890,
+            190
+          ],
+          "social_pressure": [
+            1120,
+            190
+          ],
+          "institutional_strain": [
+            410,
+            390
+          ],
+          "systemic_vulnerability": [
+            650,
+            390
+          ],
+          "intervention_window": [
+            890,
+            390
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "latent_signal",
+          "label": "Latent Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "description": "An early anomaly, weak warning or creeping change detected before a confirmed crisis.",
+          "aliases": [
+            "latent signal",
+            "early warning",
+            "anomaly",
+            "unusual change",
+            "early sign"
+          ],
+          "keywords": [
+            "anomaly",
+            "early sign",
+            "unusual",
+            "unexpected",
+            "decline",
+            "shift"
+          ],
+          "downstream": [
+            "ecosystem_stress"
+          ]
+        },
+        {
+          "id": "ecosystem_stress",
+          "label": "System Stress",
+          "stage": "Emerging pressure",
+          "kind": "stress",
+          "description": "The anomaly begins to place measurable pressure on an ecological, physical or social system.",
+          "aliases": [
+            "system stress",
+            "ecosystem stress",
+            "environmental stress",
+            "resource stress"
+          ],
+          "keywords": [
+            "stress",
+            "degradation",
+            "pressure",
+            "die-off",
+            "declining"
+          ],
+          "upstream": [
+            "latent_signal"
+          ],
+          "downstream": [
+            "critical_resource_pressure"
+          ]
+        },
+        {
+          "id": "critical_resource_pressure",
+          "label": "Critical Resource Pressure",
+          "stage": "Resource constraint",
+          "kind": "stress",
+          "description": "A critical resource or system function becomes constrained enough to affect dependent activities.",
+          "aliases": [
+            "resource pressure",
+            "resource scarcity",
+            "water stress",
+            "food pressure",
+            "resource constraint"
+          ],
+          "keywords": [
+            "scarcity",
+            "shortage",
+            "drying",
+            "salinity",
+            "contamination",
+            "reduced flow"
+          ],
+          "upstream": [
+            "ecosystem_stress"
+          ],
+          "downstream": [
+            "livelihood_disruption"
+          ]
+        },
+        {
+          "id": "livelihood_disruption",
+          "label": "Livelihood Disruption",
+          "stage": "Human-system impact",
+          "kind": "consequence",
+          "description": "Production, income, access or routine livelihood activities become disrupted by the preceding pressure.",
+          "aliases": [
+            "livelihood disruption",
+            "fishing decline",
+            "crop loss",
+            "income loss",
+            "production decline"
+          ],
+          "keywords": [
+            "livelihood",
+            "crop loss",
+            "fish catch",
+            "income",
+            "production",
+            "farmers"
+          ],
+          "upstream": [
+            "critical_resource_pressure"
+          ],
+          "downstream": [
+            "social_pressure"
+          ]
+        },
+        {
+          "id": "social_pressure",
+          "label": "Social Pressure",
+          "stage": "Community impact",
+          "kind": "consequence",
+          "description": "The disruption creates pressure on communities, behavior, migration, access or social cohesion.",
+          "aliases": [
+            "social pressure",
+            "community pressure",
+            "resource conflict",
+            "migration pressure"
+          ],
+          "keywords": [
+            "conflict",
+            "migration",
+            "community",
+            "panic",
+            "social tension",
+            "displacement"
+          ],
+          "upstream": [
+            "livelihood_disruption"
+          ],
+          "downstream": [
+            "institutional_strain"
+          ]
+        },
+        {
+          "id": "institutional_strain",
+          "label": "Institutional Strain",
+          "stage": "Governance impact",
+          "kind": "consequence",
+          "description": "Existing institutions, services or response systems face increasing difficulty absorbing the signal.",
+          "aliases": [
+            "institutional strain",
+            "service disruption",
+            "governance pressure",
+            "response capacity"
+          ],
+          "keywords": [
+            "institutional",
+            "service disruption",
+            "capacity",
+            "response",
+            "governance"
+          ],
+          "upstream": [
+            "social_pressure"
+          ],
+          "downstream": [
+            "systemic_vulnerability"
+          ]
+        },
+        {
+          "id": "systemic_vulnerability",
+          "label": "Systemic Vulnerability",
+          "stage": "Cascading risk",
+          "kind": "consequence",
+          "description": "Multiple dependencies become exposed, increasing the chance of wider cascading impacts.",
+          "aliases": [
+            "systemic vulnerability",
+            "cascading risk",
+            "compound risk",
+            "systemic failure"
+          ],
+          "keywords": [
+            "cascade",
+            "systemic",
+            "compound",
+            "interconnected",
+            "failure"
+          ],
+          "upstream": [
+            "institutional_strain"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "description": "A potential point for monitoring, prevention, mitigation or resilience-building. This node is an analytical response point, not an observed event.",
+          "aliases": [
+            "intervention window",
+            "prevention point",
+            "mitigation point",
+            "response window"
+          ],
+          "keywords": [
+            "intervention",
+            "prevention",
+            "mitigation",
+            "preparedness",
+            "response"
+          ],
+          "upstream": [
+            "systemic_vulnerability"
+          ]
+        }
+      ]
+    },
+    "water_system": {
+      "label": "Water System",
+      "description": "A source-to-use pathway tracing latent water signals through quality, quantity and access pressures.",
+      "color": "#2563eb",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "water_signal": [
+            150,
+            190
+          ],
+          "source_stress": [
+            380,
+            190
+          ],
+          "water_quality_pressure": [
+            610,
+            190
+          ],
+          "access_disruption": [
+            840,
+            190
+          ],
+          "dependent_systems": [
+            1070,
+            190
+          ],
+          "intervention_window": [
+            650,
+            410
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "water_signal",
+          "label": "Water Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "aliases": [
+            "water anomaly",
+            "water signal",
+            "drying well",
+            "river change",
+            "water warning"
+          ],
+          "keywords": [
+            "river",
+            "well",
+            "water level",
+            "groundwater",
+            "water pressure"
+          ],
+          "downstream": [
+            "source_stress"
+          ]
+        },
+        {
+          "id": "source_stress",
+          "label": "Source Stress",
+          "stage": "Source condition",
+          "kind": "stress",
+          "aliases": [
+            "source stress",
+            "groundwater decline",
+            "catchment stress",
+            "aquifer stress"
+          ],
+          "keywords": [
+            "groundwater decline",
+            "aquifer",
+            "catchment",
+            "recharge",
+            "drying"
+          ],
+          "upstream": [
+            "water_signal"
+          ],
+          "downstream": [
+            "water_quality_pressure"
+          ]
+        },
+        {
+          "id": "water_quality_pressure",
+          "label": "Quality Pressure",
+          "stage": "Water condition",
+          "kind": "stress",
+          "aliases": [
+            "water quality pressure",
+            "contamination",
+            "salinity intrusion",
+            "pollution"
+          ],
+          "keywords": [
+            "contamination",
+            "salinity",
+            "toxic",
+            "foam",
+            "pollution",
+            "heavy metal"
+          ],
+          "upstream": [
+            "source_stress"
+          ],
+          "downstream": [
+            "access_disruption"
+          ]
+        },
+        {
+          "id": "access_disruption",
+          "label": "Water Access Disruption",
+          "stage": "Service impact",
+          "kind": "consequence",
+          "aliases": [
+            "water access disruption",
+            "water shortage",
+            "supply disruption",
+            "well failure"
+          ],
+          "keywords": [
+            "shortage",
+            "access",
+            "supply",
+            "well failure",
+            "scarcity"
+          ],
+          "upstream": [
+            "water_quality_pressure"
+          ],
+          "downstream": [
+            "dependent_systems"
+          ]
+        },
+        {
+          "id": "dependent_systems",
+          "label": "Dependent Systems",
+          "stage": "Downstream impact",
+          "kind": "consequence",
+          "aliases": [
+            "agriculture impact",
+            "health impact",
+            "livelihood impact",
+            "ecosystem impact"
+          ],
+          "keywords": [
+            "agriculture",
+            "health",
+            "livelihood",
+            "ecosystem",
+            "crop",
+            "farming"
+          ],
+          "upstream": [
+            "access_disruption"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "aliases": [
+            "water intervention",
+            "water prevention"
+          ],
+          "keywords": [
+            "monitoring",
+            "treatment",
+            "protection",
+            "recharge",
+            "conservation"
+          ],
+          "upstream": [
+            "dependent_systems"
+          ]
+        }
+      ]
+    },
+    "ocean_coastal_system": {
+      "label": "Ocean & Coastal System",
+      "description": "A coastal cascade linking marine observations to habitat, fisheries and community effects.",
+      "color": "#0891b2",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "marine_signal": [
+            150,
+            190
+          ],
+          "habitat_stress": [
+            380,
+            190
+          ],
+          "fisheries_pressure": [
+            610,
+            190
+          ],
+          "coastal_service_disruption": [
+            840,
+            190
+          ],
+          "community_impact": [
+            1070,
+            190
+          ],
+          "intervention_window": [
+            650,
+            410
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "marine_signal",
+          "label": "Marine Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "aliases": [
+            "marine signal",
+            "ocean anomaly",
+            "coastal anomaly",
+            "marine observation"
+          ],
+          "keywords": [
+            "coral",
+            "jellyfish",
+            "algal bloom",
+            "fish kill",
+            "ocean temperature",
+            "seagrass"
+          ],
+          "downstream": [
+            "habitat_stress"
+          ]
+        },
+        {
+          "id": "habitat_stress",
+          "label": "Habitat Stress",
+          "stage": "Ecological pressure",
+          "kind": "stress",
+          "aliases": [
+            "habitat stress",
+            "reef degradation",
+            "seagrass loss",
+            "coastal habitat decline"
+          ],
+          "keywords": [
+            "bleaching",
+            "die-off",
+            "degradation",
+            "habitat loss",
+            "reef"
+          ],
+          "upstream": [
+            "marine_signal"
+          ],
+          "downstream": [
+            "fisheries_pressure"
+          ]
+        },
+        {
+          "id": "fisheries_pressure",
+          "label": "Fisheries Pressure",
+          "stage": "Resource pressure",
+          "kind": "stress",
+          "aliases": [
+            "fisheries pressure",
+            "fish catch decline",
+            "overfishing",
+            "fish stock decline"
+          ],
+          "keywords": [
+            "catch decline",
+            "juvenile fish",
+            "overfishing",
+            "fish stock",
+            "spawning"
+          ],
+          "upstream": [
+            "habitat_stress"
+          ],
+          "downstream": [
+            "coastal_service_disruption"
+          ]
+        },
+        {
+          "id": "coastal_service_disruption",
+          "label": "Coastal Service Disruption",
+          "stage": "System impact",
+          "kind": "consequence",
+          "aliases": [
+            "coastal service disruption",
+            "shoreline protection loss",
+            "ecosystem service decline"
+          ],
+          "keywords": [
+            "erosion",
+            "storm protection",
+            "ecosystem service",
+            "coastal protection"
+          ],
+          "upstream": [
+            "fisheries_pressure"
+          ],
+          "downstream": [
+            "community_impact"
+          ]
+        },
+        {
+          "id": "community_impact",
+          "label": "Coastal Community Impact",
+          "stage": "Human-system impact",
+          "kind": "consequence",
+          "aliases": [
+            "coastal community impact",
+            "fishing livelihood",
+            "coastal livelihood"
+          ],
+          "keywords": [
+            "fishing community",
+            "coastal livelihood",
+            "income",
+            "food security"
+          ],
+          "upstream": [
+            "coastal_service_disruption"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "aliases": [
+            "marine intervention",
+            "coastal prevention"
+          ],
+          "keywords": [
+            "marine protection",
+            "restoration",
+            "fisheries management",
+            "monitoring"
+          ],
+          "upstream": [
+            "community_impact"
+          ]
+        }
+      ]
+    },
+    "climate_ecosystem_system": {
+      "label": "Climate & Ecosystem System",
+      "description": "A pathway for climate anomalies moving through ecological stress and dependent human systems.",
+      "color": "#0ea5e9",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "climate_signal": [
+            150,
+            190
+          ],
+          "ecological_stress": [
+            380,
+            190
+          ],
+          "resource_shift": [
+            610,
+            190
+          ],
+          "production_pressure": [
+            840,
+            190
+          ],
+          "livelihood_pressure": [
+            1070,
+            190
+          ],
+          "intervention_window": [
+            650,
+            410
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "climate_signal",
+          "label": "Climate Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "aliases": [
+            "climate anomaly",
+            "climate signal",
+            "unseasonal",
+            "temperature anomaly"
+          ],
+          "keywords": [
+            "heat",
+            "drought",
+            "frost",
+            "wind pattern",
+            "flowering time",
+            "temperature"
+          ],
+          "downstream": [
+            "ecological_stress"
+          ]
+        },
+        {
+          "id": "ecological_stress",
+          "label": "Ecological Stress",
+          "stage": "Ecosystem response",
+          "kind": "stress",
+          "aliases": [
+            "ecological stress",
+            "phenological shift",
+            "species response",
+            "ecosystem response"
+          ],
+          "keywords": [
+            "migration",
+            "flowering",
+            "species shift",
+            "wildlife",
+            "ecosystem"
+          ],
+          "upstream": [
+            "climate_signal"
+          ],
+          "downstream": [
+            "resource_shift"
+          ]
+        },
+        {
+          "id": "resource_shift",
+          "label": "Resource Shift",
+          "stage": "Resource condition",
+          "kind": "stress",
+          "aliases": [
+            "resource shift",
+            "water stress",
+            "habitat shift",
+            "resource availability"
+          ],
+          "keywords": [
+            "drying",
+            "reduced availability",
+            "water stress",
+            "habitat"
+          ],
+          "upstream": [
+            "ecological_stress"
+          ],
+          "downstream": [
+            "production_pressure"
+          ]
+        },
+        {
+          "id": "production_pressure",
+          "label": "Production Pressure",
+          "stage": "Economic/food system",
+          "kind": "consequence",
+          "aliases": [
+            "crop stress",
+            "production pressure",
+            "agricultural disruption",
+            "food production risk"
+          ],
+          "keywords": [
+            "crop",
+            "farming",
+            "yield",
+            "agriculture",
+            "food security"
+          ],
+          "upstream": [
+            "resource_shift"
+          ],
+          "downstream": [
+            "livelihood_pressure"
+          ]
+        },
+        {
+          "id": "livelihood_pressure",
+          "label": "Livelihood Pressure",
+          "stage": "Human-system impact",
+          "kind": "consequence",
+          "aliases": [
+            "livelihood pressure",
+            "income pressure",
+            "rural livelihood"
+          ],
+          "keywords": [
+            "income",
+            "livelihood",
+            "farmers",
+            "household",
+            "migration"
+          ],
+          "upstream": [
+            "production_pressure"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "aliases": [
+            "climate intervention",
+            "adaptation window"
+          ],
+          "keywords": [
+            "adaptation",
+            "resilience",
+            "early action",
+            "restoration"
+          ],
+          "upstream": [
+            "livelihood_pressure"
+          ]
+        }
+      ]
+    },
+    "biodiversity_system": {
+      "label": "Biodiversity System",
+      "description": "A pathway connecting species-level anomaly to population, ecosystem function and service loss.",
+      "color": "#16a34a",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "species_signal": [
+            150,
+            190
+          ],
+          "population_decline": [
+            380,
+            190
+          ],
+          "ecosystem_function_loss": [
+            610,
+            190
+          ],
+          "ecosystem_service_risk": [
+            840,
+            190
+          ],
+          "human_ecological_exposure": [
+            1070,
+            190
+          ],
+          "intervention_window": [
+            650,
+            410
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "species_signal",
+          "label": "Species Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "aliases": [
+            "species anomaly",
+            "wildlife anomaly",
+            "species signal",
+            "wildlife disease"
+          ],
+          "keywords": [
+            "bird death",
+            "invasive species",
+            "amphibian",
+            "butterfly",
+            "wildlife disease",
+            "fungal infection"
+          ],
+          "downstream": [
+            "population_decline"
+          ]
+        },
+        {
+          "id": "population_decline",
+          "label": "Population Decline",
+          "stage": "Population response",
+          "kind": "stress",
+          "aliases": [
+            "population decline",
+            "species loss",
+            "abundance decline"
+          ],
+          "keywords": [
+            "decline",
+            "missing",
+            "disappearance",
+            "population",
+            "mortality"
+          ],
+          "upstream": [
+            "species_signal"
+          ],
+          "downstream": [
+            "ecosystem_function_loss"
+          ]
+        },
+        {
+          "id": "ecosystem_function_loss",
+          "label": "Ecosystem Function Loss",
+          "stage": "System response",
+          "kind": "stress",
+          "aliases": [
+            "ecosystem function loss",
+            "pollination loss",
+            "predator loss",
+            "food web disruption"
+          ],
+          "keywords": [
+            "pollination",
+            "predator",
+            "food web",
+            "spawning",
+            "ecosystem function"
+          ],
+          "upstream": [
+            "population_decline"
+          ],
+          "downstream": [
+            "ecosystem_service_risk"
+          ]
+        },
+        {
+          "id": "ecosystem_service_risk",
+          "label": "Ecosystem Service Risk",
+          "stage": "Service impact",
+          "kind": "consequence",
+          "aliases": [
+            "ecosystem service risk",
+            "service decline",
+            "ecosystem dependency"
+          ],
+          "keywords": [
+            "water regulation",
+            "pollination",
+            "coastal protection",
+            "food",
+            "ecosystem service"
+          ],
+          "upstream": [
+            "ecosystem_function_loss"
+          ],
+          "downstream": [
+            "human_ecological_exposure"
+          ]
+        },
+        {
+          "id": "human_ecological_exposure",
+          "label": "Human-Ecological Exposure",
+          "stage": "Downstream impact",
+          "kind": "consequence",
+          "aliases": [
+            "human ecological exposure",
+            "resource dependency",
+            "community exposure"
+          ],
+          "keywords": [
+            "community",
+            "food security",
+            "livelihood",
+            "health",
+            "resource"
+          ],
+          "upstream": [
+            "ecosystem_service_risk"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "aliases": [
+            "biodiversity intervention",
+            "restoration window"
+          ],
+          "keywords": [
+            "restoration",
+            "habitat protection",
+            "conservation",
+            "invasive control"
+          ],
+          "upstream": [
+            "human_ecological_exposure"
+          ]
+        }
+      ]
+    },
+    "disaster_risk_system": {
+      "label": "Disaster Risk System",
+      "description": "A precursor-to-impact pathway for disaster risk reduction, including exposure and response capacity.",
+      "color": "#dc2626",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "precursor_signal": [
+            150,
+            190
+          ],
+          "hazard_escalation": [
+            380,
+            190
+          ],
+          "exposure_growth": [
+            610,
+            190
+          ],
+          "cascading_disruption": [
+            840,
+            190
+          ],
+          "response_pressure": [
+            1070,
+            190
+          ],
+          "intervention_window": [
+            650,
+            410
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "precursor_signal",
+          "label": "Precursor Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "aliases": [
+            "precursor signal",
+            "hazard precursor",
+            "early warning"
+          ],
+          "keywords": [
+            "soil cracks",
+            "micro tremor",
+            "rockfall",
+            "sinkhole",
+            "volcano gas",
+            "warning sign"
+          ],
+          "downstream": [
+            "hazard_escalation"
+          ]
+        },
+        {
+          "id": "hazard_escalation",
+          "label": "Hazard Escalation",
+          "stage": "Hazard development",
+          "kind": "stress",
+          "aliases": [
+            "hazard escalation",
+            "hazard intensification",
+            "hazard activity"
+          ],
+          "keywords": [
+            "increasing",
+            "frequency",
+            "escalating",
+            "intensifying",
+            "warning"
+          ],
+          "upstream": [
+            "precursor_signal"
+          ],
+          "downstream": [
+            "exposure_growth"
+          ]
+        },
+        {
+          "id": "exposure_growth",
+          "label": "Exposure Growth",
+          "stage": "Exposure",
+          "kind": "stress",
+          "aliases": [
+            "exposure growth",
+            "settlement exposure",
+            "critical infrastructure exposure"
+          ],
+          "keywords": [
+            "settlement",
+            "road",
+            "infrastructure",
+            "population",
+            "village"
+          ],
+          "upstream": [
+            "hazard_escalation"
+          ],
+          "downstream": [
+            "cascading_disruption"
+          ]
+        },
+        {
+          "id": "cascading_disruption",
+          "label": "Cascading Disruption",
+          "stage": "Impact",
+          "kind": "consequence",
+          "aliases": [
+            "cascading disruption",
+            "service disruption",
+            "infrastructure disruption"
+          ],
+          "keywords": [
+            "transport",
+            "power",
+            "water",
+            "communication",
+            "supply"
+          ],
+          "upstream": [
+            "exposure_growth"
+          ],
+          "downstream": [
+            "response_pressure"
+          ]
+        },
+        {
+          "id": "response_pressure",
+          "label": "Response Pressure",
+          "stage": "Response capacity",
+          "kind": "consequence",
+          "aliases": [
+            "response pressure",
+            "emergency pressure",
+            "capacity strain"
+          ],
+          "keywords": [
+            "emergency",
+            "response",
+            "capacity",
+            "rescue",
+            "evacuation"
+          ],
+          "upstream": [
+            "cascading_disruption"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "aliases": [
+            "disaster intervention",
+            "preparedness window"
+          ],
+          "keywords": [
+            "preparedness",
+            "warning",
+            "mitigation",
+            "evacuation",
+            "monitoring"
+          ],
+          "upstream": [
+            "response_pressure"
+          ]
+        }
+      ]
+    },
+    "social_behavioral_system": {
+      "label": "Social & Behavioral System",
+      "description": "A social pathway linking behavioral observations to resource pressure, institutional strain and community resilience.",
+      "color": "#9333ea",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "behavioral_signal": [
+            150,
+            190
+          ],
+          "resource_behavior_shift": [
+            380,
+            190
+          ],
+          "community_pressure": [
+            610,
+            190
+          ],
+          "institutional_strain": [
+            840,
+            190
+          ],
+          "cohesion_risk": [
+            1070,
+            190
+          ],
+          "intervention_window": [
+            650,
+            410
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "behavioral_signal",
+          "label": "Behavioral Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "aliases": [
+            "behavioral signal",
+            "social signal",
+            "community signal"
+          ],
+          "keywords": [
+            "dumping",
+            "panic buying",
+            "informal",
+            "illegal",
+            "behavior",
+            "rumor"
+          ],
+          "downstream": [
+            "resource_behavior_shift"
+          ]
+        },
+        {
+          "id": "resource_behavior_shift",
+          "label": "Resource Behavior Shift",
+          "stage": "Behavioral pressure",
+          "kind": "stress",
+          "aliases": [
+            "resource behavior shift",
+            "overuse",
+            "resource misuse",
+            "resource conflict"
+          ],
+          "keywords": [
+            "overfishing",
+            "logging",
+            "mining",
+            "pumping",
+            "dumping",
+            "extraction"
+          ],
+          "upstream": [
+            "behavioral_signal"
+          ],
+          "downstream": [
+            "community_pressure"
+          ]
+        },
+        {
+          "id": "community_pressure",
+          "label": "Community Pressure",
+          "stage": "Community impact",
+          "kind": "consequence",
+          "aliases": [
+            "community pressure",
+            "livelihood pressure",
+            "resource access pressure"
+          ],
+          "keywords": [
+            "livelihood",
+            "access",
+            "community",
+            "household",
+            "fishing"
+          ],
+          "upstream": [
+            "resource_behavior_shift"
+          ],
+          "downstream": [
+            "institutional_strain"
+          ]
+        },
+        {
+          "id": "institutional_strain",
+          "label": "Institutional Strain",
+          "stage": "Governance impact",
+          "kind": "consequence",
+          "aliases": [
+            "institutional strain",
+            "governance gap",
+            "service pressure"
+          ],
+          "keywords": [
+            "policy gap",
+            "enforcement",
+            "governance",
+            "service",
+            "capacity"
+          ],
+          "upstream": [
+            "community_pressure"
+          ],
+          "downstream": [
+            "cohesion_risk"
+          ]
+        },
+        {
+          "id": "cohesion_risk",
+          "label": "Cohesion Risk",
+          "stage": "System consequence",
+          "kind": "consequence",
+          "aliases": [
+            "social cohesion risk",
+            "community conflict",
+            "social instability"
+          ],
+          "keywords": [
+            "conflict",
+            "tension",
+            "polarization",
+            "displacement",
+            "social instability"
+          ],
+          "upstream": [
+            "institutional_strain"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "aliases": [
+            "social intervention",
+            "community resilience window"
+          ],
+          "keywords": [
+            "dialogue",
+            "outreach",
+            "service improvement",
+            "community resilience"
+          ],
+          "upstream": [
+            "cohesion_risk"
+          ]
+        }
+      ]
+    }
+  }
+}
