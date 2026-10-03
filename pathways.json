@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "concept": "Signal Pathway",
   "description": "Controlled pathways for tracing latent signals from early manifestation through system stress, escalation, consequences and potential intervention windows.",
   "legend": {
@@ -1375,6 +1375,628 @@
           ],
           "upstream": [
             "cohesion_risk"
+          ]
+        }
+      ]
+    },
+    "technology_digital_system": {
+      "label": "Technology & Digital Transformation",
+      "description": "A pathway linking emerging technology signals to dependency, data or algorithmic pressure, service disruption and digital inclusion risks.",
+      "color": "#7c3aed",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "technology_signal": [
+            150,
+            190
+          ],
+          "digital_dependency_pressure": [
+            390,
+            190
+          ],
+          "data_algorithmic_risk": [
+            630,
+            190
+          ],
+          "digital_service_disruption": [
+            870,
+            190
+          ],
+          "digital_social_impact": [
+            1110,
+            190
+          ],
+          "intervention_window": [
+            650,
+            410
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "technology_signal",
+          "label": "Technology Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "description": "An emerging technological change, unusual digital dependency or early warning involving AI, platforms, data or connected systems.",
+          "aliases": [
+            "technology signal",
+            "digital signal",
+            "technology anomaly",
+            "ai signal",
+            "digital transformation"
+          ],
+          "keywords": [
+            "artificial intelligence",
+            "ai",
+            "algorithm",
+            "digital",
+            "platform",
+            "technology",
+            "cyber",
+            "data"
+          ],
+          "downstream": [
+            "digital_dependency_pressure"
+          ]
+        },
+        {
+          "id": "digital_dependency_pressure",
+          "label": "Digital Dependency Pressure",
+          "stage": "Dependency condition",
+          "kind": "stress",
+          "description": "Critical services, institutions or communities become increasingly dependent on a digital system, platform or technology.",
+          "aliases": [
+            "digital dependency",
+            "technology dependency",
+            "platform dependency",
+            "digital access pressure"
+          ],
+          "keywords": [
+            "dependency",
+            "outage",
+            "downtime",
+            "platform",
+            "internet access",
+            "digital divide",
+            "vendor"
+          ],
+          "upstream": [
+            "technology_signal"
+          ],
+          "downstream": [
+            "data_algorithmic_risk"
+          ]
+        },
+        {
+          "id": "data_algorithmic_risk",
+          "label": "Data & Algorithmic Risk",
+          "stage": "System integrity",
+          "kind": "stress",
+          "description": "Data quality, algorithmic behavior, privacy, cyber exposure or automated decision processes introduce systemic pressure.",
+          "aliases": [
+            "data risk",
+            "algorithmic risk",
+            "ai risk",
+            "data governance pressure",
+            "cyber risk"
+          ],
+          "keywords": [
+            "bias",
+            "privacy",
+            "data breach",
+            "cyberattack",
+            "algorithmic",
+            "misinformation",
+            "data quality"
+          ],
+          "upstream": [
+            "digital_dependency_pressure"
+          ],
+          "downstream": [
+            "digital_service_disruption"
+          ]
+        },
+        {
+          "id": "digital_service_disruption",
+          "label": "Digital Service Disruption",
+          "stage": "Service impact",
+          "kind": "consequence",
+          "description": "Digital failures or harmful technology effects disrupt access to services, information, markets or public functions.",
+          "aliases": [
+            "digital service disruption",
+            "platform outage",
+            "service outage",
+            "digital disruption"
+          ],
+          "keywords": [
+            "outage",
+            "disruption",
+            "service failure",
+            "access failure",
+            "system failure",
+            "offline"
+          ],
+          "upstream": [
+            "data_algorithmic_risk"
+          ],
+          "downstream": [
+            "digital_social_impact"
+          ]
+        },
+        {
+          "id": "digital_social_impact",
+          "label": "Digital & Social Impact",
+          "stage": "Human-system impact",
+          "kind": "consequence",
+          "description": "Digital disruption or unequal access affects livelihoods, participation, trust, safety or social inclusion.",
+          "aliases": [
+            "digital inequality",
+            "social impact",
+            "digital exclusion",
+            "trust impact",
+            "access inequality"
+          ],
+          "keywords": [
+            "inequality",
+            "exclusion",
+            "livelihood",
+            "trust",
+            "participation",
+            "community",
+            "users"
+          ],
+          "upstream": [
+            "digital_service_disruption"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "description": "A potential point for responsible technology governance, resilience-building, digital inclusion, risk monitoring or capacity development.",
+          "aliases": [
+            "digital intervention",
+            "technology governance",
+            "digital resilience"
+          ],
+          "keywords": [
+            "governance",
+            "standards",
+            "audit",
+            "resilience",
+            "digital literacy",
+            "cybersecurity",
+            "capacity"
+          ],
+          "upstream": [
+            "digital_social_impact"
+          ]
+        }
+      ]
+    },
+    "governance_institutional_system": {
+      "label": "Governance & Institutional System",
+      "description": "A pathway tracing policy and governance signals through implementation friction, institutional strain, service gaps and potential response points.",
+      "color": "#475569",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "governance_signal": [
+            150,
+            190
+          ],
+          "policy_regulatory_gap": [
+            390,
+            190
+          ],
+          "implementation_friction": [
+            630,
+            190
+          ],
+          "institutional_strain": [
+            870,
+            190
+          ],
+          "service_resilience_gap": [
+            1110,
+            190
+          ],
+          "intervention_window": [
+            650,
+            410
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "governance_signal",
+          "label": "Governance Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "description": "An emerging policy, regulatory, institutional or governance anomaly that may weaken system resilience.",
+          "aliases": [
+            "governance signal",
+            "policy signal",
+            "institutional signal",
+            "governance anomaly"
+          ],
+          "keywords": [
+            "policy",
+            "regulation",
+            "governance",
+            "institution",
+            "government",
+            "administration",
+            "oversight"
+          ],
+          "downstream": [
+            "policy_regulatory_gap"
+          ]
+        },
+        {
+          "id": "policy_regulatory_gap",
+          "label": "Policy & Regulatory Gap",
+          "stage": "Governance condition",
+          "kind": "stress",
+          "description": "Existing rules, standards, mandates or policy instruments do not adequately address the emerging condition.",
+          "aliases": [
+            "policy gap",
+            "regulatory gap",
+            "governance gap",
+            "policy failure"
+          ],
+          "keywords": [
+            "gap",
+            "absence",
+            "regulation",
+            "policy failure",
+            "unregulated",
+            "weak rule"
+          ],
+          "upstream": [
+            "governance_signal"
+          ],
+          "downstream": [
+            "implementation_friction"
+          ]
+        },
+        {
+          "id": "implementation_friction",
+          "label": "Implementation Friction",
+          "stage": "Implementation condition",
+          "kind": "stress",
+          "description": "Capacity, coordination, incentives or institutional processes constrain implementation even when policy direction exists.",
+          "aliases": [
+            "implementation friction",
+            "implementation gap",
+            "coordination failure",
+            "capacity constraint"
+          ],
+          "keywords": [
+            "implementation",
+            "coordination",
+            "capacity",
+            "compliance",
+            "enforcement",
+            "budget",
+            "fragmentation"
+          ],
+          "upstream": [
+            "policy_regulatory_gap"
+          ],
+          "downstream": [
+            "institutional_strain"
+          ]
+        },
+        {
+          "id": "institutional_strain",
+          "label": "Institutional Strain",
+          "stage": "Institutional impact",
+          "kind": "consequence",
+          "description": "Institutions or public services face increasing difficulty absorbing, coordinating or responding to the emerging pressure.",
+          "aliases": [
+            "institutional strain",
+            "institutional pressure",
+            "service capacity pressure"
+          ],
+          "keywords": [
+            "institutional",
+            "service",
+            "staffing",
+            "capacity",
+            "response",
+            "workload",
+            "backlog"
+          ],
+          "upstream": [
+            "implementation_friction"
+          ],
+          "downstream": [
+            "service_resilience_gap"
+          ]
+        },
+        {
+          "id": "service_resilience_gap",
+          "label": "Service & Resilience Gap",
+          "stage": "System impact",
+          "kind": "consequence",
+          "description": "Weak governance or institutional capacity produces uneven service delivery, reduced resilience or exposed communities.",
+          "aliases": [
+            "service resilience gap",
+            "resilience gap",
+            "service disruption",
+            "governance vulnerability"
+          ],
+          "keywords": [
+            "service disruption",
+            "resilience",
+            "vulnerability",
+            "access",
+            "community",
+            "failure",
+            "continuity"
+          ],
+          "upstream": [
+            "institutional_strain"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "description": "A potential point for policy review, institutional strengthening, coordination, monitoring, implementation support or governance reform.",
+          "aliases": [
+            "governance intervention",
+            "policy response",
+            "institutional strengthening"
+          ],
+          "keywords": [
+            "policy review",
+            "capacity building",
+            "coordination",
+            "monitoring",
+            "standards",
+            "institutional reform"
+          ],
+          "upstream": [
+            "service_resilience_gap"
+          ]
+        }
+      ]
+    },
+    "livelihood_food_system": {
+      "label": "Livelihood & Food System",
+      "description": "A pathway connecting environmental or economic signals to production stress, food-system pressure, livelihood disruption and household or community resilience.",
+      "color": "#d97706",
+      "layout": {
+        "root": [
+          650,
+          68
+        ],
+        "viewBox": [
+          0,
+          0,
+          1300,
+          700
+        ],
+        "nodes": {
+          "livelihood_food_signal": [
+            150,
+            190
+          ],
+          "production_resource_stress": [
+            390,
+            190
+          ],
+          "food_supply_pressure": [
+            630,
+            190
+          ],
+          "livelihood_disruption": [
+            870,
+            190
+          ],
+          "household_community_pressure": [
+            1110,
+            190
+          ],
+          "intervention_window": [
+            650,
+            410
+          ]
+        }
+      },
+      "nodes": [
+        {
+          "id": "livelihood_food_signal",
+          "label": "Livelihood & Food Signal",
+          "stage": "Early observation",
+          "kind": "signal",
+          "description": "An early signal involving food availability, production, income, fisheries, farming or livelihood security.",
+          "aliases": [
+            "livelihood signal",
+            "food system signal",
+            "food security signal",
+            "livelihood anomaly"
+          ],
+          "keywords": [
+            "food security",
+            "livelihood",
+            "farming",
+            "fisheries",
+            "income",
+            "crop",
+            "harvest",
+            "market"
+          ],
+          "downstream": [
+            "production_resource_stress"
+          ]
+        },
+        {
+          "id": "production_resource_stress",
+          "label": "Production & Resource Stress",
+          "stage": "Production condition",
+          "kind": "stress",
+          "description": "Environmental, resource or economic pressures reduce the stability or productivity of food and livelihood systems.",
+          "aliases": [
+            "production stress",
+            "resource stress",
+            "agricultural stress",
+            "fisheries pressure",
+            "production decline"
+          ],
+          "keywords": [
+            "drought",
+            "heat",
+            "water shortage",
+            "soil degradation",
+            "catch decline",
+            "crop loss",
+            "yield decline"
+          ],
+          "upstream": [
+            "livelihood_food_signal"
+          ],
+          "downstream": [
+            "food_supply_pressure"
+          ]
+        },
+        {
+          "id": "food_supply_pressure",
+          "label": "Food Supply Pressure",
+          "stage": "Food-system condition",
+          "kind": "stress",
+          "description": "Production stress begins to affect availability, prices, distribution or reliability of food resources.",
+          "aliases": [
+            "food supply pressure",
+            "food shortage",
+            "food price pressure",
+            "food availability risk"
+          ],
+          "keywords": [
+            "food shortage",
+            "price",
+            "market",
+            "supply disruption",
+            "availability",
+            "scarcity",
+            "distribution"
+          ],
+          "upstream": [
+            "production_resource_stress"
+          ],
+          "downstream": [
+            "livelihood_disruption"
+          ]
+        },
+        {
+          "id": "livelihood_disruption",
+          "label": "Livelihood Disruption",
+          "stage": "Human-system impact",
+          "kind": "consequence",
+          "description": "Households or producer groups experience reduced income, employment, production or access to essential livelihood resources.",
+          "aliases": [
+            "livelihood disruption",
+            "income loss",
+            "employment loss",
+            "fishing livelihood decline",
+            "farmer hardship"
+          ],
+          "keywords": [
+            "income loss",
+            "unemployment",
+            "livelihood",
+            "household",
+            "farmer",
+            "fisher",
+            "producer"
+          ],
+          "upstream": [
+            "food_supply_pressure"
+          ],
+          "downstream": [
+            "household_community_pressure"
+          ]
+        },
+        {
+          "id": "household_community_pressure",
+          "label": "Household & Community Pressure",
+          "stage": "Community impact",
+          "kind": "consequence",
+          "description": "Sustained livelihood or food pressure affects household coping capacity, migration, social cohesion or local wellbeing.",
+          "aliases": [
+            "household pressure",
+            "community pressure",
+            "coping pressure",
+            "food insecurity impact"
+          ],
+          "keywords": [
+            "migration",
+            "displacement",
+            "conflict",
+            "coping",
+            "household",
+            "community",
+            "poverty",
+            "nutrition"
+          ],
+          "upstream": [
+            "livelihood_disruption"
+          ],
+          "downstream": [
+            "intervention_window"
+          ]
+        },
+        {
+          "id": "intervention_window",
+          "label": "Intervention Window",
+          "stage": "Potential leverage",
+          "kind": "intervention",
+          "description": "A potential point for adaptation, livelihood diversification, social protection, food-system resilience, market monitoring or capacity support.",
+          "aliases": [
+            "livelihood intervention",
+            "food resilience",
+            "livelihood resilience"
+          ],
+          "keywords": [
+            "adaptation",
+            "diversification",
+            "social protection",
+            "resilience",
+            "training",
+            "market support",
+            "early action"
+          ],
+          "upstream": [
+            "household_community_pressure"
           ]
         }
       ]
