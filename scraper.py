@@ -34,6 +34,7 @@ BASE_DIR         = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE        = os.path.join(BASE_DIR, "data.json")
 RESUME_FILE      = os.path.join(BASE_DIR, "resume.json")
 HISTORY_FILE     = os.path.join(BASE_DIR, "history.json")
+PATHWAY_FILE     = os.path.join(BASE_DIR, "pathways.json")
 
 # ── Konfigurasi Jadwal ──
 DATA_INTERVAL_DAYS   = int(os.environ.get("DATA_INTERVAL_DAYS", 1))
@@ -489,6 +490,202 @@ def calculate_advanced_metrics(data):
     except Exception:
         return data
 
+
+# =====================================================================
+# SIGNAL PATHWAY CLASSIFICATION
+# =====================================================================
+
+def normalize_pathway_text(value):
+    return " ".join(
+        unicodedata.normalize("NFKC", str(value or ""))
+        .lower()
+        .replace("&", " and ")
+        .split()
+    )
+
+
+def classify_signal_pathway(item, taxonomy):
+    """
+    Map one latent-signal record onto the controlled Signal Pathway taxonomy.
+
+    Mapping is deliberately auditable:
+    - evidence_linked: explicit domain / manifestation / impact / risk evidence
+    - heuristic: title / summary / root-cause language
+    """
+    matches = []
+    domains = taxonomy.get("domains", {}) if isinstance(taxonomy, dict) else {}
+
+    manifestation = item.get("manifestation") or {}
+    impact = item.get("potential_impact") or {}
+    escalation = item.get("escalation") or {}
+    risk = item.get("risk_assessment") or {}
+    root = item.get("root_cause_analysis") or {}
+
+    title_n = normalize_pathway_text(item.get("title", ""))
+    summary_n = normalize_pathway_text(item.get("summary", ""))
+    domain_values = [
+        normalize_pathway_text(x)
+        for x in (item.get("domain_classification") or [])
+    ]
+
+    manifest_text = normalize_pathway_text(
+        " ".join([
+            str(manifestation.get("how_it_is_observed", "")),
+            " ".join(manifestation.get("key_indicators", []) or [])
+        ])
+    )
+    impact_text = normalize_pathway_text(
+        " ".join([
+            " ".join(impact.get("affected_elements", []) or []),
+            str(impact.get("threat_level", "")),
+            str(escalation.get("speed", "")),
+            str(escalation.get("urgency", ""))
+        ])
+    )
+    risk_text = normalize_pathway_text(
+        " ".join([
+            " ".join(risk.get("risk_type", []) or []),
+            str(risk.get("severity_level", "")),
+            str(risk.get("explanation", ""))
+        ])
+    )
+    root_text = normalize_pathway_text(
+        " ".join(root.get("root_cause", []) or [])
+    )
+
+    full_evidence = " ".join([
+        title_n, summary_n, manifest_text, impact_text, risk_text, root_text
+    ])
+
+    for domain_id, domain in domains.items():
+        domain_label = normalize_pathway_text(domain.get("label", domain_id))
+
+        for node in domain.get("nodes", []) or []:
+            aliases = [
+                normalize_pathway_text(x)
+                for x in (node.get("aliases", []) or [])
+                if normalize_pathway_text(x)
+            ]
+            keywords = [
+                normalize_pathway_text(x)
+                for x in (node.get("keywords", []) or [])
+                if normalize_pathway_text(x)
+            ]
+
+            score = 0.0
+            evidence = []
+            exact = False
+
+            # Domain alignment is strong evidence but not sufficient on its own
+            # for most downstream nodes.
+            if domain_id == "cross_system_cascade":
+                domain_hit = bool(domain_values)
+            else:
+                domain_hit = (
+                    normalize_pathway_text(domain_id.replace("_", " ")) in domain_values
+                    or domain_label in domain_values
+                    or any(
+                        token and any(token in d for d in domain_values)
+                        for token in domain_label.split()
+                        if len(token) > 3
+                    )
+                )
+
+            if domain_hit and node.get("kind") == "signal":
+                score = max(score, 0.74)
+                evidence.append("domain_classification")
+
+            # Manifestation / affected-system evidence is preferred for
+            # evidence-linked mappings.
+            if any(a and (a in manifest_text or manifest_text in a) for a in aliases):
+                score = max(score, 0.88)
+                evidence.append("manifestation")
+                exact = True
+
+            if any(k and k in manifest_text for k in keywords):
+                score = max(score, 0.82)
+                evidence.append("manifestation")
+                exact = True
+
+            if any(k and k in impact_text for k in keywords):
+                score = max(score, 0.72)
+                evidence.append("potential_impact")
+                exact = True
+
+            if any(k and k in risk_text for k in keywords):
+                score = max(score, 0.66)
+                evidence.append("risk_assessment")
+
+            # Narrative matching is intentionally lower-confidence.
+            if any(a and a in title_n for a in aliases):
+                score = max(score, 0.78)
+                evidence.append("title")
+
+            if any(k and k in summary_n for k in keywords) or any(a and a in summary_n for a in aliases):
+                score = max(score, 0.68)
+                evidence.append("summary")
+
+            if any(a and a in root_text for a in aliases):
+                score = max(score, 0.60)
+                evidence.append("root_cause")
+
+            # Do not classify a static intervention node purely because its
+            # generic response keywords happen to appear in a risk explanation.
+            if node.get("kind") == "intervention" and not any(
+                e in evidence for e in ("manifestation", "potential_impact", "domain_classification")
+            ):
+                score = min(score, 0.45)
+
+            if score < 0.58:
+                continue
+
+            matches.append({
+                "domain_id": domain_id,
+                "domain": domain.get("label", domain_id),
+                "node_id": node.get("id"),
+                "node": node.get("label", node.get("id")),
+                "stage": node.get("stage", ""),
+                "kind": node.get("kind", "stress"),
+                "match": "evidence_linked" if exact or score >= 0.80 else "heuristic",
+                "confidence": round(min(1.0, score), 2),
+                "evidence": sorted(set(evidence))
+            })
+
+    # Keep the strongest evidence for each node and cap the number of mappings
+    # so one noisy record does not light up the whole pathway.
+    best = {}
+    for match in matches:
+        key = (match["domain_id"], match["node_id"])
+        if key not in best or (
+            match["confidence"],
+            match["match"] == "evidence_linked"
+        ) > (
+            best[key]["confidence"],
+            best[key]["match"] == "evidence_linked"
+        ):
+            best[key] = match
+
+    matches = list(best.values())
+    matches.sort(
+        key=lambda x: (-x["confidence"], x["domain_id"], x["node_id"])
+    )
+    return matches[:12]
+
+
+def enrich_signal_pathways(database, taxonomy):
+    """Retroactively refresh pathway mappings for all stored records."""
+    changed = False
+
+    for item in database:
+        new_matches = classify_signal_pathway(item, taxonomy)
+        old_matches = item.get("pathway_matches", [])
+
+        if old_matches != new_matches:
+            item["pathway_matches"] = new_matches
+            changed = True
+
+    return changed
+
 # =====================================================================
 # CORE TASKS: DATA CRAWL & RESUME GENERATION
 # =====================================================================
@@ -551,6 +748,10 @@ def run_discovery_pipeline(api_key, database, max_items=2):
         final_item["location"]["lon"] = lon
 
         final_item = calculate_advanced_metrics(final_item)
+
+        taxonomy = load_json_file(PATHWAY_FILE, {"version": "1.0", "domains": {}})
+        final_item["pathway_matches"] = classify_signal_pathway(final_item, taxonomy)
+
         database.append(final_item)
         success_count += 1
         
@@ -615,6 +816,12 @@ def main():
     try:
         db = load_json_file(DATA_FILE, [])
         if not isinstance(db, list): db =[]
+
+        pathway_taxonomy = load_json_file(
+            PATHWAY_FILE,
+            {"version": "1.0", "domains": {}}
+        )
+        pathway_changed = enrich_signal_pathways(db, pathway_taxonomy)
             
         history = load_json_file(HISTORY_FILE, {
             "last_data_crawl": "2000-01-01T00:00:00",
@@ -639,9 +846,16 @@ def main():
         if do_data:
             log.info("--- 🟢 STARTING SIGNAL PIPELINE ---")
             found = run_discovery_pipeline(api_key, db, max_items=MAX_ITEMS_PER_RUN)
-            if found > 0: save_json_file(DATA_FILE, db)
+            pathway_changed = enrich_signal_pathways(db, pathway_taxonomy)
+
+            if found > 0 or pathway_changed:
+                save_json_file(DATA_FILE, db)
+
             history["last_data_crawl"] = now.isoformat()
-            log.info(f"🟢 COMPLETE. Added {found} new signals. Total: {len(db)}")
+            log.info(
+                f"🟢 COMPLETE. Added {found} new signals. "
+                f"Pathway mappings refreshed: {pathway_changed}. Total: {len(db)}"
+            )
 
         if do_resume:
             log.info("--- 🔵 STARTING RESUME PIPELINE ---")
