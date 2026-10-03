@@ -92,6 +92,37 @@
     }
     .thumb-fallback-hidden { display: none !important; }
 
+    /* ── SIGNAL PATHWAY ── */
+    .signal-pathway-shell { min-height: 760px; }
+    .signal-pathway-canvas {
+      min-height: 560px;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(14,165,233,.07), transparent 30%),
+        radial-gradient(circle at 82% 75%, rgba(124,58,237,.06), transparent 32%),
+        #ffffff;
+    }
+    #signal-pathway-svg { touch-action: none; cursor: grab; }
+    #signal-pathway-svg.is-dragging { cursor: grabbing; }
+    .signal-pathway-connector { stroke:#cbd5e1; stroke-width:2.5; fill:none; marker-end:url(#signal-pathway-arrow); }
+    .signal-pathway-connector.active { stroke:#0ea5e9; stroke-width:3.5; }
+    .signal-pathway-node { cursor:pointer; transition:filter .2s ease, opacity .2s ease; }
+    .signal-pathway-node:hover { filter: drop-shadow(0 8px 14px rgba(15,23,42,.12)); }
+    .signal-pathway-bg { fill:#fff; stroke:#cbd5e1; stroke-width:1.5; }
+    .signal-pathway-bg.active { stroke:#0ea5e9; stroke-width:3; }
+    .signal-pathway-bg.intervention { fill:#faf5ff; stroke:#a855f7; stroke-dasharray:7 5; }
+    .signal-pathway-bg.intervention.active { stroke:#7c3aed; }
+    .signal-pathway-root { fill:#eff6ff; stroke:#0ea5e9; stroke-width:2.5; }
+    .signal-pathway-label { font-size:14px; font-weight:800; fill:#334155; pointer-events:none; }
+    .signal-pathway-stage { font-size:9px; font-weight:800; fill:#64748b; pointer-events:none; }
+    .signal-pathway-count { font-size:10px; font-weight:800; fill:#475569; pointer-events:none; }
+    .signal-pathway-dot.evidence { fill:#10b981; }
+    .signal-pathway-dot.heuristic { fill:#f59e0b; }
+    .signal-pathway-dot.gap { fill:#cbd5e1; }
+    .signal-pathway-dot.intervention { fill:#8b5cf6; }
+    .signal-pathway-legend-pill { display:inline-flex; align-items:center; gap:6px; border:1px solid #e2e8f0; background:#fff; border-radius:999px; padding:6px 10px; font-size:10px; font-weight:800; color:#475569; }
+    .signal-pathway-evidence-card { transition:transform .2s ease, box-shadow .2s ease; }
+    .signal-pathway-evidence-card:hover { transform:translateY(-1px); box-shadow:0 8px 20px rgba(15,23,42,.08); }
+
 /* FORESIGHT ANIMATIONS */
     .foresight-zone {
       animation: pulse-ring-map 2s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate;
@@ -137,6 +168,9 @@
       </button>
       <button onclick="switchTab('map')" id="nav-map" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
         <i class="ph-fill ph-globe-hemisphere-west text-lg"></i> Global Map
+      </button>
+      <button onclick="switchTab('pathway')" id="nav-pathway" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
+        <i class="ph-fill ph-flow-arrow text-lg"></i> Signal Pathway
       </button>
       <button onclick="switchTab('resume')" id="nav-resume" class="nav-item flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm text-slate-600 text-left">
         <i class="ph-fill ph-chart-polar text-lg"></i> Intel Resume
@@ -322,6 +356,82 @@
       </div>
 
       <!-- ========================================== -->
+
+      <!-- ========================================== -->
+      <!-- SIGNAL PATHWAY -->
+      <!-- ========================================== -->
+      <div id="view-pathway" class="flex-col gap-5 hidden signal-pathway-shell">
+
+        <div class="bg-gradient-to-r from-[#0369a1] via-[#0ea5e9] to-[#7c3aed] rounded-2xl p-5 sm:p-6 text-white shadow-lg">
+          <div class="flex flex-col xl:flex-row xl:items-end justify-between gap-5">
+            <div>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                  <i class="ph-fill ph-flow-arrow text-2xl"></i>
+                </div>
+                <div>
+                  <h2 class="font-display font-bold text-lg leading-tight">Signal Pathway</h2>
+                  <p class="text-white/75 text-xs mt-0.5">Latent signal → system stress → consequences → intervention window</p>
+                </div>
+              </div>
+              <p class="text-white/80 text-xs max-w-3xl leading-relaxed">
+                Trace where detected signals may sit within a broader escalation pathway. Downstream nodes are analytical possibilities, not predictions or proof of causality.
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-2 w-full xl:w-auto">
+              <select id="signal-pathway-domain" class="bg-white/15 border border-white/30 text-white text-xs font-semibold rounded-lg px-3 py-2 min-w-[220px] focus:outline-none focus:ring-2 focus:ring-white/40"></select>
+              <label class="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs font-semibold cursor-pointer">
+                <input id="signal-pathway-use-filters" type="checkbox" class="accent-white" checked>
+                Use current Inventory filters
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="signal-pathway-legend-pill"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>Evidence-linked</span>
+          <span class="signal-pathway-legend-pill"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>Heuristic</span>
+          <span class="signal-pathway-legend-pill"><span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>Evidence gap</span>
+          <span class="signal-pathway-legend-pill"><span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>Intervention point</span>
+          <span id="signal-pathway-scope" class="ml-auto text-[10px] text-slate-400 font-bold uppercase tracking-widest"></span>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1.65fr)_minmax(320px,0.8fr)] gap-5">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="p-4 border-b border-slate-100 flex items-center justify-between gap-3">
+              <div>
+                <h3 class="font-display font-bold text-slate-800">Cascade Map</h3>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Static pathway · dynamic signal evidence</p>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button id="signal-pathway-zoom-out" class="w-8 h-8 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-600" title="Zoom out"><i class="ph-bold ph-minus"></i></button>
+                <button id="signal-pathway-zoom-in" class="w-8 h-8 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-600" title="Zoom in"><i class="ph-bold ph-plus"></i></button>
+                <button id="signal-pathway-reset" class="w-8 h-8 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-600" title="Reset view"><i class="ph-bold ph-arrows-counter-clockwise"></i></button>
+              </div>
+            </div>
+            <div class="signal-pathway-canvas overflow-auto p-2 sm:p-4">
+              <svg id="signal-pathway-svg" viewBox="0 0 1300 700" class="min-w-[1120px] w-full h-auto select-none" role="img" aria-label="Signal escalation pathway">
+                <defs>
+                  <marker id="signal-pathway-arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"></path>
+                  </marker>
+                  <filter id="signal-pathway-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity=".08"/>
+                  </filter>
+                </defs>
+                <g id="signal-pathway-links"></g>
+                <g id="signal-pathway-nodes"></g>
+              </svg>
+            </div>
+          </div>
+
+          <aside id="signal-pathway-detail" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden min-h-[560px]">
+            <div class="p-6 text-center text-slate-400">Select a pathway node.</div>
+          </aside>
+        </div>
+      </div>
+
       <!-- TAB 3: INTEL RESUME -->
       <!-- ========================================== -->
       <div id="view-resume" class="flex-col gap-4 sm:gap-6 hidden animate-slide">
@@ -858,6 +968,15 @@
   const reliefWebCache = {};
 
   // --- STATE UNTUK TAB LIVE (NASA + USGS + GDACS) ---
+  let signalPathwayTaxonomy = { version: "1.0", domains: {} };
+  let signalPathwayDomainId = "cross_system_cascade";
+  let signalPathwayUseFilters = true;
+  let signalPathwaySelectedNode = null;
+  let signalPathwayInteractionBound = false;
+  let signalPathwayPan = { x: 0, y: 0, scale: 1 };
+  let signalPathwayDrag = { active:false, moved:false, startX:0, startY:0, originX:0, originY:0 };
+  let signalPathwayPointerNodeId = null;
+
   let liveMap = null;
   let liveMarkersById = {};
   let liveClusterLayer = null;
@@ -880,6 +999,14 @@
         if (Array.isArray(raw) && raw.length > 0) globalData = raw; else globalData = FALLBACK_JSON;
       } else throw new Error("Fetch failed");
     } catch(e) { globalData = FALLBACK_JSON; }
+
+    try {
+      const res = await fetch('pathways.json');
+      if (res.ok) {
+        const raw = await res.json();
+        if (raw && raw.domains) signalPathwayTaxonomy = raw;
+      }
+    } catch(e) { console.warn('Signal Pathway taxonomy unavailable:', e); }
 
     try {
       const res = await fetch('resume.json');
@@ -968,7 +1095,7 @@
   // --- TAB SWITCHER ---
   function switchTab(tabId) {
     // Tambahkan 'foresight' ke dalam array
-    ['inventory','map','resume','live', 'foresight'].forEach(t => {
+    ['inventory','map','pathway','resume','live', 'foresight'].forEach(t => {
       const navBtn = document.getElementById(`nav-${t}`);
       if(navBtn) navBtn.classList.toggle('active', t === tabId);
       
@@ -982,6 +1109,7 @@
     const titles = {
       'inventory':['Signal Inventory', 'Real-time latent environmental anomalies.'],
       'map':['Global Threat Map', 'Geospatial distribution of detected signals.'],
+      'pathway':['Signal Pathway', 'Trace latent signals through system stress, escalation and potential intervention points.'],
       'resume':['Intelligence Resume', 'Quarterly synthesis and recommendations.'],
       'live':['Global Threat Monitor', 'Synchronized with NASA EONET, USGS & GDACS.'],
       'foresight':['Global Foresight', 'Predictive heuristic engine using historical vector data.'] // <-- Baris baru
@@ -1009,6 +1137,11 @@
       if (!liveMap) { initLiveMap(); fetchLiveFeeds(); }
       setTimeout(() => { if(liveMap) liveMap.invalidateSize(); }, 150);
     }
+    if (tabId === 'pathway') {
+      initSignalPathway();
+      setTimeout(() => renderSignalPathway(), 50);
+    }
+
     if (tabId === 'foresight') {
     if (!foresightMap) { 
        initForesightMap(); 
@@ -1092,6 +1225,9 @@
     
     filteredData = res; renderGrid(); renderTrendChart();
     if(map) { drawMapElements(); renderMapCharts(); }
+    if (!document.getElementById('view-pathway')?.classList.contains('hidden') && signalPathwayUseFilters) {
+      renderSignalPathway();
+    }
   }
 
   function getDomainStyle(d) {
@@ -1868,6 +2004,444 @@ async function fetchExternalCrossReference(country) {
       listCont.insertAdjacentHTML('beforeend', itemHtml);
     });
   }
+
+
+  // ═══════════════════════════════════════════════════════
+  // SIGNAL PATHWAY — STATIC TAXONOMY + DYNAMIC EVIDENCE
+  // ═══════════════════════════════════════════════════════
+
+  function normalizeSignalPathwayText(v) {
+    return String(v || "")
+      .normalize("NFKC")
+      .toLowerCase()
+      .replace(/[&]/g, " and ")
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+  }
+
+  function getSignalPathwayDomain() {
+    const domains = signalPathwayTaxonomy?.domains || {};
+    return domains[signalPathwayDomainId] || Object.values(domains)[0] || null;
+  }
+
+  function getSignalPathwaySourceData() {
+    return signalPathwayUseFilters ? filteredData : globalData;
+  }
+
+  function signalPathwayNodeMatches(item, node, domainId) {
+    const persisted = Array.isArray(item.pathway_matches)
+      ? item.pathway_matches.filter(m => m.domain_id === domainId && m.node_id === node.id)
+      : [];
+
+    if (persisted.length) return persisted[0];
+
+    const manifest = item.manifestation || {};
+    const impact = item.potential_impact || {};
+    const risk = item.risk_assessment || {};
+    const root = item.root_cause_analysis || {};
+
+    const domainValues = (item.domain_classification || []).map(normalizeSignalPathwayText);
+    const title = normalizeSignalPathwayText(item.title);
+    const summary = normalizeSignalPathwayText(item.summary);
+    const manifestText = normalizeSignalPathwayText([
+      manifest.how_it_is_observed,
+      ...(manifest.key_indicators || [])
+    ].join(" "));
+    const impactText = normalizeSignalPathwayText([
+      ...(impact.affected_elements || []),
+      impact.threat_level,
+      item.escalation?.speed,
+      item.escalation?.urgency
+    ].join(" "));
+    const riskText = normalizeSignalPathwayText([
+      ...(risk.risk_type || []),
+      risk.severity_level,
+      risk.explanation
+    ].join(" "));
+    const rootText = normalizeSignalPathwayText((root.root_cause || []).join(" "));
+
+    const aliases = (node.aliases || []).map(normalizeSignalPathwayText).filter(Boolean);
+    const keywords = (node.keywords || []).map(normalizeSignalPathwayText).filter(Boolean);
+
+    let score = 0;
+    const evidence = [];
+
+    if (domainId === 'cross_system_cascade' && domainValues.length && node.kind === 'signal') {
+      score = Math.max(score, 0.74);
+      evidence.push('domain_classification');
+    }
+
+    if (aliases.some(a => manifestText.includes(a)) || keywords.some(k => manifestText.includes(k))) {
+      score = Math.max(score, 0.82);
+      evidence.push('manifestation');
+    }
+    if (keywords.some(k => impactText.includes(k))) {
+      score = Math.max(score, 0.72);
+      evidence.push('potential_impact');
+    }
+    if (keywords.some(k => riskText.includes(k))) {
+      score = Math.max(score, 0.66);
+      evidence.push('risk_assessment');
+    }
+    if (aliases.some(a => title.includes(a))) {
+      score = Math.max(score, 0.78);
+      evidence.push('title');
+    }
+    if (aliases.some(a => summary.includes(a)) || keywords.some(k => summary.includes(k))) {
+      score = Math.max(score, 0.68);
+      evidence.push('summary');
+    }
+    if (aliases.some(a => rootText.includes(a))) {
+      score = Math.max(score, 0.60);
+      evidence.push('root_cause');
+    }
+
+    if (node.kind === 'intervention' && !['domain_classification','manifestation','potential_impact'].some(e => evidence.includes(e))) {
+      score = Math.min(score, 0.45);
+    }
+
+    if (score < 0.58) return null;
+
+    return {
+      domain_id: domainId,
+      domain: getSignalPathwayDomain()?.label || domainId,
+      node_id: node.id,
+      node: node.label || node.id,
+      stage: node.stage || '',
+      kind: node.kind || 'stress',
+      match: score >= 0.80 ? 'evidence_linked' : 'heuristic',
+      confidence: Number(Math.min(1, score).toFixed(2)),
+      evidence: [...new Set(evidence)]
+    };
+  }
+
+  function aggregateSignalPathway(domain) {
+    const data = getSignalPathwaySourceData();
+    const byNode = {};
+    (domain.nodes || []).forEach(node => {
+      byNode[node.id] = { evidence: [], heuristic: [], all: [] };
+    });
+
+    data.forEach(item => {
+      (domain.nodes || []).forEach(node => {
+        const match = signalPathwayNodeMatches(item, node, signalPathwayDomainId);
+        if (!match) return;
+        byNode[node.id].all.push({ item, match });
+        if (match.match === 'evidence_linked') byNode[node.id].evidence.push({ item, match });
+        else byNode[node.id].heuristic.push({ item, match });
+      });
+    });
+
+    return byNode;
+  }
+
+  function signalPathwayPositions(domain) {
+    const configured = domain?.layout?.nodes || {};
+    return Object.fromEntries((domain.nodes || []).map((node, i) => [
+      node.id,
+      configured[node.id] || [160 + (i % 5) * 240, 190 + Math.floor(i / 5) * 170]
+    ]));
+  }
+
+  function signalPathwayRootPosition(domain) {
+    return domain?.layout?.root || [650, 70];
+  }
+
+  function signalPathwayViewBox(domain) {
+    return domain?.layout?.viewBox || [0, 0, 1300, 700];
+  }
+
+  function applySignalPathwayTransform() {
+    const links = document.getElementById('signal-pathway-links');
+    const nodes = document.getElementById('signal-pathway-nodes');
+    if (!links || !nodes) return;
+    const t = `translate(${signalPathwayPan.x} ${signalPathwayPan.y}) scale(${signalPathwayPan.scale})`;
+    links.setAttribute('transform', t);
+    nodes.setAttribute('transform', t);
+  }
+
+  function resetSignalPathwayView() {
+    signalPathwayPan = { x: 0, y: 0, scale: 1 };
+    applySignalPathwayTransform();
+  }
+
+  function bindSignalPathwayInteractions() {
+    if (signalPathwayInteractionBound) return;
+    const svg = document.getElementById('signal-pathway-svg');
+    if (!svg) return;
+    signalPathwayInteractionBound = true;
+
+    svg.addEventListener('pointerdown', e => {
+      if (e.button !== undefined && e.button !== 0) return;
+      const nodeEl = e.target?.closest?.('[data-signal-pathway-node]');
+      signalPathwayPointerNodeId = nodeEl?.getAttribute('data-signal-pathway-node') || null;
+      signalPathwayDrag.active = true;
+      signalPathwayDrag.moved = false;
+      signalPathwayDrag.startX = e.clientX;
+      signalPathwayDrag.startY = e.clientY;
+      signalPathwayDrag.originX = signalPathwayPan.x;
+      signalPathwayDrag.originY = signalPathwayPan.y;
+      svg.classList.add('is-dragging');
+      svg.setPointerCapture?.(e.pointerId);
+      e.preventDefault();
+    });
+
+    svg.addEventListener('pointermove', e => {
+      if (!signalPathwayDrag.active) return;
+      const rect = svg.getBoundingClientRect();
+      const view = signalPathwayViewBox(getSignalPathwayDomain());
+      const px = (view[2] / rect.width) || 1;
+      const py = (view[3] / rect.height) || 1;
+      const dx = (e.clientX - signalPathwayDrag.startX) * px / signalPathwayPan.scale;
+      const dy = (e.clientY - signalPathwayDrag.startY) * py / signalPathwayPan.scale;
+
+      if (Math.abs(e.clientX - signalPathwayDrag.startX) + Math.abs(e.clientY - signalPathwayDrag.startY) > 5) {
+        signalPathwayDrag.moved = true;
+        signalPathwayPointerNodeId = null;
+      }
+
+      signalPathwayPan.x = signalPathwayDrag.originX + dx;
+      signalPathwayPan.y = signalPathwayDrag.originY + dy;
+      applySignalPathwayTransform();
+      e.preventDefault();
+    });
+
+    const finish = () => {
+      if (!signalPathwayDrag.active) return;
+      const nodeId = !signalPathwayDrag.moved ? signalPathwayPointerNodeId : null;
+      signalPathwayDrag.active = false;
+      signalPathwayPointerNodeId = null;
+      svg.classList.remove('is-dragging');
+      if (nodeId) selectSignalPathwayNode(nodeId);
+    };
+
+    svg.addEventListener('pointerup', finish);
+    svg.addEventListener('pointercancel', finish);
+
+    document.getElementById('signal-pathway-zoom-in')?.addEventListener('click', () => {
+      signalPathwayPan.scale = Math.min(1.8, Number((signalPathwayPan.scale + 0.15).toFixed(2)));
+      applySignalPathwayTransform();
+    });
+    document.getElementById('signal-pathway-zoom-out')?.addEventListener('click', () => {
+      signalPathwayPan.scale = Math.max(0.6, Number((signalPathwayPan.scale - 0.15).toFixed(2)));
+      applySignalPathwayTransform();
+    });
+    document.getElementById('signal-pathway-reset')?.addEventListener('click', () => {
+      signalPathwaySelectedNode = getSignalPathwayDomain()?.nodes?.[0]?.id || null;
+      resetSignalPathwayView();
+      renderSignalPathway();
+    });
+  }
+
+  function initSignalPathway() {
+    const select = document.getElementById('signal-pathway-domain');
+    if (!select) return;
+
+    if (!select.options.length) {
+      Object.entries(signalPathwayTaxonomy?.domains || {}).forEach(([id, domain]) => {
+        select.add(new Option(domain.label || id, id));
+      });
+    }
+
+    if (!signalPathwayDomainId || !signalPathwayTaxonomy?.domains?.[signalPathwayDomainId]) {
+      signalPathwayDomainId = Object.keys(signalPathwayTaxonomy?.domains || {})[0] || '';
+    }
+
+    select.value = signalPathwayDomainId;
+    signalPathwayUseFilters = document.getElementById('signal-pathway-use-filters')?.checked ?? true;
+
+    if (!select.dataset.bound) {
+      select.dataset.bound = '1';
+      select.onchange = () => {
+        signalPathwayDomainId = select.value;
+        signalPathwaySelectedNode = getSignalPathwayDomain()?.nodes?.[0]?.id || null;
+        resetSignalPathwayView();
+        renderSignalPathway();
+      };
+
+      document.getElementById('signal-pathway-use-filters').onchange = e => {
+        signalPathwayUseFilters = e.target.checked;
+        renderSignalPathway();
+      };
+    }
+
+    if (!signalPathwaySelectedNode) {
+      signalPathwaySelectedNode = getSignalPathwayDomain()?.nodes?.[0]?.id || null;
+    }
+
+    bindSignalPathwayInteractions();
+    renderSignalPathway();
+  }
+
+  function escapeSignalPathwayText(v) {
+    return String(v || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  }
+
+  function escapeSignalPathwayHtml(v) {
+    return String(v || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function wrapSignalPathwayText(value, maxChars = 19, maxLines = 2) {
+    const words = String(value || '').trim().split(/s+/).filter(Boolean);
+    if (!words.length) return [''];
+    const lines = [];
+    let line = '';
+    for (const word of words) {
+      const candidate = line ? `${line} ${word}` : word;
+      if (candidate.length <= maxChars || !line) line = candidate;
+      else { lines.push(line); line = word; }
+      if (lines.length === maxLines - 1) break;
+    }
+    if (lines.length < maxLines && line) lines.push(line);
+    const consumed = lines.join(' ').split(/\s+/).filter(Boolean).length;
+    if (consumed < words.length) {
+      let last = lines[lines.length - 1] || '';
+      const suffix = ' …';
+      last = last.slice(0, Math.max(4, maxChars - suffix.length)).trim() + suffix;
+      lines[lines.length - 1] = last;
+    }
+    return lines;
+  }
+
+  function signalPathwayTspans(lines, x, firstY, lineHeight = 14, anchor = 'start') {
+    return lines.map((line, idx) => `<tspan x="${x}" y="${firstY + idx * lineHeight}" text-anchor="${anchor}">${escapeSignalPathwayText(line)}</tspan>`).join('');
+  }
+
+  function renderSignalPathway() {
+    const domain = getSignalPathwayDomain();
+    const svg = document.getElementById('signal-pathway-svg');
+    const linksEl = document.getElementById('signal-pathway-links');
+    const nodesEl = document.getElementById('signal-pathway-nodes');
+    const detail = document.getElementById('signal-pathway-detail');
+    if (!domain || !svg || !linksEl || !nodesEl || !detail) return;
+
+    const stats = aggregateSignalPathway(domain);
+    const pos = signalPathwayPositions(domain);
+    const data = getSignalPathwaySourceData();
+    const nodeById = Object.fromEntries((domain.nodes || []).map(n => [n.id, n]));
+    const [rootX, rootY] = signalPathwayRootPosition(domain);
+    const vb = signalPathwayViewBox(domain);
+
+    svg.setAttribute('viewBox', vb.join(' '));
+    document.getElementById('signal-pathway-scope').textContent =
+      signalPathwayUseFilters ? `Current Inventory Filter · ${data.length} records` : `All Radar Records · ${data.length} records`;
+
+    let links = '';
+    const seenEdges = new Set();
+    (domain.nodes || []).forEach(node => {
+      (node.downstream || []).forEach(targetId => {
+        if (!pos[targetId]) return;
+        const key = `${node.id}::${targetId}`;
+        if (seenEdges.has(key)) return;
+        seenEdges.add(key);
+        const [x1,y1] = pos[node.id], [x2,y2] = pos[targetId];
+        const active = node.id === signalPathwaySelectedNode || targetId === signalPathwaySelectedNode;
+        const midX = (x1 + x2) / 2, midY = (y1 + y2) / 2;
+        links += `<path d="M ${x1} ${y1} Q ${midX} ${midY - 18} ${x2} ${y2}" class="signal-pathway-connector ${active ? 'active' : ''}"></path>`;
+      });
+    });
+    linksEl.innerHTML = links;
+
+    const rootLabel = wrapSignalPathwayText(domain.label, 25, 2);
+    let nodes = `
+      <g>
+        <rect x="${rootX-145}" y="${rootY-30}" width="290" height="60" rx="18" class="signal-pathway-root" filter="url(#signal-pathway-shadow)"></rect>
+        <text x="${rootX}" y="${rootY-4}" text-anchor="middle" class="signal-pathway-label">${signalPathwayTspans(rootLabel, rootX, rootY-4, 15, 'middle')}</text>
+        <text x="${rootX}" y="${rootY+17}" text-anchor="middle" class="signal-pathway-stage">Signal Pathway System</text>
+      </g>`;
+
+    (domain.nodes || []).forEach(node => {
+      const st = stats[node.id] || { evidence: [], heuristic: [], all: [] };
+      const [x,y] = pos[node.id];
+      const active = node.id === signalPathwaySelectedNode;
+      const isIntervention = node.kind === 'intervention';
+      const status = isIntervention ? 'intervention' : (st.evidence.length ? 'evidence' : (st.heuristic.length ? 'heuristic' : 'gap'));
+      const width = 190;
+      const titleLines = wrapSignalPathwayText(node.label, 20, 2);
+      const titleY = y - (titleLines.length > 1 ? 18 : 7);
+      const countY = y + (titleLines.length > 1 ? 20 : 14);
+      const stageY = y + (titleLines.length > 1 ? 39 : 33);
+      const countText = isIntervention ? 'Potential leverage point' : (st.all.length ? `${st.evidence.length} evidence · ${st.heuristic.length} heuristic` : 'No mapped evidence');
+
+      nodes += `
+        <g class="signal-pathway-node" data-signal-pathway-node="${escapeSignalPathwayText(node.id)}" role="button" tabindex="0">
+          <rect x="${x-width/2}" y="${y-42}" width="${width}" height="84" rx="18" class="signal-pathway-bg ${active ? 'active' : ''} ${isIntervention ? 'intervention' : ''}" filter="url(#signal-pathway-shadow)"></rect>
+          <circle cx="${x-width/2+18}" cy="${y-17}" r="6" class="signal-pathway-dot ${status}"></circle>
+          <text class="signal-pathway-label">${signalPathwayTspans(titleLines, x-width/2+32, titleY, 14, 'start')}</text>
+          <text x="${x-width/2+32}" y="${countY}" class="signal-pathway-count">${escapeSignalPathwayText(countText)}</text>
+          <text x="${x-width/2+32}" y="${stageY}" class="signal-pathway-stage">${escapeSignalPathwayText(node.stage || '')}</text>
+          ${active ? `<rect x="${x-width/2-1.5}" y="${y-43.5}" width="${width+3}" height="87" rx="19" fill="none" stroke="${isIntervention ? '#7c3aed' : '#0ea5e9'}" stroke-width="2.5" opacity=".85"></rect>` : ''}
+        </g>`;
+    });
+    nodesEl.innerHTML = nodes;
+    applySignalPathwayTransform();
+
+    const selected = nodeById[signalPathwaySelectedNode] || domain.nodes?.[0];
+    if (selected) renderSignalPathwayDetail(domain, selected, stats[selected.id] || { evidence: [], heuristic: [], all: [] });
+  }
+
+  function selectSignalPathwayNode(nodeId) {
+    if (!nodeId) return;
+    signalPathwaySelectedNode = nodeId;
+    renderSignalPathway();
+    setTimeout(() => document.getElementById('signal-pathway-detail')?.scrollIntoView({behavior:'smooth', block:'nearest'}), 30);
+  }
+
+  function renderSignalPathwayDetail(domain, node, stat) {
+    const evidenceCount = stat.evidence.length;
+    const heuristicCount = stat.heuristic.length;
+    const total = stat.all.length;
+    const upstream = (node.upstream || []).map(id => domain.nodes.find(n => n.id === id)).filter(Boolean);
+    const downstream = (node.downstream || []).map(id => domain.nodes.find(n => n.id === id)).filter(Boolean);
+    const evidence = [...stat.all].sort((a,b) => b.match.confidence - a.match.confidence).slice(0, 8);
+    const evidenceHtml = evidence.length ? evidence.map(({item, match}) => `
+      <div class="signal-pathway-evidence-card border border-slate-100 rounded-2xl p-3.5 bg-slate-50/70">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${match.match === 'evidence_linked' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">
+            <i class="ph-fill ${match.match === 'evidence_linked' ? 'ph-check-circle' : 'ph-magic-wand'}"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="flex items-start justify-between gap-2">
+              <p class="text-xs font-bold text-slate-800 line-clamp-2">${escapeSignalPathwayHtml(item.title || 'Untitled')}</p>
+              <span class="text-[8px] font-black uppercase tracking-widest ${match.match === 'evidence_linked' ? 'text-emerald-600' : 'text-amber-600'} shrink-0">${match.match.replace('_',' ')} · ${Math.round(match.confidence*100)}%</span>
+            </div>
+            <p class="text-[9px] text-slate-400 mt-1">${escapeSignalPathwayHtml(item.location?.country || 'Global')} · ${escapeSignalPathwayHtml((item.domain_classification || []).join(' · ') || 'Unclassified')}</p>
+            <p class="text-[10px] text-slate-600 leading-relaxed mt-2 line-clamp-3">${escapeSignalPathwayHtml(item.summary || '')}</p>
+            <div class="flex flex-wrap gap-1 mt-2">${(match.evidence || []).map(ev => `<span class="text-[8px] font-bold px-1.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-500 uppercase">${escapeSignalPathwayHtml(ev)}</span>`).join('')}</div>
+            <button onclick="openModal('${escapeSignalPathwayHtml(item.id)}')" class="mt-2 text-[9px] font-bold text-nexus-dark hover:text-nexus-main">Open signal →</button>
+          </div>
+        </div>
+      </div>`).join('') : '<div class="text-xs italic text-slate-400 bg-slate-50 border border-dashed border-slate-200 rounded-2xl p-5">No signal evidence is currently mapped to this node. This is an evidence gap, not proof of absence.</div>';
+
+    const isIntervention = node.kind === 'intervention';
+
+    document.getElementById('signal-pathway-detail').innerHTML = `
+      <div class="p-5 sm:p-6 h-full overflow-y-auto">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full ${isIntervention ? 'bg-violet-50 text-violet-700 border border-violet-100' : 'bg-blue-50 text-blue-700 border border-blue-100'}">${escapeSignalPathwayHtml(node.stage || 'Pathway')}</span>
+          <span class="text-[10px] font-black text-slate-400 uppercase">${isIntervention ? 'Analytical point' : total + ' mapped'}</span>
+        </div>
+        <h3 class="text-xl font-display font-bold text-slate-900 mt-4 leading-tight">${escapeSignalPathwayHtml(node.label)}</h3>
+        <p class="text-xs text-slate-500 leading-relaxed mt-2">${escapeSignalPathwayHtml(node.description || '')}</p>
+
+        <div class="grid grid-cols-3 gap-2 mt-5">
+          <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-3 text-center"><p class="text-xl font-display font-black text-emerald-700">${evidenceCount}</p><p class="text-[8px] font-bold uppercase tracking-wider text-emerald-600">Evidence-linked</p></div>
+          <div class="bg-amber-50 border border-amber-100 rounded-xl p-3 text-center"><p class="text-xl font-display font-black text-amber-700">${heuristicCount}</p><p class="text-[8px] font-bold uppercase tracking-wider text-amber-600">Heuristic</p></div>
+          <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 text-center"><p class="text-xl font-display font-black text-slate-500">${isIntervention ? '—' : (total ? 0 : 1)}</p><p class="text-[8px] font-bold uppercase tracking-wider text-slate-400">${isIntervention ? 'Response' : 'Evidence gap'}</p></div>
+        </div>
+
+        <div class="mt-6 space-y-4">
+          <div><p class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-2">Upstream</p><div class="flex flex-wrap gap-2">${upstream.length ? upstream.map(n => `<button onclick="selectSignalPathwayNode('${n.id}')" class="text-[9px] font-bold px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600">${escapeSignalPathwayHtml(n.label)}</button>`).join('') : '<span class="text-xs text-slate-400">Origin node</span>'}</div></div>
+          <div><p class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-2">Downstream</p><div class="flex flex-wrap gap-2">${downstream.length ? downstream.map(n => `<button onclick="selectSignalPathwayNode('${n.id}')" class="text-[9px] font-bold px-2.5 py-1.5 rounded-lg ${n.kind === 'intervention' ? 'bg-violet-50 hover:bg-violet-100 text-violet-700' : 'bg-blue-50 hover:bg-blue-100 text-blue-700'}">${escapeSignalPathwayHtml(n.label)}</button>`).join('') : '<span class="text-xs text-slate-400">End of pathway</span>'}</div></div>
+        </div>
+
+        <div class="mt-7">
+          <div class="flex items-center justify-between mb-3"><p class="text-[9px] font-black uppercase tracking-widest text-slate-400">${isIntervention ? 'Interpretation' : 'Mapped Signals'}</p><span class="text-[9px] text-slate-400">${Math.min(8,total)} shown</span></div>
+          ${isIntervention ? '<div class="bg-violet-50 border border-violet-100 rounded-2xl p-4 text-[10px] text-violet-900 leading-relaxed">This is a potential intervention point derived from the pathway design. It does not mean an intervention is currently required, and it does not imply the downstream outcome is inevitable.</div>' : `<div class="space-y-2.5">${evidenceHtml}</div>`}
+        </div>
+      </div>`;
+  }
+
 
   function resizeAllCharts() {
     if(chartInstances.domainMap) chartInstances.domainMap.resize();
