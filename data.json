@@ -43962,5 +43962,403 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "e36d1254291495eba5f006c68663bdb6",
+        "timestamp": "2026-10-09T03:23:54.413074",
+        "title": "Toxic smog shuts schools in Malaysia as pollution hits",
+        "summary": "Toxic smog from annual wildfires, primarily caused by illegal slash-and-burn practices in Indonesia, has led to school closures in Malaysia, indicating a recurring cross-border air pollution crisis impacting public health and education.",
+        "domain_classification": [
+            "Climate",
+            "Social/Behavioral",
+            "DRR"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Malaysia, Indonesia",
+            "region": "Southeast Asia",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Schools are being shut down due to toxic smog; annual wildfires are occurring, caused by illegal slash-and-burn practices.",
+            "key_indicators": [
+                "School closures",
+                "Toxic smog",
+                "Wildfires",
+                "Air pollution levels"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Public health (respiratory issues)",
+                "Education (disruption)",
+                "Environment (air quality, biodiversity loss)",
+                "Economic activity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.bbc.com/news/live/crz65jd4v414t"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic",
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "environmental",
+                "health",
+                "social",
+                "economic"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Annual toxic smog from illegal slash-and-burn practices in Indonesia leads to widespread air pollution, school closures, and significant health risks in Malaysia and potentially other neighboring countries. The recurring nature, cross-border impact, and direct health consequences necessitate urgent and sustained intervention."
+        },
+        "priority_score": 92,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_quality_pressure",
+                "node": "Quality Pressure",
+                "stage": "Water condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.88,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary",
+                    "title"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "climate_signal",
+                "node": "Climate Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "digital_service_disruption",
+                "node": "Digital Service Disruption",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "9e3d14c1a17066b7ef533a24c989e8d0",
+        "timestamp": "2026-10-09T03:24:26.312579",
+        "title": "Southeast Asian haze",
+        "summary": "Transboundary haze in Southeast Asia, a recurring problem since 1972 with severe events in 1997 and 2015, is primarily caused by industrial-scale slash-and-burn practices for agricultural land clearing, particularly for palm oil and pulpwood production.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "Southeast Asia",
+            "lat": -22.0159585,
+            "lon": -47.897938
+        },
+        "manifestation": {
+            "how_it_is_observed": "Transboundary haze events, severe air pollution episodes",
+            "key_indicators": [
+                "Haze occurrence and severity",
+                "Industrial-scale slash-and-burn practices",
+                "Land clearing for palm oil and pulpwood production"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Air quality",
+                "Human health",
+                "Ecosystems and biodiversity (due to deforestation)",
+                "Regional economies",
+                "International relations"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://en.wikipedia.org/wiki/Southeast_Asian_haze"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic",
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Health",
+                "Economic",
+                "Geopolitical"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The Southeast Asian haze is a recurring, transboundary environmental disaster with severe and widespread impacts. Industrial-scale slash-and-burn practices cause significant air pollution, leading to acute and chronic respiratory illnesses, premature deaths, and substantial economic losses in tourism, agriculture, and air travel. The destruction of forests also contributes to biodiversity loss and climate change. Its long history and the severity of past events (e.g., 1997, 2015) underscore the urgent need for comprehensive intervention to protect public health, the environment, and regional economies."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_quality_pressure",
+                "node": "Quality Pressure",
+                "stage": "Water condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.88,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "livelihood_disruption",
+                "node": "Livelihood Disruption",
+                "stage": "Human-system impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "climate_signal",
+                "node": "Climate Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "production_pressure",
+                "node": "Production Pressure",
+                "stage": "Economic/food system",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
