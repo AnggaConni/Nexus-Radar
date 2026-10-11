@@ -44360,5 +44360,405 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "83a2503e6da1c814697c9d9f14e447e0",
+        "timestamp": "2026-10-11T02:34:57.768284",
+        "title": "Deer Diseases",
+        "summary": "Unexplained deer mortality, likely due to hemorrhagic disease, is being observed, prompting calls for immediate reporting of sick or dead deer to local authorities.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "North Carolina",
+            "lat": 35.6729639,
+            "lon": -79.0392919
+        },
+        "manifestation": {
+            "how_it_is_observed": "Unexplained deer mortality, observation of sick or dead deer",
+            "key_indicators": [
+                "Hemorrhagic disease",
+                "Unexplained deer mortality",
+                "Sick or dead deer"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Deer populations",
+                "Wildlife health",
+                "Ecosystem balance"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.ncwildlife.gov/connect/have-wildlife-problem/preventing-wildlife-conflicts/common-wildlife-diseases/deer-diseases"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Ecological collapse",
+                "Biodiversity loss",
+                "Economic impact"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Widespread outbreaks of diseases like hemorrhagic disease can lead to significant deer mortality, severely impacting local deer populations and disrupting ecosystem balance. This can have cascading effects on other wildlife and vegetation, potentially leading to ecological collapse in affected areas. Additionally, it can have substantial economic consequences for industries reliant on healthy deer populations, such as hunting and wildlife tourism. The explicit instruction to 'report immediately' highlights the urgency of monitoring and intervention to prevent uncontrolled spread and mitigate these severe ecological and economic risks."
+        },
+        "priority_score": 72,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "root_cause",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "7ddb3f64e1f022ccb65194af8e91a5da",
+        "timestamp": "2026-10-11T02:35:25.959142",
+        "title": "Epizootic hemorrhagic disease (EHD) in Wisconsin deer",
+        "summary": "The DNR is tracking an outbreak of Epizootic hemorrhagic disease (EHD) through reported sightings of recently dead deer in Wisconsin. EHD is an acute, infectious, often fatal, viral disease affecting white-tailed deer and other hoofed animals.",
+        "domain_classification": [
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Wisconsin",
+            "lat": 44.4308975,
+            "lon": -89.6884637
+        },
+        "manifestation": {
+            "how_it_is_observed": "Reported sightings of recently dead deer in the area (not excessively bloated or decomposed)",
+            "key_indicators": [
+                "Outbreak of fatal viral disease",
+                "Increased deer mortality",
+                "Sick/dead wildlife reports"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "White-tailed deer populations",
+                "Other hoofed animals",
+                "Wildlife ecosystems"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://dnr.wisconsin.gov/topic/wildlifehabitat/disease/Epizootichemorrhagicdisease"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Ecological",
+                "Biological",
+                "Economic"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Epizootic hemorrhagic disease (EHD) is an acute, often fatal viral disease causing significant mortality in white-tailed deer populations. An ongoing outbreak, as indicated by reported sightings of recently dead deer, poses a high risk of severe ecological disruption. This includes potential impacts on biodiversity, predator-prey dynamics, and local economies reliant on hunting and wildlife tourism. While not a direct human health risk, the scale of deer mortality can have systemic consequences for the ecosystem, necessitating immediate tracking and potential intervention to mitigate population decline."
+        },
+        "priority_score": 92,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "risk_assessment",
+                    "root_cause",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_function_loss",
+                "node": "Ecosystem Function Loss",
+                "stage": "System response",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "systemic_vulnerability",
+                "node": "Systemic Vulnerability",
+                "stage": "Cascading risk",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "digital_service_disruption",
+                "node": "Digital Service Disruption",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
