@@ -45617,5 +45617,205 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "c79336a66eba1cb77fdbf4721f96be8b",
+        "timestamp": "2026-10-15T02:07:34.852216",
+        "title": "Groundwater depletion sinks home prices in California's Central Valley",
+        "summary": "Research indicates that homes in areas experiencing land subsidence due to groundwater depletion in California's Central Valley have lost between 2.4% and 5.8% of their sale value.",
+        "domain_classification": [
+            "Water",
+            "Social/Behavioral",
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "California, Central Valley",
+            "lat": 47.6151065,
+            "lon": -122.318996
+        },
+        "manifestation": {
+            "how_it_is_observed": "Decreased home sale values in areas experiencing land subsidence.",
+            "key_indicators": [
+                "Land subsidence (gradually sinking areas)",
+                "Loss of home sale value (2.4% to 5.8%)"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Homeowners",
+                "Real estate market",
+                "Local economies",
+                "Infrastructure (implied by subsidence)",
+                "Groundwater resources"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://news.ucr.edu/articles/2025/07/31/groundwater-depletion-sinks-home-prices-californias-central-valley"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic",
+                "policy_gap"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Economic",
+                "Environmental",
+                "Infrastructure"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Groundwater depletion is causing significant land subsidence, leading to substantial property value loss (2.4% to 5.8% of home value) and posing risks to critical infrastructure. This indicates a severe environmental degradation issue with profound economic consequences for homeowners and communities, necessitating urgent intervention to prevent further irreversible damage and financial instability."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_signal",
+                "node": "Water Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "cascading_disruption",
+                "node": "Cascading Disruption",
+                "stage": "Impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "livelihood_food_system",
+                "domain": "Livelihood & Food System",
+                "node_id": "food_supply_pressure",
+                "node": "Food Supply Pressure",
+                "stage": "Food-system condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "livelihood_food_system",
+                "domain": "Livelihood & Food System",
+                "node_id": "livelihood_food_signal",
+                "node": "Livelihood & Food Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "ecosystem_stress",
+                "node": "System Stress",
+                "stage": "Emerging pressure",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "habitat_stress",
+                "node": "Habitat Stress",
+                "stage": "Ecological pressure",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
