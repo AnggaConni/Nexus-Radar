@@ -46284,5 +46284,477 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "b598876b6261ac6036c614105d3e9158",
+        "timestamp": "2026-10-19T02:09:24.659134",
+        "title": "Pacific Cod Are Moving North—Will They Be Able to ...",
+        "summary": "New research predicts how spawning habitat in the Bering Sea may shift over the coming century of climate change.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity",
+            "Ocean"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Bering Sea",
+            "lat": 60.37883,
+            "lon": -166.2188022
+        },
+        "manifestation": {
+            "how_it_is_observed": "New research predicts shifts in Pacific Cod spawning habitat due to climate change.",
+            "key_indicators": [
+                "Species migration (Pacific Cod)",
+                "Shifting spawning habitats",
+                "Ocean warming",
+                "Climate change impacts on marine ecosystems"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Pacific Cod populations",
+                "Marine ecosystems",
+                "Fisheries",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.fisheries.noaa.gov/feature-story/pacific-cod-are-moving-north-will-they-be-able-spawn-there"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "environmental",
+                "economic",
+                "food_security"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The northward migration of Pacific Cod due to climate change directly threatens the species' long-term viability by disrupting critical spawning habitats. This poses significant ecological risks, including potential population decline and ecosystem imbalance, and severe economic risks to the fishing industry and communities dependent on Pacific Cod. Food security for regions relying on this resource is also at risk, necessitating immediate intervention through climate mitigation and adaptive fisheries management."
+        },
+        "priority_score": 86,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "risk_assessment",
+                    "signal_validation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_function_loss",
+                "node": "Ecosystem Function Loss",
+                "stage": "System response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "livelihood_pressure",
+                "node": "Livelihood Pressure",
+                "stage": "Human-system impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "resource_shift",
+                "node": "Resource Shift",
+                "stage": "Resource condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "social_pressure",
+                "node": "Social Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "livelihood_food_system",
+                "domain": "Livelihood & Food System",
+                "node_id": "household_community_pressure",
+                "node": "Household & Community Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "fisheries_pressure",
+                "node": "Fisheries Pressure",
+                "stage": "Resource pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "climate_signal",
+                "node": "Climate Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "marine_signal",
+                "node": "Marine Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "7301b5b90b523b671970b13e3f6f15c8",
+        "timestamp": "2026-10-19T02:10:01.733651",
+        "title": "Freshwater fish populations plunge 81% due to disrupted river migrations",
+        "summary": "Freshwater fish populations have experienced an 81% decline, primarily attributed to the disruption of their essential long, uninterrupted river pathways. These pathways are crucial for linking spawning grounds, feeding areas, and floodplain nurseries, often spanning multiple countries.",
+        "domain_classification": [
+            "Biodiversity",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Significant decline in freshwater fish populations, observed as an 81% plunge.",
+            "key_indicators": [
+                "81% plunge in freshwater fish populations",
+                "Disruption of river pathways (spawning grounds, feeding areas, floodplain nurseries links)"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Freshwater ecosystems",
+                "Biodiversity",
+                "Ecosystem services",
+                "Food security (if fish are a food source)"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.sciencedaily.com/releases/2026/03/260326064157.htm"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological collapse",
+                "Biodiversity loss",
+                "Ecosystem services degradation"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The drastic 81% decline in freshwater fish populations signals a severe ecological crisis. This loss impacts biodiversity, disrupts aquatic ecosystems, and threatens vital ecosystem services such as water quality regulation and potential food sources. The reliance of these fish on 'long, uninterrupted river pathways' across multiple countries indicates widespread habitat fragmentation and degradation, which can lead to cascading effects throughout the entire riverine environment and significantly impact human communities dependent on these resources."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "risk_assessment",
+                    "signal_validation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_function_loss",
+                "node": "Ecosystem Function Loss",
+                "stage": "System response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "cascading_disruption",
+                "node": "Cascading Disruption",
+                "stage": "Impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "fisheries_pressure",
+                "node": "Fisheries Pressure",
+                "stage": "Resource pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "digital_service_disruption",
+                "node": "Digital Service Disruption",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_signal",
+                "node": "Water Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_service_risk",
+                "node": "Ecosystem Service Risk",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
