@@ -48096,5 +48096,474 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "b92cf5459e6e312c1bf5013f0a796ad6",
+        "timestamp": "2026-10-25T02:02:37.398592",
+        "title": "New Study Finds Missing Apex Predators Are Too Often Neglected in Ecological Research",
+        "summary": "A new study highlights that the absence of apex predators and their ecological significance are frequently overlooked in ecological research, hindering a comprehensive understanding of ecosystem health and dynamics, as exemplified by gray wolves in the American West.",
+        "domain_classification": [
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "United States",
+            "region": "North America",
+            "lat": 36.1979526,
+            "lon": -94.5268355
+        },
+        "manifestation": {
+            "how_it_is_observed": "Ecological research studies frequently omit the role and impact of missing apex predators when analyzing ecosystem dynamics, leading to an incomplete understanding of environmental change and conservation needs.",
+            "key_indicators": [
+                "Lack of research focus on apex predator reintroduction/conservation",
+                "Incomplete ecological models",
+                "Underestimation of trophic cascade effects"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Ecosystem stability",
+                "Biodiversity",
+                "Trophic cascades",
+                "Conservation efforts",
+                "Scientific understanding"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://insideclimatenews.org/news/19062024/missing-apex-predators-often-neglected-in-ecological-research/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "ecological",
+                "environmental",
+                "scientific"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The systemic neglect of apex predators in ecological research poses a significant and cascading threat to ecosystem stability and biodiversity. Apex predators are keystone species whose presence or absence profoundly impacts entire food webs and ecosystem health through trophic cascades. Ignoring their critical role in research leads to a fundamental misunderstanding of ecological processes, which can result in ineffective or even detrimental conservation strategies, unchecked population growth of lower trophic levels, habitat degradation, and ultimately, ecosystem collapse. This oversight prevents informed decision-making for environmental management and conservation, jeopardizing essential ecosystem services and biodiversity."
+        },
+        "priority_score": 70,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_function_loss",
+                "node": "Ecosystem Function Loss",
+                "stage": "System response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "intervention_window",
+                "node": "Intervention Window",
+                "stage": "Potential leverage",
+                "kind": "intervention",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "systemic_vulnerability",
+                "node": "Systemic Vulnerability",
+                "stage": "Cascading risk",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "intervention_window",
+                "node": "Intervention Window",
+                "stage": "Potential leverage",
+                "kind": "intervention",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.68,
+                "evidence": [
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "governance_institutional_system",
+                "domain": "Governance & Institutional System",
+                "node_id": "policy_regulatory_gap",
+                "node": "Policy & Regulatory Gap",
+                "stage": "Governance condition",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.68,
+                "evidence": [
+                    "risk_assessment",
+                    "summary"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "7c9d1ded9434a467382d902ac8fe3b48",
+        "timestamp": "2026-10-25T02:03:20.187850",
+        "title": "Degradation and Fragmentation of Old-Growth Forests Threaten Apex Predators",
+        "summary": "The ongoing degradation and fragmentation of large forest tracts, which are critical for creating undisturbed, connected passages and wildlife corridors, are posing a significant threat to apex predator populations by disrupting their ability to rest, mate, and move freely.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Observed through the loss and fragmentation of old-growth forests and the lack of connected wildlife corridors.",
+            "key_indicators": [
+                "Loss of old-growth forest tracts",
+                "Habitat fragmentation",
+                "Disrupted wildlife corridors",
+                "Declining or restricted apex predator populations"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Apex predator populations",
+                "Forest ecosystems",
+                "Overall biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.facebook.com/exposdwc/posts/during-classroom-visits-we-will-often-ask-the-kiddos-to-draw-apex-predators-and-/1542202751271140/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "ecological"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The latent signal highlights the critical need to protect old-growth forests and establish wildlife corridors for apex predators. If left unaddressed, the continued loss and fragmentation of these habitats will lead to a decline or disappearance of apex predator populations. This can trigger severe trophic cascades, destabilizing entire ecosystems, disrupting natural food webs, causing overpopulation of prey species, altering vegetation composition, and ultimately leading to widespread biodiversity loss and long-term ecological collapse. This represents a systemic environmental risk with far-reaching consequences."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "risk_assessment",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_function_loss",
+                "node": "Ecosystem Function Loss",
+                "stage": "System response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "resource_shift",
+                "node": "Resource Shift",
+                "stage": "Resource condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "ecosystem_stress",
+                "node": "System Stress",
+                "stage": "Emerging pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "governance_institutional_system",
+                "domain": "Governance & Institutional System",
+                "node_id": "implementation_friction",
+                "node": "Implementation Friction",
+                "stage": "Implementation condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "habitat_stress",
+                "node": "Habitat Stress",
+                "stage": "Ecological pressure",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.68,
+                "evidence": [
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_service_risk",
+                "node": "Ecosystem Service Risk",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
