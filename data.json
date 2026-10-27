@@ -48982,5 +48982,460 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "897ed5b0ff7ee30f7aee6d17541942e5",
+        "timestamp": "2026-10-27T02:40:52.651645",
+        "title": "Climate change is leading to an ecological trap for a migratory insect",
+        "summary": "Climate change is creating an 'ecological trap' for the rice leaf roller (RLR), a small weak-flying moth and one of the world's most destructive rice pests, which already causes significant economic losses.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Climate change is altering environmental conditions, leading to an 'ecological trap' for the rice leaf roller (RLR) moth.",
+            "key_indicators": [
+                "Ecological trap",
+                "Rice leaf roller (RLR) pest activity",
+                "Significant economic losses in agriculture"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Rice crops",
+                "Agricultural economy",
+                "Food security",
+                "Insect populations and ecosystem dynamics"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://nri.org/latest/news/2025/climate-change-is-leading-to-an-ecological-trap-for-a-migratory-insect"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Ecological",
+                "Economic",
+                "Food Security"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Climate change is creating an 'ecological trap' for the rice leaf roller, a highly destructive rice pest. This disruption could intensify pest outbreaks, leading to significant economic losses and threatening global food security, as rice is a staple crop for billions."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "production_pressure",
+                "node": "Production Pressure",
+                "stage": "Economic/food system",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "climate_signal",
+                "node": "Climate Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_service_risk",
+                "node": "Ecosystem Service Risk",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "livelihood_food_system",
+                "domain": "Livelihood & Food System",
+                "node_id": "livelihood_food_signal",
+                "node": "Livelihood & Food Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "c829cb1c9435cf5dd7079da9eb4eca91",
+        "timestamp": "2026-10-27T02:41:22.502628",
+        "title": "Climate change is leading to an ecological trap in a migratory ...",
+        "summary": "Climate change has thus tipped the balance such that migration is now a less favorable strategy for the RLR and potentially many other insects.",
+        "domain_classification": [
+            "Climate",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Climate change is altering environmental conditions, making traditional migratory strategies disadvantageous for insects, leading to an 'ecological trap'.",
+            "key_indicators": [
+                "Reduced success of insect migration",
+                "Population declines in migratory insect species"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Migratory insect populations (e.g., RLR)",
+                "Ecosystem stability",
+                "Biodiversity"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC11892621/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "environmental_degradation",
+                "biodiversity_loss",
+                "ecosystem_disruption"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Climate change is creating an 'ecological trap' for migratory insects, rendering previously adaptive behaviors (migration) detrimental. This poses a severe risk to biodiversity, ecosystem stability, and potentially agricultural systems (e.g., pollination) if widespread across multiple insect species, leading to cascading ecological failures."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.88,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "livelihood_pressure",
+                "node": "Livelihood Pressure",
+                "stage": "Human-system impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "social_pressure",
+                "node": "Social Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "livelihood_food_system",
+                "domain": "Livelihood & Food System",
+                "node_id": "household_community_pressure",
+                "node": "Household & Community Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "climate_signal",
+                "node": "Climate Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_function_loss",
+                "node": "Ecosystem Function Loss",
+                "stage": "System response",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_service_risk",
+                "node": "Ecosystem Service Risk",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
