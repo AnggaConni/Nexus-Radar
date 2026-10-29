@@ -49908,5 +49908,482 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "2b7c634d83096a2c704a82715926d7dd",
+        "timestamp": "2026-10-29T03:12:16.863479",
+        "title": "Persistent Riverbank Waste Dumping in Himachal Pradesh",
+        "summary": "Ongoing and widespread dumping of waste materials along riverbanks in Himachal Pradesh is causing environmental degradation, prompting intervention and orders from the Himachal High Court to address the issue.",
+        "domain_classification": [
+            "Water",
+            "Biodiversity",
+            "Social/Behavioral",
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "India",
+            "region": "Himachal Pradesh",
+            "lat": 31.9292352,
+            "lon": 77.1828462
+        },
+        "manifestation": {
+            "how_it_is_observed": "Accumulation of various types of waste along riverbanks, leading to visible pollution and degradation of riparian zones. The issue is severe enough to warrant judicial intervention.",
+            "key_indicators": [
+                "Visible waste accumulation on riverbanks",
+                "Court orders or legal actions against waste dumping",
+                "Reports of environmental degradation near rivers"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "River water quality",
+                "Aquatic ecosystems and biodiversity",
+                "Riparian habitats",
+                "Public health (if water sources are contaminated)",
+                "Local communities' well-being",
+                "Tourism and aesthetic value of natural landscapes"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://thenewshimachal.com/tag/riverbank-waste-dumping/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic",
+                "systemic_failure",
+                "behavioral_neglect"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "environmental",
+                "public_health",
+                "regulatory"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Widespread riverbank waste dumping leads to severe water pollution, impacting aquatic ecosystems, contaminating water sources for human consumption, and posing significant public health risks. The intervention by the High Court underscores the urgency and systemic nature of the problem, indicating a failure in existing waste management and enforcement mechanisms."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_quality_pressure",
+                "node": "Quality Pressure",
+                "stage": "Water condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.88,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "ecosystem_stress",
+                "node": "System Stress",
+                "stage": "Emerging pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "intervention_window",
+                "node": "Intervention Window",
+                "stage": "Potential leverage",
+                "kind": "intervention",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "habitat_stress",
+                "node": "Habitat Stress",
+                "stage": "Ecological pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "resource_behavior_shift",
+                "node": "Resource Behavior Shift",
+                "stage": "Behavioral pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_signal",
+                "node": "Water Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "a9f3f8d09eb0535ffc9ebd39e5965be8",
+        "timestamp": "2026-10-29T03:12:48.899605",
+        "title": "Indian Immigrants Caught Dumping Trash on Canadian Riverbank",
+        "summary": "A group of individuals was caught illegally dumping a couch on a riverbank in Canada, highlighting a localized incident of environmental degradation and disregard for waste disposal regulations.",
+        "domain_classification": [
+            "Social/Behavioral",
+            "Biodiversity",
+            "Water"
+        ],
+        "signal_intensity": "weak",
+        "location": {
+            "country": "Canada",
+            "region": "",
+            "lat": 61.0666922,
+            "lon": -107.991707
+        },
+        "manifestation": {
+            "how_it_is_observed": "Individuals caught on video illegally dumping a large piece of furniture (couch) directly onto a riverbank.",
+            "key_indicators": [
+                "Illegal waste dumping",
+                "Riverbank pollution",
+                "Disregard for environmental regulations"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "River ecosystems",
+                "Water quality",
+                "Local wildlife",
+                "Aesthetic degradation of natural areas"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://www.facebook.com/RealAmericasVoice/videos/indian-immigrants-were-caught-dumping-trash-along-a-canadian-riverbank-the-local/2314246116072014/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "behavioral_neglect"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 6,
+            "risk_type": [
+                "environmental_pollution",
+                "public_health_risk"
+            ],
+            "severity_level": "medium",
+            "needs_immediate_intervention": true,
+            "explanation": "Illegal dumping, particularly of large items like furniture, directly pollutes natural environments such as riverbanks. This can lead to contamination of water bodies, harm to aquatic ecosystems, and degradation of natural landscapes. If such behavior is widespread or goes unaddressed, it poses significant environmental and public health risks, and incurs cleanup costs for local authorities, straining public resources."
+        },
+        "priority_score": 58,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_quality_pressure",
+                "node": "Quality Pressure",
+                "stage": "Water condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.88,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "governance_institutional_system",
+                "domain": "Governance & Institutional System",
+                "node_id": "governance_signal",
+                "node": "Governance Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "governance_institutional_system",
+                "domain": "Governance & Institutional System",
+                "node_id": "policy_regulatory_gap",
+                "node": "Policy & Regulatory Gap",
+                "stage": "Governance condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "resource_behavior_shift",
+                "node": "Resource Behavior Shift",
+                "stage": "Behavioral pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_signal",
+                "node": "Water Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "ecosystem_stress",
+                "node": "System Stress",
+                "stage": "Emerging pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "cascading_disruption",
+                "node": "Cascading Disruption",
+                "stage": "Impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "habitat_stress",
+                "node": "Habitat Stress",
+                "stage": "Ecological pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            }
+        ]
     }
 ]
