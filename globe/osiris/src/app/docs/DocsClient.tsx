@@ -1,0 +1,794 @@
+'use client';
+
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
+import { API_GROUPS, ENDPOINT_COUNT, endpointId } from './apiCatalog';
+import { Callout, Code, CodeBlock, Pre, Section } from './docsPrimitives';
+import EndpointCard from './EndpointCard';
+import CommandPalette, { buildPaletteItems } from './CommandPalette';
+
+const GUIDE_SECTIONS = [
+  { id: 'overview', title: 'Overview' },
+  { id: 'quickstart', title: 'Quick Start' },
+  { id: 'self-hosting', title: 'Self-Hosting' },
+  { id: 'configuration', title: 'Configuration' },
+  { id: 'interface', title: 'Interface Guide' },
+  { id: 'oi', title: 'OI & MCP' },
+  { id: 'shortcuts', title: 'Keyboard Shortcuts' },
+];
+
+const API_SECTIONS = [
+  { id: 'api', title: 'Conventions' },
+  ...API_GROUPS.map(g => ({ id: `api-${g.id}`, title: g.title })),
+];
+
+const ALL_SECTIONS = [...GUIDE_SECTIONS, ...API_SECTIONS];
+const FALLBACK_ORIGIN = 'https://osirisai.live';
+
+export default function DocsClient() {
+  const [active, setActive] = useState('overview');
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [origin, setOrigin] = useState(FALLBACK_ORIGIN);
+  const mainRef = useRef<HTMLElement>(null);
+
+  const paletteItems = useMemo(() => buildPaletteItems(ALL_SECTIONS), []);
+
+  /* Snippets should reference the instance the reader is actually on. */
+  useEffect(() => setOrigin(window.location.origin), []);
+
+  /* Belt-and-braces scroll unlock: globals.css handles this via :has(),
+     but release the lock imperatively for engines without :has() support. */
+  useEffect(() => {
+    const supportsHas = typeof CSS !== 'undefined' && CSS.supports?.('selector(:has(*))');
+    if (supportsHas) return;
+    const { documentElement: html, body } = document;
+    const prev = { html: html.style.cssText, body: body.style.cssText };
+    for (const el of [html, body]) {
+      el.style.height = 'auto';
+      el.style.overflowY = 'auto';
+      el.style.overflowX = 'hidden';
+    }
+    return () => {
+      html.style.cssText = prev.html;
+      body.style.cssText = prev.body;
+    };
+  }, []);
+
+  /* Scroll-spy + reading progress. */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-96px 0px -72% 0px', threshold: 0 }
+    );
+    ALL_SECTIONS.forEach(s => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
+  /* ⌘K / Ctrl-K, and "/" as a plain-keyboard alternative. */
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const typing = ['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName);
+      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) {
+        e.preventDefault();
+        setPaletteOpen(true);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  /* Close the mobile drawer once a destination is chosen. */
+  const closeNav = useCallback(() => setNavOpen(false), []);
+
+  const activeIdx = ALL_SECTIONS.findIndex(s => s.id === active);
+  const prev = activeIdx > 0 ? ALL_SECTIONS[activeIdx - 1] : null;
+  const next = activeIdx >= 0 && activeIdx < ALL_SECTIONS.length - 1 ? ALL_SECTIONS[activeIdx + 1] : null;
+
+  const navLink = (s: { id: string; title: string }) => (
+    <a
+      key={s.id}
+      href={`#${s.id}`}
+      onClick={closeNav}
+      className={`relative block pl-4 pr-3 py-[7px] text-[12.5px] rounded-r-md transition-all duration-200 ${
+        active === s.id
+          ? 'text-[var(--gold-primary)] bg-[var(--gold-primary)]/[0.07] font-medium'
+          : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-white/[0.03]'
+      }`}
+    >
+      <span
+        className={`absolute left-0 top-1/2 -translate-y-1/2 w-[2px] rounded-full transition-all duration-200 ${
+          active === s.id ? 'h-[70%] bg-[var(--gold-primary)]' : 'h-0 bg-transparent'
+        }`}
+      />
+      {s.title}
+    </a>
+  );
+
+  return (
+    <div className="docs-root min-h-screen bg-[var(--bg-void)] text-[var(--text-primary)] antialiased">
+      {/* Ambient wash — keeps the page from reading as a flat black slab */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background:
+            'radial-gradient(900px 480px at 12% -8%, rgba(212,175,55,0.07), transparent 65%), radial-gradient(760px 420px at 92% 4%, rgba(0,229,255,0.05), transparent 62%)',
+        }}
+      />
+
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} items={paletteItems} />
+
+      {/* ── Header ── */}
+      <header className="sticky top-0 z-[300] border-b border-white/[0.06] bg-[var(--bg-void)]/85 backdrop-blur-xl">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-8 h-14 flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+            <svg viewBox="0 0 64 64" className="w-6 h-6 shrink-0 transition-colors duration-500 text-[#D4AF37] group-hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.6)]" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="32" cy="32" r="22" />
+            <ellipse cx="32" cy="32" rx="10" ry="22" opacity="0.65" />
+            <path d="M10 32h44M14.5 21h35M14.5 43h35" opacity="0.55" />
+            <path d="M32 32 47 17" strokeWidth="1.2" opacity="0.9" />
+            <circle cx="32" cy="32" r="2.2" fill="currentColor" stroke="none" />
+            <circle cx="47" cy="17" r="1.6" fill="currentColor" stroke="none" />
+            <circle cx="19" cy="39" r="1.2" fill="currentColor" stroke="none" />
+          </svg>
+            <span className="flex flex-col leading-none">
+              <span className="text-[12px] font-bold tracking-[0.3em] text-[var(--gold-primary)] font-mono">
+                GLOBE
+              </span>
+              <span className="text-[9px] font-mono tracking-[0.22em] text-[var(--text-muted)] uppercase mt-[3px]">
+                NEXUS RADAR · Docs
+              </span>
+            </span>
+          </Link>
+
+          <div className="flex-1" />
+
+          {/* Palette trigger */}
+          <button
+            onClick={() => setPaletteOpen(true)}
+            className="group flex items-center gap-2 px-3 h-8 rounded-lg border border-white/[0.08] bg-white/[0.02] hover:border-[var(--gold-primary)]/30 hover:bg-white/[0.04] transition-colors"
+            aria-label="Search documentation"
+          >
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:text-[var(--gold-primary)] transition-colors" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <span className="hidden sm:inline text-[11.5px] text-[var(--text-muted)] font-mono">Search</span>
+            <kbd className="hidden sm:inline text-[10px] font-mono px-1.5 py-0.5 rounded border border-white/10 text-[var(--text-muted)]">
+              ⌘K
+            </kbd>
+          </button>
+
+          <a
+            href="https://github.com/simplifaisoul/osiris"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub repository"
+            className="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg border border-white/[0.08] bg-white/[0.02] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-white/20 transition-colors"
+          >
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor">
+              <path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z" />
+            </svg>
+          </a>
+
+          <Link
+            href="/"
+            className="hidden md:inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase px-3 h-8 rounded-lg border border-[var(--gold-primary)]/30 bg-[var(--gold-primary)]/[0.08] text-[var(--gold-primary)] hover:bg-[var(--gold-primary)]/[0.18] transition-colors"
+          >
+            Launch Map
+            <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </Link>
+
+          <button
+            onClick={() => setNavOpen(v => !v)}
+            aria-label="Toggle navigation"
+            aria-expanded={navOpen}
+            className="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg border border-white/[0.08] text-[var(--text-muted)] hover:text-[var(--gold-primary)]"
+          >
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              {navOpen ? <path d="M18 6 6 18M6 6l12 12" /> : <path d="M3 6h18M3 12h18M3 18h18" />}
+            </svg>
+          </button>
+        </div>
+
+        {/* Reading progress */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-transparent">
+          <div
+            className="h-full bg-gradient-to-r from-[var(--gold-primary)] to-[var(--cyan-primary)] transition-[width] duration-150"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      </header>
+
+      {/* Mobile drawer scrim */}
+      {navOpen && (
+        <div className="lg:hidden fixed inset-0 top-14 z-[250] bg-black/60 backdrop-blur-sm" onClick={closeNav} />
+      )}
+
+      <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-8 flex gap-8 xl:gap-12">
+        {/* ── Left sidebar ── */}
+        <nav
+          className={`${
+            navOpen
+              ? 'translate-x-0 opacity-100'
+              : '-translate-x-4 opacity-0 pointer-events-none lg:translate-x-0 lg:opacity-100 lg:pointer-events-auto'
+          } fixed lg:sticky top-14 left-0 bottom-0 lg:bottom-auto z-[260] lg:z-auto w-64 lg:w-56 shrink-0 lg:h-[calc(100vh-3.5rem)] overflow-y-auto styled-scrollbar bg-[var(--bg-void)] lg:bg-transparent border-r lg:border-r-0 border-white/[0.06] py-6 pr-2 pl-2 lg:pl-0 transition-all duration-200`}
+        >
+          <div className="text-[10px] font-mono tracking-[0.3em] uppercase text-[var(--text-muted)]/70 pl-4 mb-2">
+            Guide
+          </div>
+          {GUIDE_SECTIONS.map(navLink)}
+
+          <div className="text-[10px] font-mono tracking-[0.3em] uppercase text-[var(--text-muted)]/70 pl-4 mb-2 mt-7">
+            API Reference
+          </div>
+          {API_SECTIONS.map(navLink)}
+
+          <div className="mt-8 mx-2 rounded-lg border border-white/[0.07] bg-white/[0.02] p-3">
+            <div className="text-[11px] font-mono text-[var(--text-secondary)] leading-relaxed">
+              <span className="text-[var(--gold-primary)] font-bold">{ENDPOINT_COUNT}</span> endpoints, no key
+              required.
+            </div>
+          </div>
+        </nav>
+
+        {/* ── Content ── */}
+        <main ref={mainRef} className="flex-1 min-w-0 py-12 lg:py-16 max-w-3xl">
+          {/* Hero */}
+          <div className="mb-20">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-[var(--cyan-primary)]/20 bg-[var(--cyan-primary)]/[0.05] mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--alert-green)] animate-pulse" />
+              <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-[var(--text-secondary)]">
+                Open Source · MIT
+              </span>
+            </div>
+
+            <h1 className="text-[38px] md:text-[52px] leading-[1.05] font-bold tracking-[-0.02em] mb-5">
+              <span className="text-[var(--text-heading)]">Build on the</span>
+              <br />
+              <span className="bg-gradient-to-r from-[var(--gold-primary)] via-[#F0D060] to-[var(--cyan-primary)] bg-clip-text text-transparent">
+                GLOBE platform
+              </span>
+            </h1>
+
+            <p className="text-[15px] leading-[1.75] text-[var(--text-secondary)] max-w-[42rem]">
+              GLOBE aggregates aviation, maritime, seismic, conflict, cyber, and OSINT feeds onto a single
+              GPU-rendered map — and exposes every one of them as a plain HTTP endpoint. This is the same API the
+              dashboard runs on. There is no separate, privileged internal tier.
+            </p>
+
+            <div className="flex flex-wrap gap-3 mt-8">
+              <a
+                href="#quickstart"
+                className="inline-flex items-center gap-2 px-4 h-10 rounded-lg text-[11px] font-mono tracking-wider uppercase border border-[var(--gold-primary)]/40 bg-[var(--gold-primary)]/10 text-[var(--gold-primary)] hover:bg-[var(--gold-primary)]/20 transition-colors"
+              >
+                Quick Start
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+              <a
+                href="#api"
+                className="inline-flex items-center gap-2 px-4 h-10 rounded-lg text-[11px] font-mono tracking-wider uppercase border border-white/[0.1] bg-white/[0.02] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-white/20 transition-colors"
+              >
+                API Reference
+              </a>
+            </div>
+
+            <div className="grid grid-cols-3 gap-3 mt-10">
+              {[
+                { n: String(ENDPOINT_COUNT), l: 'Endpoints' },
+                { n: '20+', l: 'Live feeds' },
+                { n: '0', l: 'Keys required' },
+              ].map(s => (
+                <div key={s.l} className="rounded-xl border border-white/[0.07] bg-white/[0.015] px-4 py-3">
+                  <div className="text-[24px] font-bold text-[var(--gold-primary)] font-mono leading-none">{s.n}</div>
+                  <div className="text-[11px] font-mono tracking-[0.15em] uppercase text-[var(--text-muted)] mt-1.5">
+                    {s.l}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── GUIDE ── */}
+          <Section id="overview" eyebrow="Guide" title="Overview">
+            <p>
+              Every data point on the map is rendered through WebGL via MapLibre GL, which is what lets the interface
+              hold thousands of concurrent entities at 60fps. The application is a Next.js app: the map and HUD run in
+              the browser, and each live feed is normalised by a route under <Code>/api</Code> before it reaches the
+              client.
+            </p>
+            <p>
+              That boundary is deliberate. Upstream sources disagree about formats, rate limits, and CORS policy, so
+              the API layer absorbs those differences and hands back consistent JSON.
+            </p>
+            <Callout tone="good" title="No credentials needed">
+              Aviation, maritime, satellites, fires, earthquakes, weather, news, and CVE data all come from public
+              keyless feeds. Keys only matter for the optional RECON scanner and for raising rate limits.
+            </Callout>
+          </Section>
+
+          <Section id="quickstart" eyebrow="Guide" title="Quick Start">
+            <p>
+              Every read endpoint is a plain <Code>GET</Code> returning JSON. Nothing below needs authentication —
+              paste any of it into a terminal.
+            </p>
+            <CodeBlock
+              label="Fetch live aircraft"
+              tabs={[
+                { label: 'cURL', lang: 'bash', code: `curl -s ${origin}/api/flights | jq '.commercial_flights | length'` },
+                {
+                  label: 'JavaScript',
+                  lang: 'javascript',
+                  code: `const res = await fetch("${origin}/api/flights");
+const { commercial_flights, military_flights } = await res.json();
+console.log(commercial_flights.length, "commercial;", military_flights.length, "military");`,
+                },
+                {
+                  label: 'Python',
+                  lang: 'python',
+                  code: `import requests
+
+data = requests.get("${origin}/api/flights").json()
+print(len(data["commercial_flights"]), "commercial")`,
+                },
+              ]}
+            />
+            <p>
+              If you only need magnitudes rather than geometry, <Code>/api/stats</Code> is the right endpoint to poll —
+              it collapses the heavy feeds into a handful of counters.
+            </p>
+            <Pre label="Aggregate counters" lang="bash">{`curl -s ${origin}/api/stats
+# { "stats": { "flights": 9241, "sats": 2043, "cctv": 2117,
+#              "weather": 58, "nuclear": 191, "incidents": 412 },
+#   "timestamp": "2026-07-29T12:00:00Z" }`}</Pre>
+            <p>The OSINT lookups each take one subject, so they compose cleanly in a pipeline:</p>
+            <Pre label="Passive subdomain enumeration" lang="bash">{`curl -s "${origin}/api/osint/certs?domain=example.com" | jq -r '.subdomains[]'`}</Pre>
+            <Callout tone="info" title="Try before you write code">
+              Every GET endpoint in the reference below has a <strong>Send request</strong> button that runs it against
+              this instance and shows the live response.
+            </Callout>
+          </Section>
+
+          <Section id="self-hosting" eyebrow="Guide" title="Self-Hosting">
+            <p>GLOBE needs Node 20+ and no database. A local instance is three commands:</p>
+            <Pre label="Local development" lang="bash">{`git clone https://github.com/simplifaisoul/osiris.git
+cd osiris
+npm install
+npm run dev        # http://localhost:3000`}</Pre>
+            <p>For a production build, or to run the checks:</p>
+            <Pre label="Build and test" lang="bash">{`npm run build && npm start
+npm run lint
+npm test           # vitest
+npm run test:live  # includes tests that hit live upstream feeds`}</Pre>
+            <p>
+              A <Code>Dockerfile</Code> and <Code>docker-compose.yml</Code> ship with the repository. The container
+              always listens on port 3000 internally; <Code>OSIRIS_PORT</Code> controls the host port it is published
+              on.
+            </p>
+            <Pre label="Docker" lang="bash">{`cp .env.example .env
+docker compose up -d`}</Pre>
+          </Section>
+
+          <Section id="configuration" eyebrow="Guide" title="Configuration">
+            <p>
+              Copy <Code>.env.example</Code> to <Code>.env</Code>. Read that file before filling anything in — most of
+              the keys it lists are reserved for future sources and are not consumed by the current code.
+            </p>
+            <h3 className="text-[12px] font-mono tracking-[0.15em] uppercase text-[var(--text-primary)] pt-2">
+              Read by the application
+            </h3>
+            <div className="space-y-2">
+              {[
+                {
+                  k: 'SCANNER_URL / SCANNER_KEY',
+                  v: 'Points at the separate RECON scanner backend. SCANNER_KEY must equal that backend’s OSIRIS_KEY. Leave both empty to disable RECON — /api/scanner then returns 503 by design.',
+                },
+                {
+                  k: 'SDK_INGEST_KEY',
+                  v: 'Shared secret for /api/sdk/ingest. The endpoint fails closed: while this is unset, ingestion is disabled and returns 503.',
+                },
+                {
+                  k: 'OSIRIS_TELEGRAM_CHANNELS',
+                  v: 'Comma-separated public Telegram channel names (no @) for the Telegram OSINT layer, overriding the curated default set.',
+                },
+                {
+                  k: 'OSIRIS_PORT',
+                  v: 'Host port the UI is published on. The container itself always listens on 3000.',
+                },
+              ].map(row => (
+                <div
+                  key={row.k}
+                  className="rounded-xl border border-white/[0.07] bg-white/[0.015] p-3.5 hover:border-white/[0.13] transition-colors"
+                >
+                  <div className="font-mono text-[11.5px] text-[var(--gold-primary)] mb-1.5">{row.k}</div>
+                  <div className="text-[12.5px] leading-[1.7] text-[var(--text-secondary)]">{row.v}</div>
+                </div>
+              ))}
+            </div>
+            <h3 className="text-[12px] font-mono tracking-[0.15em] uppercase text-[var(--text-primary)] pt-4">
+              Optional — higher rate limits only
+            </h3>
+            <p>
+              <Code>FIRMS_API_KEY</Code>, <Code>OPENSKY_CLIENT_ID</Code>, <Code>OPENSKY_CLIENT_SECRET</Code>,{' '}
+              <Code>N2YO_API_KEY</Code>, <Code>AIS_API_KEY</Code>. The public keyless feeds are used unless you extend
+              the code to prefer these.
+            </p>
+            <Callout tone="warn" title="Secrets hygiene">
+              Generate secrets with <Code>openssl rand -hex 32</Code>. Never commit a populated <Code>.env</Code> —
+              only <Code>.env.example</Code> belongs in version control.
+            </Callout>
+          </Section>
+
+          <Section id="interface" eyebrow="Guide" title="Interface Guide">
+            <p>
+              The map fills the viewport and every control floats above it. Panels are toggles rather than
+              destinations, so you can build up exactly the picture you need and drop the rest.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-2.5">
+              {[
+                {
+                  k: 'Layer Panel',
+                  v: 'The left rail. Switches individual feeds on and off, and carries the theme selector.',
+                },
+                {
+                  k: 'RECON Toolkit',
+                  v: 'DNS, WHOIS, certificate transparency, IP and ASN enrichment, breach checks, sanctions, CVE lookup, port scanning.',
+                },
+                {
+                  k: 'Intel Feed',
+                  v: 'A running stream of incoming events across every enabled feed.',
+                },
+                {
+                  k: 'Region Dossier',
+                  v: 'Double right-click the map for a composite summary of that location from every feed covering it.',
+                },
+                {
+                  k: 'Entity Graph',
+                  v: 'Link analysis, expanding one node at a time into its neighbours.',
+                },
+                {
+                  k: 'Status Bar',
+                  v: 'Community and docs links on the left, then a live ticker of prices and significant seismic events.',
+                },
+              ].map(row => (
+                <div
+                  key={row.k}
+                  className="rounded-xl border border-white/[0.07] bg-white/[0.015] p-3.5 hover:border-[var(--cyan-primary)]/25 transition-colors"
+                >
+                  <div className="font-mono text-[11.5px] text-[var(--cyan-primary)] mb-1.5">{row.k}</div>
+                  <div className="text-[12.5px] leading-[1.7] text-[var(--text-secondary)]">{row.v}</div>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          <Section id="oi" eyebrow="Guide" title="OI & MCP">
+            <p>
+              OI is the AI in GLOBE, on your own model key, and it works two ways. <strong>Assist</strong> is a
+              conversation (press <kbd>O</kbd>): ask in words, typed or spoken, and OI works the map for you. It flies
+              to the place you name, switches the layers on, searches what is live (flights, military aircraft, ships,
+              ports and chokepoints, earthquakes, fires, weather, disaster alerts, news, cameras, satellites), marks
+              what it finds in cyan with the area it searched, and lists it in cards you can click through. It reads the
+              markets, opens panels, and starts forecasts. Each step shows what it did as it does it; choose Navigate,
+              Research or Forecast to steer it, or leave it on Auto.
+            </p>
+            <p>
+              <strong>Forecast</strong> is GLOBE&apos;s prediction engine. Ask it a question and it researches it, builds a
+              world model (the actors, where they are, how they relate), and casts the actors who decide the outcome as
+              agents, each with what it wants, the levers it can pull and its red lines. Then it plays them against each
+              other over simulated time, in dated periods from today to the question&apos;s horizon, in several parallel
+              worlds: each period every actor decides its move from what has happened in its world so far, and a world
+              engine turns the moves into dated events, the occasional surprise, and where the question now stands. A
+              report agent then writes the prediction: how it most likely unfolds, date by date, what each actor does, how
+              each world ended, and a calibrated figure with its drivers, scenarios, signposts and dissent. The figure
+              takes the shape the question asks for: a probability for a yes-or-no question, a share for each outcome
+              when it asks which of several will happen, and an estimate with an 80% range when it asks how much. While
+              it runs, it draws itself on the globe as arcs through the sky; every arc and point can be clicked to open
+              exactly that piece of the research, and the camera follows the run until you take it.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-2.5">
+              {[
+                { k: 'Your own key', v: 'OpenAI, Anthropic, Google Gemini, OpenRouter, Groq, DeepSeek, xAI, Mistral or Qwen. The key stays in your browser and travels in a header with your requests; the server uses it for your run and never stores or logs it.' },
+                { k: 'Cost', v: 'Quick: 4 actors × 3 periods × 2 worlds, about 34 model calls. Standard: 6 × 4 × 3, about 88. Deep: 7 × 4 × 4, about 132. A world that settles early stops spending. Billed by your provider at its own rates.' },
+                { k: 'Sharing', v: 'Every run has a link, /?oi=<id>, that replays the whole analysis on the globe for anyone who opens it. Runs are kept for three hours after they finish.' },
+                { k: 'Steering', v: 'Whoever started a run holds its token: they alone can inject events into it or stop it. Anyone with a key can question the actors and the report agent.' },
+                { k: 'On the globe', v: 'Violet arcs are alignments and cooperation, magenta are rivalries and pressure, indigo is everything in between; evidence from the feeds is a paler wash of its tone, and each move is an arc from the actor that made it to the actor it was aimed at. All three colours are yours to set in the Style Studio (Map layers → OI).' },
+                { k: 'Workspace', v: 'Full screen (the expand button, with or without a forecast) opens the OI workspace. On the left, the same Forecast / Assist switch as the panel: the ask form, then the prediction with the report or the execution trace (every step the engine took, timed, with what it produced); or the conversation. In the middle, four views on keys 1 to 4: the live globe; the research graph, after MiroFish, with every actor and cited source and every relation, move and quote between them, filters and a flow layout; the timeline, each simulated world period by period with its events, under the worlds pooled; and sortable tables of actors, moves, events, sources and links. On the right, once there is a run, whatever is selected, as an object with its properties and links. Ctrl+K (⌘K) finds any object by name, and in Assist OI can open the workspace, switch its view and open objects for you.' },
+                { k: 'Research', v: 'Before the world model, OI researches the question from sources that can be checked: the reporting (a newsroom of publishers’ own feeds by desk, Yahoo Finance’s newswire for any ticker in play, GDELT and Wikipedia’s Current events, each story with its link and, where the publisher serves it, what the article says; social networks are left out), two years of daily prices for any market price the question turns on, what Polymarket and Manifold price the same question at, Wikipedia background, and the GLOBE feeds where they are on topic. The actors are the real ones the question turns on (governments, leaders, companies, groups), each played from its own interests; a market is the world they move, never a player.' },
+                { k: 'Prices', v: 'A question about a price (a coin, a share, an index, a commodity, a currency) is priced. The instrument’s own daily moves, average trend removed, are resampled into 4,000 paths to the horizon: the statistical baseline. Each simulated world gets its own course for the price, spread across what can happen; the period’s events push it; and the price settles the question in that world. The worlds’ events are then run through the market’s own paths, so three worlds read as a probability, not a tally of three outcomes.' },
+                { k: 'What it rests on', v: 'Every prediction is shown beside what can be checked, on one scale: the statistical baseline, the prediction market on the same question (real money, many traders), the simulation priced, how the worlds ended, and the prediction itself, each a click from its source. The report agent is told to move off a liquid market or the baseline only for reasons it can name.' },
+                { k: 'Every level', v: 'When a prediction market prices the question as a ladder (reach $160, $180, $200…, dip to $90, $60… by the same date), OI reads the whole ladder and sets it beside its own curve, the chance of trading at every level, rung by rung: where the model sees more upside or downside than the crowd, and where they part most.' },
+                { k: 'Its record', v: 'The statistical baseline is scored on the instrument’s own past: on days through five years of prices it forecasts, from the year before each day only, whether the price would trade at levels above and below within the question’s span, against what then happened. A calibration chart shows what it said against how often it happened, with its calibration gap and its Brier score beside hindsight.' },
+                { k: 'Sources', v: 'The actors back their moves with quotes from numbered sources: the research’s articles and background, items of the live feed, or passages the world model lifts word for word from your own data. Each quote says which way it pushed the actor and why, and links to where it was published; the report shows the evidence that moved the actors, source by source. Each quote is checked against its source and marked verbatim or paraphrase; an actor’s first move that quotes nothing is sent back once. In the research graph every quote is a dotted thread from the actor to its source, and the report joins at the end with a thread to each source its drivers rest on, so any conclusion can be followed back to the words it came from.' },
+                { k: 'Answers', v: 'Every run says what kind it is (binary, choice or number) and gives its answer in words, e.g. "62% YES", "Hold (55%)" or "86.4 USD per barrel (80–92)", alongside the figures.' },
+              ].map(row => (
+                <div key={row.k} className="rounded-xl border border-white/[0.07] bg-white/[0.015] p-3.5">
+                  <div className="font-mono text-[11.5px] text-[#B388FF] mb-1.5">{row.k}</div>
+                  <div className="text-[12.5px] leading-[1.7] text-[var(--text-secondary)]">{row.v}</div>
+                </div>
+              ))}
+            </div>
+
+            <p className="pt-2">From code, start a run, then follow it over Server-Sent Events or wait for it:</p>
+            <CodeBlock
+              label="Predict over the REST API"
+              tabs={[
+                {
+                  label: 'cURL',
+                  lang: 'bash',
+                  code: `# Start: answers 202 with the run id, a watch link and a run token
+curl -s -X POST ${origin}/api/oi/runs \\
+  -H "Content-Type: application/json" \\
+  -H "X-OI-Provider: openai" \\
+  -H "X-OI-Key: $OPENAI_API_KEY" \\
+  -d '{"question": "Will the Fed cut rates at its next meeting?", "depth": "quick"}'
+
+# Wait up to 55 s for the prediction (repeat until status is "done")
+curl -s "${origin}/api/oi/runs/RUN_ID?wait=55"
+
+# Or watch it happen
+curl -N ${origin}/api/oi/runs/RUN_ID/events`,
+                },
+              ]}
+            />
+
+            <p>
+              The same engine is an MCP server at <Code>{`${origin}/api/mcp`}</Code> (Streamable HTTP). Give an agent the
+              tools <Code>oi_predict</Code>, <Code>oi_get_run</Code>, <Code>oi_ask</Code>,{' '}
+              <Code>oi_inject</Code> and <Code>oi_cancel</Code>, plus <Code>osiris_world_brief</Code> and{' '}
+              <Code>osiris_markets</Code> and <Code>osiris_trending</Code>, which are free and need no key. The model key is set once on the connection, as
+              headers, so it never appears in the agent&apos;s conversation.
+            </p>
+            <CodeBlock
+              label="Connect an agent"
+              tabs={[
+                {
+                  label: 'Hermes',
+                  lang: 'yaml',
+                  code: `# ~/.hermes/config.yaml
+mcp_servers:
+  osiris:
+    url: "${origin}/api/mcp"
+    headers:
+      X-OI-Provider: "anthropic"
+      X-OI-Key: "sk-ant-..."
+      X-OI-Model: "claude-haiku-4-5-20251001"
+    timeout: 300`,
+                },
+                {
+                  label: 'Claude Code',
+                  lang: 'bash',
+                  code: `claude mcp add --transport http osiris ${origin}/api/mcp \\
+  --header "X-OI-Provider: openai" \\
+  --header "X-OI-Key: $OPENAI_API_KEY"`,
+                },
+                {
+                  label: 'Cursor / JSON',
+                  lang: 'json',
+                  code: `{
+  "mcpServers": {
+    "osiris": {
+      "url": "${origin}/api/mcp",
+      "headers": {
+        "X-OI-Provider": "google",
+        "X-OI-Key": "AIza..."
+      }
+    }
+  }
+}`,
+                },
+              ]}
+            />
+            <Callout tone="info" title="How long a prediction takes">
+              A few minutes, depending on depth and provider. <Code>oi_predict</Code> waits for it when the
+              client accepts a streamed response, sending progress as each phase and period completes. Over plain JSON it
+              waits about 80 seconds, then returns the run id to poll with <Code>oi_get_run</Code> and{' '}
+              <Code>wait_seconds</Code>.
+            </Callout>
+            <p className="text-[12px] text-[var(--text-muted)]">
+              The method follows{' '}
+              <a href="https://github.com/666ghj/MiroFish" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">MiroFish</a>,
+              the open-source swarm-intelligence engine: seed a parallel world from real material, populate it with agents,
+              let them interact while you inject variables, then hand the simulation to a report agent. GLOBE rebuilds that
+              method natively for its own feeds and globe; no MiroFish code is used. A simulation, not a guarantee.
+            </p>
+          </Section>
+
+          <Section id="shortcuts" eyebrow="Guide" title="Keyboard Shortcuts">
+            <p>
+              Press <Code>?</Code> at any time inside the application to bring up this list.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-2">
+              {[
+                { key: 'F', desc: 'Toggle fullscreen' },
+                { key: 'S', desc: 'Share current view' },
+                { key: 'L', desc: 'Toggle layer panel' },
+                { key: 'M', desc: 'Toggle markets panel' },
+                { key: 'I', desc: 'Toggle intel feed' },
+                { key: 'R', desc: 'Reset to global view' },
+                { key: '?', desc: 'Show help' },
+                { key: 'ESC', desc: 'Close panels / popups' },
+              ].map(s => (
+                <div
+                  key={s.key}
+                  className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.015] px-3.5 py-2.5"
+                >
+                  <kbd className="font-mono text-[10px] min-w-[2.4rem] text-center px-2 py-1 rounded-md border border-[var(--gold-primary)]/30 bg-[var(--gold-primary)]/[0.08] text-[var(--gold-primary)]">
+                    {s.key}
+                  </kbd>
+                  <span className="text-[12.5px] text-[var(--text-secondary)]">{s.desc}</span>
+                </div>
+              ))}
+            </div>
+            <p className="pt-2">
+              In these docs, <Code>⌘K</Code> (or <Code>/</Code>) opens search from anywhere on the page.
+            </p>
+          </Section>
+
+          {/* ── API REFERENCE ── */}
+          <Section id="api" eyebrow="API Reference" title="Conventions">
+            <p>
+              All routes live under <Code>/api</Code> on whatever origin serves the application. Reads are{' '}
+              <Code>GET</Code>, writes are <Code>POST</Code> with a JSON body. Nothing requires authentication except{' '}
+              <Code>/api/sdk/ingest</Code> and <Code>/api/github-webhook</Code>. OI runs on a model key you bring,
+              sent in the <Code>X-OI-Key</Code> header.
+            </p>
+            <div className="space-y-2.5">
+              {[
+                {
+                  k: 'Errors',
+                  v: 'Failures return a non-2xx status with an `error` key, often alongside `detail` carrying the upstream message. Most routes proxy third parties, so treat upstream failure as normal — check response.ok before reading the body.',
+                },
+                {
+                  k: 'Caching',
+                  v: 'Routes set their own Cache-Control TTLs: typically 45–60s for fast-moving feeds, up to a day for static reference data. Polling faster than the TTL gains nothing but load. Where a route advertises refreshInterval, use it.',
+                },
+                {
+                  k: 'Rate limits',
+                  v: 'The three AI endpoints allow 5 requests per minute per IP and return 429 beyond that. Other routes are bounded indirectly by their upstream sources.',
+                },
+                { k: 'Timestamps', v: 'Every timestamp field is ISO 8601 in UTC.' },
+              ].map(row => (
+                <div key={row.k} className="rounded-xl border border-white/[0.07] bg-white/[0.015] p-3.5">
+                  <div className="font-mono text-[11.5px] text-[var(--gold-primary)] mb-1.5">{row.k}</div>
+                  <div className="text-[12.5px] leading-[1.7] text-[var(--text-secondary)]">{row.v}</div>
+                </div>
+              ))}
+            </div>
+            <Callout tone="warn" title="Responsible use">
+              The RECON scanner and <Code>/api/osint/sweep</Code> generate traffic against the targets you name. Only
+              point them at infrastructure you own or have written authorisation to test. The remaining OSINT routes
+              are passive and query third-party datasets rather than the subject itself.
+            </Callout>
+          </Section>
+
+          {API_GROUPS.map(group => (
+            <Section key={group.id} id={`api-${group.id}`} eyebrow="API Reference" title={group.title}>
+              <p>{group.blurb}</p>
+              <div className="space-y-2.5 pt-1">
+                {group.endpoints.map(ep => (
+                  <EndpointCard key={endpointId(ep)} ep={ep} origin={origin} />
+                ))}
+              </div>
+            </Section>
+          ))}
+
+          {/* Prev / next */}
+          {(prev || next) && (
+            <div className="grid sm:grid-cols-2 gap-3 mt-4 mb-12">
+              {prev ? (
+                <a
+                  href={`#${prev.id}`}
+                  className="rounded-xl border border-white/[0.07] bg-white/[0.015] p-4 hover:border-[var(--gold-primary)]/30 transition-colors"
+                >
+                  <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-[var(--text-muted)] mb-1">
+                    ← Previous
+                  </div>
+                  <div className="text-[12px] text-[var(--text-primary)]">{prev.title}</div>
+                </a>
+              ) : (
+                <div />
+              )}
+              {next && (
+                <a
+                  href={`#${next.id}`}
+                  className="rounded-xl border border-white/[0.07] bg-white/[0.015] p-4 hover:border-[var(--gold-primary)]/30 transition-colors sm:text-right"
+                >
+                  <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-[var(--text-muted)] mb-1">
+                    Next →
+                  </div>
+                  <div className="text-[12px] text-[var(--text-primary)]">{next.title}</div>
+                </a>
+              )}
+            </div>
+          )}
+
+          <p className="border-t border-white/[0.06] pt-6 text-[11px] leading-relaxed text-[var(--text-muted)]">
+            GLOBE is the Nexus Radar deployment of the open-source{' '}
+            <a href="https://github.com/simplifaisoul/osiris" target="_blank" rel="noopener noreferrer" className="underline hover:text-[var(--gold-primary)]">
+              OSIRIS project
+            </a>
+            . The application code and data integrations are upstream work, retained under the MIT license.
+          </p>
+
+          {/* Footer */}
+          <footer className="pt-4 pb-16 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-mono text-[var(--text-muted)]">
+            {[
+              { href: 'https://github.com/simplifaisoul/osiris', label: 'GitHub' },
+              { href: 'https://discord.gg/EPaFD5FFKf', label: 'Discord' },
+              { href: 'https://x.com/soulsimplifai', label: 'X' },
+              { href: 'https://github.com/simplifaisoul/osiris/issues', label: 'Report an issue' },
+            ].map(l => (
+              <a
+                key={l.label}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[var(--gold-primary)] transition-colors"
+              >
+                {l.label}
+              </a>
+            ))}
+            <span className="ml-auto opacity-60">MIT Licensed</span>
+          </footer>
+        </main>
+
+        {/* ── Right rail: on this page ── */}
+        <aside className="hidden xl:block w-52 shrink-0 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto styled-scrollbar py-16">
+          <div className="text-[10px] font-mono tracking-[0.3em] uppercase text-[var(--text-muted)]/70 mb-3">
+            On this page
+          </div>
+          <div className="space-y-0.5">
+            {ALL_SECTIONS.map(s => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className={`block text-[11.5px] py-1 transition-colors ${
+                  active === s.id
+                    ? 'text-[var(--gold-primary)]'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)]'
+                }`}
+              >
+                {s.title}
+              </a>
+            ))}
+          </div>
+
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="mt-6 flex items-center gap-1.5 text-[11px] font-mono tracking-[0.15em] uppercase text-[var(--text-muted)] hover:text-[var(--gold-primary)] transition-colors"
+          >
+            <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m18 15-6-6-6 6" />
+            </svg>
+            Back to top
+          </button>
+        </aside>
+      </div>
+    </div>
+  );
+}
