@@ -18,7 +18,7 @@ import type { Depth } from './types';
 
 export const OI_VERSION = '1.0.0';
 
-export const CREDIT = 'Method after MiroFish (github.com/666ghj/MiroFish), rebuilt natively for OSIRIS.';
+export const CREDIT = 'Method after MiroFish (github.com/666ghj/MiroFish), rebuilt natively for GLOBE.';
 
 export function disabled(): boolean {
   return process.env.OI_DISABLED === '1';
@@ -157,9 +157,9 @@ export function limited(req: Request, bucket: string, limit: number, windowMs = 
 /** What the service offers, for GET /api/oi and the MCP providers tool. */
 export function describe(origin: string) {
   return {
-    name: 'OSIRIS OI',
+    name: 'GLOBE OI',
     version: OI_VERSION,
-    about: 'A prediction engine on live OSIRIS intelligence: the actors who decide a question, simulated against each other in parallel worlds. Bring your own model key.',
+    about: 'A prediction engine on live GLOBE intelligence: the actors who decide a question, simulated against each other in parallel worlds. Bring your own model key.',
     credit: CREDIT,
     providers: PROVIDERS.map(p => ({ id: p.id, name: p.name, default_model: p.defaultModel, suggested_models: p.suggested, key_url: p.keyUrl })),
     depths: (Object.keys(DEPTHS) as Depth[]).map(d => ({ id: d, ...DEPTHS[d], model_calls: estimateCalls(d) })),

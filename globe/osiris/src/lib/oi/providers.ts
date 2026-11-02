@@ -309,7 +309,7 @@ function buildRequest(def: ProviderDef, key: string, model: string, req: ChatReq
   const headers: Record<string, string> = { 'content-type': 'application/json', authorization: `Bearer ${key}` };
   if (def.id === 'openrouter') {
     headers['HTTP-Referer'] = 'https://osirisai.live';
-    headers['X-Title'] = 'OSIRIS OI';
+    headers['X-Title'] = 'GLOBE OI';
   }
   return {
     url: `${def.base}/chat/completions`,

@@ -75,16 +75,18 @@ x-casaos:
   category: Network
   description:
     en_us: >-
-      OSIRIS is a production-grade open-source OSINT situational-awareness
-      dashboard. It aggregates real-time global intelligence across aviation,
-      maritime, CCTV networks, seismic activity, wildfires, news feeds,
-      weather, space weather, cyber threats (CVEs) and conflict zones into a
-      single GPU-accelerated MapLibre interface. Most features work with no
-      API keys.
+      GLOBE is the Nexus Radar global intelligence platform: a production-grade
+      open-source OSINT situational-awareness dashboard. It aggregates real-time
+      global intelligence across aviation, maritime, CCTV networks, seismic
+      activity, wildfires, news feeds, weather, space weather, cyber threats
+      (CVEs) and conflict zones into a single GPU-accelerated MapLibre interface.
+      Most features work with no API keys.
   tagline:
-    en_us: Real-time global OSINT intelligence dashboard
+    en_us: Nexus Radar global intelligence platform
   title:
-    en_us: OSIRIS
+    en_us: GLOBE
+  # Artwork is still served from the upstream OSIRIS repository until a Nexus
+  # Radar-hosted asset URL is available. The local files are already GLOBE-branded.
   icon: https://raw.githubusercontent.com/simplifaisoul/osiris/master/public/casaos-icon.png
   thumbnail: https://raw.githubusercontent.com/simplifaisoul/osiris/master/public/og-image.png
   screenshot_link:

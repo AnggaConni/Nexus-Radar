@@ -1,6 +1,6 @@
 #!/bin/bash
 # =========================================================
-#  OSIRIS — Deploy Cycle Script
+#  GLOBE — Deploy Cycle Script
 #  Git → SSH → Docker Rebuild → Live
 # =========================================================
 #
@@ -25,7 +25,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo -e "${CYAN}╔══════════════════════════════════════════╗${NC}"
-echo -e "${CYAN}║     OSIRIS DEPLOYMENT CYCLE              ║${NC}"
+echo -e "${CYAN}║     GLOBE DEPLOYMENT CYCLE               ║${NC}"
 echo -e "${CYAN}║     Git → SSH → Docker → Live            ║${NC}"
 echo -e "${CYAN}╚══════════════════════════════════════════╝${NC}"
 echo ""
@@ -34,7 +34,7 @@ echo ""
 echo -e "${YELLOW}[1/2] GIT — Staging & Pushing...${NC}"
 git add -A
 
-COMMIT_MSG="${1:-deploy: update osiris production $(date '+%Y-%m-%d %H:%M')}"
+COMMIT_MSG="${1:-deploy: update globe production $(date '+%Y-%m-%d %H:%M')}"
 git commit -m "$COMMIT_MSG" || echo -e "${YELLOW}  (nothing new to commit)${NC}"
 
 git push origin "$BRANCH"

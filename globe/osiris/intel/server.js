@@ -810,7 +810,7 @@ app.get('/resolve', async (req, res) => {
       links: result.links,
       degraded: result.degraded,
       entity: { type, id },
-      source: 'OSIRIS Intelligence Layer',
+      source: 'GLOBE Intelligence Layer',
       sanctions_index_size: sanctionsIndex.entries.length,
       wikidata_cache_hits: wdCache.size,
       timestamp: new Date().toISOString(),
