@@ -51318,5 +51318,464 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "f4841044c2858986f6b145c60e5548e1",
+        "timestamp": "2026-11-05T03:58:23.965320",
+        "title": "Saltwater Intrusion: A Slow-Onset Climate Crisis",
+        "summary": "As sea levels rise, saltwater moves inland towards coastal areas and infiltrates fresh groundwater systems.",
+        "domain_classification": [
+            "Climate",
+            "Water"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Coastal areas",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Saltwater moving inland towards coastal areas and infiltrating fresh groundwater systems due to rising sea levels.",
+            "key_indicators": [
+                "Sea level rise",
+                "Inland movement of saltwater",
+                "Contamination of fresh groundwater systems"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Fresh groundwater systems",
+                "Coastal agriculture",
+                "Coastal communities"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.eesi.org/articles/view/saltwater-intrusion-a-slow-onset-climate-crisis-jeopardizing-americas-coastal-farms"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "Environmental",
+                "Economic",
+                "Social"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Saltwater intrusion, driven by rising sea levels, critically jeopardizes fresh groundwater resources essential for drinking water and agricultural irrigation in coastal regions. This 'slow-onset climate crisis' leads to salinization of fertile lands, loss of agricultural productivity, and potential water scarcity, posing severe long-term environmental degradation, economic losses for coastal communities, and social challenges related to health and displacement. While slow, its impacts are pervasive and require immediate strategic planning and intervention."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_quality_pressure",
+                "node": "Quality Pressure",
+                "stage": "Water condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.88,
+                "evidence": [
+                    "manifestation"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "critical_resource_pressure",
+                "node": "Critical Resource Pressure",
+                "stage": "Resource constraint",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "cascading_disruption",
+                "node": "Cascading Disruption",
+                "stage": "Impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_signal",
+                "node": "Water Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "climate_signal",
+                "node": "Climate Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "production_pressure",
+                "node": "Production Pressure",
+                "stage": "Economic/food system",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "ecosystem_stress",
+                "node": "System Stress",
+                "stage": "Emerging pressure",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "social_pressure",
+                "node": "Social Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "livelihood_food_system",
+                "domain": "Livelihood & Food System",
+                "node_id": "food_supply_pressure",
+                "node": "Food Supply Pressure",
+                "stage": "Food-system condition",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "f3e6130e8df48b86a65974f13ae1901a",
+        "timestamp": "2026-11-05T03:58:56.401318",
+        "title": "Rising Groundwater Salinity",
+        "summary": "Groundwater salinity is increasing due to three primary drivers: over-extraction leading to salt concentration in aquifers, saline intrusion in coastal areas exacerbated by sea-level rise and pumping, and agricultural return flows introducing salts into shallow aquifers.",
+        "domain_classification": [
+            "Water",
+            "Climate"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Increasing salt concentration in groundwater aquifers",
+            "key_indicators": [
+                "Over-extraction of groundwater",
+                "Saline intrusion in coastal aquifers",
+                "Sea-level rise",
+                "Agricultural return flows"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Drinking water supply",
+                "Agricultural water supply",
+                "Ecosystem health",
+                "Aquifer sustainability"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://www.zeyuanwater.com/rising-groundwater-salinity-causes-risks/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic",
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "environmental_degradation",
+                "resource_depletion"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Rising groundwater salinity poses a significant, long-term threat to freshwater resources, agricultural productivity, and ecosystem health. The ongoing drivers (over-extraction, saline intrusion, and agricultural return flows) lead to persistent degradation of a vital resource, necessitating immediate and comprehensive intervention to prevent severe economic and environmental consequences."
+        },
+        "priority_score": 92,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "cascading_disruption",
+                "node": "Cascading Disruption",
+                "stage": "Impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "hazard_escalation",
+                "node": "Hazard Escalation",
+                "stage": "Hazard development",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "resource_behavior_shift",
+                "node": "Resource Behavior Shift",
+                "stage": "Behavioral pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "source_stress",
+                "node": "Source Stress",
+                "stage": "Source condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_signal",
+                "node": "Water Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "domain_classification",
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "climate_signal",
+                "node": "Climate Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "access_disruption",
+                "node": "Water Access Disruption",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
