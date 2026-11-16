@@ -53993,5 +53993,414 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "b56c9c8a5bdacde9435c7cba39ed665d",
+        "timestamp": "2026-11-16T03:30:52.007652",
+        "title": "Increased degassing observed in Taal Volcano",
+        "summary": "Taal Volcano has been generating an average of 10,000 tons of sulfur dioxide per day since January, leading to residents in nearby barangays reporting a strong sulfur stench.",
+        "domain_classification": [
+            "DRR",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "Philippines",
+            "region": "Batangas",
+            "lat": 13.9146826,
+            "lon": 121.0867566
+        },
+        "manifestation": {
+            "how_it_is_observed": "Increased sulfur dioxide (SO2) emissions from Taal Volcano's main crater, measured at an average of 10,000 tons per day, and reported sulfur stench by local residents.",
+            "key_indicators": [
+                "Increased SO2 emissions",
+                "Reported sulfur stench"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Human health (respiratory irritation)",
+                "Local communities (discomfort, potential evacuation)",
+                "Agricultural crops and livestock (due to acid rain from SO2)"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://pna.gov.ph/articles/1219120"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "volcanic_eruption",
+                "environmental_hazard",
+                "public_health_risk"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Increased sulfur dioxide degassing from Taal Volcano, averaging 10,000 tons per day, coupled with reports of sulfur stench, indicates heightened magmatic activity. This is a significant precursor to potential volcanic eruptions, posing severe risks including ashfall, pyroclastic flows, lahars, and toxic gas emissions. These events can lead to widespread displacement, infrastructure damage, respiratory illnesses, and fatalities. Immediate intervention is crucial for intensified monitoring, public advisories, and preparedness measures to mitigate disaster risks."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "root_cause",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "production_pressure",
+                "node": "Production Pressure",
+                "stage": "Economic/food system",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "intervention_window",
+                "node": "Intervention Window",
+                "stage": "Potential leverage",
+                "kind": "intervention",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "response_pressure",
+                "node": "Response Pressure",
+                "stage": "Response capacity",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "livelihood_food_system",
+                "domain": "Livelihood & Food System",
+                "node_id": "livelihood_food_signal",
+                "node": "Livelihood & Food Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "social_pressure",
+                "node": "Social Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "livelihood_food_system",
+                "domain": "Livelihood & Food System",
+                "node_id": "household_community_pressure",
+                "node": "Household & Community Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "07e1eb376d849ef2ead337fe1efdb6d0",
+        "timestamp": "2026-11-16T03:31:36.321687",
+        "title": "Increased Volcanic Sulfur Dioxide Emissions",
+        "summary": "A summit gas monitoring array recorded an average sulfur dioxide (SO2) emission rate of about 2,000 tonnes per day yesterday, with trade winds carrying volcanic gases. This indicates elevated volcanic activity.",
+        "domain_classification": [
+            "DRR"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "",
+            "region": "",
+            "lat": null,
+            "lon": null
+        },
+        "manifestation": {
+            "how_it_is_observed": "Monitoring of sulfur dioxide (SO2) emission rates by a summit gas monitoring array.",
+            "key_indicators": [
+                "Sulfur dioxide (SO2) emission rate",
+                "Volcanic gases"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Air quality",
+                "Human health (respiratory issues)",
+                "Environment (acid rain)",
+                "Potential for further volcanic activity"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://volcanoes.usgs.gov/hans-public/notice/DOI-USGS-HVO-2026-11-15T18:24:00+00:00"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Environmental Hazard",
+                "Geological Hazard"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "High sulfur dioxide (SO2) emission rates (2,000 tonnes per day) indicate significant volcanic degassing, posing immediate environmental and public health risks from volcanic smog (vog), acid rain, and respiratory issues. This level of emission suggests ongoing or escalating volcanic unrest, requiring continuous monitoring and public safety measures."
+        },
+        "priority_score": 66,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "root_cause",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "intervention_window",
+                "node": "Intervention Window",
+                "stage": "Potential leverage",
+                "kind": "intervention",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "governance_institutional_system",
+                "domain": "Governance & Institutional System",
+                "node_id": "intervention_window",
+                "node": "Intervention Window",
+                "stage": "Potential leverage",
+                "kind": "intervention",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "intervention_window",
+                "node": "Intervention Window",
+                "stage": "Potential leverage",
+                "kind": "intervention",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "intervention_window",
+                "node": "Intervention Window",
+                "stage": "Potential leverage",
+                "kind": "intervention",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "hazard_escalation",
+                "node": "Hazard Escalation",
+                "stage": "Hazard development",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
