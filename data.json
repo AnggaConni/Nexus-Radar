@@ -55307,5 +55307,455 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "41ca7aca9f50495837c330f7a5f2240f",
+        "timestamp": "2026-11-21T04:34:03.226070",
+        "title": "Dead Fish Wash Ashore On Florida Beach",
+        "summary": "Hundreds, if not thousands, of dead fish washed ashore Monday morning on Satellite Beach, just north of Melbourne beach, indicating a significant environmental anomaly.",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity",
+            "Water"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "USA",
+            "region": "Florida",
+            "lat": 27.7567667,
+            "lon": -81.4639835
+        },
+        "manifestation": {
+            "how_it_is_observed": "Mass mortality of fish, with hundreds to thousands of dead fish washing ashore on a specific beach.",
+            "key_indicators": [
+                "Mass fish mortality event",
+                "Coastal environmental degradation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Marine ecosystems",
+                "Coastal biodiversity",
+                "Water quality",
+                "Local tourism and fishing industries",
+                "Public health (if caused by toxins)"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://cbsnews.com/miami/news/dead-fish-wash-ashore-on-florida-beach"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "Environmental",
+                "Economic",
+                "Public Health"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Hundreds, if not thousands, of dead fish washing ashore indicates a significant environmental event. This could be caused by severe water pollution, harmful algal blooms (like red tide), or oxygen depletion, all of which pose substantial risks to marine ecosystems, local economies (tourism, fishing), and potentially human health if toxins are present. If left unaddressed, such events can lead to ecological collapse, long-term economic damage, and public health crises. Immediate investigation is crucial to identify the specific cause and implement mitigation strategies."
+        },
+        "priority_score": 88,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "ecosystem_stress",
+                "node": "System Stress",
+                "stage": "Emerging pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "habitat_stress",
+                "node": "Habitat Stress",
+                "stage": "Ecological pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "marine_signal",
+                "node": "Marine Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_signal",
+                "node": "Water Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "cascading_disruption",
+                "node": "Cascading Disruption",
+                "stage": "Impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "community_pressure",
+                "node": "Community Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "907c5c775762a1fedfd67e90a8289a01",
+        "timestamp": "2026-11-21T04:34:43.313033",
+        "title": "Thousands of Dead Fish Wash Ashore in Virginia Beach",
+        "summary": "On March 6, 2026, the tranquil shores of Sandbridge and Chick’s Beach in Virginia Beach, VA, were unexpectedly transformed as thousands of dead fish washed up along the coastline.",
+        "domain_classification": [
+            "Ocean",
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Virginia Beach, VA",
+            "lat": 36.8496579,
+            "lon": -75.9760751
+        },
+        "manifestation": {
+            "how_it_is_observed": "Thousands of dead fish washing up along the coastline in Sandbridge and Chick’s Beach.",
+            "key_indicators": [
+                "Mass fish mortality event",
+                "Coastal environmental degradation"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Marine ecosystems",
+                "Fish populations",
+                "Coastal water quality",
+                "Local tourism"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://newschunks.com/state/virginia/virginia-beach/thousands-of-dead-fish-wash-ashore-in-virginia-beach-officials-cite-natural-causes/"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "natural_anomaly"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "environmental_degradation",
+                "ecological_collapse"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The mass die-off of thousands of fish indicates a severe disruption to the marine ecosystem. While officials cite natural causes, the scale of the event suggests potential for significant environmental degradation, impacting local biodiversity, water quality, and potentially local industries like fishing and tourism. Immediate investigation is required to confirm the cause and prevent recurrence or further ecological damage."
+        },
+        "priority_score": 66,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "root_cause",
+                    "signal_validation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "ecosystem_stress",
+                "node": "System Stress",
+                "stage": "Emerging pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "habitat_stress",
+                "node": "Habitat Stress",
+                "stage": "Ecological pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "marine_signal",
+                "node": "Marine Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "cascading_disruption",
+                "node": "Cascading Disruption",
+                "stage": "Impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "community_pressure",
+                "node": "Community Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "digital_service_disruption",
+                "node": "Digital Service Disruption",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
