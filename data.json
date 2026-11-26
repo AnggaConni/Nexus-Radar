@@ -56213,5 +56213,367 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "229a2e13d2f43709c9f4d47e548359ab",
+        "timestamp": "2026-11-26T05:44:24.649073",
+        "title": "Collapse fears over long-running subsidence issues in West Acton",
+        "summary": "Long-running subsidence issues in West Acton have led to significant structural degradation, evidenced by a resident's front door falling out of its frame. This incident highlights ongoing property instability and poses a direct threat to resident safety.",
+        "domain_classification": [
+            "DRR",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "United Kingdom",
+            "region": "West Acton, London",
+            "lat": 51.5183524,
+            "lon": -0.280413
+        },
+        "manifestation": {
+            "how_it_is_observed": "Structural degradation of buildings due to long-running subsidence, leading to components like a front door falling out of its frame.",
+            "key_indicators": [
+                "Subsidence",
+                "Structural instability",
+                "Property damage",
+                "Risk of collapse"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Resident safety",
+                "Property integrity",
+                "Housing stability",
+                "Infrastructure"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://bbc.com/news/articles/cmx28rdgwwy6o"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "systemic_failure"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 9,
+            "risk_type": [
+                "structural_integrity",
+                "public_safety"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Long-running subsidence issues have led to severe structural compromise, evidenced by a front door falling out of its frame. This represents an immediate and high risk of injury to residents and potential building collapse if not addressed urgently."
+        },
+        "priority_score": 96,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "ecosystem_stress",
+                "node": "System Stress",
+                "stage": "Emerging pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "habitat_stress",
+                "node": "Habitat Stress",
+                "stage": "Ecological pressure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "4cc1a1f8646a363186eef421afd973d6",
+        "timestamp": "2026-11-26T05:45:04.390192",
+        "title": "Mining subsidence necessitates home demolitions in Coalsnaughton",
+        "summary": "Ongoing ground degradation caused by historical mining subsidence in Coalsnaughton, Clackmannanshire, has reached a critical stage, requiring the demolition of residential properties on two streets due to structural instability.",
+        "domain_classification": [
+            "DRR",
+            "Social/Behavioral"
+        ],
+        "signal_intensity": "strong",
+        "location": {
+            "country": "United Kingdom",
+            "region": "Clackmannanshire, Scotland",
+            "lat": 56.166395,
+            "lon": -3.7513968
+        },
+        "manifestation": {
+            "how_it_is_observed": "Ground deformation and structural damage to residential buildings, leading to official orders for demolition and displacement of residents.",
+            "key_indicators": [
+                "Ground instability",
+                "Structural cracks in buildings",
+                "Risk of building collapse",
+                "Forced displacement",
+                "Demolition orders"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "high",
+            "affected_elements": [
+                "Residential infrastructure",
+                "Local communities",
+                "Public safety",
+                "Property values",
+                "Community cohesion"
+            ]
+        },
+        "escalation": {
+            "speed": "slow",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://bbc.co.uk/news/articles/cr7dne18z1do"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic",
+                "systemic_failure",
+                "policy_gap"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "Structural integrity",
+                "Community displacement",
+                "Economic loss"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "Mining subsidence causes severe ground instability, leading to structural damage and the necessity of demolishing homes. This results in significant displacement, loss of property, and severe distress for residents, posing a high risk to individual well-being, community stability, and economic security. Immediate intervention is required to support affected residents and mitigate further risks."
+        },
+        "priority_score": 92,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "social_pressure",
+                "node": "Social Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "livelihood_food_system",
+                "domain": "Livelihood & Food System",
+                "node_id": "household_community_pressure",
+                "node": "Household & Community Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "cohesion_risk",
+                "node": "Cohesion Risk",
+                "stage": "System consequence",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "behavioral_signal",
+                "node": "Behavioral Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "governance_institutional_system",
+                "domain": "Governance & Institutional System",
+                "node_id": "service_resilience_gap",
+                "node": "Service & Resilience Gap",
+                "stage": "System impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "social_behavioral_system",
+                "domain": "Social & Behavioral System",
+                "node_id": "community_pressure",
+                "node": "Community Pressure",
+                "stage": "Community impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "digital_social_impact",
+                "node": "Digital & Social Impact",
+                "stage": "Human-system impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "ecosystem_stress",
+                "node": "System Stress",
+                "stage": "Emerging pressure",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.68,
+                "evidence": [
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "ocean_coastal_system",
+                "domain": "Ocean & Coastal System",
+                "node_id": "habitat_stress",
+                "node": "Habitat Stress",
+                "stage": "Ecological pressure",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.68,
+                "evidence": [
+                    "summary"
+                ]
+            }
+        ]
     }
 ]
