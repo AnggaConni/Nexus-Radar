@@ -56575,5 +56575,415 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "e6facf4758af5a34017fe40c7de4aada",
+        "timestamp": "2026-11-28T05:16:47.872003",
+        "title": "Mysterious mass bird deaths in Hillsboro",
+        "summary": "Dozens of red-winged blackbirds and European starlings were found dead in a field off West Union Road, along with a bald eagle and a red-tailed hawk. There were no obvious signs of cause, prompting an investigation into unexplained mass bird deaths.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "USA",
+            "region": "Oregon",
+            "lat": 43.9792797,
+            "lon": -120.737257
+        },
+        "manifestation": {
+            "how_it_is_observed": "Multiple species of birds, including red-winged blackbirds, European starlings, a bald eagle, and a red-tailed hawk, found dead in a field without obvious cause.",
+            "key_indicators": [
+                "Unexplained mass mortality of multiple bird species",
+                "Presence of both common and protected species among the dead"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Local bird populations",
+                "Ecosystem health",
+                "Potential for broader environmental contamination"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "high"
+        },
+        "sources": [
+            "https://kgw.com/article/news/officials-investigate-mass-bird-deaths-in-hillsboro/283-615308272"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 8,
+            "risk_type": [
+                "environmental_contamination",
+                "ecological_imbalance",
+                "public_health_risk"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The unexplained mass deaths of multiple bird species, including a protected bald eagle and a red-tailed hawk, strongly suggest a potent environmental contaminant or widespread disease. This poses a significant ecological risk due to potential food chain contamination, disruption of local wildlife populations, and the possibility of secondary poisoning in scavengers or predators. There is also a potential, though unconfirmed, public health risk if the causative agent is widespread and harmful to other species, including humans or livestock. Immediate investigation is crucial to identify the source and mitigate further harm."
+        },
+        "priority_score": 76,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "critical_resource_pressure",
+                "node": "Critical Resource Pressure",
+                "stage": "Resource constraint",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment",
+                    "summary"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "water_quality_pressure",
+                "node": "Quality Pressure",
+                "stage": "Water condition",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_function_loss",
+                "node": "Ecosystem Function Loss",
+                "stage": "System response",
+                "kind": "stress",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "ecosystem_service_risk",
+                "node": "Ecosystem Service Risk",
+                "stage": "Service impact",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "fa12e85d48b89d3fe341bd81f4115b5e",
+        "timestamp": "2026-11-28T05:17:25.442363",
+        "title": "Hundreds of dead birds found in mystery mass death",
+        "summary": "Approximately 225 starlings were discovered dead with blood on their bodies in a lane on Anglesey, North Wales. The cause of death is currently unknown and is being investigated.",
+        "domain_classification": [
+            "Biodiversity"
+        ],
+        "signal_intensity": "moderate",
+        "location": {
+            "country": "UK",
+            "region": "Anglesey, North Wales",
+            "lat": 53.2252668,
+            "lon": -4.236103
+        },
+        "manifestation": {
+            "how_it_is_observed": "Mass death of approximately 225 starlings, found with blood on their bodies in a localized area.",
+            "key_indicators": [
+                "Unexplained mass animal mortality",
+                "Presence of blood on deceased animals",
+                "Localized high number of dead wildlife"
+            ]
+        },
+        "potential_impact": {
+            "threat_level": "medium",
+            "affected_elements": [
+                "Local wildlife populations (starlings)",
+                "Local ecosystem health",
+                "Potential public health (if cause is environmental toxin or zoonotic disease)"
+            ]
+        },
+        "escalation": {
+            "speed": "medium",
+            "urgency": "medium"
+        },
+        "sources": [
+            "https://bbc.com/news/uk-wales-50741457"
+        ],
+        "root_cause_analysis": {
+            "root_cause": [
+                "anthropogenic"
+            ]
+        },
+        "risk_assessment": {
+            "risk_score": 7,
+            "risk_type": [
+                "ecological",
+                "public_health",
+                "environmental"
+            ],
+            "severity_level": "high",
+            "needs_immediate_intervention": true,
+            "explanation": "The unexplained mass death of hundreds of birds, especially with visible trauma (blood), poses significant ecological and potential public health risks. Without knowing the cause, there's a risk of an ongoing environmental contaminant, a rapidly spreading zoonotic disease, or a systemic issue that could affect other wildlife or even humans. Immediate investigation is critical to mitigate these unknown but potentially severe threats."
+        },
+        "priority_score": 62,
+        "critical_flag": false,
+        "pathway_matches": [
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "latent_signal",
+                "node": "Latent Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 1.0,
+                "evidence": [
+                    "domain_classification",
+                    "signal_validation"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "population_decline",
+                "node": "Population Decline",
+                "stage": "Population response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "climate_ecosystem_system",
+                "domain": "Climate & Ecosystem System",
+                "node_id": "ecological_stress",
+                "node": "Ecological Stress",
+                "stage": "Ecosystem response",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "technology_digital_system",
+                "domain": "Technology & Digital Transformation",
+                "node_id": "technology_signal",
+                "node": "Technology Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "evidence_linked",
+                "confidence": 0.82,
+                "evidence": [
+                    "manifestation",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "species_signal",
+                "node": "Species Signal",
+                "stage": "Early observation",
+                "kind": "signal",
+                "match": "heuristic",
+                "confidence": 0.74,
+                "evidence": [
+                    "domain_classification"
+                ]
+            },
+            {
+                "domain_id": "biodiversity_system",
+                "domain": "Biodiversity System",
+                "node_id": "human_ecological_exposure",
+                "node": "Human-Ecological Exposure",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "disaster_risk_system",
+                "domain": "Disaster Risk System",
+                "node_id": "exposure_growth",
+                "node": "Exposure Growth",
+                "stage": "Exposure",
+                "kind": "stress",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact"
+                ]
+            },
+            {
+                "domain_id": "water_system",
+                "domain": "Water System",
+                "node_id": "dependent_systems",
+                "node": "Dependent Systems",
+                "stage": "Downstream impact",
+                "kind": "consequence",
+                "match": "evidence_linked",
+                "confidence": 0.72,
+                "evidence": [
+                    "potential_impact",
+                    "risk_assessment"
+                ]
+            },
+            {
+                "domain_id": "cross_system_cascade",
+                "domain": "Cross-System Cascade",
+                "node_id": "systemic_vulnerability",
+                "node": "Systemic Vulnerability",
+                "stage": "Cascading risk",
+                "kind": "consequence",
+                "match": "heuristic",
+                "confidence": 0.66,
+                "evidence": [
+                    "risk_assessment"
+                ]
+            }
+        ]
     }
 ]
